@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Test">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CORE Web Services">
+  <test thread-count="5" name="CORE - Continuous Integration">
     <classes>
-      <class name="CORE.AppTest"/>
+      <class name="CORE.GetCustomer"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
