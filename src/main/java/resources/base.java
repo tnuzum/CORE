@@ -7,7 +7,7 @@ import java.util.Properties;
 public class base {
 	
 	public static Properties prop = new Properties();
-	static String projectPath = System.getenv("API_HOME");
+	static String projectPath = System.getenv("CORE_HOME");
 	String userProfile = System.getenv("USERPROFILE");
 
 	public static void getPropertyData() throws IOException {

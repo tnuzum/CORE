@@ -4,20 +4,30 @@ import static io.restassured.RestAssured.given;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import org.apache.commons.io.IOUtils;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
+import resources.base;
 
-public class GetCustomer {
+public class CustomerInfo_GetCustomerInfo extends base {
 	
-	@Test
-	public void getCustomer() throws Exception {
-
-	        FileInputStream fileInputStream = new FileInputStream(new File("C:\\Users\\tnuzum\\eclipse-workspace\\CORE\\src\\main\\java\\requestFiles\\getCustomerInfo.xml"));
-	        RestAssured.baseURI="http://compete-ws.test-jfisoftware.net:4412";
+	static String projectPath = System.getenv("CORE_HOME");
+	
+	@BeforeTest
+	public void getData() throws IOException {
+		base.getPropertyData();
+		RestAssured.baseURI = prop.getProperty("baseURI");
+	}
+	
+	@Test (testName="Customer Found")
+	public void customerFound() throws Exception {
+			
+	        FileInputStream fileInputStream = new FileInputStream(new File(projectPath+"\\src\\main\\java\\requestFiles\\customerInfo_GetCustomerInfo1.xml"));
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
@@ -74,11 +84,29 @@ public class GetCustomer {
 			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber", not(empty()))
 			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.Extension", not(empty()))
 			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.Number", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.PhoneType", not(empty()));
+			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.PhoneType", not(empty()));    
+	}
+	@Test (testName="Customer Not Found")
+	public void customerNotFound() throws Exception {
+
+	        FileInputStream fileInputStream = new FileInputStream(new File(projectPath+"\\src\\main\\java\\requestFiles\\customerInfo_GetCustomerInfo2.xml"));
+
+	        given()
+	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
+	                .and()
+	                .body(IOUtils.toString(fileInputStream,"UTF-8"))
+	         .when()
+	            .post("/Info/CustomerInfo.svc")
+	         .then()
+//             	.log().all()
+	            .statusCode(200)
+				.time(lessThan(5L),TimeUnit.SECONDS)
+				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DateOfBirth", equalTo("0001-01-01T00:00:00"))
+				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomeClubNumber", equalTo("0"))
+				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.ValidBarcode", equalTo("BarcodeNotFound"))
 				
 				;     
 
 	}
-
 
 }
