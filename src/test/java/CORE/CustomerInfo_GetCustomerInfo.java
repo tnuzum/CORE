@@ -27,7 +27,7 @@ public class CustomerInfo_GetCustomerInfo extends base {
 	@Test (testName="Customer Found")
 	public void customerFound() throws Exception {
 			
-	        FileInputStream fileInputStream = new FileInputStream(new File(projectPath+"\\src\\main\\java\\requestFiles\\customerInfo_GetCustomerInfo1.xml"));
+	        FileInputStream fileInputStream = new FileInputStream(new File(projectPath+"\\src\\main\\java\\requestFiles\\CustomerInfo_GetCustomerInfo1.xml"));
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
@@ -89,7 +89,7 @@ public class CustomerInfo_GetCustomerInfo extends base {
 	@Test (testName="Customer Not Found")
 	public void customerNotFound() throws Exception {
 
-	        FileInputStream fileInputStream = new FileInputStream(new File(projectPath+"\\src\\main\\java\\requestFiles\\customerInfo_GetCustomerInfo2.xml"));
+	        FileInputStream fileInputStream = new FileInputStream(new File(projectPath+"\\src\\main\\java\\requestFiles\\CustomerInfo_GetCustomerInfo2.xml"));
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")

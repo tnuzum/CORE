@@ -3,7 +3,8 @@
 <suite name="CORE Web Services">
   <test thread-count="5" name="CORE - Continuous Integration">
     <classes>
-      <class name="CORE.GetCustomer"/>
+      <class name="CORE.CustomerInfo_GetCustomerInfo"/>
+      <class name="CORE.PackageService_GetPackageDetails"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
