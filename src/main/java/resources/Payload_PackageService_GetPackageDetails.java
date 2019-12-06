@@ -1,6 +1,6 @@
 package resources;
 
-public class payload {
+public class Payload_PackageService_GetPackageDetails {
 
 	//---------------------------------------------------------------------------
 	// Service Items

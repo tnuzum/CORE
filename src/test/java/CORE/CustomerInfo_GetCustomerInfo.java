@@ -2,16 +2,14 @@ package CORE;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
-import org.apache.commons.io.IOUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
+import resources.Payload_CustomerInfo_GetCustomerInfo;
 import resources.base;
 
 public class CustomerInfo_GetCustomerInfo extends base {
@@ -26,20 +24,17 @@ public class CustomerInfo_GetCustomerInfo extends base {
 	
 	@Test (testName="Customer Found")
 	public void customerFound() throws Exception {
-			
-	        FileInputStream fileInputStream = new FileInputStream(new File(projectPath+"\\src\\main\\java\\requestFiles\\CustomerInfo_GetCustomerInfo1.xml"));
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(IOUtils.toString(fileInputStream,"UTF-8"))
+	                .body(Payload_CustomerInfo_GetCustomerInfo.customerFound())
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
 //             	.log().all()
 	            .statusCode(200)
 				.time(lessThan(5L),TimeUnit.SECONDS)
-//				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.AddressLine1", equalTo("75 Varick St 17th Fl"))
 				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.AddressLine1", not(empty()))
 			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.AddressLine2", not(empty()))
 			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.City", not(empty()))
@@ -89,12 +84,10 @@ public class CustomerInfo_GetCustomerInfo extends base {
 	@Test (testName="Customer Not Found")
 	public void customerNotFound() throws Exception {
 
-	        FileInputStream fileInputStream = new FileInputStream(new File(projectPath+"\\src\\main\\java\\requestFiles\\CustomerInfo_GetCustomerInfo2.xml"));
-
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(IOUtils.toString(fileInputStream,"UTF-8"))
+	                .body(Payload_CustomerInfo_GetCustomerInfo.customerNotFound())
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

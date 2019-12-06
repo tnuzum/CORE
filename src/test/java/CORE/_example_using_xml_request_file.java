@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
 import resources.base;
-import resources.payload;
+import resources.Payload_PackageService_GetPackageDetails;
 
 public class _example_using_xml_request_file extends base {
 	
@@ -35,7 +35,7 @@ public class _example_using_xml_request_file extends base {
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
 //	                .body(IOUtils.toString(fileInputStream,"UTF-8"))
-	                .body(payload.RestrictFalseServiceFound())
+	                .body(Payload_PackageService_GetPackageDetails.RestrictFalseServiceFound())
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
