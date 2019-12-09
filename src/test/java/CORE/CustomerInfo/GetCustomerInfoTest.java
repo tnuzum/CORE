@@ -1,4 +1,4 @@
-package CORE;
+package CORE.CustomerInfo;
 
 import static io.restassured.RestAssured.given;
 
@@ -9,12 +9,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
-import resources.Payload_CustomerInfo_GetCustomerInfo;
+import payloads.CustomerInfoPL;
 import resources.base;
 
-public class CustomerInfo_GetCustomerInfo extends base {
-	
-	static String projectPath = System.getenv("CORE_HOME");
+public class GetCustomerInfoTest extends base {
 	
 	@BeforeTest
 	public void getData() throws IOException {
@@ -23,12 +21,12 @@ public class CustomerInfo_GetCustomerInfo extends base {
 	}
 	
 	@Test (testName="Customer Found")
-	public void customerFound() throws Exception {
-
+	public void customerFound(){
+		
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_CustomerInfo_GetCustomerInfo.customerFound())
+	                .body(CustomerInfoPL.getCustomerInfo(236))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -82,18 +80,16 @@ public class CustomerInfo_GetCustomerInfo extends base {
 			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.PhoneType", not(empty()));    
 	}
 	@Test (testName="Customer Not Found")
-	public void customerNotFound() throws Exception {
+	public void customerNotFound(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_CustomerInfo_GetCustomerInfo.customerNotFound())
+	                .body(CustomerInfoPL.getCustomerInfo(22399))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
-//             	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DateOfBirth", equalTo("0001-01-01T00:00:00"))
 				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomeClubNumber", equalTo("0"))
 				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.ValidBarcode", equalTo("BarcodeNotFound"))

@@ -1,4 +1,4 @@
-package CORE;
+package CORE.PackageService;
 
 import static io.restassured.RestAssured.given;
 
@@ -9,12 +9,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
+import payloads.PackageServicePL;
 import resources.base;
-import resources.Payload_PackageService_GetPackageDetails;
 
-public class PackageService_GetPackageDetails extends base {
-	
-	static String projectPath = System.getenv("CORE_HOME");
+public class GetPackageDetailsTest extends base {
 	
 	@BeforeTest
 	public void getData() throws IOException {
@@ -23,13 +21,13 @@ public class PackageService_GetPackageDetails extends base {
 	}
 	
 	@Test (testName="Service Found - Restrict=True")
-	public void serviceFoundRestrictTrue() throws Exception {
+	public void serviceFoundRestrictTrue(){
 
 	        given()
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictTrueServiceFound())
+	                .body(PackageServicePL.getPackageDetails(223, 36, 1, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -52,12 +50,12 @@ public class PackageService_GetPackageDetails extends base {
 				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.RedeemableClubs", not(empty()));    
 	}
 	@Test (testName="Service Not Found - Inactive - Restrict=True")
-	public void serviceNotFoundInactiveRestrictTrue() throws Exception {
+	public void serviceNotFoundInactiveRestrictTrue(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictTrueInactiveService())
+	                .body(PackageServicePL.getPackageDetails(223, 217, 1, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -65,12 +63,12 @@ public class PackageService_GetPackageDetails extends base {
 	            .statusCode(500);
 	        }
 	@Test (testName="Service Not Found - Not Allowed Online - Restrict=True")
-	public void serviceNotFoundNotAllowedOnlineRestrictTrue() throws Exception {
+	public void serviceNotFoundNotAllowedOnlineRestrictTrue(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictTrueServiceNotAllowedOnline())
+	                .body(PackageServicePL.getPackageDetails(223, 13, 1, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -78,13 +76,13 @@ public class PackageService_GetPackageDetails extends base {
 	            .statusCode(500);
 	        }
 	@Test (testName="Service Found - Restrict=False")
-	public void serviceFoundRestrictFalse() throws Exception {
+	public void serviceFoundRestrictFalse(){
 
 	        given()
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictFalseServiceFound())
+	                .body(PackageServicePL.getPackageDetails(223, 36, 1, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -107,12 +105,12 @@ public class PackageService_GetPackageDetails extends base {
 				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.RedeemableClubs", not(empty()));    
 	}
 	@Test (testName="Service Not Found - Inactive - Restrict=False")
-	public void serviceNotFoundInactiveRestrictFalse() throws Exception {
+	public void serviceNotFoundInactiveRestrictFalse(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictFalseInactiveService())
+	                .body(PackageServicePL.getPackageDetails(223, 217, 1, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -136,12 +134,12 @@ public class PackageService_GetPackageDetails extends base {
 	
 	        }
 	@Test (testName="Service Not Found - Not Allowed Online - Restrict=False")
-	public void serviceNotFoundNotAllowedOnlineRestrictFalse() throws Exception {
+	public void serviceNotFoundNotAllowedOnlineRestrictFalse(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictFalseServiceNotAllowedOnline())
+	                .body(PackageServicePL.getPackageDetails(223, 13, 1, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -165,13 +163,13 @@ public class PackageService_GetPackageDetails extends base {
 	        }
 	
 	@Test (testName="Training Found - Restrict=True")
-	public void trainingFoundRestrictTrue() throws Exception {
+	public void trainingFoundRestrictTrue(){
 
 	        given()
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictTrueTrainingFound())
+	                .body(PackageServicePL.getPackageDetails(223, 23, 1, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -194,12 +192,12 @@ public class PackageService_GetPackageDetails extends base {
 				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.RedeemableClubs", not(empty()));    
 	}
 	@Test (testName="Training Not Found - Inactive - Restrict=True")
-	public void trainingNotFoundInactiveRestrictTrue() throws Exception {
+	public void trainingNotFoundInactiveRestrictTrue(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictTrueInactiveTraining())
+	                .body(PackageServicePL.getPackageDetails(223, 218, 1, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -207,12 +205,12 @@ public class PackageService_GetPackageDetails extends base {
 	            .statusCode(500);
 	        }
 	@Test (testName="Training Not Found - Not Allowed Online - Restrict=True")
-	public void trainingNotFoundNotAllowedOnlineRestrictTrue() throws Exception {
+	public void trainingNotFoundNotAllowedOnlineRestrictTrue(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictTrueTrainingNotAllowedOnline())
+	                .body(PackageServicePL.getPackageDetails(223, 75, 1, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -220,13 +218,13 @@ public class PackageService_GetPackageDetails extends base {
 	            .statusCode(500);
 	        }
 	@Test (testName="Training Found - Restrict=False")
-	public void trainingFoundRestrictFalse() throws Exception {
+	public void trainingFoundRestrictFalse(){
 
 	        given()
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictFalseTrainingFound())
+	                .body(PackageServicePL.getPackageDetails(223, 23, 1, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -249,12 +247,12 @@ public class PackageService_GetPackageDetails extends base {
 				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.RedeemableClubs", not(empty()));    
 	}
 	@Test (testName="Training Not Found - Inactive - Restrict=False")
-	public void trainingNotFoundInactiveRestrictFalse() throws Exception {
+	public void trainingNotFoundInactiveRestrictFalse(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictFalseInactiveTraining())
+	                .body(PackageServicePL.getPackageDetails(223,218,1,false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -278,12 +276,12 @@ public class PackageService_GetPackageDetails extends base {
 	
 	        }
 	@Test (testName="Training Not Found - Not Allowed Online - Restrict=False")
-	public void trainingNotFoundNotAllowedOnlineRestrictFalse() throws Exception {
+	public void trainingNotFoundNotAllowedOnlineRestrictFalse(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(Payload_PackageService_GetPackageDetails.RestrictFalseTrainingNotAllowedOnline())
+	                .body(PackageServicePL.getPackageDetails(223, 75, 1, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
