@@ -76,4 +76,103 @@ public class CustomerInfoPL extends base {
 					"</soapenv:Envelope>";
 			return pl;
 		}
+		
+		public static String updateCustomerInterests_AddInterest(int customerId, String interestToAdd)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Info\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+prop.getProperty("CompanyId")+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:UpdateCustomerInterests>\r\n" + 
+					"         <tem:request>\r\n" + 
+					"            <jfi1:CustomerId xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.Info\">"+customerId+"</jfi1:CustomerId>\r\n" + 
+					"            <jfi1:InterestsToAdd xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.Info\">\r\n" + 
+					"               <!--Zero or more repetitions:-->\r\n" + 
+					"               <arr:string>"+interestToAdd+"</arr:string>\r\n" + 
+					"            </jfi1:InterestsToAdd>\r\n" + 
+					"            <!--jfi1:InterestsToRemove xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.Info\"-->\r\n" + 
+					"               <!--Zero or more repetitions:-->\r\n" + 
+					"               <!--arr:string>?</arr:string-->\r\n" + 
+					"            <!--/jfi1:InterestsToRemove-->\r\n" + 
+					"         </tem:request>\r\n" + 
+					"      </tem:UpdateCustomerInterests>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
+		public static String updateCustomerInterests_RemoveInterest(int customerId, String interestToRemove)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Info\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+prop.getProperty("CompanyId")+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:UpdateCustomerInterests>\r\n" + 
+					"         <tem:request>\r\n" + 
+					"            <jfi1:CustomerId xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.Info\">"+customerId+"</jfi1:CustomerId>\r\n" + 
+					"            <!--jfi1:InterestsToAdd xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.Info\"-->\r\n" + 
+					"               <!--Zero or more repetitions:-->\r\n" + 
+					"               <!--arr:string>?</arr:string-->\r\n" + 
+					"            <!--/jfi1:InterestsToAdd-->\r\n" + 
+					"            <jfi1:InterestsToRemove xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.Info\">\r\n" + 
+					"               <!--Zero or more repetitions:-->\r\n" + 
+					"               <arr:string>"+interestToRemove+"</arr:string>\r\n" + 
+					"            </jfi1:InterestsToRemove>\r\n" + 
+					"         </tem:request>\r\n" + 
+					"      </tem:UpdateCustomerInterests>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
+		public static String updateCustomerName(int customerId, String displayName, String firstName, String lastName, String middleInitial, String preferredName)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Info\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+prop.getProperty("CompanyId")+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:UpdateCustomerName>\r\n" + 
+					"         <tem:customerId>"+customerId+"</tem:customerId>\r\n" + 
+					"         <tem:nameDto>\r\n" + 
+					"            <jfi1:DisplayName xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Common\">"+displayName+"</jfi1:DisplayName>\r\n" + 
+					"            <jfi1:FirstName xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Common\">"+firstName+"</jfi1:FirstName>\r\n" + 
+					"            <jfi1:LastName xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Common\">"+lastName+"</jfi1:LastName>\r\n" + 
+					"            <jfi1:MiddleInitial xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Common\">"+middleInitial+"</jfi1:MiddleInitial>\r\n" + 
+					"            <jfi1:PreferredName xmlns:jfi1=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Common\">"+preferredName+"</jfi1:PreferredName>\r\n" + 
+					"         </tem:nameDto>\r\n" + 
+					"      </tem:UpdateCustomerName>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
+		public static String updateHeadOfHousehold(int customerId, int headOfHousehold)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Auth\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+prop.getProperty("CompanyId")+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:UpdateHeadOfHousehold>\r\n" + 
+					"         <tem:customerId>"+customerId+"</tem:customerId>\r\n" + 
+					"         <tem:headofHousehold>"+headOfHousehold+"</tem:headofHousehold>\r\n" + 
+					"      </tem:UpdateHeadOfHousehold>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
+		public static String updatePreferredPhoneNumber(int customerId, String phoneType)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Auth\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+prop.getProperty("CompanyId")+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:UpdatePreferredPhoneNumber>\r\n" + 
+					"         <tem:customerId>"+customerId+"</tem:customerId>\r\n" + 
+					"         <tem:phoneType>"+phoneType+"</tem:phoneType>\r\n" + 
+					"      </tem:UpdatePreferredPhoneNumber>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
 }

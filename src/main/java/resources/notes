@@ -1,1 +1,9 @@
+Assert Key is present:
+	.body(containsString("BasePrice"))
 
+Assert Key has any Value:
+	.body("Envelope.Body.GetAvailablePackagesByClubResponse.GetAvailablePackagesByClubResult.PackageDto.BasePrice", not(empty()))
+	
+Assert Error Message:
+	.body("Envelope.Body.Fault.detail.ExceptionDetail.Message", equalTo("Customer Not Found"));
+	
