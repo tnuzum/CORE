@@ -3,8 +3,6 @@ package utilities;
 import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 

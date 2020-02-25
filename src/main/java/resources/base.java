@@ -1,23 +1,52 @@
 package resources;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class base {
 	
+	static String environment = "FUTURE";
+	
 	public static Properties prop = new Properties();
 	static String projectPath = System.getenv("CORE_HOME");
-	String userProfile = System.getenv("USERPROFILE");
+	
+	public static void getPropertyData(){
 
-	public static void getPropertyData() throws IOException {
-
-		prop = new Properties();
-		FileInputStream fis=new FileInputStream(projectPath + "\\src\\main\\java\\resources\\rest.properties");
-		prop.load(fis);
-
+	prop = new Properties();
+	FileInputStream fis = null;
+	
+	if (environment.equals("FUTURE")){
+		try {
+			fis = new FileInputStream(projectPath + "\\src\\main\\java\\resources\\future.properties");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			prop.load(fis);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+//		System.out.println("[INFO] Environment: "+prop.getProperty("environment"));
 	}
 
+	if (environment.equals("FUTURE2")){
+		try {
+			fis = new FileInputStream(projectPath + "\\src\\main\\java\\resources\\future2.properties");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			prop.load(fis);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+//		System.out.println("[INFO] Environment: "+prop.getProperty("environment"));
 }
+}
+
+}
+
 
 

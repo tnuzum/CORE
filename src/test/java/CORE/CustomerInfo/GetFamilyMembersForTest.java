@@ -51,6 +51,7 @@ public class GetFamilyMembersForTest extends base {
 				.body("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[1].PreferredName", not(empty()))
 				;    
 	}
+	
 	@Test (testName="Family Member Not Found")
 	public void familyMemberNotFound(){
 		
