@@ -44,6 +44,7 @@
   
   <test thread-count="5" name="CorporateInfo.svc Test">
     <classes>
+    <class name="CORE.CorporateInfo.GetActiveClubsTest"/>
     </classes>
   </test>
   
