@@ -2,7 +2,6 @@ package CORE.PackageService;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeTest;
@@ -14,10 +13,15 @@ import resources.base;
 
 public class GetAvailablePackagesByClubTest extends base {
 	
+	String customerId;
+	String clubId;
+	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		customerId = prop.getProperty("availableId");
+		clubId = prop.getProperty("club1Id");
 	}
 	
 	@Test (testName="Packages Found")
@@ -27,7 +31,7 @@ public class GetAvailablePackagesByClubTest extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClub","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getAvailablePackagesByClub(244, 1))
+	                .body(PackageServicePL.getAvailablePackagesByClub(customerId, clubId))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -64,7 +68,7 @@ public class GetAvailablePackagesByClubTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClub","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getAvailablePackagesByClub(244000, 1))
+	                .body(PackageServicePL.getAvailablePackagesByClub("244000", "1"))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()

@@ -2,7 +2,6 @@ package CORE.CustomerInfo;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeTest;
@@ -15,7 +14,7 @@ import resources.base;
 public class SearchMembers extends base {
 	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 	}
@@ -23,10 +22,14 @@ public class SearchMembers extends base {
 	@Test (testName="Members Found")
 	public void membersFound(){
 		
+		String lName = prop.getProperty("memberSearchLName");
+		String hPhone = prop.getProperty("memberSearchHPhone");
+		String email = prop.getProperty("memberSearcheMail");
+		
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/SearchMembers","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.searchMembers("Auto", "6141001000", "robert.auto@home.com"))
+	                .body(CustomerInfoPL.searchMembers(lName, hPhone, email))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -56,6 +59,7 @@ public class SearchMembers extends base {
 				.body("Envelope.Body.SearchMembersResponse.SearchMembersResult.APIMemberDto.WorkPhone.PhoneType", not(empty()))
 ;    
 	}
+	
 	@Test (testName="Members Not Found")
 	public void membersNotFound(){
 

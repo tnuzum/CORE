@@ -2,7 +2,6 @@ package CORE.PackageService;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeTest;
@@ -14,10 +13,15 @@ import resources.base;
 
 public class GetAvailablePackagesByClubOnlineBypassTest extends base {
 	
+	String customerId;
+	String clubId;
+	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		customerId = prop.getProperty("availableId");
+		clubId = prop.getProperty("club1Id");
 	}
 	
 	@Test (testName="Packages Found Using Online Bypass", description = "PBI: 144305")
@@ -27,7 +31,7 @@ public class GetAvailablePackagesByClubOnlineBypassTest extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClubOnlineBypass","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getAvailablePackagesByClubOnlineBypass(244, 1, false))
+	                .body(PackageServicePL.getAvailablePackagesByClubOnlineBypass(customerId, clubId, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -67,7 +71,7 @@ public class GetAvailablePackagesByClubOnlineBypassTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClubOnlineBypass","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getAvailablePackagesByClubOnlineBypass(244, 1, true))
+	                .body(PackageServicePL.getAvailablePackagesByClubOnlineBypass(customerId, clubId, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
