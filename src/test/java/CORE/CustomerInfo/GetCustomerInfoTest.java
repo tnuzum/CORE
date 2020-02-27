@@ -2,7 +2,6 @@ package CORE.CustomerInfo;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeTest;
@@ -15,7 +14,7 @@ import resources.base;
 public class GetCustomerInfoTest extends base {
 	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData(){
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 	}
@@ -23,10 +22,12 @@ public class GetCustomerInfoTest extends base {
 	@Test (testName="Customer Found")
 	public void customerFound(){
 		
+		String customerId = prop.getProperty("availableId");
+		
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(236))
+	                .body(CustomerInfoPL.getCustomerInfo(customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -79,13 +80,14 @@ public class GetCustomerInfoTest extends base {
 			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.Number", not(empty()))
 			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.PhoneType", not(empty()));    
 	}
+	
 	@Test (testName="Customer Not Found")
 	public void customerNotFound(){
 
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(22399))
+	                .body(CustomerInfoPL.getCustomerInfo("22399"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

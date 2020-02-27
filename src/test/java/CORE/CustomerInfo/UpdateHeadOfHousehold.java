@@ -2,7 +2,6 @@ package CORE.CustomerInfo;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeTest;
@@ -14,19 +13,24 @@ import resources.base;
 
 public class UpdateHeadOfHousehold extends base {
 	
+	String customerId;
+	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		customerId = prop.getProperty("availableId");
 	}
 
 	@Test (priority=1, testName="Head Of Household Updated 1")
 	public void headOfHouseholdUpdated1(){
 		
+		String customerId = prop.getProperty("availableId");
+		
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdateHeadOfHousehold","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updateHeadOfHousehold(244, 1))
+	                .body(CustomerInfoPL.updateHeadOfHousehold(customerId, 1))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -38,7 +42,7 @@ public class UpdateHeadOfHousehold extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(244))
+	                .body(CustomerInfoPL.getCustomerInfo(customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -56,7 +60,7 @@ public class UpdateHeadOfHousehold extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdateHeadOfHousehold","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updateHeadOfHousehold(244, 0))
+	                .body(CustomerInfoPL.updateHeadOfHousehold(customerId, 0))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -68,7 +72,7 @@ public class UpdateHeadOfHousehold extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(244))
+	                .body(CustomerInfoPL.getCustomerInfo(customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -84,7 +88,7 @@ public class UpdateHeadOfHousehold extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdateHeadOfHousehold","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updateHeadOfHousehold(244000, 0))
+	                .body(CustomerInfoPL.updateHeadOfHousehold("244000", 0))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

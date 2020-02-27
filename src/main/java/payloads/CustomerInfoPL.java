@@ -4,7 +4,7 @@ import resources.base;
 
 public class CustomerInfoPL extends base {
 
-		public static String getCustomerInfo(int customerId)
+		public static String getCustomerInfo(String customerId)
 		{
 			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Auth\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
@@ -19,7 +19,7 @@ public class CustomerInfoPL extends base {
 			return pl;
 		}
 		
-		public static String getFamilyMembersFor(int customerId)
+		public static String getFamilyMembersFor(String customerId)
 		{
 			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
@@ -33,7 +33,7 @@ public class CustomerInfoPL extends base {
 			return pl;
 		}
 		
-		public static String getFullFamilyFor(int customerId)
+		public static String getFullFamilyFor(String customerId)
 		{
 			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
@@ -47,7 +47,7 @@ public class CustomerInfoPL extends base {
 			return pl;
 		}
 		
-		public static String getMemberAccessibleClubs(int customerId)
+		public static String getMemberAccessibleClubs(String customerId)
 		{
 			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Auth\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
@@ -77,7 +77,7 @@ public class CustomerInfoPL extends base {
 			return pl;
 		}
 		
-		public static String updateCustomerInterests_AddInterest(int customerId, String interestToAdd)
+		public static String updateCustomerInterests_AddInterest(String customerId, String interestToAdd)
 		{
 			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Info\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
@@ -101,7 +101,7 @@ public class CustomerInfoPL extends base {
 			return pl;
 		}
 		
-		public static String updateCustomerInterests_RemoveInterest(int customerId, String interestToRemove)
+		public static String updateCustomerInterests_RemoveInterest(String customerId, String interestToRemove)
 		{
 			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Info\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
@@ -125,7 +125,7 @@ public class CustomerInfoPL extends base {
 			return pl;
 		}
 		
-		public static String updateCustomerName(int customerId, String displayName, String firstName, String lastName, String middleInitial, String preferredName)
+		public static String updateCustomerName(String customerId, String displayName, String firstName, String lastName, String middleInitial, String preferredName)
 		{
 			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Info\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
@@ -146,7 +146,7 @@ public class CustomerInfoPL extends base {
 			return pl;
 		}
 		
-		public static String updateHeadOfHousehold(int customerId, int headOfHousehold)
+		public static String updateHeadOfHousehold(String customerId, int headOfHousehold)
 		{
 			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Auth\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
@@ -161,7 +161,7 @@ public class CustomerInfoPL extends base {
 			return pl;
 		}
 		
-		public static String updatePreferredPhoneNumber(int customerId, String phoneType)
+		public static String updatePreferredPhoneNumber(String customerId, String phoneType)
 		{
 			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.Auth\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 

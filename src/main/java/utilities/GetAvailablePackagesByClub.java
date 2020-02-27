@@ -2,7 +2,6 @@ package utilities;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -13,7 +12,7 @@ import resources.base;
 public class GetAvailablePackagesByClub extends base {
 	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 	}
@@ -25,7 +24,7 @@ public class GetAvailablePackagesByClub extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClub","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getAvailablePackagesByClub(244, 1))
+	                .body(PackageServicePL.getAvailablePackagesByClub("244", "1"))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()

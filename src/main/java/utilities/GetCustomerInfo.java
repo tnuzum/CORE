@@ -2,7 +2,6 @@ package utilities;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -13,7 +12,7 @@ import resources.base;
 public class GetCustomerInfo extends base {
 	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 	}
@@ -24,7 +23,7 @@ public class GetCustomerInfo extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(244))
+	                .body(CustomerInfoPL.getCustomerInfo("244"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
