@@ -42,7 +42,7 @@ public class GetPackageTest extends base {
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
-             	.log().all()
+//             	.log().all()
 	            .statusCode(200)
 				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
