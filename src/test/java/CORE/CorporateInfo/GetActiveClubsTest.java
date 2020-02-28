@@ -1,4 +1,4 @@
-package CorporateInfo;
+package CORE.CorporateInfo;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.empty;
