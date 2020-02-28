@@ -1,14 +1,9 @@
+Assert Key is present:
+	.body(containsString("BasePrice"))
 
-** Assertion Examples **
-Assert.assertNotNull(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.BasePrice"));
-Assert.assertNotNull(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration"));
-Assert.assertNotNull(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemBarcodeId"));
-
-Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.BasePrice"), 10.00);
-Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration"), 0);
-Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemBarcodeId"), "paidT");
-
-** Convert Raw XML response to String **
-XmlPath js = ReusableMethods.rawToXML(res);
-
-
+Assert Key has any Value:
+	.body("Envelope.Body.GetAvailablePackagesByClubResponse.GetAvailablePackagesByClubResult.PackageDto.BasePrice", not(empty()))
+	
+Assert Error Message:
+	.body("Envelope.Body.Fault.detail.ExceptionDetail.Message", equalTo("Customer Not Found"));
+	
