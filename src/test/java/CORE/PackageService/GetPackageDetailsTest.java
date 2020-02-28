@@ -42,29 +42,32 @@ public class GetPackageDetailsTest extends base {
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
-             	.log().all()
+//             	.log().all()
 	            .statusCode(200)
 				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
-				XmlPath js = ReusableMethods.rawToXML(res);			
+				XmlPath js = ReusableMethods.rawToXML(res);	
+				
+				Assert.assertNotNull(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.BasePrice"));
+				Assert.assertNotNull(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemBarcodeId"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemDescription"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemId"));
+				Assert.assertNotNull(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto.EndRange"));
+				Assert.assertNotNull(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto.PricePerUnit"));
+				Assert.assertNotNull(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto.StartRange"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.RedeemableClubs"));
+						
 				Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.BasePrice"), 10.00);
-			
-			
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.AssociatedSessionDtos", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.BasePrice", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.CategoryDescription", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemBarcodeId", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemDescription", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemId", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.LongDescription", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDto", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto.EndRange", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto.PricePerUnit", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto.StartRange", not(empty()))
-//				.body("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.RedeemableClubs", not(empty()));    
+				Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration"), 0);
+				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemBarcodeId"), "paidT");
+				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemDescription"), "Paid Training");
+				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemId"), packageId);
+				Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto.EndRange"), 999);
+				Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto.PricePerUnit"), 10.00);
+				Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto.StartRange"), 1);
+				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.RedeemableClubs"), "Jonas Sports-Plex");   
 	}
 	
 	@Test (testName="Service Not Found - Inactive - Restrict=True")
@@ -73,14 +76,15 @@ public class GetPackageDetailsTest extends base {
 			String packageId = prop.getProperty("inactiveServiceId");
 
 	        given()
+//	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
 	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
-//             	.log().all()
-	            .statusCode(500);
+             	.log().all()
+	            .statusCode(200);
 	        }
 	
 	@Test (testName="Service Not Found - Not Allowed Online - Restrict=True")
@@ -95,8 +99,8 @@ public class GetPackageDetailsTest extends base {
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
-//             	.log().all()
-	            .statusCode(500);
+             	.log().all()
+	            .statusCode(200);
 	        }
 	
 	@Test (testName="Service Found - Restrict=False")
