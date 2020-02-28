@@ -2,7 +2,6 @@ package CORE.CustomerInfo;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeTest;
@@ -15,7 +14,7 @@ import resources.base;
 public class GetFamilyMembersForTest extends base {
 	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 	}
@@ -23,10 +22,12 @@ public class GetFamilyMembersForTest extends base {
 	@Test (testName="Family Member Found")
 	public void familyMemberFound(){
 		
+			String customerId = prop.getProperty("availableId");
+		
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetFamilyMembersFor","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getFamilyMembersFor(223))
+	                .body(CustomerInfoPL.getFamilyMembersFor(customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -58,7 +59,7 @@ public class GetFamilyMembersForTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetFamilyMembersFor","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getFamilyMembersFor(231))
+	                .body(CustomerInfoPL.getFamilyMembersFor("231"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

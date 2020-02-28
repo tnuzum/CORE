@@ -4,7 +4,7 @@ import resources.base;
 
 public class PackageServicePL extends base {
 	
-		public static String getAvailablePackagesByClub(int customerId, int clubId)
+		public static String getAvailablePackagesByClub(String customerId, String clubId)
 		{
 			
 			String pd = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
@@ -22,7 +22,7 @@ public class PackageServicePL extends base {
 			return pd;
 		}
 		
-		public static String getAvailablePackagesByClubOnlineBypass(int customerId, int clubId, Boolean returnOnlinePackageOnly)
+		public static String getAvailablePackagesByClubOnlineBypass(String customerId, String clubId, Boolean returnOnlinePackageOnly)
 		{
 			
 			String pd = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
@@ -39,7 +39,7 @@ public class PackageServicePL extends base {
 			return pd;
 		}
 		
-		public static String getPackage(int customerId, int packageId, int clubId)
+		public static String getPackage(String customerId, String packageId, String clubId)
 		{
 			
 			String pd = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
@@ -60,7 +60,7 @@ public class PackageServicePL extends base {
 			return pd;
 		}
 	
-		public static String getPackageDetails(int customerId, int packageId, int clubId, boolean includeItemRestrictions)
+		public static String getPackageDetails(String customerId, String packageId, String clubId, boolean includeItemRestrictions)
 		{
 			
 			String pd = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 

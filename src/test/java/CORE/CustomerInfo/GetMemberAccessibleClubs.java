@@ -2,7 +2,6 @@ package CORE.CustomerInfo;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeTest;
@@ -15,7 +14,7 @@ import resources.base;
 public class GetMemberAccessibleClubs extends base {
 	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 	}
@@ -23,10 +22,12 @@ public class GetMemberAccessibleClubs extends base {
 	@Test (testName="Clubs Found")
 	public void clubsFound(){
 		
+		String customerId = prop.getProperty("availableId");
+		
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetMemberAccessibleClubs","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getMemberAccessibleClubs(223))
+	                .body(CustomerInfoPL.getMemberAccessibleClubs(customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -37,13 +38,14 @@ public class GetMemberAccessibleClubs extends base {
 				.body("Envelope.Body.GetMemberAccessibleClubsResponse.GetMemberAccessibleClubsResult.ClubListDto[0].Name", not(empty()))
 				;    
 	}
+	
 	@Test (testName="Family Member Not Found")
 	public void familyMemberNotFound(){
 		
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetMemberAccessibleClubs","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getMemberAccessibleClubs(22300))
+	                .body(CustomerInfoPL.getMemberAccessibleClubs("22300"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

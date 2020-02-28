@@ -2,7 +2,6 @@ package CORE.PackageService;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeTest;
@@ -14,24 +13,31 @@ import resources.base;
 
 public class GetPackageTest extends base {
 	
+	String customerId;
+	String clubId;
+	
 	@BeforeTest
-	public void getData() throws IOException {
+	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		customerId = prop.getProperty("availableId");
+		clubId = prop.getProperty("club1Id");
 	}
 	
 	@Test (testName="Training Package Found")
 	public void trainingPackageFound(){
+		
+		String packageId = prop.getProperty("paidTId");
 
 	        given()
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackage","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackage(223, 46, 1))
+	                .body(PackageServicePL.getPackage(customerId, packageId, clubId))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
-//             	.log().all()
+             	.log().all()
 	            .statusCode(200)
 				.time(lessThan(5L),TimeUnit.SECONDS)
 				.body(containsString("AssociatedSessionDtos"))
@@ -60,12 +66,14 @@ public class GetPackageTest extends base {
 	
 	@Test (testName="Service Package Found")
 	public void servicePackageFound(){
+		
+		String packageId = prop.getProperty("paidServiceVId");
 
 	        given()
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackage","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackage(223, 20, 1))
+	                .body(PackageServicePL.getPackage(customerId, packageId, clubId))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
