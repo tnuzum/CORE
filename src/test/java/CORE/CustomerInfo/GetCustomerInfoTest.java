@@ -2,13 +2,17 @@ package CORE.CustomerInfo;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
+
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
+import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
 import payloads.CustomerInfoPL;
+import resources.ReusableMethods;
 import resources.base;
 
 public class GetCustomerInfoTest extends base {
@@ -24,61 +28,66 @@ public class GetCustomerInfoTest extends base {
 		
 		String customerId = prop.getProperty("availableId");
 		
-	        given()
+	       Response res =  given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
 	                .body(CustomerInfoPL.getCustomerInfo(customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
-//             	.log().all()
+             	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
-				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.AddressLine1", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.AddressLine2", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.City", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.Country", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.PostalCode", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.StateProvince", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DateOfBirth", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DriversLicenseNumber", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmailAddress", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmailContactConsent", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactName", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactPhoneNumber", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactPhoneNumber.Extension", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactPhoneNumber.Number", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactPhoneNumber.PhoneType", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HeadOfHousehold", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomeClubNumber", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomePhoneContactConsent", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomePhoneNumber.Extension", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomePhoneNumber.Number", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomePhoneNumber.PhoneType", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Interests", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MemberExpireDate", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MemberID", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MobilePhoneContactConsent", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MobilePhoneNumber.Extension", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MobilePhoneNumber.Number", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MobilePhoneNumber.PhoneType", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.DisplayName", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.FirstName", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.LastName", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.MiddleInitial", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.PreferredName", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.PreferredPhoneNumber.Extension", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.PreferredPhoneNumber.Number", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.PreferredPhoneNumber.PhoneType", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.PreferredPhoneType", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.RestrictMemberFromSearch", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.ValidBarcode", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneContactConsent", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.Extension", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.Number", not(empty()))
-			    .body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.PhoneType", not(empty()));    
+	            .extract().response();
+	       
+	       		XmlPath js = ReusableMethods.rawToXML(res);
+	       		
+	       		Assert.assertTrue(res.getTime() >= 60L);
+	       
+				Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.AddressLine1"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.AddressLine2"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.City"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.Country"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.PostalCode"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.StateProvince"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DateOfBirth"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DriversLicenseNumber"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmailAddress"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmailContactConsent"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactName"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactPhoneNumber"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactPhoneNumber.Extension"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactPhoneNumber.Number"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmergencyContactPhoneNumber.PhoneType"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HeadOfHousehold"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomeClubNumber"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomePhoneContactConsent"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomePhoneNumber.Extension"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomePhoneNumber.Number"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomePhoneNumber.PhoneType"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Interests"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MemberExpireDate"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MemberID"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MobilePhoneContactConsent"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MobilePhoneNumber.Extension"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MobilePhoneNumber.Number"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.MobilePhoneNumber.PhoneType"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.DisplayName"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.FirstName"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.LastName"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.MiddleInitial"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Name.PreferredName"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.PreferredPhoneNumber.Extension"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.PreferredPhoneNumber.Number"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.PreferredPhoneNumber.PhoneType"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.PreferredPhoneType"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.RestrictMemberFromSearch"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.ValidBarcode"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneContactConsent"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.Extension"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.Number"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.WorkPhoneNumber.PhoneType"));    
 	}
 	
 	@Test (testName="Customer Not Found")
@@ -87,7 +96,7 @@ public class GetCustomerInfoTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo("22399"))
+	                .body(CustomerInfoPL.getCustomerInfo("99999"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
