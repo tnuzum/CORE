@@ -19,7 +19,7 @@
 				<artifactId>gmaven-plugin</artifactId>
 				<version>1.5</version>
 			</plugin>
-			<plugin>
+			<!-- plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<version>3.5.1</version>
@@ -42,7 +42,7 @@
 						</Import-Package>
 					</instructions>
 				</configuration>
-			</plugin>
+			</plugin-->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
@@ -211,7 +211,7 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>7.0.0</version>
+			<version>7.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.rest-assured</groupId>
