@@ -2,13 +2,17 @@ package CORE.CustomerInfo;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.concurrent.TimeUnit;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.hasKey;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
+import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
 import payloads.CustomerInfoPL;
+import resources.ReusableMethods;
 import resources.base;
 
 public class GetFullFamilyForTest extends base {
@@ -24,7 +28,7 @@ public class GetFullFamilyForTest extends base {
 		
 		String customerId = prop.getProperty("availableId");
 		
-	        given()
+	        Response res = given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetFullFamilyFor","Content-Type", "text/xml; charset=utf-8")
 	                .and()
 	                .body(CustomerInfoPL.getFullFamilyFor(customerId))
@@ -33,40 +37,47 @@ public class GetFullFamilyForTest extends base {
 	         .then()
 //             	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].BarcodeId", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].DisplayName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].EmailAddress", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].FirstName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].HeadOfHousehold", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].Id", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].LastName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].PreferredName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].BarcodeId", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].DisplayName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].EmailAddress", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].FirstName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].HeadOfHousehold", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].Id", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].LastName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].PreferredName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].BarcodeId", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].DisplayName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].EmailAddress", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].FirstName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].HeadOfHousehold", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].Id", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].LastName", not(empty()))
-				.body("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].PreferredName", not(empty()))
-				;    
+	            .extract().response();
+	        
+	        XmlPath js = ReusableMethods.rawToXML(res);
+	        
+	        	Assert.assertTrue(res.getTime() >= 60L);
+	        	        
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].BarcodeId"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].DisplayName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].EmailAddress"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].FirstName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].HeadOfHousehold"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].Id"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].LastName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].PreferredName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].BarcodeId"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].DisplayName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].EmailAddress"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].FirstName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].HeadOfHousehold"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].Id"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].LastName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].PreferredName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].BarcodeId"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].DisplayName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].EmailAddress"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].FirstName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].HeadOfHousehold"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].Id"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].LastName"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].PreferredName"));   
 	}
+	
 	@Test (testName="Family Member Not Found")
 	public void familyMemberNotFound(){
+		
+			String customerId = prop.getProperty("MultipleAgreementsWithSingleCardId");
 		
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetFullFamilyFor","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getFullFamilyFor("231"))
+	                .body(CustomerInfoPL.getFullFamilyFor(customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
