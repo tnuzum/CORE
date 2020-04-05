@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="CORE.MessagingService.SendCustomerClassEnrollmentConfirmationEmailTest">
+      <class name="CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest">
         <methods>
           <include name="InvalidEnrollmentId"/>
           <include name="getData"/>
         </methods>
-      </class> <!-- CORE.MessagingService.SendCustomerClassEnrollmentConfirmationEmailTest -->
+      </class> <!-- CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

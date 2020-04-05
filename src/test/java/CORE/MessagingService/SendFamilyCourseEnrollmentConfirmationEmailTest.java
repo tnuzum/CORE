@@ -111,7 +111,7 @@ static String customerid1 = "66777";
 		Response res = given()
  			.headers("SOAPAction", "http://tempuri.org/IMessagingService/SendFamilyCourseEnrollmentConfirmationEmail","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(MessagingServicePL.InvalidCustomerId(companyId, customerid1))
+			.body(MessagingServicePL.InvalidCourseCustomerId(companyId, customerid1))
 		.when()
 			.post("/Messaging/MessagingService.svc")
 		.then()
@@ -132,7 +132,7 @@ static String customerid1 = "66777";
 		Response res = given()
  			.headers("SOAPAction", "http://tempuri.org/IMessagingService/SendFamilyCourseEnrollmentConfirmationEmail","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(MessagingServicePL.InvalidEnrollmentId(companyId, customerid))
+			.body(MessagingServicePL.InvalidCourseEnrollmentId(companyId, customerid))
 		.when()
 			.post("/Messaging/MessagingService.svc")
 		.then()
@@ -143,7 +143,7 @@ static String customerid1 = "66777";
 			XmlPath js = ReusableMethods.rawToXML(res);
 					
 			Assert.assertTrue(res.getTime() >= 60L);
-			Assert.assertEquals(js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message"), "EnrollmentIds: 3307555 were not found.");
+			Assert.assertEquals(js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message"), "EnrollmentIds: 3308611 were not found.");
 	}
 
 }
