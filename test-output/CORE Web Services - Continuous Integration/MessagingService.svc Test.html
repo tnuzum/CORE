@@ -1,0 +1,229 @@
+<html>
+<head>
+<title>TestNG:  MessagingService.svc Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>MessagingService.svc Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Apr 09 15:57:22 CDT 2020</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (2 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='CORE.CustomerInfo.GetMemberAccessibleClubs.clubsFound()'><b>clubsFound</b><br>Test class: CORE.CustomerInfo.GetMemberAccessibleClubs</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.GetMemberAccessibleClubs@73e22a3d</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.GetCustomerInfoTest.customerFound()'><b>customerFound</b><br>Test class: CORE.CustomerInfo.GetCustomerInfoTest</td>
+<td></td>
+<td>1</td>
+<td>CORE.CustomerInfo.GetCustomerInfoTest@4d0f2471</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdateCustomerName.customerNameUpdated()'><b>customerNameUpdated</b><br>Test class: CORE.CustomerInfo.UpdateCustomerName</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdateCustomerName@7fee8714</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdateCustomerName.customerNameUpdated2()'><b>customerNameUpdated2</b><br>Test class: CORE.CustomerInfo.UpdateCustomerName</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdateCustomerName@7fee8714</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.GetCustomerInfoTest.customerNotFound()'><b>customerNotFound</b><br>Test class: CORE.CustomerInfo.GetCustomerInfoTest</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.GetCustomerInfoTest@4d0f2471</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.GetFullFamilyForTest.familyFound()'><b>familyFound</b><br>Test class: CORE.CustomerInfo.GetFullFamilyForTest</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.GetFullFamilyForTest@3232a28a</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.GetFamilyMembersForTest.familyMemberFound()'><b>familyMemberFound</b><br>Test class: CORE.CustomerInfo.GetFamilyMembersForTest</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.GetFamilyMembersForTest@7133da86</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.GetFamilyMembersForTest.familyMemberNotFound()'><b>familyMemberNotFound</b><br>Test class: CORE.CustomerInfo.GetFamilyMembersForTest</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.GetFamilyMembersForTest@7133da86</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.GetFullFamilyForTest.familyMemberNotFound()'><b>familyMemberNotFound</b><br>Test class: CORE.CustomerInfo.GetFullFamilyForTest</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.GetFullFamilyForTest@3232a28a</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.GetMemberAccessibleClubs.familyMemberNotFound()'><b>familyMemberNotFound</b><br>Test class: CORE.CustomerInfo.GetMemberAccessibleClubs</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.GetMemberAccessibleClubs@73e22a3d</td></tr>
+<tr>
+<td title='CORE.CorporateInfo.GetActiveClubs.getActiveClubs()'><b>getActiveClubs</b><br>Test class: CORE.CorporateInfo.GetActiveClubs</td>
+<td></td>
+<td>1</td>
+<td>CORE.CorporateInfo.GetActiveClubs@33990a0c</td></tr>
+<tr>
+<td title='CORE.CorporateInfo.GetClubAcceptedCreditCards.getCards()'><b>getCards</b><br>Test class: CORE.CorporateInfo.GetClubAcceptedCreditCards</td>
+<td></td>
+<td>0</td>
+<td>CORE.CorporateInfo.GetClubAcceptedCreditCards@101952da</td></tr>
+<tr>
+<td title='CORE.CorporateInfo.GetClubInfo.getClub1Info()'><b>getClub1Info</b><br>Test class: CORE.CorporateInfo.GetClubInfo</td>
+<td></td>
+<td>0</td>
+<td>CORE.CorporateInfo.GetClubInfo@6babf3bf</td></tr>
+<tr>
+<td title='CORE.CorporateInfo.GetClubInfo.getClub2Info()'><b>getClub2Info</b><br>Test class: CORE.CorporateInfo.GetClubInfo</td>
+<td></td>
+<td>0</td>
+<td>CORE.CorporateInfo.GetClubInfo@6babf3bf</td></tr>
+<tr>
+<td title='CORE.CorporateInfo.GetBranding.getEMEBranding()'><b>getEMEBranding</b><br>Test class: CORE.CorporateInfo.GetBranding</td>
+<td></td>
+<td>0</td>
+<td>CORE.CorporateInfo.GetBranding@4de4b452</td></tr>
+<tr>
+<td title='CORE.CorporateInfo.GetBrandingLogo.getEMEBrandingLogo()'><b>getEMEBrandingLogo</b><br>Test class: CORE.CorporateInfo.GetBrandingLogo</td>
+<td></td>
+<td>0</td>
+<td>CORE.CorporateInfo.GetBrandingLogo@50b5ac82</td></tr>
+<tr>
+<td title='CORE.CorporateInfo.GetBranding.getJOLBranding()'><b>getJOLBranding</b><br>Test class: CORE.CorporateInfo.GetBranding</td>
+<td></td>
+<td>0</td>
+<td>CORE.CorporateInfo.GetBranding@4de4b452</td></tr>
+<tr>
+<td title='CORE.CorporateInfo.GetBrandingLogo.getJOLBrandingLogo()'><b>getJOLBrandingLogo</b><br>Test class: CORE.CorporateInfo.GetBrandingLogo</td>
+<td></td>
+<td>0</td>
+<td>CORE.CorporateInfo.GetBrandingLogo@50b5ac82</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdateHeadOfHousehold.headOfHouseholdNotUpdated()'><b>headOfHouseholdNotUpdated</b><br>Test class: CORE.CustomerInfo.UpdateHeadOfHousehold</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdateHeadOfHousehold@f736069</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdateHeadOfHousehold.headOfHouseholdUpdated1()'><b>headOfHouseholdUpdated1</b><br>Test class: CORE.CustomerInfo.UpdateHeadOfHousehold</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdateHeadOfHousehold@f736069</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdateHeadOfHousehold.headOfHouseholdUpdated2()'><b>headOfHouseholdUpdated2</b><br>Test class: CORE.CustomerInfo.UpdateHeadOfHousehold</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdateHeadOfHousehold@f736069</td></tr>
+<tr>
+<td title='CORE.CorporateInfo.GetClubInfo.inactiveClub()'><b>inactiveClub</b><br>Test class: CORE.CorporateInfo.GetClubInfo</td>
+<td></td>
+<td>0</td>
+<td>CORE.CorporateInfo.GetClubInfo@6babf3bf</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdateCustomerInterests.interestAdded()'><b>interestAdded</b><br>Test class: CORE.CustomerInfo.UpdateCustomerInterests</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdateCustomerInterests@28f2a10f</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdateCustomerInterests.interestRemoved()'><b>interestRemoved</b><br>Test class: CORE.CustomerInfo.UpdateCustomerInterests</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdateCustomerInterests@28f2a10f</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.SearchMembers.membersFound()'><b>membersFound</b><br>Test class: CORE.CustomerInfo.SearchMembers</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.SearchMembers@47faa49c</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.SearchMembers.membersNotFound()'><b>membersNotFound</b><br>Test class: CORE.CustomerInfo.SearchMembers</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.SearchMembers@47faa49c</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdatePreferredPhoneNumber.preferredPhoneNotUpdated()'><b>preferredPhoneNotUpdated</b><br>Test class: CORE.CustomerInfo.UpdatePreferredPhoneNumber</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdatePreferredPhoneNumber@6da21078</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdatePreferredPhoneNumber.preferredPhoneUpdatedHome()'><b>preferredPhoneUpdatedHome</b><br>Test class: CORE.CustomerInfo.UpdatePreferredPhoneNumber</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdatePreferredPhoneNumber@6da21078</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdatePreferredPhoneNumber.preferredPhoneUpdatedMobile()'><b>preferredPhoneUpdatedMobile</b><br>Test class: CORE.CustomerInfo.UpdatePreferredPhoneNumber</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdatePreferredPhoneNumber@6da21078</td></tr>
+<tr>
+<td title='CORE.CustomerInfo.UpdatePreferredPhoneNumber.preferredPhoneUpdatedWork()'><b>preferredPhoneUpdatedWork</b><br>Test class: CORE.CustomerInfo.UpdatePreferredPhoneNumber</td>
+<td></td>
+<td>0</td>
+<td>CORE.CustomerInfo.UpdatePreferredPhoneNumber@6da21078</td></tr>
+</table><p>
+</body>
+</html>

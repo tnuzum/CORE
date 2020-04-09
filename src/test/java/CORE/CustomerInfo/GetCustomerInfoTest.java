@@ -35,7 +35,7 @@ public class GetCustomerInfoTest extends base {
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
-             	.log().all()
+ //            	.log().all()
 	            .statusCode(200)
 	            .extract().response();
 	       
@@ -100,7 +100,7 @@ public class GetCustomerInfoTest extends base {
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
-	         .log().all()
+//	         .log().all()
 	            .statusCode(200)
 				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DateOfBirth", equalTo("0001-01-01T00:00:00"))
 				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomeClubNumber", equalTo("0"))
