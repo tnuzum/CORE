@@ -23,6 +23,11 @@
     <class name="CORE.PackageService.GetPackageDetailsTest"/>
     <class name="CORE.PackageService.GetAvailablePackagesByClubTest"/>
     <class name="CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest"/>
+     <class name="CORE.MessagingService.SendCustomerClassEnrollmentConfirmationEmailTest"/>
+    <class name="CORE.MessagingService.SendCustomerCourseEnrollmentConfirmationEmailTest"/>
+    <class name="CORE.MessagingService.SendFamilyClassEnrollmentConfirmationEmailTest"/>
+    <class name="CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest"/>
+    <class name="CORE.CustomerAuth.AuthorizeCustomerTest"/>
     </classes>
   </test>
 </suite>
