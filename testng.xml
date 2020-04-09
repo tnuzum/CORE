@@ -79,6 +79,7 @@
 
   <test thread-count="5" name="CustomerAuth.svc Test">
     <classes>
+    <class name="CORE.CustomerAuth.AuthorizeCustomerTest"/>
     </classes>
   </test>
     
@@ -94,6 +95,10 @@
   
   <test thread-count="5" name="MessagingService.svc Test">
     <classes>
+    <class name="CORE.MessagingService.SendCustomerClassEnrollmentConfirmationEmailTest"/>
+    <class name="CORE.MessagingService.SendCustomerCourseEnrollmentConfirmationEmailTest"/>
+    <class name="CORE.MessagingService.SendFamilyClassEnrollmentConfirmationEmailTest"/>
+    <class name="CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest"/>
     </classes>
   </test>
   
