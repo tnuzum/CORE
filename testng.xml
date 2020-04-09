@@ -4,24 +4,25 @@
 
   <test thread-count="5" name="AgreementInfo.svc Test">
     <classes>
+    <class name="resources._preTestAnnouncement" />
     <class name="CORE.CorporateInfo.GetActiveClubs"/>
     <class name="CORE.CorporateInfo.GetBranding"/>
     <class name="CORE.CorporateInfo.GetBrandingLogo"/>
     <class name="CORE.CorporateInfo.GetClubAcceptedCreditCards"/>
     <class name="CORE.CorporateInfo.GetClubInfo"/>
-      <class name="CORE.CustomerInfo.GetCustomerInfoTest"/>
-      <class name="CORE.CustomerInfo.GetFamilyMembersForTest"/>
-      <class name="CORE.CustomerInfo.GetFullFamilyForTest"/>
-      <class name="CORE.CustomerInfo.GetMemberAccessibleClubs"/>
-      <class name="CORE.CustomerInfo.SearchMembers"/>
-      <class name="CORE.CustomerInfo.UpdateCustomerInterests"/>  
-      <class name="CORE.CustomerInfo.UpdateCustomerName"/>
-      <class name="CORE.CustomerInfo.UpdateHeadOfHousehold"/>
-      <class name="CORE.CustomerInfo.UpdatePreferredPhoneNumber"/>   
-      <class name="CORE.PackageService.GetPackageTest"/>
-      <class name="CORE.PackageService.GetPackageDetailsTest"/>
-      <class name="CORE.PackageService.GetAvailablePackagesByClubTest"/>
-      <class name="CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest"/>
+    <class name="CORE.CustomerInfo.GetCustomerInfoTest"/>
+    <class name="CORE.CustomerInfo.GetFamilyMembersForTest"/>
+    <class name="CORE.CustomerInfo.GetFullFamilyForTest"/>
+    <class name="CORE.CustomerInfo.GetMemberAccessibleClubs"/>
+    <class name="CORE.CustomerInfo.SearchMembers"/>
+    <class name="CORE.CustomerInfo.UpdateCustomerInterests"/>  
+    <class name="CORE.CustomerInfo.UpdateCustomerName"/>
+    <class name="CORE.CustomerInfo.UpdateHeadOfHousehold"/>
+    <class name="CORE.CustomerInfo.UpdatePreferredPhoneNumber"/>   
+    <class name="CORE.PackageService.GetPackageTest"/>
+    <class name="CORE.PackageService.GetPackageDetailsTest"/>
+    <class name="CORE.PackageService.GetAvailablePackagesByClubTest"/>
+    <class name="CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest"/>
     </classes>
   </test>
 </suite>
