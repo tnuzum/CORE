@@ -60,7 +60,7 @@ public class GetPackageDetailsTest extends base {
 				Assert.assertNotNull(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.RedeemableClubs"));
 						
 				Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.BasePrice"), 15.00);
-				Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration"), 0);
+				Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration"), 5);
 				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemBarcodeId"), "paidSV");
 				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemDescription"), "Paid ServiceV");
 				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemId"), packageId);
@@ -142,7 +142,7 @@ public class GetPackageDetailsTest extends base {
 				Assert.assertNotNull(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.RedeemableClubs"));
 						
 				Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.BasePrice"), 15.00);
-				Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration"), 0);
+				Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration"), 5);
 				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemBarcodeId"), "paidSV");
 				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemDescription"), "Paid ServiceV");
 				Assert.assertEquals(js.getString("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.ItemId"), packageId);
@@ -172,7 +172,7 @@ public class GetPackageDetailsTest extends base {
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
-//             	.log().all()
+ //            	.log().all()
 	            .statusCode(200)
 				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();

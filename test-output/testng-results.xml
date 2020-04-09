@@ -1,41 +1,311 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+<testng-results ignored="0" total="48" passed="48" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-04-05T16:11:16 EDT" name="Default suite" finished-at="2020-04-05T16:11:21 EDT" duration-ms="4113">
+  <suite started-at="2020-04-09T16:01:18 CDT" name="CORE Web Services - Continuous Integration" finished-at="2020-04-09T16:01:42 CDT" duration-ms="24132">
     <groups>
     </groups>
-    <test started-at="2020-04-05T16:11:16 EDT" name="Default test" finished-at="2020-04-05T16:11:21 EDT" duration-ms="4113">
-      <class name="CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest">
-        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest@6fe7aac8]" started-at="2020-04-05T16:11:16 EDT" name="getData" finished-at="2020-04-05T16:11:17 EDT" duration-ms="765" status="PASS">
+    <test started-at="2020-04-09T16:01:18 CDT" name="AgreementInfo.svc Test" finished-at="2020-04-09T16:01:42 CDT" duration-ms="24132">
+      <class name="CORE.CorporateInfo.GetClubInfo">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CorporateInfo.GetClubInfo@306f16f3]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getData -->
-        <test-method signature="SendFamilyCourseEnrollmentConfirmationEmail()[pri:1, instance:CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest@6fe7aac8]" started-at="2020-04-05T16:11:17 EDT" name="SendFamilyCourseEnrollmentConfirmationEmail" finished-at="2020-04-05T16:11:19 EDT" duration-ms="1688" status="PASS">
+        <test-method signature="getClub1Info()[pri:0, instance:CORE.CorporateInfo.GetClubInfo@306f16f3]" started-at="2020-04-09T16:01:23 CDT" name="getClub1Info" finished-at="2020-04-09T16:01:23 CDT" duration-ms="328" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SendFamilyCourseEnrollmentConfirmationEmail -->
-        <test-method signature="SendFamilyCourseEnrollmentOnlyConfirmationEmail()[pri:2, instance:CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest@6fe7aac8]" started-at="2020-04-05T16:11:19 EDT" name="SendFamilyCourseEnrollmentOnlyConfirmationEmail" finished-at="2020-04-05T16:11:19 EDT" duration-ms="229" status="PASS">
+        </test-method> <!-- getClub1Info -->
+        <test-method signature="getClub2Info()[pri:0, instance:CORE.CorporateInfo.GetClubInfo@306f16f3]" started-at="2020-04-09T16:01:23 CDT" name="getClub2Info" finished-at="2020-04-09T16:01:23 CDT" duration-ms="296" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SendFamilyCourseEnrollmentOnlyConfirmationEmail -->
-        <test-method signature="SendFamilyCourseStandbyOnlyConfirmationEmail()[pri:3, instance:CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest@6fe7aac8]" started-at="2020-04-05T16:11:19 EDT" name="SendFamilyCourseStandbyOnlyConfirmationEmail" finished-at="2020-04-05T16:11:19 EDT" duration-ms="225" status="PASS">
+        </test-method> <!-- getClub2Info -->
+        <test-method signature="inactiveClub()[pri:0, instance:CORE.CorporateInfo.GetClubInfo@306f16f3]" started-at="2020-04-09T16:01:23 CDT" name="inactiveClub" finished-at="2020-04-09T16:01:24 CDT" duration-ms="298" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SendFamilyCourseStandbyOnlyConfirmationEmail -->
-        <test-method signature="SendFamilyCourseEnrollmentAndStandbyNoHohConfirmationEmail()[pri:4, instance:CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest@6fe7aac8]" started-at="2020-04-05T16:11:19 EDT" name="SendFamilyCourseEnrollmentAndStandbyNoHohConfirmationEmail" finished-at="2020-04-05T16:11:20 EDT" duration-ms="239" status="PASS">
+        </test-method> <!-- inactiveClub -->
+      </class> <!-- CORE.CorporateInfo.GetClubInfo -->
+      <class name="CORE.CorporateInfo.GetBrandingLogo">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CorporateInfo.GetBrandingLogo@1a4013]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SendFamilyCourseEnrollmentAndStandbyNoHohConfirmationEmail -->
-        <test-method signature="InvalidCustomerId()[pri:5, instance:CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest@6fe7aac8]" started-at="2020-04-05T16:11:20 EDT" name="InvalidCustomerId" finished-at="2020-04-05T16:11:20 EDT" duration-ms="601" status="PASS">
+        </test-method> <!-- getData -->
+        <test-method signature="getEMEBrandingLogo()[pri:0, instance:CORE.CorporateInfo.GetBrandingLogo@1a4013]" started-at="2020-04-09T16:01:22 CDT" name="getEMEBrandingLogo" finished-at="2020-04-09T16:01:22 CDT" duration-ms="278" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- InvalidCustomerId -->
-        <test-method signature="InvalidEnrollmentId()[pri:6, instance:CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest@6fe7aac8]" started-at="2020-04-05T16:11:20 EDT" name="InvalidEnrollmentId" finished-at="2020-04-05T16:11:21 EDT" duration-ms="264" status="PASS">
+        </test-method> <!-- getEMEBrandingLogo -->
+        <test-method signature="getJOLBrandingLogo()[pri:0, instance:CORE.CorporateInfo.GetBrandingLogo@1a4013]" started-at="2020-04-09T16:01:22 CDT" name="getJOLBrandingLogo" finished-at="2020-04-09T16:01:22 CDT" duration-ms="408" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- InvalidEnrollmentId -->
-      </class> <!-- CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- getJOLBrandingLogo -->
+      </class> <!-- CORE.CorporateInfo.GetBrandingLogo -->
+      <class name="CORE.CustomerInfo.GetFamilyMembersForTest">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CustomerInfo.GetFamilyMembersForTest@22e357dc]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="familyMemberFound()[pri:0, instance:CORE.CustomerInfo.GetFamilyMembersForTest@22e357dc]" started-at="2020-04-09T16:01:25 CDT" name="familyMemberFound" finished-at="2020-04-09T16:01:25 CDT" duration-ms="406" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- familyMemberFound -->
+        <test-method signature="familyMemberNotFound()[pri:0, instance:CORE.CustomerInfo.GetFamilyMembersForTest@22e357dc]" started-at="2020-04-09T16:01:25 CDT" name="familyMemberNotFound" finished-at="2020-04-09T16:01:26 CDT" duration-ms="174" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- familyMemberNotFound -->
+      </class> <!-- CORE.CustomerInfo.GetFamilyMembersForTest -->
+      <class name="CORE.CustomerInfo.UpdateCustomerName">
+        <test-method signature="customerNameUpdated()[pri:1, instance:CORE.CustomerInfo.UpdateCustomerName@50ad3bc1]" started-at="2020-04-09T16:01:28 CDT" name="customerNameUpdated" finished-at="2020-04-09T16:01:28 CDT" duration-ms="354" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- customerNameUpdated -->
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CustomerInfo.UpdateCustomerName@50ad3bc1]" started-at="2020-04-09T16:01:28 CDT" name="getData" finished-at="2020-04-09T16:01:28 CDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="customerNameUpdated2()[pri:2, instance:CORE.CustomerInfo.UpdateCustomerName@50ad3bc1]" started-at="2020-04-09T16:01:28 CDT" name="customerNameUpdated2" finished-at="2020-04-09T16:01:29 CDT" duration-ms="376" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- customerNameUpdated2 -->
+      </class> <!-- CORE.CustomerInfo.UpdateCustomerName -->
+      <class name="CORE.CorporateInfo.GetActiveClubs">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CorporateInfo.GetActiveClubs@a2431d0]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="457" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="getActiveClubs()[pri:0, instance:CORE.CorporateInfo.GetActiveClubs@a2431d0]" started-at="2020-04-09T16:01:18 CDT" name="getActiveClubs" finished-at="2020-04-09T16:01:20 CDT" duration-ms="1792" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getActiveClubs -->
+      </class> <!-- CORE.CorporateInfo.GetActiveClubs -->
+      <class name="CORE.CustomerInfo.GetFullFamilyForTest">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CustomerInfo.GetFullFamilyForTest@49912c99]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="familyFound()[pri:0, instance:CORE.CustomerInfo.GetFullFamilyForTest@49912c99]" started-at="2020-04-09T16:01:26 CDT" name="familyFound" finished-at="2020-04-09T16:01:26 CDT" duration-ms="499" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- familyFound -->
+        <test-method signature="familyMemberNotFound()[pri:0, instance:CORE.CustomerInfo.GetFullFamilyForTest@49912c99]" started-at="2020-04-09T16:01:26 CDT" name="familyMemberNotFound" finished-at="2020-04-09T16:01:26 CDT" duration-ms="174" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- familyMemberNotFound -->
+      </class> <!-- CORE.CustomerInfo.GetFullFamilyForTest -->
+      <class name="CORE.CustomerInfo.UpdateCustomerInterests">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CustomerInfo.UpdateCustomerInterests@15bbf42f]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="interestAdded()[pri:0, instance:CORE.CustomerInfo.UpdateCustomerInterests@15bbf42f]" started-at="2020-04-09T16:01:27 CDT" name="interestAdded" finished-at="2020-04-09T16:01:28 CDT" duration-ms="214" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- interestAdded -->
+        <test-method signature="interestRemoved()[pri:0, instance:CORE.CustomerInfo.UpdateCustomerInterests@15bbf42f]" started-at="2020-04-09T16:01:28 CDT" name="interestRemoved" finished-at="2020-04-09T16:01:28 CDT" duration-ms="155" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- interestRemoved -->
+      </class> <!-- CORE.CustomerInfo.UpdateCustomerInterests -->
+      <class name="CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest@6c130c45]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="packagesFoundNoOnlineBypass()[pri:0, instance:CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest@6c130c45]" started-at="2020-04-09T16:01:37 CDT" name="packagesFoundNoOnlineBypass" description="PBI: 144305" finished-at="2020-04-09T16:01:40 CDT" duration-ms="2053" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- packagesFoundNoOnlineBypass -->
+        <test-method signature="packagesFoundOnlineBypass()[pri:0, instance:CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest@6c130c45]" started-at="2020-04-09T16:01:40 CDT" name="packagesFoundOnlineBypass" description="PBI: 144305" finished-at="2020-04-09T16:01:42 CDT" duration-ms="2489" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- packagesFoundOnlineBypass -->
+      </class> <!-- CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest -->
+      <class name="CORE.CustomerInfo.UpdateHeadOfHousehold">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CustomerInfo.UpdateHeadOfHousehold@550ee7e5]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="headOfHouseholdUpdated1()[pri:1, instance:CORE.CustomerInfo.UpdateHeadOfHousehold@550ee7e5]" started-at="2020-04-09T16:01:29 CDT" name="headOfHouseholdUpdated1" finished-at="2020-04-09T16:01:29 CDT" duration-ms="285" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- headOfHouseholdUpdated1 -->
+        <test-method signature="headOfHouseholdUpdated2()[pri:2, instance:CORE.CustomerInfo.UpdateHeadOfHousehold@550ee7e5]" started-at="2020-04-09T16:01:29 CDT" name="headOfHouseholdUpdated2" finished-at="2020-04-09T16:01:29 CDT" duration-ms="343" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- headOfHouseholdUpdated2 -->
+        <test-method signature="headOfHouseholdNotUpdated()[pri:3, instance:CORE.CustomerInfo.UpdateHeadOfHousehold@550ee7e5]" started-at="2020-04-09T16:01:29 CDT" name="headOfHouseholdNotUpdated" finished-at="2020-04-09T16:01:29 CDT" duration-ms="140" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- headOfHouseholdNotUpdated -->
+      </class> <!-- CORE.CustomerInfo.UpdateHeadOfHousehold -->
+      <class name="CORE.CorporateInfo.GetClubAcceptedCreditCards">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CorporateInfo.GetClubAcceptedCreditCards@1b6e1eff]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="getCards()[pri:0, instance:CORE.CorporateInfo.GetClubAcceptedCreditCards@1b6e1eff]" started-at="2020-04-09T16:01:22 CDT" name="getCards" finished-at="2020-04-09T16:01:23 CDT" duration-ms="252" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getCards -->
+      </class> <!-- CORE.CorporateInfo.GetClubAcceptedCreditCards -->
+      <class name="CORE.PackageService.GetPackageDetailsTest">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="serviceFoundRestrictFalse()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:31 CDT" name="serviceFoundRestrictFalse" finished-at="2020-04-09T16:01:32 CDT" duration-ms="517" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceFoundRestrictFalse -->
+        <test-method signature="serviceFoundRestrictTrue()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:32 CDT" name="serviceFoundRestrictTrue" finished-at="2020-04-09T16:01:32 CDT" duration-ms="567" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceFoundRestrictTrue -->
+        <test-method signature="serviceNotFoundInactiveRestrictFalse()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:32 CDT" name="serviceNotFoundInactiveRestrictFalse" finished-at="2020-04-09T16:01:33 CDT" duration-ms="381" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceNotFoundInactiveRestrictFalse -->
+        <test-method signature="serviceNotFoundInactiveRestrictTrue()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:33 CDT" name="serviceNotFoundInactiveRestrictTrue" finished-at="2020-04-09T16:01:33 CDT" duration-ms="140" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceNotFoundInactiveRestrictTrue -->
+        <test-method signature="serviceNotFoundNotAllowedOnlineRestrictFalse()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:33 CDT" name="serviceNotFoundNotAllowedOnlineRestrictFalse" finished-at="2020-04-09T16:01:33 CDT" duration-ms="299" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceNotFoundNotAllowedOnlineRestrictFalse -->
+        <test-method signature="serviceNotFoundNotAllowedOnlineRestrictTrue()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:33 CDT" name="serviceNotFoundNotAllowedOnlineRestrictTrue" finished-at="2020-04-09T16:01:33 CDT" duration-ms="125" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceNotFoundNotAllowedOnlineRestrictTrue -->
+        <test-method signature="trainingFoundInactiveRestrictFalse()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:33 CDT" name="trainingFoundInactiveRestrictFalse" finished-at="2020-04-09T16:01:34 CDT" duration-ms="416" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- trainingFoundInactiveRestrictFalse -->
+        <test-method signature="trainingFoundNotAllowedOnlineRestrictFalse()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:34 CDT" name="trainingFoundNotAllowedOnlineRestrictFalse" finished-at="2020-04-09T16:01:34 CDT" duration-ms="393" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- trainingFoundNotAllowedOnlineRestrictFalse -->
+        <test-method signature="trainingFoundRestrictFalse()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:34 CDT" name="trainingFoundRestrictFalse" finished-at="2020-04-09T16:01:34 CDT" duration-ms="369" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- trainingFoundRestrictFalse -->
+        <test-method signature="trainingFoundRestrictTrue()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:34 CDT" name="trainingFoundRestrictTrue" finished-at="2020-04-09T16:01:35 CDT" duration-ms="379" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- trainingFoundRestrictTrue -->
+        <test-method signature="trainingNotFoundInactiveRestrictTrue()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:35 CDT" name="trainingNotFoundInactiveRestrictTrue" finished-at="2020-04-09T16:01:35 CDT" duration-ms="129" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- trainingNotFoundInactiveRestrictTrue -->
+        <test-method signature="trainingNotFoundNotAllowedOnlineRestrictTrue()[pri:0, instance:CORE.PackageService.GetPackageDetailsTest@48974e45]" started-at="2020-04-09T16:01:35 CDT" name="trainingNotFoundNotAllowedOnlineRestrictTrue" finished-at="2020-04-09T16:01:35 CDT" duration-ms="123" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- trainingNotFoundNotAllowedOnlineRestrictTrue -->
+      </class> <!-- CORE.PackageService.GetPackageDetailsTest -->
+      <class name="CORE.CorporateInfo.GetBranding">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CorporateInfo.GetBranding@1cbb87f3]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="getEMEBranding()[pri:0, instance:CORE.CorporateInfo.GetBranding@1cbb87f3]" started-at="2020-04-09T16:01:20 CDT" name="getEMEBranding" finished-at="2020-04-09T16:01:21 CDT" duration-ms="804" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getEMEBranding -->
+        <test-method signature="getJOLBranding()[pri:0, instance:CORE.CorporateInfo.GetBranding@1cbb87f3]" started-at="2020-04-09T16:01:21 CDT" name="getJOLBranding" finished-at="2020-04-09T16:01:22 CDT" duration-ms="807" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getJOLBranding -->
+      </class> <!-- CORE.CorporateInfo.GetBranding -->
+      <class name="CORE.CustomerInfo.GetMemberAccessibleClubs">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CustomerInfo.GetMemberAccessibleClubs@10163d6]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="clubsFound()[pri:0, instance:CORE.CustomerInfo.GetMemberAccessibleClubs@10163d6]" started-at="2020-04-09T16:01:26 CDT" name="clubsFound" finished-at="2020-04-09T16:01:27 CDT" duration-ms="222" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clubsFound -->
+        <test-method signature="familyMemberNotFound()[pri:0, instance:CORE.CustomerInfo.GetMemberAccessibleClubs@10163d6]" started-at="2020-04-09T16:01:27 CDT" name="familyMemberNotFound" finished-at="2020-04-09T16:01:27 CDT" duration-ms="156" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- familyMemberNotFound -->
+      </class> <!-- CORE.CustomerInfo.GetMemberAccessibleClubs -->
+      <class name="CORE.PackageService.GetAvailablePackagesByClubTest">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.PackageService.GetAvailablePackagesByClubTest@6a84a97d]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="customerNotFound()[pri:0, instance:CORE.PackageService.GetAvailablePackagesByClubTest@6a84a97d]" started-at="2020-04-09T16:01:35 CDT" name="customerNotFound" finished-at="2020-04-09T16:01:35 CDT" duration-ms="149" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- customerNotFound -->
+        <test-method signature="packagesFound()[pri:0, instance:CORE.PackageService.GetAvailablePackagesByClubTest@6a84a97d]" started-at="2020-04-09T16:01:35 CDT" name="packagesFound" finished-at="2020-04-09T16:01:37 CDT" duration-ms="2138" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- packagesFound -->
+      </class> <!-- CORE.PackageService.GetAvailablePackagesByClubTest -->
+      <class name="CORE.CustomerInfo.UpdatePreferredPhoneNumber">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CustomerInfo.UpdatePreferredPhoneNumber@5f9b2141]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="preferredPhoneUpdatedHome()[pri:1, instance:CORE.CustomerInfo.UpdatePreferredPhoneNumber@5f9b2141]" started-at="2020-04-09T16:01:29 CDT" name="preferredPhoneUpdatedHome" finished-at="2020-04-09T16:01:30 CDT" duration-ms="293" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preferredPhoneUpdatedHome -->
+        <test-method signature="preferredPhoneUpdatedWork()[pri:2, instance:CORE.CustomerInfo.UpdatePreferredPhoneNumber@5f9b2141]" started-at="2020-04-09T16:01:30 CDT" name="preferredPhoneUpdatedWork" finished-at="2020-04-09T16:01:30 CDT" duration-ms="306" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preferredPhoneUpdatedWork -->
+        <test-method signature="preferredPhoneUpdatedMobile()[pri:3, instance:CORE.CustomerInfo.UpdatePreferredPhoneNumber@5f9b2141]" started-at="2020-04-09T16:01:30 CDT" name="preferredPhoneUpdatedMobile" finished-at="2020-04-09T16:01:30 CDT" duration-ms="295" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preferredPhoneUpdatedMobile -->
+        <test-method signature="preferredPhoneNotUpdated()[pri:4, instance:CORE.CustomerInfo.UpdatePreferredPhoneNumber@5f9b2141]" started-at="2020-04-09T16:01:30 CDT" name="preferredPhoneNotUpdated" finished-at="2020-04-09T16:01:30 CDT" duration-ms="149" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preferredPhoneNotUpdated -->
+      </class> <!-- CORE.CustomerInfo.UpdatePreferredPhoneNumber -->
+      <class name="CORE.CustomerInfo.SearchMembers">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CustomerInfo.SearchMembers@2dde1bff]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="membersFound()[pri:0, instance:CORE.CustomerInfo.SearchMembers@2dde1bff]" started-at="2020-04-09T16:01:27 CDT" name="membersFound" finished-at="2020-04-09T16:01:27 CDT" duration-ms="562" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- membersFound -->
+        <test-method signature="membersNotFound()[pri:0, instance:CORE.CustomerInfo.SearchMembers@2dde1bff]" started-at="2020-04-09T16:01:27 CDT" name="membersNotFound" finished-at="2020-04-09T16:01:27 CDT" duration-ms="161" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- membersNotFound -->
+      </class> <!-- CORE.CustomerInfo.SearchMembers -->
+      <class name="CORE.CustomerInfo.GetCustomerInfoTest">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.CustomerInfo.GetCustomerInfoTest@702b8b12]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="customerFound()[pri:0, instance:CORE.CustomerInfo.GetCustomerInfoTest@702b8b12]" started-at="2020-04-09T16:01:24 CDT" name="customerFound" finished-at="2020-04-09T16:01:25 CDT" duration-ms="1013" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- customerFound -->
+        <test-method signature="customerNotFound()[pri:0, instance:CORE.CustomerInfo.GetCustomerInfoTest@702b8b12]" started-at="2020-04-09T16:01:25 CDT" name="customerNotFound" finished-at="2020-04-09T16:01:25 CDT" duration-ms="241" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- customerNotFound -->
+      </class> <!-- CORE.CustomerInfo.GetCustomerInfoTest -->
+      <class name="CORE.PackageService.GetPackageTest">
+        <test-method is-config="true" signature="getData()[pri:0, instance:CORE.PackageService.GetPackageTest@247d8ae]" started-at="2020-04-09T16:01:18 CDT" name="getData" finished-at="2020-04-09T16:01:18 CDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method signature="servicePackageFound()[pri:0, instance:CORE.PackageService.GetPackageTest@247d8ae]" started-at="2020-04-09T16:01:30 CDT" name="servicePackageFound" finished-at="2020-04-09T16:01:31 CDT" duration-ms="317" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- servicePackageFound -->
+        <test-method signature="trainingPackageFound()[pri:0, instance:CORE.PackageService.GetPackageTest@247d8ae]" started-at="2020-04-09T16:01:31 CDT" name="trainingPackageFound" finished-at="2020-04-09T16:01:31 CDT" duration-ms="387" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- trainingPackageFound -->
+      </class> <!-- CORE.PackageService.GetPackageTest -->
+    </test> <!-- AgreementInfo.svc Test -->
+  </suite> <!-- CORE Web Services - Continuous Integration -->
 </testng-results>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CORE Web Services - Continuous Integration">
+
+  <test thread-count="5" name="AgreementInfo.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="ApiBasic.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="ApiMember.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="BookView.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="Cart.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="ChangeRequest.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="CheckIn.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="ClassCourseServices.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="CorporateInfo.svc Test">
+    <classes>
+    <class name="CORE.CorporateInfo.GetActiveClubs"/>
+    <class name="CORE.CorporateInfo.GetBranding"/>
+    <class name="CORE.CorporateInfo.GetBrandingLogo"/>
+    <class name="CORE.CorporateInfo.GetClubAcceptedCreditCards"/>
+    <class name="CORE.CorporateInfo.GetClubInfo"/>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="CreditCardProcessing.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="CustomerAccounting.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="CustomerCreation.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="CustomerInfo.svc Test">
+    <classes>
+      <class name="CORE.CustomerInfo.GetCustomerInfoTest"/>
+      <class name="CORE.CustomerInfo.GetFamilyMembersForTest"/>
+      <class name="CORE.CustomerInfo.GetFullFamilyForTest"/>
+      <class name="CORE.CustomerInfo.GetMemberAccessibleClubs"/>
+      <class name="CORE.CustomerInfo.SearchMembers"/>
+      <class name="CORE.CustomerInfo.UpdateCustomerInterests"/>  
+      <class name="CORE.CustomerInfo.UpdateCustomerName"/>
+      <class name="CORE.CustomerInfo.UpdateHeadOfHousehold"/>
+      <class name="CORE.CustomerInfo.UpdatePreferredPhoneNumber"/>
+    </classes>
+  </test>
+
+  <test thread-count="5" name="CustomerAuth.svc Test">
+    <classes>
+    </classes>
+  </test>
+    
+  <test thread-count="5" name="EnrollmentService.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="IntegratorAuth.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="MessagingService.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="PackageService.svc Test">
+    <classes>
+      <class name="CORE.PackageService.GetPackageTest"/>
+      <class name="CORE.PackageService.GetPackageDetailsTest"/>
+      <class name="CORE.PackageService.GetAvailablePackagesByClubTest"/>
+      <class name="CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest"/>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="PunchCardService.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="Scheduling.svc Test">
+    <classes>
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="TransactionProcessing.svc Test">
+    <classes>
+    </classes>
+  </test>
+</suite>
