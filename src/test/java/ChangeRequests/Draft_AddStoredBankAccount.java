@@ -16,7 +16,7 @@ import payloads.PackageServicePL;
 import resources.ReusableMethods;
 import resources.base;
 
-public class AddStoredBankAccount extends base {
+public class Draft_AddStoredBankAccount extends base {
 	
 	String customerId;
 	String clubId;

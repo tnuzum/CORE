@@ -16,7 +16,7 @@ import payloads.ChangeRequestsPL;
 import resources.ReusableMethods;
 import resources.base;
 
-public class GetPersonalnformation extends base {
+public class Draft_GetPersonalnformation extends base {
 	
 	String companyId;
 	String customerId;
