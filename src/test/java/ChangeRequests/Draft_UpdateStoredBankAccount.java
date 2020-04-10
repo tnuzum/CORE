@@ -16,7 +16,7 @@ import payloads.ChangeRequestsPL;
 import resources.ReusableMethods;
 import resources.base;
 
-public class UpdateStoredBankAccount extends base {
+public class Draft_UpdateStoredBankAccount extends base {
 	
 	String companyId;
 	String customerId;

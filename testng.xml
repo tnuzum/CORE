@@ -5,11 +5,18 @@
   <test thread-count="5" name="AgreementInfo.svc Test">
     <classes>
     <class name="resources._preTestAnnouncement" />
+    <class name="CORE.CorporateInfo.CompanyHasModuleGrant"/>
     <class name="CORE.CorporateInfo.GetActiveClubs"/>
     <class name="CORE.CorporateInfo.GetBranding"/>
     <class name="CORE.CorporateInfo.GetBrandingLogo"/>
+    <class name="CORE.CorporateInfo.GetChangeRequestTermsAndConditions"/>
     <class name="CORE.CorporateInfo.GetClubAcceptedCreditCards"/>
     <class name="CORE.CorporateInfo.GetClubInfo"/>
+    <class name="CORE.CorporateInfo.GetCompanyName"/>
+    <class name="CORE.CorporateInfo.GetExternalLinks"/>
+    <class name="CORE.CorporateInfo.GetGoogleAnalyticsId"/>
+    <class name="CORE.CorporateInfo.GetInterestConfiguration"/>
+    <class name="CORE.CorporateInfo.GetRequiredFields"/>
     <class name="CORE.CustomerInfo.GetCustomerInfoTest"/>
     <class name="CORE.CustomerInfo.GetFamilyMembersForTest"/>
     <class name="CORE.CustomerInfo.GetFullFamilyForTest"/>
@@ -23,7 +30,7 @@
     <class name="CORE.PackageService.GetPackageDetailsTest"/>
     <class name="CORE.PackageService.GetAvailablePackagesByClubTest"/>
     <class name="CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest"/>
-     <class name="CORE.MessagingService.SendCustomerClassEnrollmentConfirmationEmailTest"/>
+    <class name="CORE.MessagingService.SendCustomerClassEnrollmentConfirmationEmailTest"/>
     <class name="CORE.MessagingService.SendCustomerCourseEnrollmentConfirmationEmailTest"/>
     <class name="CORE.MessagingService.SendFamilyClassEnrollmentConfirmationEmailTest"/>
     <class name="CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest"/>
