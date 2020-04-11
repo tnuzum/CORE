@@ -39,7 +39,7 @@ static String customerid1 = "66777";
 		.when()
 			.post("/Messaging/MessagingService.svc")
 		.then()
-			.log().all()
+//			.log().all()
 			.statusCode(200)
 			.extract().response();  
 			
@@ -58,7 +58,7 @@ static String customerid1 = "66777";
 		.when()
 			.post("/Messaging/MessagingService.svc")
 		.then()
-			.log().all()
+//			.log().all()
 			.statusCode(200)
 			.extract().response();  
 			
@@ -77,7 +77,7 @@ static String customerid1 = "66777";
 		.when()
 			.post("/Messaging/MessagingService.svc")
 		.then()
-			.log().all()
+//			.log().all()
 			.statusCode(200)
 			.extract().response();  
 			
@@ -96,7 +96,7 @@ static String customerid1 = "66777";
 		.when()
 			.post("/Messaging/MessagingService.svc")
 		.then()
-			.log().all()
+//			.log().all()
 			.statusCode(200)
 			.extract().response();  
 			
@@ -115,7 +115,7 @@ static String customerid1 = "66777";
 		.when()
 			.post("/Messaging/MessagingService.svc")
 		.then()
-			.log().all()
+//			.log().all()
 			.statusCode(400)
 			.extract().response();  
 			
@@ -136,7 +136,7 @@ static String customerid1 = "66777";
 		.when()
 			.post("/Messaging/MessagingService.svc")
 		.then()
-			.log().all()
+//			.log().all()
 			.statusCode(400)
 			.extract().response();  
 			
