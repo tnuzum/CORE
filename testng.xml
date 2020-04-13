@@ -5,6 +5,15 @@
   <test thread-count="5" name="AgreementInfo.svc Test">
     <classes>
     <class name="resources._preTestAnnouncement" />
+    <class name="CustomerAccounting.GetAccountHistory"/>
+    <class name="CustomerAccounting.GetCustomerAccountValue"/>
+    <class name="CustomerAccounting.GetCustomerCurrentBalance"/>
+    <class name="CustomerAccounting.GetInvoiceChargeReceiptDetail"/>
+    <class name="CustomerAccounting.GetInvoiceChargeReceiptDetailForReceiptNumber"/>
+    <class name="CustomerAccounting.GetLastPaymentDateForCustomer"/>
+    <class name="CustomerAccounting.GetPaymentReceiptDetail"/>
+    <class name="CustomerAccounting.GetPaymentReceiptDetailForReceiptNumber"/>
+    <class name="CustomerAccounting.GetStoredPaymentAccountsForCustomer"/>
     <class name="CORE.CorporateInfo.CompanyHasModuleGrant"/>
     <class name="CORE.CorporateInfo.GetActiveClubs"/>
     <class name="CORE.CorporateInfo.GetBranding"/>

@@ -49,6 +49,7 @@ public class GetClubInfo extends base {
 			Assert.assertEquals(js.getInt("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.ClubNumber"), clubId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.Name"),clubName);
 			Assert.assertEquals(js.getBoolean("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.Inactive"), false);
+			Assert.assertEquals(js.getString("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.PrivacyPolicyUrl"), "https://jonasfitness.com/privacy-policy/");
 }
 	
 	@Test (testName="Get Club 2 Info")
