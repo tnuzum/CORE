@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="CORE Web Services - Continuous Integration">
 
-  <test thread-count="5" name="AgreementInfo.svc Test">
+  <test thread-count="5" name="Full Suite">
     <classes>
     <class name="resources._preTestAnnouncement" />
     <class name="CustomerAccounting.GetAccountHistory"/>
@@ -39,10 +39,10 @@
     <class name="CORE.PackageService.GetPackageDetailsTest"/>
     <class name="CORE.PackageService.GetAvailablePackagesByClubTest"/>
     <class name="CORE.PackageService.GetAvailablePackagesByClubOnlineBypassTest"/>
-    <class name="CORE.MessagingService.SendCustomerClassEnrollmentConfirmationEmailTest"/>
+    <!-- class name="CORE.MessagingService.SendCustomerClassEnrollmentConfirmationEmailTest"/>
     <class name="CORE.MessagingService.SendCustomerCourseEnrollmentConfirmationEmailTest"/>
     <class name="CORE.MessagingService.SendFamilyClassEnrollmentConfirmationEmailTest"/>
-    <class name="CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest"/>
+    <class name="CORE.MessagingService.SendFamilyCourseEnrollmentConfirmationEmailTest"/-->
     <class name="CORE.CustomerAuth.AuthorizeCustomerTest"/>
     </classes>
   </test>

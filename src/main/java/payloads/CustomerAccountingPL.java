@@ -153,5 +153,22 @@ public class CustomerAccountingPL extends base {
 			return pl;
 		}
 		
+		public static String identifyCreditCardType(String companyId, String cardNumber)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+					"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+					"   </soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:IdentifyCreditCardType>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:cardNumber>"+cardNumber+"</tem:cardNumber>\r\n" + 
+					"      </tem:IdentifyCreditCardType>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
 		
 }
