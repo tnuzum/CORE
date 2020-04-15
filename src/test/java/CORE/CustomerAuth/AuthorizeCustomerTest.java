@@ -21,9 +21,10 @@ public class AuthorizeCustomerTest extends base{
 	static String CantnrollClass = "262";
 	static String CantCcourses = "264";
 	static String CantnrollCourse = "265";
-	static String collections_PayOnlineNotAllowed = "227";
-	static String collections_PayOnlineAllowed = "";
-	static String customeridPayOnlineNotAllowed = "262";
+	static String customeridPayOnlineNotAllowed = "744";
+	static String collections_PayOnlineNotAllowed ="227";
+	static String collections_PayOnlineAllowed = "735";
+	
 	
 		@BeforeTest
 		public void getData() {
@@ -43,7 +44,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -84,7 +85,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -107,7 +108,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -130,7 +131,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -153,7 +154,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -176,7 +177,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -198,7 +199,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -221,7 +222,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -230,13 +231,13 @@ public class AuthorizeCustomerTest extends base{
 				Assert.assertTrue(res.getTime() >= 60L);
 				String Text = js.getString("Envelope.Body.AuthorizeCustomerResponse.AuthorizeCustomerResult.Permissions");
 				Assert.assertTrue(Text.contains("None"));
-				Assert.assertFalse(Text.contains("RealTimePayments "));
+				Assert.assertFalse(Text.contains("RealTimePayments"));
 				
 		}
 		
 	
 		
-		@Test (priority = 9, testName="Get Customer Authorizations", enabled = false)
+		@Test (priority = 9, testName="Get Customer Authorizations", enabled = true)
 		public void AuthorizeCustomer_CollectionsMember_PayOnlineAllowed() {
 			
 			Response res = given()
@@ -246,7 +247,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -254,7 +255,7 @@ public class AuthorizeCustomerTest extends base{
 						
 				Assert.assertTrue(res.getTime() >= 60L);
 				String Text = js.getString("Envelope.Body.AuthorizeCustomerResponse.AuthorizeCustomerResult.Permissions");
-				Assert.assertTrue(Text.contains("RealTimePayments "));
+				Assert.assertTrue(Text.contains("RealTimePayments"));
 				
 		}
 		
