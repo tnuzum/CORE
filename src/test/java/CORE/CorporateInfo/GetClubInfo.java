@@ -49,6 +49,7 @@ public class GetClubInfo extends base {
 			Assert.assertEquals(js.getInt("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.ClubNumber"), clubId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.Name"),clubName);
 			Assert.assertEquals(js.getBoolean("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.Inactive"), false);
+			Assert.assertEquals(js.getString("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.PrivacyPolicyUrl"), "https://jonasfitness.com/privacy-policy/");
 }
 	
 	@Test (testName="Get Club 2 Info")
@@ -75,6 +76,30 @@ public class GetClubInfo extends base {
 			Assert.assertEquals(js.getInt("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.ClubNumber"), clubId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.Name"),clubName);
 			Assert.assertEquals(js.getBoolean("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.Inactive"), false);
+}
+	
+	@Test (testName="Custom Privacy Policy")
+	public void customPrivacyPolicy() {
+		
+		String companyId = "202";
+		String c = prop.getProperty("club1Id");
+		int clubId = Integer.parseInt(c);
+		
+		 Response res = given()
+         	.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/GetClubInfo","Content-Type", "text/xml; charset=utf-8")
+         	.and()
+         	.body(CorporateInfoPL.GetClubInfo(companyId, clubId))
+         .when()
+         	.post("/Info/CorporateInfo.svc")
+         .then()
+//         	.log().all()
+         	.statusCode(200)
+         	.extract().response();
+         	
+			XmlPath js = ReusableMethods.rawToXML(res);
+			
+			Assert.assertTrue(res.getTime() >= 60L);
+			Assert.assertEquals(js.getString("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.PrivacyPolicyUrl"), "http://www.google.com/");
 }
 	
 	@Test (testName="Inactive Club")
