@@ -4,8 +4,6 @@ import static io.restassured.RestAssured.given;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.Matchers.nullValue;
-import static org.hamcrest.Matchers.not;
 import java.util.concurrent.TimeUnit;
 
 import io.restassured.RestAssured;
