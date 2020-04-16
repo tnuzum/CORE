@@ -6,7 +6,8 @@
     <classes>
     <class name="resources._preTestAnnouncement" />
 	<class name="agreementInfo.GetCustomerRelatedAgreements"/>
-	<class name="changeRequests.GetPersonalInformation"/>    
+	<class name="changeRequests.GetPersonalInformation"/>
+	<class name="changeRequests.GetStoredPaymentAccounts"/>     
     <class name="corporateInfo.CompanyHasModuleGrant"/>
     <class name="corporateInfo.GetActiveClubs"/>
     <class name="corporateInfo.GetBranding"/>
