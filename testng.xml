@@ -42,10 +42,10 @@
     <class name="customerInfo.UpdateCustomerName"/>
     <class name="customerInfo.UpdateHeadOfHousehold"/>
     <class name="customerInfo.UpdatePreferredPhoneNumber"/>   
-    <!-- class name="messagingService.SendCustomerClassEnrollmentConfirmationEmailTest"/>
+    <class name="messagingService.SendCustomerClassEnrollmentConfirmationEmailTest"/>
     <class name="messagingService.SendCustomerCourseEnrollmentConfirmationEmailTest"/>
     <class name="messagingService.SendFamilyClassEnrollmentConfirmationEmailTest"/>
-    <class name="messagingService.SendFamilyCourseEnrollmentConfirmationEmailTest"/-->
+    <class name="messagingService.SendFamilyCourseEnrollmentConfirmationEmailTest"/>
     <class name="packageService.GetPackageTest"/>
     <class name="packageService.GetPackageDetailsTest"/>
     <class name="packageService.GetAvailablePackagesByClubTest"/>
