@@ -47,6 +47,7 @@
     <class name="packageService.GetPackageDetailsTest"/>
     <class name="packageService.GetAvailablePackagesByClubTest"/>
     <class name="packageService.GetAvailablePackagesByClubOnlineBypassTest"/>
+    <class name="UnenrollmentService.GetUnenrollmentEligibility"/>
     </classes>
   </test>
 </suite>
