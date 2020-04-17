@@ -170,5 +170,64 @@ public class CustomerAccountingPL extends base {
 			return pl;
 		}
 		
+		public static String getPastDueBalancesByCustomer(String companyId, String customerId, String asOfDate)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:GetPastDueBalancesByCustomer>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:customerIds>\r\n" + 
+					"            <!--Zero or more repetitions:-->\r\n" + 
+					"            <arr:int>"+customerId+"</arr:int>\r\n" + 
+					"         </tem:customerIds>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+					"      </tem:GetPastDueBalancesByCustomer>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
+		public static String getPastDueBalancesByCustomers(String companyId, String customer1Id, String customer2Id, String asOfDate)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:GetPastDueBalancesByCustomer>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:customerIds>\r\n" + 
+					"            <!--Zero or more repetitions:-->\r\n" + 
+					"            <arr:int>"+customer1Id+"</arr:int>\r\n" + 
+					"            <arr:int>"+customer2Id+"</arr:int>\r\n" + 
+					"         </tem:customerIds>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+					"      </tem:GetPastDueBalancesByCustomer>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
+		public static String getPastDueBalancesByCustomerAllDates(String companyId, String customerId)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:GetPastDueBalancesByCustomer>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:customerIds>\r\n" + 
+					"            <!--Zero or more repetitions:-->\r\n" + 
+					"            <arr:int>"+customerId+"</arr:int>\r\n" + 
+					"         </tem:customerIds>\r\n" + 
+					"      </tem:GetPastDueBalancesByCustomer>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
 		
 }
