@@ -7,7 +7,9 @@
     <class name="resources._preTestAnnouncement" />
 	<class name="agreementInfo.GetCustomerRelatedAgreements"/>
 	<class name="changeRequests.GetPersonalInformation"/>
-	<class name="changeRequests.GetStoredPaymentAccounts"/>     
+	<class name="changeRequests.GetStoredPaymentAccounts"/>  
+	<class name="changeRequests.GetSubmissionReasonsForSubmission"/> 	
+	<class name="changeRequests.UpdatePersonalInformation"/> 
     <class name="corporateInfo.CompanyHasModuleGrant"/>
     <class name="corporateInfo.GetActiveClubs"/>
     <class name="corporateInfo.GetBranding"/>
@@ -26,6 +28,7 @@
     <class name="customerAccounting.GetInvoiceChargeReceiptDetail"/>
     <class name="customerAccounting.GetInvoiceChargeReceiptDetailForReceiptNumber"/>
     <class name="customerAccounting.GetLastPaymentDateForCustomer"/>
+    <class name="customerAccounting.GetPastDueBalancesByCustomer"/>
     <class name="customerAccounting.GetPaymentReceiptDetail"/>
     <class name="customerAccounting.GetPaymentReceiptDetailForReceiptNumber"/>
     <class name="customerAccounting.GetStoredPaymentAccountsForCustomer"/>
