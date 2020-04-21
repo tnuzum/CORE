@@ -2,7 +2,7 @@ package customerInfo;
 
 import static io.restassured.RestAssured.given;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -15,12 +15,16 @@ import payloads.CustomerInfoPL;
 import resources.ReusableMethods;
 import resources.base;
 
-public class GetCustomerInfoTest extends base {
+public class GetCustomerInfo extends base {
+	
+	String companyId;
 	
 	@BeforeTest
 	public void getData(){
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 	}
 	
 	@Test (testName="Customer Found")
@@ -31,7 +35,7 @@ public class GetCustomerInfoTest extends base {
 	       Response res =  given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(customerId))
+	                .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -96,7 +100,7 @@ public class GetCustomerInfoTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo("99999"))
+	                .body(CustomerInfoPL.getCustomerInfo(companyId, "99999"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

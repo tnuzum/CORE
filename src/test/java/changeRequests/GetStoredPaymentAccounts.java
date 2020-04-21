@@ -2,9 +2,6 @@ package changeRequests;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.concurrent.TimeUnit;
-import static org.hamcrest.Matchers.*;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -46,10 +43,11 @@ public class GetStoredPaymentAccounts extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
-				XmlPath js = ReusableMethods.rawToXML(res);		
+				XmlPath js = ReusableMethods.rawToXML(res);	
+				
+				Assert.assertTrue(res.getTime() >= 60L);
 				
 				Assert.assertNotNull(js.getString("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.BankAccounts.StoredBankAccountWithChangeDetailsDto[0].AccountId.CurrentValue"));
 				Assert.assertNotNull(js.getBoolean("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.BankAccounts.StoredBankAccountWithChangeDetailsDto[0].AccountId.PendingChange"));
@@ -86,7 +84,6 @@ public class GetStoredPaymentAccounts extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -147,7 +144,6 @@ public class GetStoredPaymentAccounts extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		

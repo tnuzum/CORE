@@ -15,8 +15,9 @@ import resources.base;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 
-public class GetAvailablePackagesByClubOnlineBypassTest extends base {
+public class GetAvailablePackagesByClubOnlineBypass extends base {
 	
+	String companyId;
 	String customerId;
 	String clubId;
 	
@@ -25,6 +26,7 @@ public class GetAvailablePackagesByClubOnlineBypassTest extends base {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 		
+		companyId = prop.getProperty("X-CompanyId");
 		customerId = prop.getProperty("availableId");
 		clubId = prop.getProperty("club1Id");
 	}
@@ -36,7 +38,7 @@ public class GetAvailablePackagesByClubOnlineBypassTest extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClubOnlineBypass","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getAvailablePackagesByClubOnlineBypass(customerId, clubId, false))
+	                .body(PackageServicePL.getAvailablePackagesByClubOnlineBypass(companyId, customerId, clubId, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -72,7 +74,7 @@ public class GetAvailablePackagesByClubOnlineBypassTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClubOnlineBypass","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getAvailablePackagesByClubOnlineBypass(customerId, clubId, true))
+	                .body(PackageServicePL.getAvailablePackagesByClubOnlineBypass(companyId, customerId, clubId, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()

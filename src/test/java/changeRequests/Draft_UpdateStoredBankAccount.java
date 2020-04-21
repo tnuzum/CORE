@@ -3,7 +3,7 @@ package changeRequests;
 import static io.restassured.RestAssured.given;
 
 import java.util.concurrent.TimeUnit;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.lessThan;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;

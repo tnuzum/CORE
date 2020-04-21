@@ -33,9 +33,10 @@
     <class name="customerAccounting.GetPaymentReceiptDetailForReceiptNumber"/>
     <class name="customerAccounting.GetStoredPaymentAccountsForCustomer"/>
     <class name="customerAuth.AuthorizeCustomerTest"/>
-    <class name="customerInfo.GetCustomerInfoTest"/>
+    <class name="customerInfo.GetCustomerInfo"/>
     <class name="customerInfo.GetFamilyMembersForTest"/>
     <class name="customerInfo.GetFullFamilyForTest"/>
+    <class name="customerInfo.GetInformationForCustomers"/>
     <class name="customerInfo.GetMemberAccessibleClubs"/>
     <class name="customerInfo.SearchMembers"/>
     <class name="customerInfo.UpdateCustomerInterests"/>  
@@ -46,10 +47,10 @@
     <class name="messagingService.SendCustomerCourseEnrollmentConfirmationEmailTest"/>
     <class name="messagingService.SendFamilyClassEnrollmentConfirmationEmailTest"/>
     <class name="messagingService.SendFamilyCourseEnrollmentConfirmationEmailTest"/>
-    <class name="packageService.GetPackageTest"/>
-    <class name="packageService.GetPackageDetailsTest"/>
-    <class name="packageService.GetAvailablePackagesByClubTest"/>
-    <class name="packageService.GetAvailablePackagesByClubOnlineBypassTest"/>
+    <class name="packageService.GetPackage"/>
+    <class name="packageService.GetPackageDetails"/>
+    <class name="packageService.GetAvailablePackagesByClub"/>
+    <class name="packageService.GetAvailablePackagesByClubOnlineBypass"/>
     <class name="UnenrollmentService.GetUnenrollmentEligibility"/>
     </classes>
   </test>

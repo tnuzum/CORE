@@ -2,9 +2,6 @@ package packageService;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.concurrent.TimeUnit;
-import static org.hamcrest.Matchers.*;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -16,8 +13,9 @@ import payloads.PackageServicePL;
 import resources.ReusableMethods;
 import resources.base;
 
-public class GetPackageDetailsTest extends base {
+public class GetPackageDetails extends base {
 	
+	String companyId;
 	String customerId;
 	String clubId;
 	
@@ -25,6 +23,8 @@ public class GetPackageDetailsTest extends base {
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 		customerId = prop.getProperty("availableId");
 		clubId = prop.getProperty("club1Id");
 	}
@@ -38,16 +38,17 @@ public class GetPackageDetailsTest extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, true))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
 //             	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);	
+				
+				Assert.assertTrue(res.getTime() >= 60L);
 				
 				Assert.assertNotNull(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.BasePrice"));
 				Assert.assertNotNull(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.DaysUntilExpiration"));
@@ -87,7 +88,7 @@ public class GetPackageDetailsTest extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, true))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -103,7 +104,7 @@ public class GetPackageDetailsTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, true))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -120,13 +121,12 @@ public class GetPackageDetailsTest extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, false))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
 //             	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 		      
 				XmlPath js = ReusableMethods.rawToXML(res);	
@@ -168,13 +168,12 @@ public class GetPackageDetailsTest extends base {
 	        Response res = given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, false))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
  //            	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 		      
 				XmlPath js = ReusableMethods.rawToXML(res);	
@@ -208,13 +207,12 @@ public class GetPackageDetailsTest extends base {
 	       Response res = given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, false))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
 //            	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 		      
 				XmlPath js = ReusableMethods.rawToXML(res);	
@@ -242,13 +240,12 @@ public class GetPackageDetailsTest extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, true))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
 //             	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 		      
 				XmlPath js = ReusableMethods.rawToXML(res);	
@@ -282,7 +279,7 @@ public class GetPackageDetailsTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, true))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -298,7 +295,7 @@ public class GetPackageDetailsTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, true))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, true))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
@@ -315,13 +312,12 @@ public class GetPackageDetailsTest extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, false))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
 //             	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 		      
 				XmlPath js = ReusableMethods.rawToXML(res);	
@@ -355,14 +351,13 @@ public class GetPackageDetailsTest extends base {
 	       Response res = given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId,packageId,clubId,false))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId,packageId,clubId,false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
 //            	.log().all()
              	.assertThat()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 		      
 				XmlPath js = ReusableMethods.rawToXML(res);	
@@ -396,13 +391,12 @@ public class GetPackageDetailsTest extends base {
 	       Response res = given()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackageDetails","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackageDetails(customerId, packageId, clubId, false))
+	                .body(PackageServicePL.getPackageDetails(companyId, customerId, packageId, clubId, false))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
 //             	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 		      
 				XmlPath js = ReusableMethods.rawToXML(res);	

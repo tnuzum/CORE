@@ -2,8 +2,7 @@ package packageService;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.concurrent.TimeUnit;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -16,8 +15,9 @@ import payloads.PackageServicePL;
 import resources.ReusableMethods;
 import resources.base;
 
-public class GetAvailablePackagesByClubTest extends base {
+public class GetAvailablePackagesByClub extends base {
 	
+	String companyId;
 	String customerId;
 	String clubId;
 	
@@ -25,6 +25,8 @@ public class GetAvailablePackagesByClubTest extends base {
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 		customerId = prop.getProperty("availableId");
 		clubId = prop.getProperty("club1Id");
 	}
@@ -36,16 +38,17 @@ public class GetAvailablePackagesByClubTest extends base {
 //	        .log().all()
                 .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClub","Content-Type", "text/xml; charset=utf-8")
                 .and()
-                .body(PackageServicePL.getAvailablePackagesByClub(customerId, clubId))
+                .body(PackageServicePL.getAvailablePackagesByClub(companyId, customerId, clubId))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
 //             	.log().all()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 			       
 	       		XmlPath js = ReusableMethods.rawToXML(res);	
+	       		
+	       		Assert.assertTrue(res.getTime() >= 60L);
 	       		
 	       		Assert.assertNotNull(js.getDouble("Envelope.Body.GetAvailablePackagesByClubResponse.GetAvailablePackagesByClubResult.PackageDto[0].BasePrice"));
 	       		Assert.assertNotNull(js.getString("Envelope.Body.GetAvailablePackagesByClubResponse.GetAvailablePackagesByClubResult.PackageDto[0].CategoryDescription"));
@@ -69,13 +72,12 @@ public class GetAvailablePackagesByClubTest extends base {
 	        given()
                 .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClub","Content-Type", "text/xml; charset=utf-8")
                 .and()
-                .body(PackageServicePL.getAvailablePackagesByClub("99999", "1"))
+                .body(PackageServicePL.getAvailablePackagesByClub(companyId, "99999", clubId))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()
 //            	.log().all()
 	            .statusCode(500)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.body("Envelope.Body.Fault.detail.InternalServerErrorFaultDto.Message", equalTo("Customer Not Found"));
 	}
 
