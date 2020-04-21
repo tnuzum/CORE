@@ -13,6 +13,7 @@ import resources.base;
 
 public class UpdateCustomerInterests extends base {
 	
+	String companyId;
 	String customerId;
 	
 	@BeforeTest
@@ -20,6 +21,8 @@ public class UpdateCustomerInterests extends base {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 		customerId = prop.getProperty("MultipleAgreementsWithSingleCardId");
+		
+		companyId = prop.getProperty("X-CompanyId");
 	}
 	
 	@Test (testName="Interest Added")
@@ -28,7 +31,7 @@ public class UpdateCustomerInterests extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdateCustomerInterests","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updateCustomerInterests_AddInterest(customerId, "Weight Loss"))
+	                .body(CustomerInfoPL.updateCustomerInterests_AddInterest(companyId, customerId, "Weight Loss"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -44,7 +47,7 @@ public class UpdateCustomerInterests extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdateCustomerInterests","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updateCustomerInterests_RemoveInterest(customerId, "Weight Loss"))
+	                .body(CustomerInfoPL.updateCustomerInterests_RemoveInterest(companyId, customerId, "Weight Loss"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

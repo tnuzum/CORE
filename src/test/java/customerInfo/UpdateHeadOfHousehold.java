@@ -13,12 +13,15 @@ import resources.base;
 
 public class UpdateHeadOfHousehold extends base {
 	
+	String companyId;
 	String customerId;
 	
 	@BeforeTest
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 		customerId = prop.getProperty("availableId");
 	}
 
@@ -30,7 +33,7 @@ public class UpdateHeadOfHousehold extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdateHeadOfHousehold","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updateHeadOfHousehold(customerId, 1))
+	                .body(CustomerInfoPL.updateHeadOfHousehold(companyId, customerId, 1))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -42,7 +45,7 @@ public class UpdateHeadOfHousehold extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(customerId))
+	                .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -60,7 +63,7 @@ public class UpdateHeadOfHousehold extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdateHeadOfHousehold","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updateHeadOfHousehold(customerId, 0))
+	                .body(CustomerInfoPL.updateHeadOfHousehold(companyId, customerId, 0))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -72,7 +75,7 @@ public class UpdateHeadOfHousehold extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(customerId))
+	                .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -88,7 +91,7 @@ public class UpdateHeadOfHousehold extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdateHeadOfHousehold","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updateHeadOfHousehold("244000", 0))
+	                .body(CustomerInfoPL.updateHeadOfHousehold(companyId, "244000", 0))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

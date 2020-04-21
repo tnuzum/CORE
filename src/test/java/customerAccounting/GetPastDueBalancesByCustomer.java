@@ -43,7 +43,7 @@ public class GetPastDueBalancesByCustomer extends base {
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
-//         	.log().body()
+ //        	.log().body()
          	.statusCode(200)
          	.time(lessThan(60L),TimeUnit.SECONDS)
 			.extract().response();

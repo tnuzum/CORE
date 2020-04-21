@@ -2,9 +2,6 @@ package changeRequests;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.concurrent.TimeUnit;
-import static org.hamcrest.Matchers.*;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -46,10 +43,12 @@ public class GetPersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
-				XmlPath js = ReusableMethods.rawToXML(res);		
+				XmlPath js = ReusableMethods.rawToXML(res);	
+				
+				Assert.assertTrue(res.getTime() >= 60L);
+				
 				Assert.assertNotNull(js.getString("Envelope.Body.GetPersonalInformationResponse.GetPersonalInformationResult.Address1.CurrentValue"));
 				Assert.assertNotNull(js.getBoolean("Envelope.Body.GetPersonalInformationResponse.GetPersonalInformationResult.Address1.PendingChange"));
 				Assert.assertNotNull(js.getBoolean("Envelope.Body.GetPersonalInformationResponse.GetPersonalInformationResult.Address2.PendingChange"));

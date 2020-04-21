@@ -2,9 +2,6 @@ package changeRequests;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.concurrent.TimeUnit;
-import static org.hamcrest.Matchers.*;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -52,10 +49,11 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
-				XmlPath js = ReusableMethods.rawToXML(res);		
+				XmlPath js = ReusableMethods.rawToXML(res);	
+				
+				Assert.assertTrue(res.getTime() >= 60L);
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
@@ -79,7 +77,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -106,7 +103,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -133,7 +129,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -160,7 +155,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -189,7 +183,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -218,7 +211,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -245,7 +237,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -272,7 +263,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -299,7 +289,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -326,7 +315,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -353,7 +341,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -382,7 +369,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
              	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -409,7 +395,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
  //            	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -436,7 +421,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -463,7 +447,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -490,7 +473,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -517,7 +499,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -544,7 +525,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -571,7 +551,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -598,7 +577,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -625,7 +603,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -652,7 +629,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -679,7 +655,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -706,7 +681,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -733,7 +707,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
              	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -760,7 +733,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		
@@ -787,7 +759,6 @@ public class UpdatePersonalInformation extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();
 	      
 				XmlPath js = ReusableMethods.rawToXML(res);		

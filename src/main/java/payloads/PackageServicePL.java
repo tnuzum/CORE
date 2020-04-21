@@ -4,13 +4,13 @@ import resources.base;
 
 public class PackageServicePL extends base {
 	
-		public static String getAvailablePackagesByClub(String customerId, String clubId)
+		public static String getAvailablePackagesByClub(String companyId, String customerId, String clubId)
 		{
 			
 			String pd = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
 					"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
-					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+prop.getProperty("CompanyId")+"</CompanyId>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
 					"   </soapenv:Header>\r\n" + 
 					"   <soapenv:Body>\r\n" + 
 					"      <tem:GetAvailablePackagesByClub>\r\n" + 
@@ -22,12 +22,12 @@ public class PackageServicePL extends base {
 			return pd;
 		}
 		
-		public static String getAvailablePackagesByClubOnlineBypass(String customerId, String clubId, Boolean returnOnlinePackageOnly)
+		public static String getAvailablePackagesByClubOnlineBypass(String companyId, String customerId, String clubId, Boolean returnOnlinePackageOnly)
 		{
 			
 			String pd = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
-					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+prop.getProperty("CompanyId")+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
 					"   <soapenv:Body>\r\n" + 
 					"      <tem:GetAvailablePackagesByClubOnlineBypass>\r\n" + 
 					"         <tem:customerId>"+customerId+"</tem:customerId>\r\n" + 
@@ -39,12 +39,12 @@ public class PackageServicePL extends base {
 			return pd;
 		}
 		
-		public static String getPackage(String customerId, String packageId, String clubId)
+		public static String getPackage(String companyId, String customerId, String packageId, String clubId)
 		{
 			
 			String pd = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
-					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+prop.getProperty("CompanyId")+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" +
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" +
 //					"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext><CompanyId xmlns=\"http://jonasfitness.com/Core/\">236</CompanyId></soapenv:Header>\r\n" + 
 					"   <soapenv:Body>\r\n" + 
 					"      <tem:GetPackage>\r\n" + 
@@ -60,12 +60,12 @@ public class PackageServicePL extends base {
 			return pd;
 		}
 	
-		public static String getPackageDetails(String customerId, String packageId, String clubId, boolean includeItemRestrictions)
+		public static String getPackageDetails(String companyId, String customerId, String packageId, String clubId, boolean includeItemRestrictions)
 		{
 			
 			String pd = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
 					"   <soapenv:Header>\r\n" + 
-					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+prop.getProperty("CompanyId")+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
 					"  <soapenv:Body>\r\n" + 
 					"      <tem:GetPackageDetails>\r\n" + 
 					"         <tem:customerId>"+customerId+"</tem:customerId>\r\n" + 
