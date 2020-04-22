@@ -229,5 +229,20 @@ public class CustomerAccountingPL extends base {
 			return pl;
 		}
 		
+		public static String getOutstandingInvoices(String companyId, String asOfDate)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:GetOutstandingInvoices>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+					"      </tem:GetOutstandingInvoices>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
 		
 }
