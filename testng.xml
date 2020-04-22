@@ -28,6 +28,7 @@
     <class name="customerAccounting.GetInvoiceChargeReceiptDetail"/>
     <class name="customerAccounting.GetInvoiceChargeReceiptDetailForReceiptNumber"/>
     <class name="customerAccounting.GetLastPaymentDateForCustomer"/>
+    <class name="customerAccounting.GetOutstandingInvoices"/>
     <class name="customerAccounting.GetPastDueBalancesByCustomer"/>
     <class name="customerAccounting.GetPaymentReceiptDetail"/>
     <class name="customerAccounting.GetPaymentReceiptDetailForReceiptNumber"/>
