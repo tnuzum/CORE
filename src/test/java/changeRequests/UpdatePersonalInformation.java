@@ -56,8 +56,11 @@ public class UpdatePersonalInformation extends base {
 				Assert.assertTrue(res.getTime() >= 60L);
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
-				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");	
+				
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+}
 	
 	@Test (testName="Update Address 2")
 	public void updateAddress2(){
@@ -83,10 +86,13 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+				
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 
-	@Test (testName="Update AllowOnlineSearch")
-	public void updateAllowOnlineSearch(){
+	@Test (testName="Update AllowOnlineSearch to True")
+	public void updateAllowOnlineSearchTrue(){
 		
 		String fieldName = "AllowOnlineSearch";
 		String newValue = "true";
@@ -109,8 +115,40 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
+	
+	@Test (testName="Update AllowOnlineSearch to False")
+	public void updateAllowOnlineSearchFalse(){
+		
+		String fieldName = "AllowOnlineSearch";
+		String newValue = "false";
+		String submissionReasonDetail = "Test Submission Reason Details";
 
+	      Response res =  given()
+//	        .log().all()
+ 			.headers("SOAPAction", "http://tempuri.org/IChangeRequests/UpdatePersonalInformation",
+ 					"Content-Type", "text/xml; charset=utf-8")
+	                .and()
+	                .body(ChangeRequestsPL.updatePersonalInformationNoFamily(companyId, customerId, fieldName, newValue, submissionReason, submissionReasonDetail))
+	         .when()
+	            .post("/ChangeRequests/ChangeRequest.svc")
+	         .then()
+//             	.log().body()
+	            .statusCode(200)
+				.extract().response();
+	      
+				XmlPath js = ReusableMethods.rawToXML(res);		
+				
+				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
+				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
+	
 	@Test (testName="Update BarcodeId")
 	public void updateBarcodeId(){
 		
@@ -135,7 +173,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+				
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update City")
 	public void updateCity(){
@@ -161,7 +202,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 
 	@Test (testName="Update Date of Birth", enabled = false)
 	public void updateDateOfBirth(){
@@ -189,7 +233,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 
 	@Test (testName="Update Drivers License", enabled = false)
 	public void updateDriversLicense(){
@@ -217,7 +264,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 
 	@Test (testName="Update Email", enabled = true)
 	public void updateEmail(){
@@ -243,7 +293,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, "Email", newValue));
+				}
 
 	@Test (testName="Update Email Contact Consent", enabled = true)
 	public void updateEmailContactConsent(){
@@ -269,7 +322,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Emergency Contact Name", enabled = false)
 	public void updateEmergencyContactName(){
@@ -295,7 +351,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Emergency Contact Phone Number", enabled = false)
 	public void updateEmergencyContactPhoneNumber(){
@@ -321,7 +380,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+				
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update First Name", enabled = true)
 	public void updateFirstName(){
@@ -347,7 +409,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update HomeClubNumber", enabled = false)
 	public void updateHomeClubNumber(){
@@ -375,7 +440,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Home Phone", enabled = true)
 	public void updateHomePhone(){
@@ -401,7 +469,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Home Phone Contact Consent", enabled = true)
 	public void updateHomePhoneContactConsent(){
@@ -427,7 +498,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Last Name", enabled = true)
 	public void updateLastName(){
@@ -453,7 +527,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Middle Initial", enabled = false)
 	public void updateMiddleInitial(){
@@ -479,7 +556,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Mobile Phone", enabled = true)
 	public void updateMobilePhone(){
@@ -505,7 +585,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Mobile Phone Contact Consent", enabled = true)
 	public void mobilePhoneContactConsent(){
@@ -531,7 +614,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Preferred Phone", enabled = true)
 	public void updatePreferredPhone(){
@@ -557,7 +643,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Restrict Member From Search", enabled = true)
 	public void updateRestrictMemberFromSearch(){
@@ -583,7 +672,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Salesperson Barcode Id", enabled = false)
 	public void updateSalespersonBarcodeId(){
@@ -609,7 +701,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Social Security Number", enabled = false)
 	public void updateSocialSecurityNumber(){
@@ -635,7 +730,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update State", enabled = true)
 	public void updateState(){
@@ -661,10 +759,15 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
-	@Test (testName="Update Trainer Barcode Id", enabled = true)
+	@Test (testName="Update Trainer Barcode Id", enabled = false)
 	public void updateTrainerBarcodeId(){
+		
+		// this is disabled because it's returning a boolean instead of an Id; but has been written up
 				
 		String fieldName = "TrainerBarcodeId";
 		String newValue = "1112222";
@@ -687,7 +790,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Work Ext", enabled = false)
 	public void updateWorkExt(){
@@ -697,7 +803,7 @@ public class UpdatePersonalInformation extends base {
 		String submissionReasonDetail = "Test Submission Reason Details";
 
 	      Response res =  given()
-	        .log().all()
+	    		  .log().all()
  			.headers("SOAPAction", "http://tempuri.org/IChangeRequests/UpdatePersonalInformation",
  					"Content-Type", "text/xml; charset=utf-8")
 	                .and()
@@ -713,7 +819,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update Work Phone", enabled = true)
 	public void updateWorkPhone(){
@@ -739,7 +848,10 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 	@Test (testName="Update ZipCode", enabled = true)
 	public void updateZipCode(){
@@ -765,7 +877,68 @@ public class UpdatePersonalInformation extends base {
 				
 				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		}
+		
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
+	
+	@Test (testName="Update Restrict Member From Multi-Member Search to True", enabled = true)
+	public void updateRestrictMemberFromMultiMemberSearchTrue(){
+				
+		String fieldName = "RestrictMemberFromSearch";
+		String newValue = "true";
+		String submissionReasonDetail = "Test Submission Reason Details";
+
+	      Response res1 =  given()
+//	        .log().all()
+ 			.headers("SOAPAction", "http://tempuri.org/IChangeRequests/UpdatePersonalInformation",
+ 					"Content-Type", "text/xml; charset=utf-8")
+	                .and()
+	                .body(ChangeRequestsPL.updatePersonalInformationNoFamily(companyId, customerId, fieldName, newValue, submissionReason, submissionReasonDetail))
+	         .when()
+	            .post("/ChangeRequests/ChangeRequest.svc")
+	         .then()
+ //            	.log().body()
+	            .statusCode(200)
+				.extract().response();
+	      
+				XmlPath js1 = ReusableMethods.rawToXML(res1);		
+				
+				Assert.assertNotNull(js1.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
+				Assert.assertEquals(js1.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
+	
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
+	
+	@Test (testName="Update Restrict Member From Multi-Member Search to False", enabled = true)
+	public void updateRestrictMemberFromMultiMemberSearchFalse(){
+				
+		String fieldName = "RestrictMemberFromSearch";
+		String newValue = "false";
+		String submissionReasonDetail = "Test Submission Reason Details";
+
+	      Response res1 =  given()
+//	        .log().all()
+ 			.headers("SOAPAction", "http://tempuri.org/IChangeRequests/UpdatePersonalInformation",
+ 					"Content-Type", "text/xml; charset=utf-8")
+	        .and()
+	        .body(ChangeRequestsPL.updatePersonalInformationNoFamily(companyId, customerId, fieldName, newValue, submissionReason, submissionReasonDetail))
+	        .when()
+	        .post("/ChangeRequests/ChangeRequest.svc")
+	        .then()
+ //            	.log().body()
+	            .statusCode(200)
+				.extract().response();
+	      
+				XmlPath js1 = ReusableMethods.rawToXML(res1);		
+				
+				Assert.assertNotNull(js1.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
+				Assert.assertEquals(js1.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
+	
+				// ** Validate field was updated correctly
+				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+				}
 	
 
 

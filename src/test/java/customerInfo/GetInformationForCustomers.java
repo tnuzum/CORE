@@ -102,6 +102,7 @@ public class GetInformationForCustomers extends base {
 		String customerId = prop.getProperty("prospectId");
 		
 	       Response res =  given()
+//	    		   .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetInformationForCustomers","Content-Type", "text/xml; charset=utf-8")
 	                .and()
 	                .body(CustomerInfoPL.getInformationForCustomers(companyId, customerId))

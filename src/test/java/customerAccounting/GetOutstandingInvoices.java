@@ -26,7 +26,7 @@ public class GetOutstandingInvoices extends base {
 
 	}
 	
-	@Test (testName="Outstanding Invoices Found")
+	@Test (testName="Outstanding Invoices Found", description = "PBI: 153782")
 	public void outstandingInvoicesFound() {
 		
 		asOfDate = ReusableDates.getCurrentDate();
@@ -55,15 +55,12 @@ public class GetOutstandingInvoices extends base {
 			Assert.assertNotNull(js.getInt("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceId"));
 			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoicePaidAmount"));
 			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceTotal"));
-			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].LateFeeAmount"));
-			Assert.assertNotNull(js.getInt("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].LateFeeApplied"));
-			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].NsfFeeAmount"));
-			Assert.assertNotNull(js.getInt("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].NsfFeeApplied"));
+			Assert.assertNotNull(js.getBoolean("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].NsfFeeApplied"));
 			Assert.assertNotNull(js.getInt("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].ReceiptNumber"));
 	
 	}
 	
-	@Test (testName="Outstanding Invoices Not Found")
+	@Test (testName="Outstanding Invoices Not Found", description = "PBI: 153782")
 	public void outstandingInvoicesNotFound() {
 		
 		asOfDate = "1980-01-01";
@@ -80,7 +77,7 @@ public class GetOutstandingInvoices extends base {
          	.statusCode(200);
 	}
 	
-	@Test (testName="Invalid Date")
+	@Test (testName="Invalid Date", description = "PBI: 153782")
 	public void invalidDate() {
 		
 		asOfDate = "1980-13-01";
