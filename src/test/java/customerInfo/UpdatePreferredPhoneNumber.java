@@ -13,12 +13,15 @@ import resources.base;
 
 public class UpdatePreferredPhoneNumber extends base {
 	
+	String companyId;
 	String customerId;
 	
 	@BeforeTest
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 		customerId = prop.getProperty("MultipleAgreementsWithSingleCardId");
 	}
 
@@ -28,7 +31,7 @@ public class UpdatePreferredPhoneNumber extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdatePreferredPhoneNumber","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updatePreferredPhoneNumber(customerId, "Home"))
+	                .body(CustomerInfoPL.updatePreferredPhoneNumber(companyId, customerId, "Home"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -40,7 +43,7 @@ public class UpdatePreferredPhoneNumber extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(customerId))
+	                .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -55,7 +58,7 @@ public class UpdatePreferredPhoneNumber extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdatePreferredPhoneNumber","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updatePreferredPhoneNumber(customerId, "Work"))
+	                .body(CustomerInfoPL.updatePreferredPhoneNumber(companyId, customerId, "Work"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -67,7 +70,7 @@ public class UpdatePreferredPhoneNumber extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(customerId))
+	                .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -82,7 +85,7 @@ public class UpdatePreferredPhoneNumber extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdatePreferredPhoneNumber","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updatePreferredPhoneNumber(customerId, "Mobile"))
+	                .body(CustomerInfoPL.updatePreferredPhoneNumber(companyId, customerId, "Mobile"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -94,7 +97,7 @@ public class UpdatePreferredPhoneNumber extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(customerId))
+	                .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -109,7 +112,7 @@ public class UpdatePreferredPhoneNumber extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/UpdatePreferredPhoneNumber","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.updatePreferredPhoneNumber("99999", "Mobile"))
+	                .body(CustomerInfoPL.updatePreferredPhoneNumber(companyId, "99999", "Mobile"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

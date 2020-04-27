@@ -11,10 +11,14 @@ import resources.base;
 
 public class GetCustomerInfo extends base {
 	
+	String companyId;
+	
 	@BeforeTest
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 	}
 	
 	@Test (testName="Customer Found")
@@ -23,7 +27,7 @@ public class GetCustomerInfo extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo("244"))
+	                .body(CustomerInfoPL.getCustomerInfo(companyId, "244"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

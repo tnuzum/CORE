@@ -3,7 +3,7 @@ package changeRequests;
 import static io.restassured.RestAssured.given;
 
 import java.util.concurrent.TimeUnit;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.lessThan;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -18,6 +18,7 @@ import resources.base;
 
 public class Draft_AddStoredBankAccount extends base {
 	
+	String companyId;
 	String customerId;
 	String clubId;
 	
@@ -25,6 +26,8 @@ public class Draft_AddStoredBankAccount extends base {
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 		customerId = prop.getProperty("availableId");
 		clubId = prop.getProperty("club1Id");
 	}
@@ -43,7 +46,7 @@ public class Draft_AddStoredBankAccount extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetPackage","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getPackage(customerId, packageId, clubId))
+	                .body(PackageServicePL.getPackage(companyId, customerId, packageId, clubId))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()

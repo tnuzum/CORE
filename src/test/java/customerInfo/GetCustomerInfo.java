@@ -2,7 +2,7 @@ package customerInfo;
 
 import static io.restassured.RestAssured.given;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -15,12 +15,16 @@ import payloads.CustomerInfoPL;
 import resources.ReusableMethods;
 import resources.base;
 
-public class GetCustomerInfoTest extends base {
+public class GetCustomerInfo extends base {
+	
+	String companyId;
 	
 	@BeforeTest
 	public void getData(){
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 	}
 	
 	@Test (testName="Customer Found")
@@ -29,13 +33,13 @@ public class GetCustomerInfoTest extends base {
 		String customerId = prop.getProperty("availableId");
 		
 	       Response res =  given()
-	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
-	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo(customerId))
+                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
+                .and()
+                .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
- //            	.log().all()
+//             	.log().all()
 	            .statusCode(200)
 	            .extract().response();
 	       
@@ -49,6 +53,7 @@ public class GetCustomerInfoTest extends base {
 			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.Country"));
 			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.PostalCode"));
 			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.Address.StateProvince"));
+			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.AllowOnlineSearch"));
 			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DateOfBirth"));
 			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DriversLicenseNumber"));
 			    Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.EmailAddress"));
@@ -94,20 +99,84 @@ public class GetCustomerInfoTest extends base {
 	public void customerNotFound(){
 
 	        given()
-	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
-	                .and()
-	                .body(CustomerInfoPL.getCustomerInfo("99999"))
-	         .when()
-	            .post("/Info/CustomerInfo.svc")
-	         .then()
+	         .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
+	         .and()
+	         .body(CustomerInfoPL.getCustomerInfo(companyId, "99999"))
+	       .when()
+	         .post("/Info/CustomerInfo.svc")
+	       .then()
 //	         .log().all()
-	            .statusCode(200)
-				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DateOfBirth", equalTo("0001-01-01T00:00:00"))
-				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomeClubNumber", equalTo("0"))
-				.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.ValidBarcode", equalTo("BarcodeNotFound"))
-				
-				;     
+            .statusCode(200)
+			.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.DateOfBirth", equalTo("0001-01-01T00:00:00"))
+			.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.HomeClubNumber", equalTo("0"))
+			.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.ValidBarcode", equalTo("BarcodeNotFound"));     
+		}
+	
+	@Test (testName="Allow Online Search - True")
+	public void allowOnlineSearchTrue(){
+		
+		String customerId = prop.getProperty("availableId");
 
-	}
+	        given()
+	         .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
+	         .and()
+	         .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
+	       .when()
+	         .post("/Info/CustomerInfo.svc")
+	       .then()
+//	         .log().all()
+            .statusCode(200)
+			.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.AllowOnlineSearch", equalTo("true"));    
+		}
+	
+	@Test (testName="Allow Online Search - False")
+	public void allowOnlineSearchFalse(){
+		
+		String customerId = prop.getProperty("noWebId");
 
+	        given()
+	         .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
+	         .and()
+	         .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
+	       .when()
+	         .post("/Info/CustomerInfo.svc")
+	       .then()
+//	         .log().all()
+            .statusCode(200)
+			.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.AllowOnlineSearch", equalTo("false"));    
+		}
+	
+	@Test (testName="Restrict Member From Search - True")
+	public void restrictMemberFromSearchTrue(){
+		
+		String customerId = prop.getProperty("restrictSearchId");
+
+	        given()
+	         .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
+	         .and()
+	         .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
+	       .when()
+	         .post("/Info/CustomerInfo.svc")
+	       .then()
+//	         .log().all()
+            .statusCode(200)
+			.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.RestrictMemberFromSearch", equalTo("true"));    
+		}
+
+	@Test (testName="Restrict Member From Search - False")
+	public void restrictMemberFromSearchFalse(){
+		
+		String customerId = prop.getProperty("availableId");
+
+	        given()
+	         .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
+	         .and()
+	         .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
+	       .when()
+	         .post("/Info/CustomerInfo.svc")
+	       .then()
+//	         .log().all()
+            .statusCode(200)
+			.body("Envelope.Body.GetCustomerInfoResponse.GetCustomerInfoResult.RestrictMemberFromSearch", equalTo("false"));    
+		}
 }

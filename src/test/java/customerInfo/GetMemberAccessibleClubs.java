@@ -13,10 +13,14 @@ import resources.base;
 
 public class GetMemberAccessibleClubs extends base {
 	
+	String companyId;
+	
 	@BeforeTest
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 	}
 	
 	@Test (testName="Clubs Found")
@@ -27,7 +31,7 @@ public class GetMemberAccessibleClubs extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetMemberAccessibleClubs","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getMemberAccessibleClubs(customerId))
+	                .body(CustomerInfoPL.getMemberAccessibleClubs(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -45,7 +49,7 @@ public class GetMemberAccessibleClubs extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetMemberAccessibleClubs","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getMemberAccessibleClubs("22300"))
+	                .body(CustomerInfoPL.getMemberAccessibleClubs(companyId, "22300"))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

@@ -11,10 +11,14 @@ import resources.base;
 
 public class GetAvailablePackagesByClub extends base {
 	
+	String companyId;
+	
 	@BeforeTest
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 	}
 	
 	@Test (testName="Packages Found")
@@ -24,7 +28,7 @@ public class GetAvailablePackagesByClub extends base {
 //	        .log().all()
 	                .headers("SOAPAction", "http://tempuri.org/IPackageService/GetAvailablePackagesByClub","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(PackageServicePL.getAvailablePackagesByClub("244", "1"))
+	                .body(PackageServicePL.getAvailablePackagesByClub(companyId, "244", "1"))
 	         .when()
 	            .post("/Packages/PackageService.svc")
 	         .then()

@@ -17,10 +17,14 @@ import resources.base;
 
 public class GetFullFamilyForTest extends base {
 	
+	String companyId;
+	
 	@BeforeTest
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 	}
 	
 	@Test (testName="Family Found")
@@ -31,7 +35,7 @@ public class GetFullFamilyForTest extends base {
 	        Response res = given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetFullFamilyFor","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getFullFamilyFor(customerId))
+	                .body(CustomerInfoPL.getFullFamilyFor(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -77,7 +81,7 @@ public class GetFullFamilyForTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetFullFamilyFor","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getFullFamilyFor(customerId))
+	                .body(CustomerInfoPL.getFullFamilyFor(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
