@@ -13,10 +13,14 @@ import resources.base;
 
 public class SearchMembers extends base {
 	
+	String companyId;
+	
 	@BeforeTest
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 	}
 	
 	@Test (testName="Members Found")
@@ -29,7 +33,7 @@ public class SearchMembers extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/SearchMembers","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.searchMembers(lName, hPhone, email))
+	                .body(CustomerInfoPL.searchMembers(companyId, lName, hPhone, email))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -66,7 +70,7 @@ public class SearchMembers extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/SearchMembers","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.searchMembers("NotAuto", "", ""))
+	                .body(CustomerInfoPL.searchMembers(companyId, "NotAuto", "", ""))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

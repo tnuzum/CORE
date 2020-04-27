@@ -207,10 +207,10 @@ public class AuthorizeCustomerTest extends base{
 				.statusCode(200)
 				.extract().response();  
 				
-				XmlPath js = ReusableMethods.rawToXML(res);
+//				XmlPath js = ReusableMethods.rawToXML(res);
 						
 				Assert.assertTrue(res.getTime() >= 60L);
-				String text = js.getString("Envelope.Body.AuthorizeCustomerResponse.AuthorizeCustomerResult.Permissions");
+//				String text = js.getString("Envelope.Body.AuthorizeCustomerResponse.AuthorizeCustomerResult.Permissions");
 				//Assert.assertFalse(text.contains("RealTimePayments"));
 				
 		}

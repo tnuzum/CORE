@@ -17,10 +17,14 @@ import resources.base;
 
 public class GetFamilyMembersForTest extends base {
 	
+	String companyId; 
+	
 	@BeforeTest
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
+		
+		companyId = prop.getProperty("X-CompanyId");
 	}
 	
 	@Test (testName="Family Member Found")
@@ -31,7 +35,7 @@ public class GetFamilyMembersForTest extends base {
 	        Response res = given()
 	        	.headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetFamilyMembersFor","Content-Type", "text/xml; charset=utf-8")
 	        	.and()
-	        	.body(CustomerInfoPL.getFamilyMembersFor(customerId))
+	        	.body(CustomerInfoPL.getFamilyMembersFor(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
@@ -69,7 +73,7 @@ public class GetFamilyMembersForTest extends base {
 	        given()
 	                .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetFamilyMembersFor","Content-Type", "text/xml; charset=utf-8")
 	                .and()
-	                .body(CustomerInfoPL.getFamilyMembersFor(customerId))
+	                .body(CustomerInfoPL.getFamilyMembersFor(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()

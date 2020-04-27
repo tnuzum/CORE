@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="CORE.CorporateInfo.GetBranding">
+      <class name="customerInfo.GetInformationForCustomers">
         <methods>
-          <include name="getBrandingNoFilter"/>
           <include name="getData"/>
+          <include name="prospectFound"/>
         </methods>
-      </class> <!-- CORE.CorporateInfo.GetBranding -->
+      </class> <!-- customerInfo.GetInformationForCustomers -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
