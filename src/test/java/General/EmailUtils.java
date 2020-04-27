@@ -75,7 +75,7 @@ public class EmailUtils  {
 	  String projectPath = System.getenv("CORE_HOME");
 	  Properties props = System.getProperties();
     try {
-      props.load(new FileInputStream(new File(projectPath + "\\src\\main\\java\\resources/email.properties")));
+      props.load(new FileInputStream(new File(projectPath + "\\src\\main\\java\\resources\\email.properties")));
     } catch(Exception e) {
       e.printStackTrace();
       System.exit(-1);

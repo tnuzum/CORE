@@ -6,10 +6,11 @@ import java.util.Calendar;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+
 
 
 public class EmailConfirmations  {
@@ -18,6 +19,7 @@ public class EmailConfirmations  {
 	  @BeforeClass
 	  public static void connectToEmail() {
 	    try {
+	    	
 	      emailUtils = new EmailUtils("jonasautotesting@gmail.com", "Testing1!", "smtp.gmail.com", EmailUtils.EmailFolder.INBOX) ;
 	    } catch (Exception e) {
 		      e.printStackTrace();
@@ -28,7 +30,7 @@ public class EmailConfirmations  {
 
 	  @Test(priority=1, description = "confirms the number of unread emails")
 	  public void numberOfUnreadMails() throws MessagingException {
-    	int count = emailUtils.getNumberOfUnreadMessages();
+		int count = emailUtils.getNumberOfUnreadMessages();
     	System.out.println(count);
     	Assert.assertTrue(count > 0);
         }
@@ -37,11 +39,11 @@ public class EmailConfirmations  {
 	  @Test(priority=2, description = "Verifies the Class Enrollment confirmation email")
 	  public void ClassEnrollmentConfirmation() {
 	    try{
-	    Message email1 = emailUtils.getMessagesBySubject("Enrollment Notification", true, 8)[0];
+	    Message email1 = emailUtils.getMessagesBySubject("CoreFamiyClass Enrollment Summary", true, 1)[0];
 	    
 	    System.out.println(emailUtils.getMessageContent(email1));
 	    String emailMessage1 = emailUtils.getMessageContent(email1);
-	    Assert.assertTrue(emailMessage1.contains("You have been successfully enrol=led in the following class."));
+/*	    Assert.assertTrue(emailMessage1.contains("You have been successfully enrol=led in the following class."));
 	    
 	    Assert.assertTrue(emailUtils.isTextInMessage(email1, "You have been successfully enrol=led in the following class."));
 	    Assert.assertTrue(emailUtils.isTextInMessage(email1, "Location: =Jonas Sports-Plex"));
@@ -52,7 +54,7 @@ public class EmailConfirmations  {
 		 String tomorrowsDate = dateFormat11.format(today11.getTime());
 		 String classdateAndTime = "Class Time:= " +tomorrowsDate+ " 10:00 AM";
 		 System.out.println(classdateAndTime);
-	    Assert.assertTrue(emailUtils.isTextInMessage(email1, classdateAndTime));
+	    Assert.assertTrue(emailUtils.isTextInMessage(email1, classdateAndTime));*/
 	   
 	    } catch (Exception e) {
 	      e.printStackTrace();
@@ -213,7 +215,7 @@ public class EmailConfirmations  {
 		    Assert.assertTrue(emailUtils.isTextInMessage(email7, "Description: PT Group=-ThreeResources"));
 		    Assert.assertTrue(emailUtils.isTextInMessage(email7, "Date: " + tomorrowsDayAndDate ));
 		    Assert.assertTrue(emailUtils.isTextInMessage(email7,  "1 Hour 0 Minute"));
-		    //Assert.assertTrue(emailUtils.isTextInMessage(email7, "5:00"));
+		    Assert.assertTrue(emailUtils.isTextInMessage(email7, "5:00"));
 		    	                                                        
 		    
 		   
@@ -251,8 +253,4 @@ public class EmailConfirmations  {
 		    }
 		    
 	  }
-		  
-		 
-		
-	
 }
