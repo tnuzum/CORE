@@ -30,7 +30,9 @@ public class GetPersonalInformation extends base {
 	@Test (testName="Get Personal Information")
 	public void getPersonalInformation(){
 		
-		String customerId = prop.getProperty("passwordChangeId");
+		//String customerId = prop.getProperty("passwordChangeId");
+		String customerId = prop.getProperty("changeMemberId");
+		
 
 	      Response res =  given()
 //	        .log().all()
