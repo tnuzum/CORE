@@ -253,8 +253,4 @@ public class EmailConfirmations  {
 		    }
 		    
 	  }
-		  
-		 
-		
-	
 }
