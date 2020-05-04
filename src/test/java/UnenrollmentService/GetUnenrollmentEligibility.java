@@ -407,5 +407,168 @@ public class GetUnenrollmentEligibility extends base {
 					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundablePackage.RefundablePunchQuantity");
 			}
 			
+			@Test (priority = 16, testName="Class Eligible for Unenerollment, Cancellation Fee exists")
+			public void UnenrollmentFeeExistsForClassEnrolledByFee() {
+				
+				String UnenrollmentFeeExistsForClassEnrolledByFee_EnrollmentId = prop.getProperty("UnenrollmentFeeExistsForClassEnrolledByFee_EnrollmentId");
+				
+				Response res = given()
+		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
+					.and()
+					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, UnenrollmentFeeExistsForClassEnrolledByFee_EnrollmentId))
+				.when()
+					.post("/ClassesAndCourses/UnenrollmentService.svc")
+				.then()
+//					.log().all()
+					.statusCode(200)
+					.extract().response();  
+					
+					XmlPath js = ReusableMethods.rawToXML(res);
+							
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
+					
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemDescription");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemId");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.Amount");
+			}
+			
+			@Test (priority = 17, testName="Class Eligible for Unenerollment, Cancellation Fee exists for class enrolled with Service D also")
+			public void UnenrollmentFeeExistsForClassEnrolledByServiceD() {
+				
+				String UnenrollmentFeeExistsForClassEnrolledByServiceD_EnrollmentId = prop.getProperty("UnenrollmentFeeExistsForClassEnrolledByServiceD_EnrollmentId");
+				
+				Response res = given()
+		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
+					.and()
+					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, UnenrollmentFeeExistsForClassEnrolledByServiceD_EnrollmentId))
+				.when()
+					.post("/ClassesAndCourses/UnenrollmentService.svc")
+				.then()
+//					.log().all()
+					.statusCode(200)
+					.extract().response();  
+					
+					XmlPath js = ReusableMethods.rawToXML(res);
+							
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
 
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemDescription");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemId");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.Amount");
+			}
+			
+			@Test (priority = 18, testName="Class Eligible for Unenerollment, Cancellation Fee exists for class enrolled with Punches also")
+			public void UnenrollmentFeeExistsForClassEnrolledByPunches() {
+				
+				String UnenrollmentFeeExistsForClassEnrolledByPunches_EnrollmentId = prop.getProperty("UnenrollmentFeeExistsForClassEnrolledByPunches_EnrollmentId");
+				
+				Response res = given()
+		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
+					.and()
+					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, UnenrollmentFeeExistsForClassEnrolledByPunches_EnrollmentId))
+				.when()
+					.post("/ClassesAndCourses/UnenrollmentService.svc")
+				.then()
+//					.log().all()
+					.statusCode(200)
+					.extract().response();  
+					
+					XmlPath js = ReusableMethods.rawToXML(res);
+							
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
+
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemDescription");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemId");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.Amount");
+			}
+			
+			@Test (priority = 19, testName="Course Eligible for Unenerollment, Cancellation Fee exists")
+			public void UnenrollmentFeeExistsForCourseEnrolledByFee() {
+				
+				String UnenrollmentFeeExistsForCourseEnrolledByFee_EnrollmentId = prop.getProperty("UnenrollmentFeeExistsForCourseEnrolledByFee_EnrollmentId");
+				
+				Response res = given()
+		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
+					.and()
+					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, UnenrollmentFeeExistsForCourseEnrolledByFee_EnrollmentId))
+				.when()
+					.post("/ClassesAndCourses/UnenrollmentService.svc")
+				.then()
+//					.log().all()
+					.statusCode(200)
+					.extract().response();  
+					
+					XmlPath js = ReusableMethods.rawToXML(res);
+							
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
+					
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemDescription");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemId");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.Amount");
+			}
+			
+			@Test (priority = 20, testName="Course Eligible for Unenerollment, Cancellation Fee exists for Course enrolled with Service D also")
+			public void UnenrollmentFeeExistsForCourseEnrolledByServiceD() {
+				
+				String UnenrollmentFeeExistsForCourseEnrolledByServiceD_EnrollmentId = prop.getProperty("UnenrollmentFeeExistsForCourseEnrolledByServiceD_EnrollmentId");
+				
+				Response res = given()
+		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
+					.and()
+					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, UnenrollmentFeeExistsForCourseEnrolledByServiceD_EnrollmentId))
+				.when()
+					.post("/ClassesAndCourses/UnenrollmentService.svc")
+				.then()
+//					.log().all()
+					.statusCode(200)
+					.extract().response();  
+					
+					XmlPath js = ReusableMethods.rawToXML(res);
+							
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
+
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemDescription");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemId");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.Amount");
+			}
+			
+			@Test (priority = 21, testName="Course Eligible for Unenerollment, Cancellation Fee exists for Course enrolled with Punches also")
+			public void UnenrollmentFeeExistsForCourseEnrolledByPunches() {
+				
+				String UnenrollmentFeeExistsForCourseEnrolledByPunches_EnrollmentId = prop.getProperty("UnenrollmentFeeExistsForCourseEnrolledByPunches_EnrollmentId");
+				
+				Response res = given()
+		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
+					.and()
+					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, UnenrollmentFeeExistsForCourseEnrolledByPunches_EnrollmentId))
+				.when()
+					.post("/ClassesAndCourses/UnenrollmentService.svc")
+				.then()
+//					.log().all()
+					.statusCode(200)
+					.extract().response();  
+					
+					XmlPath js = ReusableMethods.rawToXML(res);
+							
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
+
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemDescription");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemId");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.Amount");
+			}
+
+			
+			
 }
