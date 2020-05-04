@@ -64,6 +64,7 @@ public class AuthorizeCustomerTest extends base{
 				Assert.assertTrue(text.contains("ViewCourses"));
 				Assert.assertTrue(text.contains("ViewFamilyClasses"));
 				Assert.assertTrue(text.contains("ViewFamilyCourses"));
+				Assert.assertTrue(text.contains("DisplayFamilyAppointments"));
 				
 				
 		}
