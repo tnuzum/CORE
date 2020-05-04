@@ -244,5 +244,126 @@ public class CustomerAccountingPL extends base {
 			return pl;
 		}
 		
+		public static String getBillingDeclinesHistoriesAllParametersSingleClub(
+				String companyId,
+				String clubId,
+				String startDate,
+				String endDate,
+				String minimumDeclinesCount,
+				String returnsType)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:GetBillingDeclinesHistories>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:clubIds>\r\n" + 
+					"            <!--Zero or more repetitions:-->\r\n" + 
+					"            <arr:int>"+clubId+"</arr:int>\r\n" + 
+					"         </tem:clubIds>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:startDate>"+startDate+"</tem:startDate>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:endDate>"+endDate+"</tem:endDate>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:minimumDeclinesCount>"+minimumDeclinesCount+"</tem:minimumDeclinesCount>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:returnsType>"+returnsType+"</tem:returnsType>\r\n" + 
+					"      </tem:GetBillingDeclinesHistories>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}	
+		
+		public static String getBillingDeclinesHistoriesAllParametersMultipleClubs(
+				String companyId,
+				String clubId,
+				String club2Id,
+				String startDate,
+				String endDate,
+				String minimumDeclinesCount,
+				String returnsType)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:GetBillingDeclinesHistories>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:clubIds>\r\n" + 
+					"            <!--Zero or more repetitions:-->\r\n" + 
+					"            <arr:int>"+clubId+"</arr:int>\r\n" + 
+					"            <arr:int>"+club2Id+"</arr:int>\r\n" + 
+					"         </tem:clubIds>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:startDate>"+startDate+"</tem:startDate>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:endDate>"+endDate+"</tem:endDate>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:minimumDeclinesCount>"+minimumDeclinesCount+"</tem:minimumDeclinesCount>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:returnsType>"+returnsType+"</tem:returnsType>\r\n" + 
+					"      </tem:GetBillingDeclinesHistories>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}	
+		
+		public static String getBillingDeclinesHistoriesAllParametersAllClubs(
+				String companyId,
+				String startDate,
+				String endDate,
+				String minimumDeclinesCount,
+				String returnsType)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:GetBillingDeclinesHistories>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:clubIds>\r\n" + 
+
+					"         </tem:clubIds>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:startDate>"+startDate+"</tem:startDate>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:endDate>"+endDate+"</tem:endDate>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:minimumDeclinesCount>"+minimumDeclinesCount+"</tem:minimumDeclinesCount>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:returnsType>"+returnsType+"</tem:returnsType>\r\n" + 
+					"      </tem:GetBillingDeclinesHistories>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
+		public static String getMemberBillingDeclines(
+				String companyId,
+				String customerId)
+		{
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMemberBillingDeclines>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerId>"+customerId+"</tem:customerId>\r\n" + 
+				"      </tem:GetMemberBillingDeclines>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;	
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		
 }

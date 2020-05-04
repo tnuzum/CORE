@@ -23,11 +23,13 @@
     <class name="corporateInfo.GetInterestConfiguration"/>
     <class name="corporateInfo.GetRequiredFields"/>
     <class name="customerAccounting.GetAccountHistory"/>
+    <class name="customerAccounting.GetBillingDeclinesHistories"/>
     <class name="customerAccounting.GetCustomerAccountValue"/>
     <class name="customerAccounting.GetCustomerCurrentBalance"/>
     <class name="customerAccounting.GetInvoiceChargeReceiptDetail"/>
     <class name="customerAccounting.GetInvoiceChargeReceiptDetailForReceiptNumber"/>
     <class name="customerAccounting.GetLastPaymentDateForCustomer"/>
+    <class name="customerAccounting.GetMemberBillingDeclines"/>
     <class name="customerAccounting.GetOutstandingInvoices"/>
     <class name="customerAccounting.GetPastDueBalancesByCustomer"/>
     <class name="customerAccounting.GetPaymentReceiptDetail"/>

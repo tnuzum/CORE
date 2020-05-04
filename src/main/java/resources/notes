@@ -27,4 +27,11 @@ Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPac
 Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[1].StartRange"), 6);
 
 
+Assert.assertNotNull(js.getString("Result[0].PackagePaymentConfiguration.PunchesRequired"));
+				
+Assert.assertTrue(js.getString("Result[0]").contains("SubstituteInstructor"));
+				
+Assert.assertEquals(js.getString("Result[0].EnrollmentEligibilities[0].CustomerId"), customerId);
+
+
 	

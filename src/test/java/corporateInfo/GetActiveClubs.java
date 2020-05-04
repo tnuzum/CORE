@@ -41,13 +41,14 @@ public class GetActiveClubs extends base {
 		String club4Name = prop.getProperty("club4Name");
 		
 		Response res = given()
+				.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/GetActiveClubs","Content-Type", "text/xml; charset=utf-8")
 			.and()
 			.body(CorporateInfoPL.GetActiveClubs(companyId))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
-//			.log().all()
+			.log().all()
 			.statusCode(200)
 			.extract().response();  
 			
