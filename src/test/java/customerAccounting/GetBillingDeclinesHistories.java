@@ -28,7 +28,8 @@ public class GetBillingDeclinesHistories extends base {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 		
-		companyId = "101"; //companyId = prop.getProperty("X-CompanyId");
+		//companyId = "101";
+		companyId = prop.getProperty("X-CompanyId");
 		clubId = prop.getProperty("club1Id");
 		startDate = ReusableDates.getCurrentDateMinusXYears(1);
 		endDate = ReusableDates.getCurrentDate();
@@ -39,6 +40,8 @@ public class GetBillingDeclinesHistories extends base {
 	
 	@Test (testName="All History Found", description="PBI:150327")
 	public void allHistoryFound() {
+		
+		String companyId = "101";
 		
 	Response res = 
 			
@@ -73,6 +76,7 @@ public class GetBillingDeclinesHistories extends base {
 	@Test (testName="Corrections History Found", description="PBI:150327")
 	public void correctionsHistoryFound() {
 		
+		String companyId = "101";
 		String startDate = ReusableDates.getCurrentDateMinusXYears(5);
 		String returnsType = "Corrections";
 		
@@ -303,7 +307,7 @@ public class GetBillingDeclinesHistories extends base {
 	@Test (testName="Invalid Minimum Declines Count", description="PBI:150327")
 	public void invalidMinimumDeclinesCount() {
 		
-		String minimumDeclinesCount = "abcd";
+		String minimumDeclinesCount = prop.getProperty("NOF");
 		
 	Response res = 
 			
@@ -315,13 +319,13 @@ public class GetBillingDeclinesHistories extends base {
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
-//         	.log().body()
+//        	.log().all()
          	.statusCode(500)
          	.extract().response();
 	 
 			XmlPath js = ReusableMethods.rawToXML(res);
 	
-			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto.Message").contains("The value '"+minimumDeclinesCount+"' cannot be parsed as the type 'Int32'."));	
+			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto.Message").contains("The value 'null' cannot be parsed as the type 'Int32'."));	
 	}
 	
 	@Test (testName="Invalid Request Type", description="PBI:150327")
