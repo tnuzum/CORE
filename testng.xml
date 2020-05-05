@@ -24,6 +24,7 @@
     <class name="corporateInfo.GetRequiredFields"/>
     <class name="customerAccounting.GetAccountHistory"/>
     <class name="customerAccounting.GetBillingDeclinesHistories"/>
+    <class name="customerAccounting.GetCustomerAccountBalance"/>
     <class name="customerAccounting.GetCustomerAccountValue"/>
     <class name="customerAccounting.GetCustomerCurrentBalance"/>
     <class name="customerAccounting.GetInvoiceChargeReceiptDetail"/>
@@ -35,6 +36,7 @@
     <class name="customerAccounting.GetPaymentReceiptDetail"/>
     <class name="customerAccounting.GetPaymentReceiptDetailForReceiptNumber"/>
     <class name="customerAccounting.GetStoredPaymentAccountsForCustomer"/>
+    <class name="customerAccounting.identifyCreditCardType"/>
     <class name="customerAuth.AuthorizeCustomerTest"/>
     <class name="customerInfo.GetCustomerInfo"/>
     <class name="customerInfo.GetFamilyMembersForTest"/>

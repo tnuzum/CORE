@@ -340,10 +340,8 @@ public class CustomerAccountingPL extends base {
 			return pl;
 		}
 		
-		public static String getMemberBillingDeclines(
-				String companyId,
-				String customerId)
-		{
+		public static String getMemberBillingDeclines(String companyId,String customerId){
+			
 		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
 				"   <soapenv:Header>\r\n" + 
 				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
@@ -358,7 +356,21 @@ public class CustomerAccountingPL extends base {
 			return pl;	
 		}
 		
+		public static String getCustomerAccountBalance(String companyId,String customerId){
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetCustomerAccountBalance>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerId>"+customerId+"</tem:customerId>\r\n" + 
+				"      </tem:GetCustomerAccountBalance>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
 		
+			return pl;	
+		}
 		
 		
 		

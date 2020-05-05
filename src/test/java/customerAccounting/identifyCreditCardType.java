@@ -11,7 +11,7 @@ import io.restassured.RestAssured;
 import payloads.CustomerAccountingPL;
 import resources.base;
 
-public class IdentifyCreditCardType extends base {
+public class identifyCreditCardType extends base {
 	
 	static String companyId;
 	
