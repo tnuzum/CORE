@@ -41,7 +41,7 @@ public class GetBillingDeclinesHistories extends base {
 	@Test (testName="All History Found", description="PBI:150327")
 	public void allHistoryFound() {
 		
-		String companyId = "101";
+		String companyId = "236";
 		
 	Response res = 
 			
@@ -60,17 +60,17 @@ public class GetBillingDeclinesHistories extends base {
     		XmlPath js = ReusableMethods.rawToXML(res);
        		
     		Assert.assertTrue(res.getTime() >= 60L);
-    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Amount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Attendant"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ClubName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].DisplayCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDate"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDescription"));	
+    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Amount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Attendant"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ClubName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].DisplayCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDate"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDescription"));	
 	}
 	
 	@Test (testName="Corrections History Found", description="PBI:150327")
@@ -97,17 +97,17 @@ public class GetBillingDeclinesHistories extends base {
     		XmlPath js = ReusableMethods.rawToXML(res);
        		
     		Assert.assertTrue(res.getTime() >= 60L);
-    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Amount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Attendant"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ClubName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].DisplayCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDate"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDescription"));
+    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Amount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Attendant"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ClubName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].DisplayCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDate"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDescription"));
 	}
 	
 	@Test (testName="Declines History Found", description="PBI:150327")
@@ -132,17 +132,17 @@ public class GetBillingDeclinesHistories extends base {
     		XmlPath js = ReusableMethods.rawToXML(res);
        		
     		Assert.assertTrue(res.getTime() >= 60L);
-    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Amount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Attendant"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ClubName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].DisplayCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDate"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDescription"));
+    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Amount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Attendant"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ClubName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].DisplayCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDate"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDescription"));
 	}
 	
 	@Test (testName="History Found For Multiple Clubs", description="PBI:150327")
@@ -167,17 +167,17 @@ public class GetBillingDeclinesHistories extends base {
     		XmlPath js = ReusableMethods.rawToXML(res);
        		
     		Assert.assertTrue(res.getTime() >= 60L);
-    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Amount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Attendant"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ClubName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].DisplayCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDate"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDescription"));	
+    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Amount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Attendant"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ClubName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].DisplayCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDate"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDescription"));	
 	}
 	
 	@Test (testName="History Found For All Clubs", description="PBI:150327")
@@ -200,17 +200,17 @@ public class GetBillingDeclinesHistories extends base {
     		XmlPath js = ReusableMethods.rawToXML(res);
        		
     		Assert.assertTrue(res.getTime() >= 60L);
-    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Amount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].Attendant"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ClubName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].CustomerName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].DisplayCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDate"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclinesHistoryDto[0].ReturnDescription"));	
+    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Amount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Attendant"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ClubName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].DisplayCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDate"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDescription"));	
 	}
 	
 	@Test (testName="All History Not Found", description="PBI:150327")
@@ -401,28 +401,28 @@ public class GetBillingDeclinesHistories extends base {
 			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto.Message").contains("The value 'null' cannot be parsed as the type 'DateTime'."));	
 	}
 	
-	@Test (testName="End Date Prior to Start Date", description="PBI:150327", enabled = false)
+	@Test (testName="End Date Prior to Start Date", description="PBI:150327", enabled = true)
 	public void endDatePriorToStartDate() {
 		
 		String endDate = ReusableDates.getCurrentDateMinusXYears(5);
 		
-//	Response res = 
+	Response res = 
 			
 		given()
-			.log().all()
+//			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetBillingDeclinesHistories","Content-Type", "text/xml; charset=utf-8")
          	.and()
          	.body(CustomerAccountingPL.getBillingDeclinesHistoriesAllParametersSingleClub(companyId, clubId, startDate, endDate, minimumDeclinesCount, returnsType))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
-         	.log().all()
-         	.statusCode(500)
+//         	.log().all()
+         	.statusCode(200)
          	.extract().response();
 	 
-//			XmlPath js = ReusableMethods.rawToXML(res);
+			XmlPath js = ReusableMethods.rawToXML(res);
 	
-//			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto.Message").contains("The value 'null' cannot be parsed as the type 'DateTime'."));	
+			Assert.assertEquals(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.Messages"), "StartDate must be less than or equal to EndDate");	
 	}
 	
 	
