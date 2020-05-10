@@ -244,6 +244,22 @@ public class CustomerAccountingPL extends base {
 			return pl;
 		}
 		
+		public static String getOutstandingInvoicesIncludeTerminatedMember(String companyId, String asOfDate, Boolean includeTerminatedMembers)
+		{
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:GetOutstandingInvoices>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+					"		  <tem:includeTerminatedMembers>"+includeTerminatedMembers+"</tem:includeTerminatedMembers>\r\n" +
+					"      </tem:GetOutstandingInvoices>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
+		
 		public static String getBillingDeclinesHistoriesAllParametersSingleClub(
 				String companyId,
 				String clubId,
@@ -370,6 +386,340 @@ public class CustomerAccountingPL extends base {
 				"</soapenv:Envelope>";
 		
 			return pl;	
+		}
+		
+		public static String getMembersAccountBalancesPastDueRequiredOnly(
+				String companyId,
+				String daysPastDue
+				) {
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <!--tem:asOfDate></tem:asOfDate-->\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:daysPastDue>"+daysPastDue+"</tem:daysPastDue>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:clubIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:clubIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:membershipTypeIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:membershipTypeIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerStatusIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:customerStatusIdList>\r\n" + 
+				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;
+		}
+		
+		public static String getMembersAccountBalancesPastDueSingleClub(
+				String companyId,
+				String asOfDate,
+				String daysPastDue,
+				String clubId
+				) {
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:daysPastDue>"+daysPastDue+"</tem:daysPastDue>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:clubIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <arr:int>"+clubId+"</arr:int>\r\n" + 
+				"         </tem:clubIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:membershipTypeIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:membershipTypeIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerStatusIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:customerStatusIdList>\r\n" + 
+				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;
+		}
+		
+		public static String getMembersAccountBalancesPastDueMultipleClubs(
+				String companyId,
+				String asOfDate,
+				String daysPastDue,
+				String clubId,
+				String club2Id
+				) {
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:daysPastDue>"+daysPastDue+"</tem:daysPastDue>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:clubIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <arr:int>"+clubId+"</arr:int>\r\n" + 
+				"            <arr:int>"+club2Id+"</arr:int>\r\n" + 
+				"         </tem:clubIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:membershipTypeIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:membershipTypeIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerStatusIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:customerStatusIdList>\r\n" + 
+				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;
+		}
+		
+		public static String getMembersAccountBalancesPastDueSingleMembershipType(
+				String companyId,
+				String asOfDate,
+				String daysPastDue,
+				String membershipTypeId
+				) {
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:daysPastDue>"+daysPastDue+"</tem:daysPastDue>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:clubIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:clubIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:membershipTypeIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <arr:int>"+membershipTypeId+"</arr:int>\r\n" + 
+				"         </tem:membershipTypeIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerStatusIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:customerStatusIdList>\r\n" + 
+				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;
+		}
+		
+		public static String getMembersAccountBalancesPastDueMultipleMembershipTypes(
+				String companyId,
+				String asOfDate,
+				String daysPastDue,
+				String membershipTypeId,
+				String membershipType2Id
+				) {
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:daysPastDue>"+daysPastDue+"</tem:daysPastDue>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:clubIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:clubIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:membershipTypeIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <arr:int>"+membershipTypeId+"</arr:int>\r\n" +
+				"            <arr:int>"+membershipType2Id+"</arr:int>\r\n" + 
+				"         </tem:membershipTypeIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerStatusIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:customerStatusIdList>\r\n" + 
+				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;
+		}
+		
+		public static String getMembersAccountBalancesPastDueSingleCustomerStatus(
+				String companyId,
+				String asOfDate,
+				String daysPastDue,
+				String customerStatusId
+				) {
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:daysPastDue>"+daysPastDue+"</tem:daysPastDue>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:clubIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:clubIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:membershipTypeIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:membershipTypeIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerStatusIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>"+customerStatusId+"</arr:int-->\r\n" + 
+				"         </tem:customerStatusIdList>\r\n" + 
+				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;
+		}
+		
+		public static String getMembersAccountBalancesPastDueMultipleCustomerStatuses(
+				String companyId,
+				String asOfDate,
+				String daysPastDue,
+				String customerStatusId,
+				String customerStatus2Id
+				) {
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:daysPastDue>"+daysPastDue+"</tem:daysPastDue>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:clubIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:clubIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:membershipTypeIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:membershipTypeIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerStatusIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>"+customerStatusId+"</arr:int-->\r\n" +
+				"            <!--arr:int>"+customerStatus2Id+"</arr:int-->\r\n" + 
+				"         </tem:customerStatusIdList>\r\n" + 
+				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;
+		}
+		
+		public static String getMembersAccountBalancesPastDueSingleClubAllParameters(
+				String companyId,
+				String asOfDate,
+				String daysPastDue,
+				String clubId,
+				String membershipTypeId,
+				String customerStatusId
+				) {
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:daysPastDue>"+daysPastDue+"</tem:daysPastDue>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:clubIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <arr:int>"+clubId+"</arr:int>\r\n" + 
+				"         </tem:clubIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:membershipTypeIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <arr:int>"+membershipTypeId+"</arr:int>\r\n" + 
+				"         </tem:membershipTypeIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerStatusIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>"+customerStatusId+"</arr:int-->\r\n" + 
+				"         </tem:customerStatusIdList>\r\n" + 
+				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;
 		}
 		
 		
