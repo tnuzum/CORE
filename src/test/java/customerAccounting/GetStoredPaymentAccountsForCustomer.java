@@ -32,7 +32,7 @@ public class GetStoredPaymentAccountsForCustomer extends base {
 			String customerId = prop.getProperty("MultipleAgreementsWithSingleCardId");
 		
 		given()
-//				.log().all()
+//			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetStoredPaymentAccountsForCustomer","Content-Type", "text/xml; charset=utf-8")
          	.and()
          	.body(CustomerAccountingPL.getStoredPaymentAccountsForCustomer(companyId, customerId))
