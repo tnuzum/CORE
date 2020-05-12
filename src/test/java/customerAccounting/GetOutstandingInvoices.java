@@ -81,7 +81,7 @@ public class GetOutstandingInvoices extends base {
 	@Test (testName="Terminated Member Included", description = "PBI: 153782")
 	public void terminatedMemberIncluded() {
 		
-		 Response res = given()
+			 Response res = given()
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
          	.and()
@@ -89,7 +89,7 @@ public class GetOutstandingInvoices extends base {
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
-//       	.log().body()
+//	      	.log().body()
          	.statusCode(200)
 			.extract().response();
   	      
