@@ -34,7 +34,7 @@ public class GetMembersAccountBalancesPastDue extends base {
 //		asOfDate = ReusableDates.getCurrentDate();
 		daysPastDue = "Days30";
 		membershipTypeId = "3";
-		customerStatusId = "1";
+		customerStatusId = "4";
 	}
 	
 	@Test (testName="Past Due 30 Days", description="PBI:150324",enabled = true)
@@ -338,6 +338,8 @@ public class GetMembersAccountBalancesPastDue extends base {
 	@Test (testName="Single Customer Status", description="PBI:150324")
 	public void singleCustomerStatus() {
 		
+		String companyId = "101";
+		
 	Response res = 
 			
 		given()
@@ -373,6 +375,7 @@ public class GetMembersAccountBalancesPastDue extends base {
 	@Test (testName="Multiple Customer Statuses", description="PBI:150324")
 	public void multipleCustomerStatuses() {
 		
+			String companyId = "101";
 			String customerStatus2Id = "2";
 		
 	Response res = 
@@ -416,12 +419,11 @@ public class GetMembersAccountBalancesPastDue extends base {
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetMembersAccountBalancesPastDue","Content-Type", "text/xml; charset=utf-8")
          	.and()
-         	.body(CustomerAccountingPL.getMembersAccountBalancesPastDueSingleClubAllParameters(companyId,asOfDate,daysPastDue,clubId,membershipTypeId,customerStatusId
-    				))
+         	.body(CustomerAccountingPL.getMembersAccountBalancesPastDueSingleClubAllParameters(companyId,asOfDate,daysPastDue,clubId,membershipTypeId,customerStatusId))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
-//         	.log().body()
+//        	.log().body()
          	.statusCode(200)
          	.extract().response();
 		 
@@ -471,7 +473,7 @@ public class GetMembersAccountBalancesPastDue extends base {
 	@Test (testName="Days Past Due Required - Blank", description="PBI:150324",enabled = true)
 	public void daysPastDueRequiredBlank() {
 		
-		String daysPastDue = "";
+			String daysPastDue = "";
 		
 	Response res = 
 			

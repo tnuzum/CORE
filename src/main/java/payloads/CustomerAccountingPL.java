@@ -627,7 +627,7 @@ public class CustomerAccountingPL extends base {
 				"         <!--Optional:-->\r\n" + 
 				"         <tem:customerStatusIdList>\r\n" + 
 				"            <!--Zero or more repetitions:-->\r\n" + 
-				"            <!--arr:int>"+customerStatusId+"</arr:int-->\r\n" + 
+				"            <arr:int>"+customerStatusId+"</arr:int>\r\n" + 
 				"         </tem:customerStatusIdList>\r\n" + 
 				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
 				"   </soapenv:Body>\r\n" + 
@@ -669,8 +669,8 @@ public class CustomerAccountingPL extends base {
 				"         <!--Optional:-->\r\n" + 
 				"         <tem:customerStatusIdList>\r\n" + 
 				"            <!--Zero or more repetitions:-->\r\n" + 
-				"            <!--arr:int>"+customerStatusId+"</arr:int-->\r\n" +
-				"            <!--arr:int>"+customerStatus2Id+"</arr:int-->\r\n" + 
+				"            <arr:int>"+customerStatusId+"</arr:int>\r\n" +
+				"            <arr:int>"+customerStatus2Id+"</arr:int>\r\n" + 
 				"         </tem:customerStatusIdList>\r\n" + 
 				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
 				"   </soapenv:Body>\r\n" + 
@@ -713,7 +713,7 @@ public class CustomerAccountingPL extends base {
 				"         <!--Optional:-->\r\n" + 
 				"         <tem:customerStatusIdList>\r\n" + 
 				"            <!--Zero or more repetitions:-->\r\n" + 
-				"            <!--arr:int>"+customerStatusId+"</arr:int-->\r\n" + 
+				"            <arr:int>"+customerStatusId+"</arr:int>\r\n" + 
 				"         </tem:customerStatusIdList>\r\n" + 
 				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
 				"   </soapenv:Body>\r\n" + 
