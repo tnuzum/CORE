@@ -4,8 +4,15 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import payloads.ChangeRequestsPL;
+import payloads.EnrollmentServicePL;
 
 import static io.restassured.RestAssured.given;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import org.testng.Assert;
 
 public class ReusableMethods {
 	
@@ -56,5 +63,95 @@ public class ReusableMethods {
 					}
 
 }
+	public static String getTomorrowsDate() {
+		DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar today1 = Calendar.getInstance();
+		today1.add(Calendar.DAY_OF_YEAR, 1);
+		String tomorrowsDate = dateFormat1.format(today1.getTime());
+		return tomorrowsDate;
+		
+	}
+	
+	public static String enrollInClass(String companyId, String customerId, String classId, String tomorrowsDate) {
+		
+		
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/EnrollInClass","Content-Type","text/xml; charset=utf-8") .and()
+				  .body(EnrollmentServicePL.EnrollInClass(companyId, customerId,classId, tomorrowsDate)) 
+				  .when()
+				  .post("/ClassesAndCourses/EnrollmentService.svc") 
+				  .then() 
+//				  .log().all()
+				  .statusCode(200) .extract().response();
+				  
+				  XmlPath js = ReusableMethods.rawToXML(res);
+					
+				  String  enrollmentId = js.getString("Envelope.Body.EnrollInClassResponse.EnrollInClassResult.EnrollmentId");
+				return enrollmentId;
+}
+	
+	public static String enrollInCourse(String companyId, String customerId, String courseId) {
+		
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/EnrollInCourse","Content-Type","text/xml; charset=utf-8") .and()
+				  .body(EnrollmentServicePL.EnrollInCourse(companyId, customerId, courseId)) 
+				  .when()
+				  .post("/ClassesAndCourses/EnrollmentService.svc") 
+				  .then() 
+//				  .log().all()
+				  .statusCode(200) .extract().response();
+				  
+				  XmlPath js = ReusableMethods.rawToXML(res);
+				    				 
+				  String  enrollmentId = js.getString("Envelope.Body.EnrollInCourseResponse.EnrollInCourseResult.EnrollmentId");
+				   
+				return enrollmentId;
+}
+	
+public static String placeOnStandby(String companyId, String customerId, String classId, String tomorrowsDate) {
+			
+				
+		Response res = given()
+	 			.headers("SOAPAction", "http://tempuri.org/IEnrollmentService/EnrollInClassStandby","Content-Type", "text/xml; charset=utf-8")
+				.and()
+				.body(EnrollmentServicePL.EnrollInClassStandby(companyId, customerId, classId, tomorrowsDate))
+			.when()
+				.post("/ClassesAndCourses/EnrollmentService.svc")
+			.then()
+//				.log().all()
+				.statusCode(200)
+				.extract().response();  
+				
+				XmlPath js = ReusableMethods.rawToXML(res);
+					
+				
+				String enrollmentId = js.getString("Envelope.Body.EnrollInClassStandbyResponse.EnrollInClassStandbyResult.EnrollmentId");
+				return enrollmentId;
+}
 
+public static String placeOnStandbyCourse(String companyId, String customerId, String courseId) {
+	
+	  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/EnrollInCourseStandby","Content-Type","text/xml; charset=utf-8") .and()
+			  .body(EnrollmentServicePL.EnrollInCourseStandby(companyId, customerId,courseId)) .when()
+			  .post("/ClassesAndCourses/EnrollmentService.svc") 
+			  .then() 
+//			  .log().all()
+			  .statusCode(200) .extract().response();
+			  
+			  XmlPath js = ReusableMethods.rawToXML(res);
+						  
+			  String enrollmentId = js.getString("Envelope.Body.EnrollInCourseStandbyResponse.EnrollInCourseStandbyResult.EnrollmentId");
+					
+			  return enrollmentId;
+}
+
+public static Object deleteEnrollment(String companyId, String enrollmentId) {
+	
+	given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/DeleteEnrollment","Content-Type","text/xml; charset=utf-8") .and()
+			  .body(EnrollmentServicePL.DeleteEnrollment(companyId, enrollmentId)) .when()
+			  .post("/ClassesAndCourses/EnrollmentService.svc") 
+			  .then() 
+//			  .log().all()
+			  .statusCode(200) .extract().response();
+	return null;
+	
+}
 }

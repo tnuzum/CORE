@@ -52,7 +52,14 @@
     <class name="packageService.GetPackageDetails"/>
     <class name="packageService.GetAvailablePackagesByClub"/>
     <class name="packageService.GetAvailablePackagesByClubOnlineBypass"/>
-    <class name="UnenrollmentService.GetUnenrollmentEligibility"/>
+    <class name="unenrollmentService.GetUnenrollmentEligibility"/>
+    <class name="enrollmentService.DeleteEnrollment"/>
+    <class name="enrollmentService.EnrollInClass"/>
+    <class name="enrollmentService.EnrollInClassStandby"/>
+    <class name="enrollmentService.EnrollInCourse"/>
+    <class name="enrollmentService.EnrollInCourseStandby"/>
+    <class name="enrollmentService.PromoteStandbyEnrollmentsForClass"/>
+    <class name="enrollmentService.PromoteStandbyEnrollmentsForCourse"/>
     </classes>
   </test>
 </suite>
