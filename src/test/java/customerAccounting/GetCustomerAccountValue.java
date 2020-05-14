@@ -4,12 +4,14 @@ import static io.restassured.RestAssured.given;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.Matchers.nullValue;
-import static org.hamcrest.Matchers.not;
 import java.util.concurrent.TimeUnit;
 
 import io.restassured.RestAssured;
+import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
+import junit.framework.Assert;
 import payloads.CustomerAccountingPL;
+import resources.ReusableMethods;
 import resources.base;
 
 public class GetCustomerAccountValue extends base {
@@ -28,10 +30,11 @@ public class GetCustomerAccountValue extends base {
 	@Test (testName="Get Customer Account Value")
 	public void getCustomerAccountValue() {
 		
-			String customerId = prop.getProperty("creditLimitId");
-		
+			String customerId = prop.getProperty("noFOPId");
+		Response res = 
+			
 		given()
-//				.log().all()
+//			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetCustomerAccountValue","Content-Type", "text/xml; charset=utf-8")
          	.and()
          	.body(CustomerAccountingPL.getCustomerAccountValue(companyId, customerId))
@@ -40,9 +43,13 @@ public class GetCustomerAccountValue extends base {
          .then()
 //        	.log().body()
          	.statusCode(200)
-         	.time(lessThan(60L),TimeUnit.SECONDS)
-         	.body("Envelope.Body.GetCustomerAccountValueResponse.GetCustomerAccountValueResult", not(nullValue()));
+         	.extract().response();
 	
+			XmlPath js = ReusableMethods.rawToXML(res);
+			
+			Assert.assertTrue(res.getTime() >= 60L);
+			Assert.assertTrue(js.getDouble("Envelope.Body.GetCustomerAccountValueResponse.GetCustomerAccountValueResult") > 0.00);
+		
 	}
 	
 	@Test (testName="Customer Not Found")

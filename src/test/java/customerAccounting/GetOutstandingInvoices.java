@@ -14,8 +14,9 @@ import resources.base;
 
 public class GetOutstandingInvoices extends base {
 	
-	String companyId;
-	String asOfDate;
+		static String companyId;
+		static String asOfDate;
+		static Boolean includeTerminatedMember;
 	
 	@BeforeTest
 	public void getData() {
@@ -23,13 +24,13 @@ public class GetOutstandingInvoices extends base {
 		RestAssured.baseURI = prop.getProperty("baseURI");
 		
 		companyId = prop.getProperty("X-CompanyId");
-
+		
+		asOfDate = ReusableDates.getCurrentDate();
+		includeTerminatedMember = true;
 	}
 	
 	@Test (testName="Outstanding Invoices Found", description = "PBI: 153782")
 	public void outstandingInvoicesFound() {
-		
-		asOfDate = ReusableDates.getCurrentDate();
 		
 		 Response res = given()
 //			.log().all()
@@ -52,18 +53,18 @@ public class GetOutstandingInvoices extends base {
 			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceCategory"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceCreationDate"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceDescription"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceDueDate"));
 			Assert.assertNotNull(js.getInt("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceId"));
 			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoicePaidAmount"));
 			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceTotal"));
 			Assert.assertNotNull(js.getBoolean("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].NsfFeeApplied"));
 			Assert.assertNotNull(js.getInt("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].ReceiptNumber"));
-	
 	}
 	
 	@Test (testName="Outstanding Invoices Not Found", description = "PBI: 153782")
 	public void outstandingInvoicesNotFound() {
 		
-		asOfDate = "1980-01-01";
+			String asOfDate = "1980-01-01";
 		
 		 given()
 //			.log().all()
@@ -77,10 +78,56 @@ public class GetOutstandingInvoices extends base {
          	.statusCode(200);
 	}
 	
+	@Test (testName="Terminated Member Included", description = "PBI: 153782")
+	public void terminatedMemberIncluded() {
+		
+			 Response res = given()
+//			.log().all()
+         	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
+         	.and()
+         	.body(CustomerAccountingPL.getOutstandingInvoicesIncludeTerminatedMember(companyId, asOfDate, includeTerminatedMember))
+         .when()
+         	.post("/Financial/CustomerAccounting.svc")
+         .then()
+//	      	.log().body()
+         	.statusCode(200)
+			.extract().response();
+  	      
+			XmlPath js = ReusableMethods.rawToXML(res);	
+       		
+       		Assert.assertTrue(res.getTime() >= 60L);
+       		
+       		Assert.assertTrue(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto.CustomerId").contains(prop.getProperty("terminatedId")));
+	}
+	
+	@Test (testName="Terminated Member Not Included", description = "PBI: 153782")
+	public void terminatedMemberNotIncluded() {
+		
+			Boolean includeTerminatedMember = false;
+		
+		 Response res = given()
+//			.log().all()
+         	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
+         	.and()
+         	.body(CustomerAccountingPL.getOutstandingInvoicesIncludeTerminatedMember(companyId, asOfDate, includeTerminatedMember))
+         .when()
+         	.post("/Financial/CustomerAccounting.svc")
+         .then()
+//        	.log().body()
+         	.statusCode(200)
+			.extract().response();
+  	      
+			XmlPath js = ReusableMethods.rawToXML(res);	
+       		
+       		Assert.assertTrue(res.getTime() >= 60L);
+       		
+       		Assert.assertFalse(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto.CustomerId").contains(prop.getProperty("terminatedId")));
+	}
+	
 	@Test (testName="Invalid Date", description = "PBI: 153782")
 	public void invalidDate() {
 		
-		asOfDate = "1980-13-01";
+			String asOfDate = "1980-13-01";
 		
 		 given()
 //			.log().all()

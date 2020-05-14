@@ -1,3 +1,11 @@
+** IMPORTS **
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.not;
+import java.util.concurrent.TimeUnit;
+
 ** ASSERTIONS **
 
 ** Convert Raw XML response to String **				
@@ -25,6 +33,16 @@ Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackag
 Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[1].EndRange"), 10);
 Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[1].PricePerUnit"), 10.00);
 Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[1].StartRange"), 6);
+
+
+Assert.assertNotNull(js.getString("Result[0].PackagePaymentConfiguration.PunchesRequired"));
+				
+Assert.assertTrue(js.getString("Result[0]").contains("SubstituteInstructor"));
+				
+Assert.assertEquals(js.getString("Result[0].EnrollmentEligibilities[0].CustomerId"), customerId);
+
+** GREATER THAN **
+Assert.assertTrue(js.getDouble("Envelope.Body.GetMembersAccountBalancesPastDueResponse.GetMembersAccountBalancesPastDueResult.MemberAccountBalancesPastDue.MemberAccountBalancesPastDueDto[0].Past120") > 0.00);
 
 
 	

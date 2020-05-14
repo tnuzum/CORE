@@ -648,35 +648,6 @@ public class UpdatePersonalInformation extends base {
 				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
 				}
 	
-	@Test (testName="Update Restrict Member From Search", enabled = true)
-	public void updateRestrictMemberFromSearch(){
-				
-		String fieldName = "RestrictMemberFromSearch";
-		String newValue = "false";
-		String submissionReasonDetail = "Test Submission Reason Details";
-
-	      Response res =  given()
-//	        .log().all()
- 			.headers("SOAPAction", "http://tempuri.org/IChangeRequests/UpdatePersonalInformation",
- 					"Content-Type", "text/xml; charset=utf-8")
-	                .and()
-	                .body(ChangeRequestsPL.updatePersonalInformationNoFamily(companyId, customerId, fieldName, newValue, submissionReason, submissionReasonDetail))
-	         .when()
-	            .post("/ChangeRequests/ChangeRequest.svc")
-	         .then()
-//             	.log().body()
-	            .statusCode(200)
-				.extract().response();
-	      
-				XmlPath js = ReusableMethods.rawToXML(res);		
-				
-				Assert.assertNotNull(js.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
-				Assert.assertEquals(js.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-		
-				// ** Validate field was updated correctly
-				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
-				}
-	
 	@Test (testName="Update Salesperson Barcode Id", enabled = false)
 	public void updateSalespersonBarcodeId(){
 				
@@ -889,20 +860,21 @@ public class UpdatePersonalInformation extends base {
 		String newValue = "true";
 		String submissionReasonDetail = "Test Submission Reason Details";
 
-	      Response res1 =  given()
+	      Response res = 
+	    		  
+	    given()
 //	        .log().all()
- 			.headers("SOAPAction", "http://tempuri.org/IChangeRequests/UpdatePersonalInformation",
- 					"Content-Type", "text/xml; charset=utf-8")
-	                .and()
-	                .body(ChangeRequestsPL.updatePersonalInformationNoFamily(companyId, customerId, fieldName, newValue, submissionReason, submissionReasonDetail))
-	         .when()
-	            .post("/ChangeRequests/ChangeRequest.svc")
-	         .then()
- //            	.log().body()
-	            .statusCode(200)
-				.extract().response();
+ 			.headers("SOAPAction", "http://tempuri.org/IChangeRequests/UpdatePersonalInformation","Content-Type", "text/xml; charset=utf-8")
+ 			.and()
+ 			.body(ChangeRequestsPL.updatePersonalInformationNoFamily(companyId, customerId, fieldName, newValue, submissionReason, submissionReasonDetail))
+	     .when()
+	     	.post("/ChangeRequests/ChangeRequest.svc")
+	     .then()
+//           	.log().body()
+	        .statusCode(200)
+	        .extract().response();
 	      
-				XmlPath js1 = ReusableMethods.rawToXML(res1);		
+				XmlPath js1 = ReusableMethods.rawToXML(res);		
 				
 				Assert.assertNotNull(js1.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js1.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
@@ -918,20 +890,22 @@ public class UpdatePersonalInformation extends base {
 		String newValue = "false";
 		String submissionReasonDetail = "Test Submission Reason Details";
 
-	      Response res1 =  given()
+	      Response res =
+	    
+	    given()
 //	        .log().all()
  			.headers("SOAPAction", "http://tempuri.org/IChangeRequests/UpdatePersonalInformation",
  					"Content-Type", "text/xml; charset=utf-8")
 	        .and()
 	        .body(ChangeRequestsPL.updatePersonalInformationNoFamily(companyId, customerId, fieldName, newValue, submissionReason, submissionReasonDetail))
-	        .when()
+	    .when()
 	        .post("/ChangeRequests/ChangeRequest.svc")
-	        .then()
- //            	.log().body()
-	            .statusCode(200)
-				.extract().response();
+	    .then()
+//           	.log().body()
+	        .statusCode(200)
+	        .extract().response();
 	      
-				XmlPath js1 = ReusableMethods.rawToXML(res1);		
+				XmlPath js1 = ReusableMethods.rawToXML(res);		
 				
 				Assert.assertNotNull(js1.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
 				Assert.assertEquals(js1.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		

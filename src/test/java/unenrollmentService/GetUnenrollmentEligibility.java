@@ -194,6 +194,7 @@ public class GetUnenrollmentEligibility extends base {
 				String NonRefundable_ClassEnrollmentId = prop.getProperty("NonRefundable_ClassEnrollmentId");
 				
 				Response res = given()
+//					.log().all()
 		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
 					.and()
 					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, NonRefundable_ClassEnrollmentId))
