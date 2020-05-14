@@ -1,5 +1,5 @@
 //FOR	THIS TEST, SOME IDS HAVE TO BE UPDATED AFTER MAY 2020
-package UnenrollmentService;
+package unenrollmentService;
 
 import static io.restassured.RestAssured.given;
 
