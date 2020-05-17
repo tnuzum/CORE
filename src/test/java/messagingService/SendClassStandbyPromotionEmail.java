@@ -41,7 +41,7 @@ public class SendClassStandbyPromotionEmail extends base {
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-				  .log().all()
+//				  .log().all()
 				  .statusCode(200) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
@@ -65,7 +65,7 @@ public class SendClassStandbyPromotionEmail extends base {
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-				  .log().all()
+//				  .log().all()
 				  .statusCode(400) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
