@@ -64,12 +64,14 @@ public class PromoteStandbyEnrollmentsForClass extends base{
 	public void PromoteMultipleFromStandbyToEnroll() {
 		
 		String customerId = prop.getProperty("standbyCustomerId");
+		String customerId2 = prop.getProperty("standbyCustomerId2");
+		String customerId3 = prop.getProperty("standbyCustomerId3");
 		String classId= prop.getProperty("standbyClassId");
 		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
 		
 		enrollmentId1 = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate);
-		enrollmentId2 = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate);
-		enrollmentId3 = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate);
+		enrollmentId2 = ReusableMethods.placeOnStandby(companyId, customerId2, classId, tomorrowsDate);
+		enrollmentId3 = ReusableMethods.placeOnStandby(companyId, customerId3, classId, tomorrowsDate);
 		
 		ArrayList<String> a=new ArrayList<String>();
 		
