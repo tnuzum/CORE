@@ -10,6 +10,7 @@ import static io.restassured.RestAssured.given;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import org.testng.Assert;
@@ -153,5 +154,33 @@ public static Object deleteEnrollment(String companyId, String enrollmentId) {
 			  .statusCode(200) .extract().response();
 	return null;
 	
+}
+public static  String promoteStandbyEnrollmentsForClass(String companyId, String classId, String tomorrowsDate) {
+	
+	 Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/PromoteStandbyEnrollmentsForClass","Content-Type","text/xml; charset=utf-8") .and()
+			  .body(EnrollmentServicePL.PromoteStandbyEnrollmentsForClass(companyId, classId, tomorrowsDate)) 
+			  .when()
+			  .post("/ClassesAndCourses/EnrollmentService.svc") 
+			  .then() 
+//			  .log().all()
+			  .statusCode(200) .extract().response();
+			  
+			  XmlPath js = ReusableMethods.rawToXML(res);
+			  String enrollmentId = js.getString("Envelope.Body.PromoteStandbyEnrollmentsForClassResponse.PromoteStandbyEnrollmentsForClassResult.int");
+						 		 
+	return enrollmentId;
+}
+public static String PromoteStandbyEnrollmentsForCourse(String companyId, String courseId) {
+	  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/PromoteStandbyEnrollmentsForCourse","Content-Type","text/xml; charset=utf-8") .and()
+			  .body(EnrollmentServicePL.PromoteStandbyEnrollmentsForCourse(companyId, courseId)) 
+			  .when()
+			  .post("/ClassesAndCourses/EnrollmentService.svc") 
+			  .then() 
+//			  .log().all()
+			  .statusCode(200) .extract().response();
+			  
+			  XmlPath js = ReusableMethods.rawToXML(res);
+			  String enrollmentId = js.getString("Envelope.Body.PromoteStandbyEnrollmentsForCourseResponse.PromoteStandbyEnrollmentsForCourseResult.int");
+	return enrollmentId;
 }
 }
