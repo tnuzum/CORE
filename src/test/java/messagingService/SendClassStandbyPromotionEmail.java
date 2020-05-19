@@ -72,4 +72,37 @@ public class SendClassStandbyPromotionEmail extends base {
 				  String text = js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
 				  Assert.assertEquals(text, "enrollmentId: 38554333 is invalid.");
 	}
+	
+	@Test(priority = 3)
+	public void sendCourseIdForClassId() {
+		
+		String customerId = prop.getProperty("standbyCustomerId");
+		String courseId= prop.getProperty("standbyCourseId");
+		
+		
+		enrollmentId = ReusableMethods.placeOnStandbyCourse(companyId, customerId, courseId); // Place customer On Standby
+		ReusableMethods.PromoteStandbyEnrollmentsForCourse(companyId, courseId); // promote customer to Enrolled
+		System.out.println(enrollmentId);
+		
+		
+		  Response res = given() .headers("SOAPAction","http://tempuri.org/IMessagingService/SendClassStandbyPromotionEmail","Content-Type","text/xml; charset=utf-8") 
+				  .and()
+		  .body(MessagingServicePL.SendClassStandbyPromotionEmail(companyId, enrollmentId)) 
+		  .when() .post("/Messaging/MessagingService.svc") .then()
+		  .log().all() 
+		  .statusCode(400) 
+		  .extract().response();
+		  
+		  XmlPath js = ReusableMethods.rawToXML(res); String text =
+		  js.getString("Envelope.Body.SendClassStandbyPromotionEmailResponse");
+		  Assert.assertNotNull(text);
+		  
+		  Assert.assertTrue(res.getTime() >= 60L); String text1 =
+		  js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
+		  Assert.assertEquals(text1,
+		  "enrollmentId: "+enrollmentId+" is not a class enrollment.");
+		  ReusableMethods.deleteEnrollment(companyId, enrollmentId);
+		 
+		
+	}
 }
