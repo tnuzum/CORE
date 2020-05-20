@@ -216,7 +216,7 @@ public class GetBillingDeclinesHistories extends base {
 	@Test (testName="All History Not Found", description="PBI:150327")
 	public void allHistoryNotFound() {
 		
-		String startDate = ReusableDates.getCurrentDateMinusXYears(10);
+		String startDate = ReusableDates.getCurrentDateMinusXYears(12);
 		String endDate = ReusableDates.getCurrentDateMinusXYears(11);
 			
 		given()
@@ -227,14 +227,14 @@ public class GetBillingDeclinesHistories extends base {
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
- //        	.log().body()
+//        	.log().body()
          	.statusCode(200);
 	}
 	
 	@Test (testName="Corrections History Not Found", description="PBI:150327")
 	public void correctionsHistoryNotFound() {
 		
-		String startDate = ReusableDates.getCurrentDateMinusXYears(10);
+		String startDate = ReusableDates.getCurrentDateMinusXYears(12);
 		String endDate = ReusableDates.getCurrentDateMinusXYears(11);
 		String returnsType = "Corrections";
 			
@@ -289,8 +289,8 @@ public class GetBillingDeclinesHistories extends base {
 	@Test (testName="Future Date Range", description="PBI:150327")
 	public void futureDateRange() {
 		
-		String startDate = ReusableDates.getCurrentDatePlusXDays(101);
-		String endDate = ReusableDates.getCurrentDatePlusXDays(100);
+		String startDate = ReusableDates.getCurrentDatePlusXDays(100);
+		String endDate = ReusableDates.getCurrentDatePlusXDays(101);
 			
 		given()
 //			.log().all()
