@@ -507,7 +507,6 @@ public class UpdatePersonalInformation extends base {
 	public void updateLastName(){
 				
 		String fieldName = "LastName";
-		String newValue = "Auto";
 		String newValue = "Name";
 		String submissionReasonDetail = "Test Submission Reason Details";
 
