@@ -165,6 +165,28 @@ public class PromoteStandbyEnrollmentsForClass extends base{
 		  
 		   
 	}
+	
+	@Test(priority = 4)
+	public void sendCourseIdForClassId() {
+		
+		String classId= prop.getProperty("standbyCourseId");
+		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+					
+		  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/PromoteStandbyEnrollmentsForClass","Content-Type","text/xml; charset=utf-8") .and()
+		  .body(EnrollmentServicePL.PromoteStandbyEnrollmentsForClass(companyId, classId, tomorrowsDate)) 
+		  .when()
+		  .post("/ClassesAndCourses/EnrollmentService.svc") 
+		  .then() 
+//		  .log().all()
+		  .statusCode(400) .extract().response();
+		  
+		  XmlPath js = ReusableMethods.rawToXML(res);
+		  
+		  Assert.assertTrue(res.getTime() >= 60L); 
+		  String text1 = js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
+		  Assert.assertEquals(text1, "itemId: "+classId+" is not a class item.");
+	}
+	
 
 
 }
