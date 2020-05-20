@@ -350,7 +350,7 @@ public class GetCustomerAccountBalance extends base {
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
-         	.log().all()
+//         	.log().all()
          	.statusCode(200)
          	.extract().response();
 		 
