@@ -58,13 +58,13 @@ static String companyId;
 			.post("/Messaging/MessagingService.svc")
 		.then()
 //			.log().all()
-			.statusCode(500)
+			.statusCode(400)
 			.extract().response();  
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 					
 			Assert.assertTrue(res.getTime() >= 60L);
-			Assert.assertEquals(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto.Message"), "Sequence contains no elements");
+			Assert.assertEquals(js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message"), "enrollmentId: 330777 is invalid.");
 	}
 	
 	
