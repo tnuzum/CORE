@@ -53,11 +53,19 @@
     <class name="messagingService.SendCustomerCourseEnrollmentConfirmationEmailTest"/>
     <class name="messagingService.SendFamilyClassEnrollmentConfirmationEmailTest"/>
     <class name="messagingService.SendFamilyCourseEnrollmentConfirmationEmailTest"/>
+    <class name="messagingService.SendClassStandbyPromotionEmail"/>
     <class name="packageService.GetPackage"/>
     <class name="packageService.GetPackageDetails"/>
     <class name="packageService.GetAvailablePackagesByClub"/>
     <class name="packageService.GetAvailablePackagesByClubOnlineBypass"/>
-    <class name="UnenrollmentService.GetUnenrollmentEligibility"/>
+    <class name="unenrollmentService.GetUnenrollmentEligibility"/>
+    <class name="enrollmentService.DeleteEnrollment"/>
+    <class name="enrollmentService.EnrollInClass"/>
+    <class name="enrollmentService.EnrollInClassStandby"/>
+    <class name="enrollmentService.EnrollInCourse"/>
+    <class name="enrollmentService.EnrollInCourseStandby"/>
+    <class name="enrollmentService.PromoteStandbyEnrollmentsForClass"/>
+    <class name="enrollmentService.PromoteStandbyEnrollmentsForCourse"/>
     </classes>
   </test>
 </suite>
