@@ -163,6 +163,26 @@ public void InvalidCourseId() {
 	   
 }
 
+@Test(priority = 5)
+public void sendClassIdForCourseId() {
+	
+	  String courseId= prop.getProperty("standbyClassId");
+		
+	  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/PromoteStandbyEnrollmentsForCourse","Content-Type","text/xml; charset=utf-8") .and()
+	  .body(EnrollmentServicePL.PromoteStandbyEnrollmentsForCourse(companyId, courseId)) 
+	  .when()
+	  .post("/ClassesAndCourses/EnrollmentService.svc") 
+	  .then() 
+//	  .log().all()
+	  .statusCode(400) .extract().response();
+	  
+	  XmlPath js = ReusableMethods.rawToXML(res);
+	  
+	  Assert.assertTrue(res.getTime() >= 60L); 
+	  String text = js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
+	  Assert.assertEquals(text, "itemId: "+courseId+" is not a course item.");
+	  
+}
 
 }
 
