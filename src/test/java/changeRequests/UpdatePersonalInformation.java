@@ -857,9 +857,9 @@ public class UpdatePersonalInformation extends base {
 	@Test (testName="Update Restrict Member From Multi-Member Search to True", enabled = true)
 	public void updateRestrictMemberFromMultiMemberSearchTrue(){
 				
-		String fieldName = "RestrictMemberFromSearch";
-		String newValue = "true";
-		String submissionReasonDetail = "Test Submission Reason Details";
+			String fieldName = "RestrictMemberFromSearch";
+			String newValue = "true";
+			String submissionReasonDetail = "Test Submission Reason Details";
 
 	      Response res = 
 	    		  
@@ -871,18 +871,18 @@ public class UpdatePersonalInformation extends base {
 	     .when()
 	     	.post("/ChangeRequests/ChangeRequest.svc")
 	     .then()
-//           	.log().body()
+//          .log().body()
 	        .statusCode(200)
 	        .extract().response();
 	      
-				XmlPath js1 = ReusableMethods.rawToXML(res);		
-				
-				Assert.assertNotNull(js1.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
-				Assert.assertEquals(js1.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
-	
-				// ** Validate field was updated correctly
-				Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
-				}
+			XmlPath js1 = ReusableMethods.rawToXML(res);		
+			
+			Assert.assertNotNull(js1.getInt("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.AutoApprovedConfirmationNumber"));
+			Assert.assertEquals(js1.getString("Envelope.Body.UpdatePersonalInformationResponse.UpdatePersonalInformationResult.ErrorMessages"), "None");		
+
+			// ** Validate field was updated correctly
+			Assert.assertTrue(ReusableMethods.validatePersonalInfoNewValue(companyId, customerId, fieldName, newValue));
+			}
 	
 	@Test (testName="Update Restrict Member From Multi-Member Search to False", enabled = true)
 	public void updateRestrictMemberFromMultiMemberSearchFalse(){

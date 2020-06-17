@@ -334,7 +334,7 @@ public class GetCustomerAccountBalance extends base {
     		Assert.assertEquals(js.getString("Envelope.Body.GetCustomerAccountBalanceResponse.GetCustomerAccountBalanceResult.CustomerId"), customerId);
 	}
 	
-	@Test (testName="Negative Balances", description="PBI:149845", enabled = true)
+	@Test (testName="Negative Balances", description="PBI:149845", enabled = false)
 	public void negativeBalances() {
 		
 			String companyId = "236";
