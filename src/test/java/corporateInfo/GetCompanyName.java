@@ -24,7 +24,7 @@ public class GetCompanyName extends base {
 		RestAssured.baseURI = prop.getProperty("baseURI");
 		
 		companyId = prop.getProperty("X-CompanyId");
-		companyName = prop.getProperty("CompanyName");
+		companyName = prop.getProperty("companyName");
 	}
 	
 	@Test (testName="Get Company Name")

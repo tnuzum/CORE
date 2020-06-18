@@ -6,43 +6,50 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.Matchers.not;
 import java.util.concurrent.TimeUnit;
 
-** ASSERTIONS **
-
 ** Convert Raw XML response to String **				
 XmlPath js = ReusableMethods.rawToXML(res);	
 
-** Response info **
+** ASSERTIONS **
 
+** Response info **
 Assert.assertEquals(res.getStatusCode(), 200);
 Assert.assertTrue(res.getTime() >= 60L);
+.assertThat().statusCode(200)
+.time(lessThan(60L),TimeUnit.SECONDS)
 
-** Value is not Null **
+** Response Body Validation **
+Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Amount"));
+Assert.assertTrue(js.getString("Result[0].ExpirationDate").contains(expirationMonth));
+
+** Required Field **
 Assert.assertNotNull(js.getDouble("Envelope.Body.GetPackageResponse.GetPackageResult.BasePrice"));
 Assert.assertNotNull(js.getInt("Envelope.Body.GetPackageResponse.GetPackageResult.DaysUntilExpiration"));
 Assert.assertNotNull(js.getString("Envelope.Body.GetPackageResponse.GetPackageResult.ItemBarcodeId"));
 
-** Exact Values **				
+** Option Field **
+.body("Result", hasKey("MiddleInitial"))
+
+** Exact Value **				
 Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageResponse.GetPackageResult.BasePrice"), 15.00);
 Assert.assertEquals(js.getInt("Envelope.Body.GetPackageResponse.GetPackageResult.DaysUntilExpiration"), 0);
 Assert.assertEquals(js.getString("Envelope.Body.GetPackageResponse.GetPackageResult.ItemBarcodeId"), "paidSV");
+.body("Result.Address.AddressLine1", equalTo("7965 N High St"))
+
+** Contains Value **
+Assert.assertTrue(js.getString("Result[0].ExpirationDate").contains(expirationMonth));		
+.body("Result.Name", anyOf(hasItem("string")))
+
+* Null Value	
+Assert.assertNull(js.getString("Result.PendingConfirmationNumber"));		
+.body("Result.PrimarySelectableResourceType.Books[0]", nullValue())
 
 ** Arrays **
 Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[0].EndRange"), 5);
-Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[0].PricePerUnit"), 15.00);
-Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[0].StartRange"), 1);
-Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[1].EndRange"), 10);
-Assert.assertEquals(js.getDouble("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[1].PricePerUnit"), 10.00);
-Assert.assertEquals(js.getInt("Envelope.Body.GetPackageDetailsResponse.GetPackageDetailsResult.PriceRangeDtos.PriceRangeDto[1].StartRange"), 6);
-
-
-Assert.assertNotNull(js.getString("Result[0].PackagePaymentConfiguration.PunchesRequired"));
-				
-Assert.assertTrue(js.getString("Result[0]").contains("SubstituteInstructor"));
-				
-Assert.assertEquals(js.getString("Result[0].EnrollmentEligibilities[0].CustomerId"), customerId);
 
 ** GREATER THAN **
 Assert.assertTrue(js.getDouble("Envelope.Body.GetMembersAccountBalancesPastDueResponse.GetMembersAccountBalancesPastDueResult.MemberAccountBalancesPastDue.MemberAccountBalancesPastDueDto[0].Past120") > 0.00);
+Assert.assertTrue(js.getInt("Result.AutoApprovedConfirmationNumber") > 0);
+Assert.assertTrue(res.getTime() >= 60L);
 
 
 	
