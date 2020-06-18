@@ -67,7 +67,6 @@ public class Vita_GetBusinessIntelligenceConfiguration extends base {
 			Assert.assertNotNull(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].ClubId"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].ClubName"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].IsSelected"));
-			Assert.assertNotNull(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframe"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframeUnits"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.IsActivated"));
