@@ -57,7 +57,7 @@ static String companyId;
 		.when()
 			.post("/Messaging/MessagingService.svc")
 		.then()
-			.log().all()
+//			.log().all()
 			.statusCode(400)
 			.extract().response();  
 			
