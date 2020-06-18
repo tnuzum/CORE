@@ -99,7 +99,7 @@ public class GetClubInfo extends base {
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
 			Assert.assertTrue(res.getTime() >= 60L);
-			Assert.assertEquals(js.getString("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.PrivacyPolicyUrl"), "http://www.google.com/");
+			Assert.assertEquals(js.getString("Envelope.Body.GetClubInfoResponse.GetClubInfoResult.PrivacyPolicyUrl"), "http://www.google.com/privacypolicy");
 }
 	
 	@Test (testName="Inactive Club")

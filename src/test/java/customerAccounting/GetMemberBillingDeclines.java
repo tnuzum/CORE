@@ -86,10 +86,10 @@ public class GetMemberBillingDeclines extends base {
 		 
     		XmlPath js = ReusableMethods.rawToXML(res);
     		
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].CustomerId"), customerId);
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].Code"), prop.getProperty("invalidCCNoCode"));
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].Format"), format);
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].Reason"), prop.getProperty("invalidCCNoMessage"));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.CustomerId").contains(customerId));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.Code").contains(prop.getProperty("invalidCCNoCode")));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.Format").contains(format));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.Reason").contains(prop.getProperty("invalidCCNoMessage")));
 	}
 	
 	@Test (testName="Return - Transaction Exceeds Floor Limit", description="PBI:150146")
@@ -113,10 +113,10 @@ public class GetMemberBillingDeclines extends base {
 		 
     		XmlPath js = ReusableMethods.rawToXML(res);
     		
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].CustomerId"), customerId);
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].Code"), prop.getProperty("exceedsFloorLimitCode"));
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].Format"), format);
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].Reason"), prop.getProperty("exceedsFloorLimitMessage"));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.CustomerId").contains(customerId));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.Code").contains(prop.getProperty("exceedsFloorLimitCode")));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.Format").contains(format));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.Reason").contains(prop.getProperty("exceedsFloorLimitMessage")));
 	}
 	
 	@Test (testName="Return - Warning Bulletin", description="PBI:150146")
@@ -221,10 +221,10 @@ public class GetMemberBillingDeclines extends base {
 		 
     		XmlPath js = ReusableMethods.rawToXML(res);
     		
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].CustomerId"), customerId);
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].Code"), prop.getProperty("frozenStatusCode"));
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].Format"), format);
-    		Assert.assertEquals(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto[0].Reason"), prop.getProperty("frozenStatusMessage"));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.CustomerId").contains(customerId));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.Code").contains(prop.getProperty("frozenStatusCode")));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.Format").contains(format));
+    		Assert.assertTrue(js.getString("Envelope.Body.GetMemberBillingDeclinesResponse.GetMemberBillingDeclinesResult.BillingDeclines.MemberBillingDeclineDto.Reason").contains(prop.getProperty("frozenStatusMessage")));
 	}
 	
 	@Test (testName="Return - Delete Status", description="PBI:150146")

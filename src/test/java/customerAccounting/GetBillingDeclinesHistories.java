@@ -27,21 +27,53 @@ public class GetBillingDeclinesHistories extends base {
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
-		
-		//companyId = "101";
+
 		companyId = prop.getProperty("X-CompanyId");
 		clubId = prop.getProperty("club1Id");
-		startDate = ReusableDates.getCurrentDateMinusXYears(1);
+		startDate = ReusableDates.getCurrentDateMinusXYears(5);
 		endDate = ReusableDates.getCurrentDate();
 		minimumDeclinesCount = "0";
 		returnsType = "All";
 		
 	}
 	
-	@Test (testName="All History Found", description="PBI:150327")
-	public void allHistoryFound() {
+	@Test (testName="History Found For All Clubs", description="PBI:150327")
+	public void historyFoundAllClubs() {
 		
-		String companyId = "236";
+		String companyId = "101";
+		
+	Response res = 
+			
+		given()
+//			.log().all()
+         	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetBillingDeclinesHistories","Content-Type", "text/xml; charset=utf-8")
+         	.and()
+         	.body(CustomerAccountingPL.getBillingDeclinesHistoriesAllParametersAllClubs(companyId, startDate, endDate, minimumDeclinesCount, returnsType))
+         .when()
+         	.post("/Financial/CustomerAccounting.svc")
+         .then()
+//         	.log().body()
+         	.statusCode(200)
+         	.extract().response();
+		 
+    		XmlPath js = ReusableMethods.rawToXML(res);
+       		
+    		Assert.assertTrue(res.getTime() >= 60L);
+    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Amount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Attendant"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ClubName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerId"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerName"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].DisplayCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnCode"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDate"));
+    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDescription"));	
+	}
+	
+	@Test (testName="All History Found for 1 club", description="PBI:150327")
+	public void allHistoryFound() {
 		
 	Response res = 
 			
@@ -180,43 +212,10 @@ public class GetBillingDeclinesHistories extends base {
     		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDescription"));	
 	}
 	
-	@Test (testName="History Found For All Clubs", description="PBI:150327")
-	public void historyFoundAllClubs() {
-		
-	Response res = 
-			
-		given()
-//			.log().all()
-         	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetBillingDeclinesHistories","Content-Type", "text/xml; charset=utf-8")
-         	.and()
-         	.body(CustomerAccountingPL.getBillingDeclinesHistoriesAllParametersAllClubs(companyId, startDate, endDate, minimumDeclinesCount, returnsType))
-         .when()
-         	.post("/Financial/CustomerAccounting.svc")
-         .then()
-//         	.log().body()
-         	.statusCode(200)
-         	.extract().response();
-		 
-    		XmlPath js = ReusableMethods.rawToXML(res);
-       		
-    		Assert.assertTrue(res.getTime() >= 60L);
-    		Assert.assertNotNull(js.getDouble("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Amount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].Attendant"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ClubName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerBarcodeId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerId"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].CustomerName"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].DisplayCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].LateFeeAppliedAmount"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnCode"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDate"));
-    		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDescription"));	
-	}
-	
 	@Test (testName="All History Not Found", description="PBI:150327")
 	public void allHistoryNotFound() {
 		
-		String startDate = ReusableDates.getCurrentDateMinusXYears(10);
+		String startDate = ReusableDates.getCurrentDateMinusXYears(12);
 		String endDate = ReusableDates.getCurrentDateMinusXYears(11);
 			
 		given()
@@ -227,14 +226,14 @@ public class GetBillingDeclinesHistories extends base {
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
- //        	.log().body()
+//        	.log().body()
          	.statusCode(200);
 	}
 	
 	@Test (testName="Corrections History Not Found", description="PBI:150327")
 	public void correctionsHistoryNotFound() {
 		
-		String startDate = ReusableDates.getCurrentDateMinusXYears(10);
+		String startDate = ReusableDates.getCurrentDateMinusXYears(12);
 		String endDate = ReusableDates.getCurrentDateMinusXYears(11);
 		String returnsType = "Corrections";
 			
@@ -289,8 +288,8 @@ public class GetBillingDeclinesHistories extends base {
 	@Test (testName="Future Date Range", description="PBI:150327")
 	public void futureDateRange() {
 		
-		String startDate = ReusableDates.getCurrentDatePlusXDays(101);
-		String endDate = ReusableDates.getCurrentDatePlusXDays(100);
+		String startDate = ReusableDates.getCurrentDatePlusXDays(100);
+		String endDate = ReusableDates.getCurrentDatePlusXDays(101);
 			
 		given()
 //			.log().all()
@@ -404,7 +403,7 @@ public class GetBillingDeclinesHistories extends base {
 	@Test (testName="End Date Prior to Start Date", description="PBI:150327", enabled = true)
 	public void endDatePriorToStartDate() {
 		
-		String endDate = ReusableDates.getCurrentDateMinusXYears(5);
+		String endDate = ReusableDates.getCurrentDateMinusXYears(50);
 		
 	Response res = 
 			
