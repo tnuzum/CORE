@@ -46,6 +46,7 @@
     <class name="customerInfo.GetFullFamilyForTest"/>
     <class name="customerInfo.GetInformationForCustomers"/>
     <class name="customerInfo.GetMemberAccessibleClubs"/>
+    <class name="customerInfo.GetMemberActions"/>
     <class name="customerInfo.SearchMembers"/>
     <class name="customerInfo.UpdateCustomerInterests"/>  
     <class name="customerInfo.UpdateCustomerName"/>

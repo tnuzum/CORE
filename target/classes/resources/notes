@@ -51,5 +51,8 @@ Assert.assertTrue(js.getDouble("Envelope.Body.GetMembersAccountBalancesPastDueRe
 Assert.assertTrue(js.getInt("Result.AutoApprovedConfirmationNumber") > 0);
 Assert.assertTrue(res.getTime() >= 60L);
 
+** Equals To Int **
+Assert.assertTrue(js.getInt("Envelope.Body.GetMemberActionsResponse.GetMemberActionsResult.MemberActionDto[0].MemberActionId") == 1); 
+
 
 	

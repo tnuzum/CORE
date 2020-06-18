@@ -209,7 +209,7 @@ public class CorporateInfoPL extends base {
 		return pl;
 	}
 	
-	public static String SetBusinessIntelligenceConfiguration_AllParameters(String companyId, String clubId, String clubName, String isSelected, String bICompanyId, String timeFrame, String timeFrameUnits, String isActivated) {
+	public static String SetBusinessIntelligenceConfiguration_AllParameters(String companyId, String clubId, String clubName, String isSelected, String timeFrame, String timeFrameUnits, String isActivated) {
 		
 		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Business\">\r\n" + 
 				"   <soapenv:Header>\r\n" + 
@@ -231,8 +231,6 @@ public class CorporateInfoPL extends base {
 				"               </jfi:BIClubSelectionDto>\r\n" + 
 				"            </jfi:ClubSelection>\r\n" + 
 				"            <!--Optional:-->\r\n" + 
-				"            <jfi:CompanyId>"+bICompanyId+"</jfi:CompanyId>\r\n" + 
-				"            <!--Optional:-->\r\n" + 
 				"            <jfi:DataStorageTimeframe>"+timeFrame+"</jfi:DataStorageTimeframe>\r\n" + 
 				"            <!--Optional:-->\r\n" + 
 				"            <jfi:DataStorageTimeframeUnits>"+timeFrameUnits+"</jfi:DataStorageTimeframeUnits>\r\n" + 
@@ -245,7 +243,7 @@ public class CorporateInfoPL extends base {
 		return pl;
 	}
 	
-	public static String SetBusinessIntelligenceConfiguration_MultipleClubs(String companyId, String clubId, String clubName, String clubIsSelected, String club2Id, String club2Name, String club2IsSelected, String bICompanyId, String timeFrame, String timeFrameUnits, String isActivated) {
+	public static String SetBusinessIntelligenceConfiguration_MultipleClubs(String companyId, String clubId, String clubName, String clubIsSelected, String club2Id, String club2Name, String club2IsSelected, String timeFrame, String timeFrameUnits, String isActivated) {
 		
 		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Business\">\r\n" + 
 				"   <soapenv:Header>\r\n" + 
@@ -274,8 +272,6 @@ public class CorporateInfoPL extends base {
 				"                  <jfi:IsSelected>"+club2IsSelected+"</jfi:IsSelected>\r\n" + 
 				"               </jfi:BIClubSelectionDto>\r\n" + 
 				"            </jfi:ClubSelection>\r\n" + 
-				"            <!--Optional:-->\r\n" + 
-				"            <jfi:CompanyId>"+bICompanyId+"</jfi:CompanyId>\r\n" + 
 				"            <!--Optional:-->\r\n" + 
 				"            <jfi:DataStorageTimeframe>"+timeFrame+"</jfi:DataStorageTimeframe>\r\n" + 
 				"            <!--Optional:-->\r\n" + 
@@ -313,8 +309,6 @@ public class CorporateInfoPL extends base {
 				"               </jfi:BIClubSelectionDto>\r\n" + 
 				"            </jfi:ClubSelection>\r\n" + 
 				"            <!--Optional:-->\r\n" + 
-				"            <jfi:CompanyId>"+companyId+"</jfi:CompanyId>\r\n" + 
-				"            <!--Optional:-->\r\n" + 
 				"            <!--jfi:DataStorageTimeframe>10</jfi:DataStorageTimeframe-->\r\n" + 
 				"            <!--Optional:-->\r\n" + 
 				"            <!--jfi:DataStorageTimeframeUnits>1</jfi:DataStorageTimeframeUnits-->\r\n" + 
@@ -332,8 +326,7 @@ public class CorporateInfoPL extends base {
 		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Business\">\r\n" + 
 				"   <soapenv:Header>\r\n" + 
 				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
-				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
-				"   </soapenv:Header>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
 				"   <soapenv:Body>\r\n" + 
 				"      <tem:SetBusinessIntelligenceConfiguration>\r\n" + 
 				"         <!--Optional:-->\r\n" + 
@@ -345,19 +338,17 @@ public class CorporateInfoPL extends base {
 				"                  <!--Optional:-->\r\n" + 
 				"                  <!--jfi:ClubId>1</jfi:ClubId-->\r\n" + 
 				"                  <!--Optional:-->\r\n" + 
-				"                  <!--jfi:ClubName>Jonas Sports-Plex</jfi:ClubName-->\r\n" + 
+				"                  <!--jfi:ClubName>Jonas Sports-Plex Worthington</jfi:ClubName-->\r\n" + 
 				"                  <!--Optional:-->\r\n" + 
 				"                  <!--jfi:IsSelected>true</jfi:IsSelected-->\r\n" + 
 				"               </jfi:BIClubSelectionDto>\r\n" + 
 				"            </jfi:ClubSelection>\r\n" + 
 				"            <!--Optional:-->\r\n" + 
-				"            <jfi:CompanyId>"+companyId+"</jfi:CompanyId>\r\n" + 
-				"            <!--Optional:-->\r\n" + 
 				"            <jfi:DataStorageTimeframe>"+timeFrame+"</jfi:DataStorageTimeframe>\r\n" + 
 				"            <!--Optional:-->\r\n" + 
-				"            <!--jfi:DataStorageTimeframeUnits>1</jfi:DataStorageTimeframeUnits-->\r\n" + 
+				"            <!--jfi:DataStorageTimeframeUnits>?</jfi:DataStorageTimeframeUnits-->\r\n" + 
 				"            <!--Optional:-->\r\n" + 
-				"            <!--jfi:IsActivated></jfi:IsActivated-->\r\n" + 
+				"            <!--jfi:IsActivated>?</jfi:IsActivated-->\r\n" + 
 				"         </tem:businessIntelligenceConfiguration>\r\n" + 
 				"      </tem:SetBusinessIntelligenceConfiguration>\r\n" + 
 				"   </soapenv:Body>\r\n" + 
@@ -388,8 +379,6 @@ public class CorporateInfoPL extends base {
 				"                  <!--jfi:IsSelected>true</jfi:IsSelected-->\r\n" + 
 				"               </jfi:BIClubSelectionDto>\r\n" + 
 				"            </jfi:ClubSelection>\r\n" + 
-				"            <!--Optional:-->\r\n" + 
-				"            <jfi:CompanyId>"+companyId+"</jfi:CompanyId>\r\n" + 
 				"            <!--Optional:-->\r\n" + 
 				"            <!--jfi:DataStorageTimeframe></jfi:DataStorageTimeframe-->\r\n" + 
 				"            <!--Optional:-->\r\n" + 
@@ -426,8 +415,6 @@ public class CorporateInfoPL extends base {
 				"                  <jfi:IsSelected>"+isSelected+"</jfi:IsSelected>\r\n" + 
 				"               </jfi:BIClubSelectionDto>\r\n" + 
 				"            </jfi:ClubSelection>\r\n" + 
-				"            <!--Optional:-->\r\n" + 
-				"            <jfi:CompanyId>"+companyId+"</jfi:CompanyId>\r\n" + 
 				"            <!--Optional:-->\r\n" + 
 				"            <!--jfi:DataStorageTimeframe>10</jfi:DataStorageTimeframe-->\r\n" + 
 				"            <!--Optional:-->\r\n" + 
