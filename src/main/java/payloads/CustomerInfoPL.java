@@ -193,4 +193,17 @@ public class CustomerInfoPL extends base {
 					"</soapenv:Envelope>";
 			return pl;
 		}
+		
+		public static String getMemberActions(String companyId) {
+		
+			String pl= "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+					"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:GetMemberActions/>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+			return pl;
+		}
 }

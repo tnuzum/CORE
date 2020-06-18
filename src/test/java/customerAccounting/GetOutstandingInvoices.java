@@ -15,8 +15,6 @@ import resources.base;
 public class GetOutstandingInvoices extends base {
 	
 		static String companyId;
-		static String asOfDate;
-		static Boolean includeTerminatedMember;
 	
 	@BeforeTest
 	public void getData() {
@@ -24,9 +22,6 @@ public class GetOutstandingInvoices extends base {
 		RestAssured.baseURI = prop.getProperty("baseURI");
 		
 		companyId = prop.getProperty("X-CompanyId");
-		
-		asOfDate = ReusableDates.getCurrentDate();
-		includeTerminatedMember = true;
 	}
 	
 	@Test (testName="Outstanding Invoices Found", description = "PBI: 153782")
@@ -36,7 +31,7 @@ public class GetOutstandingInvoices extends base {
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
          	.and()
-         	.body(CustomerAccountingPL.getOutstandingInvoices(companyId, asOfDate))
+         	.body(CustomerAccountingPL.getOutstandingInvoices(companyId))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
@@ -48,17 +43,17 @@ public class GetOutstandingInvoices extends base {
        		
        		Assert.assertTrue(res.getTime() >= 60L);
 			
-       		Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].CustomerId"));
-			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceBalance"));
-			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceCategory"));
-			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceCreationDate"));
-			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceDescription"));
-			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceDueDate"));
-			Assert.assertNotNull(js.getInt("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceId"));
-			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoicePaidAmount"));
-			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].InvoiceTotal"));
-			Assert.assertNotNull(js.getBoolean("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].NsfFeeApplied"));
-			Assert.assertNotNull(js.getInt("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto[0].ReceiptNumber"));
+       		Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].CustomerId"));
+			Assert.assertNotNull(js.getDouble("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].OutstandingInvoices.OutstandingInvoiceDto[0].InvoiceBalance"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].OutstandingInvoices.InvoiceCategory"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].OutstandingInvoices.InvoiceCreationDate"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].OutstandingInvoices.InvoiceDescription"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].OutstandingInvoices.InvoiceDueDate"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].OutstandingInvoices.InvoiceId"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].OutstandingInvoices.InvoicePaidAmount"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].OutstandingInvoices.InvoiceTotal"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].OutstandingInvoices.NsfFeeApplied"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoiceDtos[0].OutstandingInvoices.ReceiptNumber"));
 	}
 	
 	@Test (testName="Outstanding Invoices Not Found", description = "PBI: 153782")
@@ -70,7 +65,7 @@ public class GetOutstandingInvoices extends base {
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
          	.and()
-         	.body(CustomerAccountingPL.getOutstandingInvoices(companyId, asOfDate))
+         	.body(CustomerAccountingPL.getOutstandingInvoicesAsOfDate(companyId, asOfDate))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
@@ -78,14 +73,16 @@ public class GetOutstandingInvoices extends base {
          	.statusCode(200);
 	}
 	
-	@Test (testName="Terminated Member Included", description = "PBI: 153782")
-	public void terminatedMemberIncluded() {
+	@Test (testName="Specific Customer With Card Invoice Found", description = "PBI: 153782")
+	public void specificCustomerWithCardInvoiceFound() {
+		
+			String customerId = prop.getProperty("outstandingInvoiceCardOnFileMemberId");
 		
 			 Response res = given()
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
          	.and()
-         	.body(CustomerAccountingPL.getOutstandingInvoicesIncludeTerminatedMember(companyId, asOfDate, includeTerminatedMember))
+         	.body(CustomerAccountingPL.getOutstandingInvoicesSpecificCustomer(companyId, customerId))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
@@ -97,19 +94,60 @@ public class GetOutstandingInvoices extends base {
        		
        		Assert.assertTrue(res.getTime() >= 60L);
        		
-       		Assert.assertTrue(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.OutstandingInvoiceDto.CustomerId").contains(prop.getProperty("terminatedId")));
+       		Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].CustomerId"));
+	}
+	
+	@Test (testName="Specific Customer With Bank Acct Invoice Found", description = "PBI: 153782")
+	public void specificCustomerWithBankAcctInvoiceFound() {
+		
+			String customerId = prop.getProperty("outstandingInvoiceBankOnFileMemberId");
+		
+			 Response res = given()
+//			.log().all()
+         	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
+         	.and()
+         	.body(CustomerAccountingPL.getOutstandingInvoicesSpecificCustomer(companyId, customerId))
+         .when()
+         	.post("/Financial/CustomerAccounting.svc")
+         .then()
+//	      	.log().body()
+         	.statusCode(200)
+			.extract().response();
+  	      
+			XmlPath js = ReusableMethods.rawToXML(res);	
+       		
+       		Assert.assertTrue(res.getTime() >= 60L);
+       		
+       		Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].CustomerId"));
+	}
+	
+	@Test (testName="Specific As Of Date", description = "PBI: 153782")
+	public void specificAsOfDate() {
+		
+			String asOfDate = ReusableDates.getCurrentDateMinusXDays(30);
+		
+		 given()
+//			.log().all()
+         	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
+         	.and()
+         	.body(CustomerAccountingPL.getOutstandingInvoicesAsOfDate(companyId, asOfDate))
+         .when()
+         	.post("/Financial/CustomerAccounting.svc")
+         .then()
+//        	.log().body()
+         	.statusCode(200);
 	}
 	
 	@Test (testName="Terminated Member Not Included", description = "PBI: 153782")
 	public void terminatedMemberNotIncluded() {
 		
-			Boolean includeTerminatedMember = false;
+			String includeTerminatedMember = "false";
 		
 		 Response res = given()
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
          	.and()
-         	.body(CustomerAccountingPL.getOutstandingInvoicesIncludeTerminatedMember(companyId, asOfDate, includeTerminatedMember))
+         	.body(CustomerAccountingPL.getOutstandingInvoicesExcludeTerminatedMember(companyId, includeTerminatedMember))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
@@ -133,7 +171,7 @@ public class GetOutstandingInvoices extends base {
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
          	.and()
-         	.body(CustomerAccountingPL.getOutstandingInvoices(companyId, asOfDate))
+         	.body(CustomerAccountingPL.getOutstandingInvoicesAsOfDate(companyId, asOfDate))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
