@@ -40,7 +40,9 @@ public class SendCourseStandbyPromotionEmail extends base {
 		  "Content-Type","text/xml; charset=utf-8") .and()
 		  .body(MessagingServicePL.SendCourseStandbyPromotionEmail(companyId,
 		  enrollmentId)) .when() .post("/Messaging/MessagingService.svc") .then()
-		  .log().all() .statusCode(200) .extract().response();
+//		  .log().all()
+		  .statusCode(200) 
+		  .extract().response();
 		  
 		  XmlPath js = ReusableMethods.rawToXML(res); String text =
 		  js.getString("Envelope.Body.SendCourseStandbyPromotionEmailResponse");
@@ -64,7 +66,7 @@ public class SendCourseStandbyPromotionEmail extends base {
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-				  .log().all()
+//				  .log().all()
 				  .statusCode(400) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
@@ -89,7 +91,7 @@ public class SendCourseStandbyPromotionEmail extends base {
 				  .and()
 		  .body(MessagingServicePL.SendCourseStandbyPromotionEmail(companyId, enrollmentId)) 
 		  .when() .post("/Messaging/MessagingService.svc") .then()
-		  .log().all() 
+//		  .log().all() 
 		  .statusCode(400) 
 		  .extract().response();
 		  
