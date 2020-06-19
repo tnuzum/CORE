@@ -23,7 +23,6 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 	String clubId;
 	String clubName;
 	String clubIsSelected;
-	String bICompanyId;
 	String timeFrame;
 	String timeFrameUnits;
 	String isActivated;
@@ -37,7 +36,6 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 		clubId = prop.getProperty("X-Club1Id");
 		clubName = prop.getProperty("club1Name");
 		clubIsSelected = "true";
-		bICompanyId = prop.getProperty("X-CompanyId");
 		timeFrame = "1";
 		timeFrameUnits = "1";
 		isActivated = "true";
@@ -47,7 +45,6 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 	public void setAllParametersTest1() {
 		
 			String isSelected = "false";
-			String bICompanyId = prop.getProperty("X-CompanyId");
 			String timeFrame = "5";
 			String timeFrameUnits = "5";
 			String isActivated = "false";
@@ -56,7 +53,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, isSelected, bICompanyId, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, isSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -74,7 +71,6 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].ClubId"), clubId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].ClubName"), clubName);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].IsSelected"), isSelected);
-			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"), companyId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframe"), timeFrame);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframeUnits"), timeFrameUnits);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.IsActivated"), isActivated);
@@ -87,7 +83,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, bICompanyId, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -105,7 +101,6 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].ClubId"), clubId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].ClubName"), clubName);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].IsSelected"), clubIsSelected);
-			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"), companyId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframe"), timeFrame);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframeUnits"), timeFrameUnits);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.IsActivated"), isActivated);
@@ -122,7 +117,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_MultipleClubs(companyId, clubId, clubName, clubIsSelected, club2Id, club2Name, club2IsSelected, bICompanyId, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_MultipleClubs(companyId, clubId, clubName, clubIsSelected, club2Id, club2Name, club2IsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -143,7 +138,6 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[1].ClubId"), club2Id);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[1].ClubName"), club2Name);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[1].IsSelected"), club2IsSelected);
-			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"), companyId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframe"), timeFrame);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframeUnits"), timeFrameUnits);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.IsActivated"), isActivated);
@@ -171,7 +165,6 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 		
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"), companyId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.IsActivated"), isActivated);
 	}
 	
@@ -198,8 +191,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 		Response res	=	myGets.getProjectConfiguration(companyId);
 		
 			XmlPath js = ReusableMethods.rawToXML(res);
-			
-			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"), companyId);
+
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.IsActivated"), isActivated);
 			Assert.assertEquals(js.getBoolean("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].IsSelected"), false); //this is set to false when company is deactivated
 	}
@@ -227,8 +219,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 		Response res	=	myGets.getProjectConfiguration(companyId);
 		
 			XmlPath js = ReusableMethods.rawToXML(res);
-			
-			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"), companyId);
+
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframe"), timeFrame);
 	}
 	
@@ -255,8 +246,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 		Response res	=	myGets.getProjectConfiguration(companyId);
 		
 			XmlPath js = ReusableMethods.rawToXML(res);
-			
-			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"), companyId);
+
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.DataStorageTimeframeUnits"), timeFrameUnits);
 	}
 	
@@ -283,8 +273,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 		Response res	=	myGets.getProjectConfiguration(companyId);
 		
 			XmlPath js = ReusableMethods.rawToXML(res);
-			
-			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"), companyId);
+
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].ClubId"), clubId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].IsSelected"), isSelected);
 	}
@@ -312,8 +301,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 		Response res	=	myGets.getProjectConfiguration(companyId);
 		
 			XmlPath js = ReusableMethods.rawToXML(res);
-			
-			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.CompanyId"), companyId);
+
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].ClubId"), clubId);
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.ClubSelection.BIClubSelectionDto[0].IsSelected"), isSelected);
 	}
@@ -329,7 +317,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, bICompanyId, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -355,33 +343,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, isSelected, bICompanyId, timeFrame, timeFrameUnits, isActivated))
-		.when()
-			.post("/Info/CorporateInfo.svc")
-		.then()
-//			.log().all()
-		    .time(lessThan(60L),TimeUnit.SECONDS)
-			.statusCode(500)
-			.statusLine("HTTP/1.1 500 Internal Server Error")
-			.extract().response();
-		
-			XmlPath js = ReusableMethods.rawToXML(res);
-			
-			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto[0]").contains("The value 'null' cannot be parsed"));
-	}
-	
-	@Test (testName="BI Club Is Null", description = "PBI: 164526")
-	public void bIClubIsSelectedNull() {
-		
-			String bICompanyId = prop.getProperty("NOF");
-			
-		Response res = 
-				
-		given()
-//			.log().all()
- 			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
-			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, bICompanyId, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, isSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -407,7 +369,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, bICompanyId, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -433,7 +395,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, bICompanyId, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -459,7 +421,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, bICompanyId, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()

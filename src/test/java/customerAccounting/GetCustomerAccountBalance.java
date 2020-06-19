@@ -28,9 +28,9 @@ public class GetCustomerAccountBalance extends base {
 		
 	}
 	
-	@Test (testName="History Found - No Declines", description="PBI:149845", enabled = true)
+	@Test (testName="History Found - No Declines", description="PBI:149845", enabled = false)
 	public void historyFoundNoDeclines() {
-		
+		// need to find another customer to use for this test
 			String customerId = prop.getProperty("noFOPId");
 		
 	Response res = 
