@@ -41,6 +41,7 @@
     <class name="customerAccounting.GetStoredPaymentAccountsForCustomer"/>
     <class name="customerAccounting.identifyCreditCardType"/>
     <class name="customerAuth.AuthorizeCustomerTest"/>
+    <class name="customerInfo.AddMemberNote"/>
     <class name="customerInfo.GetCustomerInfo"/>
     <class name="customerInfo.GetFamilyMembersForTest"/>
     <class name="customerInfo.GetFullFamilyForTest"/>

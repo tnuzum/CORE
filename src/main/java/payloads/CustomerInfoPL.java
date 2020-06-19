@@ -206,4 +206,58 @@ public class CustomerInfoPL extends base {
 					"</soapenv:Envelope>";
 			return pl;
 		}
+		
+		public static String addMemberNote(
+				String companyId,
+				String actionId,
+				String alertOnCheckIn,
+				String clubId,
+				String customerId,
+				String doNotDisplayInFrontDesk,
+				String employeeId,
+				String note) {
+			
+			String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Customer\">\r\n" + 
+					"   <soapenv:Header>\r\n" + 
+					"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+					"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+					"   </soapenv:Header>\r\n" + 
+					"   <soapenv:Body>\r\n" + 
+					"      <tem:AddMemberNote>\r\n" + 
+					"         <!--Optional:-->\r\n" + 
+					"         <tem:request>\r\n" + 
+					"            <!--Optional:-->\r\n" + 
+					"            <jfi:ActionId>"+actionId+"</jfi:ActionId>\r\n" + 
+					"            <!--Optional:-->\r\n" + 
+					"            <jfi:AlertOnCheckIn>"+alertOnCheckIn+"</jfi:AlertOnCheckIn>\r\n" + 
+					"            <!--Optional:-->\r\n" + 
+					"            <jfi:ClubId>"+clubId+"</jfi:ClubId>\r\n" + 
+					"            <!--Optional:-->\r\n" + 
+					"            <jfi:CustomerId>"+customerId+"</jfi:CustomerId>\r\n" + 
+					"            <!--Optional:-->\r\n" + 
+					"            <jfi:DoNotDisplayInFrontDesk>"+doNotDisplayInFrontDesk+"</jfi:DoNotDisplayInFrontDesk>\r\n" + 
+					"            <!--Optional:-->\r\n" + 
+					"            <jfi:EmployeeId>"+employeeId+"</jfi:EmployeeId>\r\n" + 
+					"            <!--Optional:-->\r\n" + 
+					"            <jfi:Note>"+note+"</jfi:Note>\r\n" + 
+					"         </tem:request>\r\n" + 
+					"      </tem:AddMemberNote>\r\n" + 
+					"   </soapenv:Body>\r\n" + 
+					"</soapenv:Envelope>";
+		
+			return pl;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }
