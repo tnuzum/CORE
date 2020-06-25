@@ -56,7 +56,7 @@ public class Vita_GetBusinessIntelligenceConfiguration extends base {
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
-			.log().all()
+//			.log().all()
 			.time(lessThan(60L),TimeUnit.SECONDS)
 			.statusCode(200)
 			.statusLine("HTTP/1.1 200 OK")
