@@ -19,7 +19,7 @@ public class EnrollmentServicePL extends base{
 				"         <tem:classId>"+classId+"</tem:classId>\r\n" + 
 				"         <!--Optional:-->\r\n" + 
 				"         <tem:occurrence>\r\n" + 
-				"            <sys:DateTime>"+tomorrowsDate+"T17:00:00</sys:DateTime>\r\n" + 
+				"            <sys:DateTime>"+tomorrowsDate+"T21:00:00</sys:DateTime>\r\n" + 
 				"            <sys:OffsetMinutes>-240</sys:OffsetMinutes>\r\n" + 
 				"         </tem:occurrence>\r\n" + 
 				"      </tem:EnrollInClassStandby>\r\n" + 
@@ -111,8 +111,8 @@ public static String EnrollInCourseStandby(String companyId, String customerId, 
 				"         <tem:classId>"+classId+"</tem:classId>\r\n" + 
 				"         <!--Optional:-->\r\n" + 
 				"         <tem:occurrence>\r\n" + 
-				"            <sys:DateTime>"+tomorrowsDate+"T17:00:00Z</sys:DateTime>\r\n" + 
-				"            <sys:OffsetMinutes>-300</sys:OffsetMinutes>\r\n" + 
+				"            <sys:DateTime>"+tomorrowsDate+"T21:00:00Z</sys:DateTime>\r\n" + 
+				"            <sys:OffsetMinutes>-240</sys:OffsetMinutes>\r\n" + 
 				"         </tem:occurrence>\r\n" + 
 				"         <tem:paymentType>OnAccount</tem:paymentType>\r\n" + 
 				"      </tem:EnrollInClass>\r\n" + 

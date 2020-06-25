@@ -13,7 +13,7 @@ import payloads.MessagingServicePL;
 import resources.ReusableMethods;
 import resources.base;
 
-public class SendClassStandbyPromotionEmail extends base {
+public class SendCustomerCourseUnenrollmentEmail extends base {
 	static String companyId;
 	static String enrollmentId;
 	
@@ -25,19 +25,18 @@ public class SendClassStandbyPromotionEmail extends base {
 		companyId = prop.getProperty("X-CompanyId");
 	}
 	@Test(priority = 1)
-	public void sendClassStandbyPromotionEmail() {
+	public void sendCourseUnenrollmentEmailToCustomer() {
 		
-		String customerId = prop.getProperty("standbyCustomerId");
-		String classId= prop.getProperty("standbyClassId");
-		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+		String customerId = prop.getProperty("enrollmentCustomerId");
+		String courseId= prop.getProperty("enrollmentCourseId");
+				
+		enrollmentId = ReusableMethods.enrollInCourse(companyId, customerId, courseId); // Place customer On Standby
 		
-		enrollmentId = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate); // Place customer On Standby
-		ReusableMethods.promoteStandbyEnrollmentsForClass(companyId, classId, tomorrowsDate); // promote customer to Enrolled
 		System.out.println(enrollmentId);
 		
-		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendClassStandbyPromotionEmail","Content-Type","text/xml; charset=utf-8") 
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerCourseUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
-				  .body(MessagingServicePL.SendClassStandbyPromotionEmail(companyId, enrollmentId)) 
+				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail(companyId, enrollmentId)) 
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
@@ -45,12 +44,12 @@ public class SendClassStandbyPromotionEmail extends base {
 				  .statusCode(200) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
-				  String text = js.getString("Envelope.Body.SendClassStandbyPromotionEmailResponse");
+				  String text = js.getString("Envelope.Body.SendCustomerCourseUnenrollmentEmailResponse");
 				  Assert.assertNotNull(text);
 				  
 				  Assert.assertTrue(res.getTime() >= 60L); 
-				  ReusableMethods.deleteEnrollment(companyId, enrollmentId);
-		
+				 
+				  ReusableMethods.deleteEnrollment(companyId, enrollmentId); //Delete Enrollment
 	}
 	
 	@Test(priority = 2)
@@ -59,9 +58,9 @@ public class SendClassStandbyPromotionEmail extends base {
 		
 		enrollmentId = "38554333";
 		
-		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendClassStandbyPromotionEmail","Content-Type","text/xml; charset=utf-8") 
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerCourseUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
-				  .body(MessagingServicePL.SendClassStandbyPromotionEmail(companyId, enrollmentId)) 
+				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail(companyId, enrollmentId)) 
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
@@ -76,25 +75,26 @@ public class SendClassStandbyPromotionEmail extends base {
 	@Test(priority = 3)
 	public void sendCourseIdForClassId() {
 		
-		String customerId = prop.getProperty("standbyCustomerId");
-		String courseId= prop.getProperty("standbyCourseId");
+		String customerId = prop.getProperty("enrollmentCustomerId");
+		String classId= prop.getProperty("enrollmentClassId");
+		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
 		
 		
-		enrollmentId = ReusableMethods.placeOnStandbyCourse(companyId, customerId, courseId); // Place customer On Standby
-		ReusableMethods.PromoteStandbyEnrollmentsForCourse(companyId, courseId); // promote customer to Enrolled
+		enrollmentId = ReusableMethods.enrollInClass(companyId, customerId, classId, tomorrowsDate); // Place customer On Standby
+	
 		System.out.println(enrollmentId);
 		
 		
-		  Response res = given() .headers("SOAPAction","http://tempuri.org/IMessagingService/SendClassStandbyPromotionEmail","Content-Type","text/xml; charset=utf-8") 
+		  Response res = given() .headers("SOAPAction","http://tempuri.org/IMessagingService/SendCustomerCourseUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				  .and()
-		  .body(MessagingServicePL.SendClassStandbyPromotionEmail(companyId, enrollmentId)) 
+		  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail(companyId, enrollmentId)) 
 		  .when() .post("/Messaging/MessagingService.svc") .then()
 //		  .log().all() 
 		  .statusCode(400) 
 		  .extract().response();
 		  
 		  XmlPath js = ReusableMethods.rawToXML(res); String text =
-		  js.getString("Envelope.Body.SendClassStandbyPromotionEmailResponse");
+		  js.getString("Envelope.Body.SendCustomerCourseUnenrollmentEmailResponse");
 		  Assert.assertNotNull(text);
 		  
 		  Assert.assertTrue(res.getTime() >= 60L); String text1 =

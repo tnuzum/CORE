@@ -426,4 +426,36 @@ public static String SendCourseStandbyPromotionEmail(String companyId, String en
 	return pl;
 }
 
+public static String SendCustomerClassUnenrollmentEmail(String companyId, String enrollmentId) {
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+			"   <soapenv:Header>\r\n" + 
+			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+			"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+			"      </soapenv:Header>\r\n" + 
+			"   <soapenv:Body>\r\n" + 
+			"      <tem:SendCustomerClassUnenrollmentEmail>\r\n" + 
+			"         <!--Optional:-->\r\n" + 
+			"         <tem:enrollmentId>"+enrollmentId+"</tem:enrollmentId>\r\n" + 
+			"      </tem:SendCustomerClassUnenrollmentEmail>\r\n" + 
+			"   </soapenv:Body>\r\n" + 
+			"</soapenv:Envelope>";
+	return pl;
+}
+
+public static String SendCustomerCourseUnenrollmentEmail(String companyId, String enrollmentId) {
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+			"   <soapenv:Header>\r\n" + 
+			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+			"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+			"      </soapenv:Header>\r\n" + 
+			"   <soapenv:Body>\r\n" + 
+			"      <tem:SendCustomerCourseUnenrollmentEmail>\r\n" + 
+			"         <!--Optional:-->\r\n" + 
+			"         <tem:enrollmentId>"+enrollmentId+"</tem:enrollmentId>\r\n" + 
+			"      </tem:SendCustomerCourseUnenrollmentEmail>\r\n" + 
+			"   </soapenv:Body>\r\n" + 
+			"</soapenv:Envelope>";
+	return pl;
+}
+
 }

@@ -31,13 +31,13 @@ public class DeleteEnrollment extends base {
 		String classId= prop.getProperty("standbyClassId");
 		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
 		
-		String enrollmentId = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate);
+		String enrollmentId = ReusableMethods.enrollInClass(companyId, customerId, classId, tomorrowsDate);
 		
 		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/DeleteEnrollment","Content-Type","text/xml; charset=utf-8") .and()
 				  .body(EnrollmentServicePL.DeleteEnrollment(companyId, enrollmentId)) .when()
 				  .post("/ClassesAndCourses/EnrollmentService.svc") 
 				  .then() 
-//				  .log().all()
+				  .log().all()
 				  .statusCode(200) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
