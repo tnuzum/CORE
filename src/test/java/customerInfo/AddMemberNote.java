@@ -15,15 +15,14 @@ import resources.base;
 
 public class AddMemberNote extends base {
 	
-
-	String companyId;
-	String actionId;
-	String alertOnCheckIn;
-	String clubId;
-	String customerId;
-	String doNotDisplayInFrontDesk;
-	String employeeId;
-	String note;
+	static String companyId;
+	static String actionId;
+	static String alertOnCheckIn;
+	static String clubId;
+	static String customerId;
+	static String doNotDisplayInFrontDesk;
+	static String employeeId;
+	static String note;
 	
 	@BeforeTest
 	public void getData(){
@@ -235,7 +234,7 @@ public class AddMemberNote extends base {
 	}
 	
 	@Test (testName="Employee Not Found", description = "PBI: 165462")
-	public void employeeFound(){
+	public void employeeNotFound(){
 		
 			String employeeId = "99999";
 		

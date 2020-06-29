@@ -24,6 +24,7 @@ public class SendClassStandbyPromotionEmail extends base {
 		
 		companyId = prop.getProperty("X-CompanyId");
 	}
+	
 	@Test(priority = 1)
 	public void sendClassStandbyPromotionEmail() {
 		
@@ -33,7 +34,7 @@ public class SendClassStandbyPromotionEmail extends base {
 		
 		enrollmentId = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate); // Place customer On Standby
 		ReusableMethods.promoteStandbyEnrollmentsForClass(companyId, classId, tomorrowsDate); // promote customer to Enrolled
-		System.out.println(enrollmentId);
+//		System.out.println(enrollmentId);
 		
 		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendClassStandbyPromotionEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
@@ -82,14 +83,14 @@ public class SendClassStandbyPromotionEmail extends base {
 		
 		enrollmentId = ReusableMethods.placeOnStandbyCourse(companyId, customerId, courseId); // Place customer On Standby
 		ReusableMethods.PromoteStandbyEnrollmentsForCourse(companyId, courseId); // promote customer to Enrolled
-		System.out.println(enrollmentId);
+//		System.out.println(enrollmentId);
 		
 		
 		  Response res = given() .headers("SOAPAction","http://tempuri.org/IMessagingService/SendClassStandbyPromotionEmail","Content-Type","text/xml; charset=utf-8") 
 				  .and()
 		  .body(MessagingServicePL.SendClassStandbyPromotionEmail(companyId, enrollmentId)) 
 		  .when() .post("/Messaging/MessagingService.svc") .then()
-		  .log().all() 
+//		  .log().all() 
 		  .statusCode(400) 
 		  .extract().response();
 		  
