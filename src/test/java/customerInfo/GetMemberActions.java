@@ -29,6 +29,7 @@ public class GetMemberActions extends base {
 	public void memberActionsFound(){
 		
 	       Response res =  given()
+//	    		.log().all()
                 .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetMemberActions","Content-Type", "text/xml; charset=utf-8")
                 .and()
                 .body(CustomerInfoPL.getMemberActions(companyId))

@@ -73,8 +73,8 @@ public class GetOutstandingInvoices extends base {
          	.statusCode(200);
 	}
 	
-	@Test (testName="Specific Customer With Card Invoice Found", description = "PBI: 153782")
-	public void specificCustomerWithCardInvoiceFound() {
+	@Test (testName="Specific Customer Found", description = "PBI: 153782")
+	public void specificCustomerFound() {
 		
 			String customerId = prop.getProperty("outstandingInvoiceCardOnFileMemberId");
 		
@@ -96,31 +96,7 @@ public class GetOutstandingInvoices extends base {
        		
        		Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].CustomerId"));
 	}
-	
-	@Test (testName="Specific Customer With Bank Acct Invoice Found", description = "PBI: 153782")
-	public void specificCustomerWithBankAcctInvoiceFound() {
-		
-			String customerId = prop.getProperty("outstandingInvoiceBankOnFileMemberId");
-		
-			 Response res = given()
-//			.log().all()
-         	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetOutstandingInvoices","Content-Type", "text/xml; charset=utf-8")
-         	.and()
-         	.body(CustomerAccountingPL.getOutstandingInvoicesSpecificCustomer(companyId, customerId))
-         .when()
-         	.post("/Financial/CustomerAccounting.svc")
-         .then()
-//	      	.log().body()
-         	.statusCode(200)
-			.extract().response();
-  	      
-			XmlPath js = ReusableMethods.rawToXML(res);	
-       		
-       		Assert.assertTrue(res.getTime() >= 60L);
-       		
-       		Assert.assertNotNull(js.getString("Envelope.Body.GetOutstandingInvoicesResponse.GetOutstandingInvoicesResult.CustomerOutstandingInvoicesDto[0].CustomerId"));
-	}
-	
+
 	@Test (testName="Specific As Of Date", description = "PBI: 153782")
 	public void specificAsOfDate() {
 		
