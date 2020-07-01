@@ -426,33 +426,67 @@ public static String SendCourseStandbyPromotionEmail(String companyId, String en
 	return pl;
 }
 
-public static String SendCustomerClassUnenrollmentEmail(String companyId, String enrollmentId) {
-	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+public static String SendCustomerClassUnenrollmentEmail(String companyId, String customerId, String itemId, String startTime, String startTimeOffset, String endTime, String endTimeOffset, String enrollmentOccurrenceTime, String enrollmentOccurrenceTimeOffset) {
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Messaging\" xmlns:sys=\"http://schemas.datacontract.org/2004/07/System\">\r\n" + 
 			"   <soapenv:Header>\r\n" + 
-			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
-			"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
 			"      </soapenv:Header>\r\n" + 
 			"   <soapenv:Body>\r\n" + 
 			"      <tem:SendCustomerClassUnenrollmentEmail>\r\n" + 
 			"         <!--Optional:-->\r\n" + 
-			"         <tem:enrollmentId>"+enrollmentId+"</tem:enrollmentId>\r\n" + 
+			"         <tem:enrollmentDto>\r\n" + 
+			"            <!--Optional:-->\r\n" + 
+			"            <jfi:CustomerId>"+customerId+"</jfi:CustomerId>\r\n" + 
+			"            <jfi:EndDate>\r\n" + 
+			"               <sys:DateTime>"+endTime+"</sys:DateTime>\r\n" + 
+			"               <sys:OffsetMinutes>"+endTimeOffset+"</sys:OffsetMinutes>\r\n" + 
+			"            </jfi:EndDate>\r\n" + 
+			"            <!--Optional:-->\r\n" + 
+			"            <jfi:EnrollmentOccurredOn>\r\n" + 
+			"               <sys:DateTime>"+enrollmentOccurrenceTime+"</sys:DateTime>\r\n" + 
+			"               <sys:OffsetMinutes>"+enrollmentOccurrenceTimeOffset+"</sys:OffsetMinutes>\r\n" + 
+			"            </jfi:EnrollmentOccurredOn>\r\n" + 
+			"            <jfi:ItemId>"+itemId+"</jfi:ItemId>\r\n" + 
+			"            <!--Optional:-->\r\n" + 
+			"            <jfi:StartDate>\r\n" + 
+			"               <sys:DateTime>"+startTime+"</sys:DateTime>\r\n" + 
+			"               <sys:OffsetMinutes>"+startTimeOffset+"</sys:OffsetMinutes>\r\n" + 
+			"            </jfi:StartDate>\r\n" + 
+			"         </tem:enrollmentDto>\r\n" + 
 			"      </tem:SendCustomerClassUnenrollmentEmail>\r\n" + 
 			"   </soapenv:Body>\r\n" + 
 			"</soapenv:Envelope>";
 	return pl;
 }
 
-public static String SendCustomerCourseUnenrollmentEmail(String companyId, String enrollmentId) {
-	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+public static String SendCustomerCourseUnenrollmentEmail(String companyId, String customerId, String itemId, String startTime, String startTimeOffset, String endTime, String endTimeOffset, String enrollmentOccurrenceTime, String enrollmentOccurrenceTimeOffset) {
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Messaging\" xmlns:sys=\"http://schemas.datacontract.org/2004/07/System\">\r\n" + 
 			"   <soapenv:Header>\r\n" + 
-			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
-			"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
 			"      </soapenv:Header>\r\n" + 
 			"   <soapenv:Body>\r\n" + 
-			"      <tem:SendCustomerCourseUnenrollmentEmail>\r\n" + 
+			"      <tem:SendCustomerClassUnenrollmentEmail>\r\n" + 
 			"         <!--Optional:-->\r\n" + 
-			"         <tem:enrollmentId>"+enrollmentId+"</tem:enrollmentId>\r\n" + 
-			"      </tem:SendCustomerCourseUnenrollmentEmail>\r\n" + 
+			"         <tem:enrollmentDto>\r\n" + 
+			"            <!--Optional:-->\r\n" + 
+			"            <jfi:CustomerId>"+customerId+"</jfi:CustomerId>\r\n" + 
+			"            <jfi:EndDate>\r\n" + 
+			"               <sys:DateTime>"+endTime+"</sys:DateTime>\r\n" + 
+			"               <sys:OffsetMinutes>"+endTimeOffset+"</sys:OffsetMinutes>\r\n" + 
+			"            </jfi:EndDate>\r\n" + 
+			"            <!--Optional:-->\r\n" + 
+			"            <jfi:EnrollmentOccurredOn>\r\n" + 
+			"               <sys:DateTime>"+enrollmentOccurrenceTime+"</sys:DateTime>\r\n" + 
+			"               <sys:OffsetMinutes>"+enrollmentOccurrenceTimeOffset+"</sys:OffsetMinutes>\r\n" + 
+			"            </jfi:EnrollmentOccurredOn>\r\n" + 
+			"            <jfi:ItemId>"+itemId+"</jfi:ItemId>\r\n" + 
+			"            <!--Optional:-->\r\n" + 
+			"            <jfi:StartDate>\r\n" + 
+			"               <sys:DateTime>"+startTime+"</sys:DateTime>\r\n" + 
+			"               <sys:OffsetMinutes>"+startTimeOffset+"</sys:OffsetMinutes>\r\n" + 
+			"            </jfi:StartDate>\r\n" + 
+			"         </tem:enrollmentDto>\r\n" + 
+			"      </tem:SendCustomerClassUnenrollmentEmail>\r\n" + 
 			"   </soapenv:Body>\r\n" + 
 			"</soapenv:Envelope>";
 	return pl;

@@ -7,10 +7,11 @@ import payloads.ChangeRequestsPL;
 import payloads.EnrollmentServicePL;
 
 import static io.restassured.RestAssured.given;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.testng.Assert;
 
@@ -143,15 +144,39 @@ public static String placeOnStandbyCourse(String companyId, String customerId, S
 			  return enrollmentId;
 }
 
-public static Object deleteEnrollment(String companyId, String enrollmentId) {
+public static String[] deleteEnrollment(String companyId, String enrollmentId) {
 	
-	given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/DeleteEnrollment","Content-Type","text/xml; charset=utf-8") .and()
+	Response res =given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/DeleteEnrollment","Content-Type","text/xml; charset=utf-8") .and()
 			  .body(EnrollmentServicePL.DeleteEnrollment(companyId, enrollmentId)) .when()
 			  .post("/ClassesAndCourses/EnrollmentService.svc") 
 			  .then() 
-//			  .log().all()
+	//		  .log().all()
 			  .statusCode(200) .extract().response();
-	return null;
+	 XmlPath js = ReusableMethods.rawToXML(res);
+	  
+	 Assert.assertTrue(res.getTime() >= 60L); 
+	 String output[] = new String[9];
+	 
+	 String customerId = js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.CustomerId");
+	 String itemId = js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.ItemId");
+	 String startTime =  js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.StartDate.DateTime");
+	 String startTimeOffset = js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.StartDate.OffsetMinutes");
+	 String endTime = js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.EndDate.DateTime");
+	 String endTimeOffset = js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.EndDate.OffsetMinutes");
+	 String enrollmentOccurrenceTime = js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.EnrollmentOccurredOn.DateTime");
+	 String enrollmentOccurrenceTimeOffset = js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.EnrollmentOccurredOn.OffsetMinutes");
+	 output[0] = customerId;
+	 output[1] = itemId;
+	 output[2] = startTime;
+	 output[3] = startTimeOffset;
+	 output[4] = endTime;
+	 output[5] = endTimeOffset;
+	 output[6] = enrollmentOccurrenceTime;
+	 output[7] = enrollmentOccurrenceTimeOffset;
+	
+	 return output;
+	
+	//return customerId, itemId, startTime, startTimeOffset, endTime, endTimeOffset, enrollmentOccurrenceTime, enrollmentOccurrenceTimeOffset;
 	
 }
 public static  String promoteStandbyEnrollmentsForClass(String companyId, String classId, String tomorrowsDate) {
