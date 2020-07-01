@@ -45,7 +45,7 @@ public class Vita_GetBusinessIntelligenceConfiguration extends base {
 	
 	@Test (testName="Get Business Intelligence Configuration", description = "PBI: 164977")
 	public void getBusinessIntelligenceConfiguration() {
-		
+				
 		Response res = 
 		
 		given()

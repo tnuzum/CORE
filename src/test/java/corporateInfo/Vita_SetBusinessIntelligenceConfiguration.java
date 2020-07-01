@@ -37,12 +37,13 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 		clubName = prop.getProperty("club1Name");
 		clubIsSelected = "true";
 		timeFrame = "1";
-		timeFrameUnits = "1";
+		timeFrameUnits = "0";
 		isActivated = "true";
+		clubIsSelected = "true";
 	}
 	
-	@Test (testName="Set All Parameters Test 1", description = "PBI: 164526")
-	public void setAllParametersTest1() {
+	@Test (testName="Update All Parameters Test 1", description = "PBI: 164526")
+	public void updateAllParametersTest1() {
 		
 			String isSelected = "false";
 			String timeFrame = "5";
@@ -53,7 +54,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, isSelected, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, isSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -76,14 +77,14 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.IsActivated"), isActivated);
 	}	
 	
-	@Test (testName="Set All Parameters Test 2", description = "PBI: 164526")
-	public void setAllParametersTest2() {
+	@Test (testName="Update All Parameters Test 2", description = "PBI: 164526")
+	public void updateAllParametersTest2() {
 				
 		given()
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -143,14 +144,14 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.IsActivated"), isActivated);
 	}
 	
-	@Test (testName="Set IsActivated", description = "PBI: 164526")
+	@Test (testName="Set IsActivated", priority = 2, description = "PBI: 164526")
 	public void setIsActivated() {
 						
 		given()
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_IsActivated(companyId, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -168,7 +169,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 			Assert.assertEquals(js.getString("Envelope.Body.GetBusinessIntelligenceConfigurationResponse.GetBusinessIntelligenceConfigurationResult.IsActivated"), isActivated);
 	}
 	
-	@Test (testName="Company is Deactivated", description = "PBI: 164526")
+	@Test (testName="Company is Deactivated", priority = 1, description = "PBI: 164526")
 	public void companyIsDeactivated() {
 		
 			String isActivated = "false";
@@ -177,7 +178,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_IsActivated(companyId, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -205,7 +206,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_TimeFrame(companyId, timeFrame))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -226,13 +227,14 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 	@Test (testName="Set Time Frame Units", description = "PBI: 164526")
 	public void setTimeFrameUnits() {
 		
-		String timeFrameUnits = "2";
+		// ** NOTE: only 0 and 1 are valid timeFrameUnits; 0=days, 1=months **
+		String timeFrameUnits = "1";
 						
 		given()
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_TimeFrameUnits(companyId, timeFrameUnits))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -259,7 +261,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_ClubIsSelected(companyId, clubId, isSelected))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, isSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -287,7 +289,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_ClubIsSelected(companyId, clubId, isSelected))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, isSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -317,7 +319,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -332,10 +334,10 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto[0]").contains("The value 'null' cannot be parsed"));
 	}
 	
-	@Test (testName="Club Is Select Null", description = "PBI: 164526")
+	@Test (testName="Club Is Selected Null", description = "PBI: 164526")
 	public void clubIsSelectedNull() {
 		
-			String isSelected = prop.getProperty("NOF");
+			String clubIsSelected = prop.getProperty("NOF");
 			
 		Response res = 
 				
@@ -343,7 +345,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, isSelected, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -369,7 +371,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -384,7 +386,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto[0]").contains("The value 'null' cannot be parsed"));
 	}
 	
-	@Test (testName="Time Frame UnitsNull", description = "PBI: 164526")
+	@Test (testName="Time Frame Units Null", description = "PBI: 164526")
 	public void timeFrameUnitsNull() {
 		
 			String timeFrameUnits = prop.getProperty("NOF");
@@ -395,7 +397,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -421,7 +423,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/ICorporateInfo/SetBusinessIntelligenceConfiguration","Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration_AllParameters(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
+			.body(CorporateInfoPL.SetBusinessIntelligenceConfiguration(companyId, clubId, clubName, clubIsSelected, timeFrame, timeFrameUnits, isActivated))
 		.when()
 			.post("/Info/CorporateInfo.svc")
 		.then()
@@ -435,8 +437,7 @@ public class Vita_SetBusinessIntelligenceConfiguration extends base {
 			
 			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto[0]").contains("The value 'null' cannot be parsed"));
 	}
-	
-	
+
 }
 
 
