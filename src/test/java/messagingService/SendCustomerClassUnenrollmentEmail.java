@@ -123,6 +123,33 @@ public class SendCustomerClassUnenrollmentEmail extends base {
 	}
 	
 	@Test(priority = 4)
+	public void InvalidItemIdAndCustomerId() {
+			
+		
+		 String itemId1 =  "362222";
+		 String customerId2 =  "822222";
+		 
+		
+		System.out.println(enrollmentId);
+		System.out.println(customerId1);
+		
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
+				 .and()
+				  .body(MessagingServicePL.SendCustomerClassUnenrollmentEmail( companyId,  customerId2,  itemId1,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
+				  .when()
+				  .post("/Messaging/MessagingService.svc") 
+				  .then() 
+//				  .log().all()
+				  .statusCode(400) .extract().response();
+				  
+				  XmlPath js = ReusableMethods.rawToXML(res);
+				  String text =
+						  js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
+				  Assert.assertEquals(text, "CustomerId: "+customerId2+" or ItemId: "+itemId1+" is invalid.");
+	}
+	
+	
+	@Test(priority = 5)
 	public void sendCourseIdForClassId() {
 		
 		 String itemId2 = prop.getProperty("enrollmentCourseId"); ;

@@ -55,8 +55,7 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 		 enrollmentOccurrenceTimeOffset = output[7];
 		 System.out.println(enrollmentId);
 		
-		System.out.println(enrollmentId);
-		
+				
 		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
 				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId1,  itemId,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
@@ -96,7 +95,7 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 			  XmlPath js = ReusableMethods.rawToXML(res);
 			  String text =
 					  js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
-			  Assert.assertEquals(text, "CustomerId: 822222 is invalid.");
+			  Assert.assertEquals(text, "CustomerId: "+customerId2+" or ItemId: "+itemId+" is invalid.");
 }
 	
 	@Test(priority = 3)
@@ -110,7 +109,7 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 		
 		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
-				  .body(MessagingServicePL.SendCustomerClassUnenrollmentEmail( companyId,  customerId1,  itemId1,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
+				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId1,  itemId1,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
@@ -120,11 +119,37 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 				  XmlPath js = ReusableMethods.rawToXML(res);
 				  String text =
 						  js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
-				  Assert.assertEquals(text, "ItemId: 363333 is invalid.");
+				  Assert.assertEquals(text, "CustomerId: "+customerId1+" or ItemId: "+itemId1+" is invalid.");
 	}
 	
 	@Test(priority = 4)
-	public void sendCourseIdForClassId() {
+	public void InvalidItemIdAndCustomerId() {
+			
+		
+		 String itemId1 =  "362222";
+		 String customerId2 =  "822222";
+		 
+		
+		System.out.println(enrollmentId);
+		System.out.println(customerId1);
+		
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
+				 .and()
+				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId2,  itemId1,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
+				  .when()
+				  .post("/Messaging/MessagingService.svc") 
+				  .then() 
+//				  .log().all()
+				  .statusCode(400) .extract().response();
+				  
+				  XmlPath js = ReusableMethods.rawToXML(res);
+				  String text =
+						  js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
+				  Assert.assertEquals(text, "CustomerId: "+customerId2+" or ItemId: "+itemId1+" is invalid.");
+	}
+	
+	@Test(priority = 5)
+	public void sendClassIdForCourseId() {
 		
 		 String itemId2 = prop.getProperty("enrollmentClassId"); ;
 		 
@@ -133,7 +158,7 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 		
 		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
-				  .body(MessagingServicePL.SendCustomerClassUnenrollmentEmail( companyId,  customerId1,  itemId2,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
+				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId1,  itemId2,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
