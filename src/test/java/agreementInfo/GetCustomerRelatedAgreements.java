@@ -68,6 +68,8 @@ public class GetCustomerRelatedAgreements extends base {
 			Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerRelatedAgreementsResponse.GetCustomerRelatedAgreementsResult.RelatedAgreementsResponse.PaymentInfo.CustomerName.LastName"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerRelatedAgreementsResponse.GetCustomerRelatedAgreementsResult.RelatedAgreementsResponse.PaymentInfo.CustomerName.LastName"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerRelatedAgreementsResponse.GetCustomerRelatedAgreementsResult.RelatedAgreementsResponse.PaymentInfo.TruncatedAccountNumber"));
+			Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerRelatedAgreementsResponse.GetCustomerRelatedAgreementsResult.RelatedAgreementsResponse.PaymentInfo.FopIsValid"));
+			Assert.assertEquals(js.getString("Envelope.Body.GetCustomerRelatedAgreementsResponse.GetCustomerRelatedAgreementsResult.RelatedAgreementsResponse.PaymentInfo.FopIsValid"), "true");
 			Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerRelatedAgreementsResponse.GetCustomerRelatedAgreementsResult.RelatedAgreementsResponse.RecurringDuesAmount"));
 			Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerRelatedAgreementsResponse.GetCustomerRelatedAgreementsResult.RelatedAgreementsResponse.TermType"));
 			
