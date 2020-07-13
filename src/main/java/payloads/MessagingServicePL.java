@@ -462,14 +462,16 @@ public static String SendCustomerClassUnenrollmentEmail(String companyId, String
 public static String SendCustomerCourseUnenrollmentEmail(String companyId, String customerId, String itemId, String startTime, String startTimeOffset, String endTime, String endTimeOffset, String enrollmentOccurrenceTime, String enrollmentOccurrenceTimeOffset) {
 	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.DTOs.Messaging\" xmlns:sys=\"http://schemas.datacontract.org/2004/07/System\">\r\n" + 
 			"   <soapenv:Header>\r\n" + 
-			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+			"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
 			"      </soapenv:Header>\r\n" + 
 			"   <soapenv:Body>\r\n" + 
-			"      <tem:SendCustomerClassUnenrollmentEmail>\r\n" + 
+			"      <tem:SendCustomerCourseUnenrollmentEmail>\r\n" + 
 			"         <!--Optional:-->\r\n" + 
 			"         <tem:enrollmentDto>\r\n" + 
 			"            <!--Optional:-->\r\n" + 
 			"            <jfi:CustomerId>"+customerId+"</jfi:CustomerId>\r\n" + 
+			"            <!--Optional:-->\r\n" + 
 			"            <jfi:EndDate>\r\n" + 
 			"               <sys:DateTime>"+endTime+"</sys:DateTime>\r\n" + 
 			"               <sys:OffsetMinutes>"+endTimeOffset+"</sys:OffsetMinutes>\r\n" + 
@@ -486,10 +488,11 @@ public static String SendCustomerCourseUnenrollmentEmail(String companyId, Strin
 			"               <sys:OffsetMinutes>"+startTimeOffset+"</sys:OffsetMinutes>\r\n" + 
 			"            </jfi:StartDate>\r\n" + 
 			"         </tem:enrollmentDto>\r\n" + 
-			"      </tem:SendCustomerClassUnenrollmentEmail>\r\n" + 
+			"      </tem:SendCustomerCourseUnenrollmentEmail>\r\n" + 
 			"   </soapenv:Body>\r\n" + 
 			"</soapenv:Envelope>";
 	return pl;
-}
+		
+	}
 
 }
