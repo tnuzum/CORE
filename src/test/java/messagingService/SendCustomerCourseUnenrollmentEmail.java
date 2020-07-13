@@ -56,13 +56,13 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 		 System.out.println(enrollmentId);
 		
 				
-		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerCourseUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
 				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId1,  itemId,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-//				  .log().all()
+				  //.log().all()
 				  .statusCode(200) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
@@ -83,13 +83,13 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 	
 	System.out.println(enrollmentId);
 	
-	 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
+	 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerCourseUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 			 .and()
 			  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId2,  itemId,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
 			  .when()
 			  .post("/Messaging/MessagingService.svc") 
 			  .then() 
-//			  .log().all()
+			  //.log().all()
 			  .statusCode(400) .extract().response();
 			  
 			  XmlPath js = ReusableMethods.rawToXML(res);
@@ -107,13 +107,13 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 		
 		System.out.println(enrollmentId);
 		
-		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerCourseUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
 				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId1,  itemId1,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-//				  .log().all()
+				  //.log().all()
 				  .statusCode(400) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
@@ -133,13 +133,13 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 		System.out.println(enrollmentId);
 		System.out.println(customerId1);
 		
-		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerCourseUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
 				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId2,  itemId1,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-//				  .log().all()
+			  //.log().all()
 				  .statusCode(400) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
@@ -156,13 +156,13 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 		
 		System.out.println(enrollmentId);
 		
-		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
+		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerCourseUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
 				 .and()
 				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId1,  itemId2,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-//				  .log().all()
+				  //.log().all()
 				  .statusCode(400) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
