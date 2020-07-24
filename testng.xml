@@ -73,6 +73,7 @@
     <class name="enrollmentService.EnrollInCourseStandby"/>
     <class name="enrollmentService.PromoteStandbyEnrollmentsForClass"/>
     <class name="enrollmentService.PromoteStandbyEnrollmentsForCourse"/>
+    <class name ="TransactionProcessing.GetInvoicingInformation"/>
     </classes>
   </test>
 </suite>
