@@ -114,7 +114,7 @@ public static String EnrollInCourseStandby(String companyId, String customerId, 
 				"            <sys:DateTime>"+tomorrowsDate+"T21:00:00Z</sys:DateTime>\r\n" + 
 				"            <sys:OffsetMinutes>-240</sys:OffsetMinutes>\r\n" + 
 				"         </tem:occurrence>\r\n" + 
-				"         <tem:paymentType>OnAccount</tem:paymentType>\r\n" + 
+				"         <tem:paymentType>Money</tem:paymentType>\r\n" + 
 				"      </tem:EnrollInClass>\r\n" + 
 				"   </soapenv:Body>\r\n" + 
 				"</soapenv:Envelope>";
@@ -135,7 +135,7 @@ public static String EnrollInCourseStandby(String companyId, String customerId, 
 				"         <!--Optional:-->\r\n" + 
 				"         <!--tem:invoiceDetailId>?</tem:invoiceDetailId-->\r\n" + 
 				"         <!--Optional:-->\r\n" + 
-				"         <tem:paymentType>OnAccount</tem:paymentType>\r\n" + 
+				"         <tem:paymentType>Money</tem:paymentType>\r\n" + 
 				"      </tem:EnrollInCourse>\r\n" + 
 				"   </soapenv:Body>\r\n" + 
 				"</soapenv:Envelope>";
