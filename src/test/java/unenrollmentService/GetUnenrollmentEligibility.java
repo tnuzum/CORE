@@ -17,7 +17,7 @@ import resources.base;
 public class GetUnenrollmentEligibility extends base {
 				
 		static String companyId;
-		
+		static String enrollmentId;
 
 			@BeforeTest
 			public void getData() {
@@ -570,6 +570,63 @@ public class GetUnenrollmentEligibility extends base {
 					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.Amount");
 			}
 
+			
+			@Test (priority = 22, testName="Standby class cannot be unenrolled")
+			public void UnenrollStandbyClass() {
+				
+				String customerId = prop.getProperty("standbyCustomerId");
+				String classId= prop.getProperty("standbyClassId");
+				String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+				
+				 enrollmentId = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate);
+				
+				Response res = given()
+		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
+					.and()
+					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, enrollmentId))
+				.when()
+					.post("/ClassesAndCourses/UnenrollmentService.svc")
+				.then()
+				//	.log().all()
+					.statusCode(200)
+					.extract().response();  
+					
+					XmlPath js = ReusableMethods.rawToXML(res);
+							
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
+					ReusableMethods.deleteEnrollment(companyId, enrollmentId);
+					
+					}
+			
+			@Test (priority = 23, testName="Standby course cannot be unenrolled")
+			public void UnenrollStandbyCourse() {
+				
+				String customerId = prop.getProperty("standbyCustomerId");
+				String courseId= prop.getProperty("standbyCourseId");
+								
+				 enrollmentId = ReusableMethods.placeOnStandbyCourse(companyId, customerId, courseId);
+				
+				Response res = given()
+		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
+					.and()
+					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, enrollmentId))
+				.when()
+					.post("/ClassesAndCourses/UnenrollmentService.svc")
+				.then()
+					//.log().all()
+					.statusCode(200)
+					.extract().response();  
+					
+					XmlPath js = ReusableMethods.rawToXML(res);
+							
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
+					ReusableMethods.deleteEnrollment(companyId, enrollmentId);
+					
+					}
 			
 			
 }

@@ -166,7 +166,7 @@ public class PromoteStandbyEnrollmentsForClass extends base{
 		   
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 5)
 	public void sendCourseIdForClassId() {
 		
 		String classId= prop.getProperty("standbyCourseId");
@@ -186,6 +186,94 @@ public class PromoteStandbyEnrollmentsForClass extends base{
 		  String text1 = js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
 		  Assert.assertEquals(text1, "itemId: "+classId+" is not a class item.");
 	}
+	
+	@Test(priority = 6)
+	public void PromoteAsExecutonFallsOutsideTheTimeWindow() {
+		
+		String customerId = prop.getProperty("standbyCustomerId");
+		String classId= prop.getProperty("standbyPromoAutoYesClassId");
+		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+		
+		enrollmentId1 = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate);
+		
+		
+		  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/PromoteStandbyEnrollmentsForClass","Content-Type","text/xml; charset=utf-8") .and()
+		  .body(EnrollmentServicePL.PromoteStandbyEnrollmentsForClass(companyId, classId, tomorrowsDate)) 
+		  .when()
+		  .post("/ClassesAndCourses/EnrollmentService.svc") 
+		  .then() 
+//		  .log().all()
+		  .statusCode(200) .extract().response();
+		  
+		  XmlPath js = ReusableMethods.rawToXML(res);
+		  
+		  Assert.assertTrue(res.getTime() >= 60L); 
+		  enrollmentId2 = js.getString("Envelope.Body.PromoteStandbyEnrollmentsForClassResponse.PromoteStandbyEnrollmentsForClassResult.int");
+		  Assert.assertNotNull(enrollmentId2);
+		  Assert.assertEquals(enrollmentId2, enrollmentId1);
+		 
+		  ReusableMethods.deleteEnrollment(companyId, enrollmentId1);
+		  
+	}
+	
+	@Test(priority = 7)
+	public void DoNotPromoteAsExecutonFallsWithinTheTimeWindow() {
+		
+		String customerId = prop.getProperty("standbyCustomerId");
+		String classId= prop.getProperty("standbyPromoAutoNoClassId");
+		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+		
+		enrollmentId1 = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate);
+		
+		
+		  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/PromoteStandbyEnrollmentsForClass","Content-Type","text/xml; charset=utf-8") .and()
+		  .body(EnrollmentServicePL.PromoteStandbyEnrollmentsForClass(companyId, classId, tomorrowsDate)) 
+		  .when()
+		  .post("/ClassesAndCourses/EnrollmentService.svc") 
+		  .then() 
+//		  .log().all()
+		  .statusCode(200) .extract().response();
+		  
+		  XmlPath js = ReusableMethods.rawToXML(res);
+		  
+		  Assert.assertTrue(res.getTime() >= 60L); 
+		  enrollmentId2 = js.getString("Envelope.Body.PromoteStandbyEnrollmentsForClassResponse.PromoteStandbyEnrollmentsForClassResult.int");
+		  Assert.assertNotNull(enrollmentId2);
+		  Assert.assertTrue(!enrollmentId2.contains(enrollmentId1));
+		 
+		  ReusableMethods.deleteEnrollment(companyId, enrollmentId1);
+		  
+	}
+	
+	@Test(priority = 8)
+	public void DoNotPromoteAsClassIsSetToManual() {
+		
+		String customerId = prop.getProperty("standbyCustomerId");
+		String classId= prop.getProperty("standbyPromoManualClassId");
+		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+		
+		enrollmentId1 = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate);
+		
+		
+		  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/PromoteStandbyEnrollmentsForClass","Content-Type","text/xml; charset=utf-8") .and()
+		  .body(EnrollmentServicePL.PromoteStandbyEnrollmentsForClass(companyId, classId, tomorrowsDate)) 
+		  .when()
+		  .post("/ClassesAndCourses/EnrollmentService.svc") 
+		  .then() 
+//		  .log().all()
+		  .statusCode(200) .extract().response();
+		  
+		  XmlPath js = ReusableMethods.rawToXML(res);
+		  
+		  Assert.assertTrue(res.getTime() >= 60L); 
+		  enrollmentId2 = js.getString("Envelope.Body.PromoteStandbyEnrollmentsForClassResponse.PromoteStandbyEnrollmentsForClassResult.int");
+		  Assert.assertNotNull(enrollmentId2);
+		  Assert.assertTrue(!enrollmentId2.contains(enrollmentId1));
+		 
+		  ReusableMethods.deleteEnrollment(companyId, enrollmentId1);
+		  
+	}
+	
 	
 
 
