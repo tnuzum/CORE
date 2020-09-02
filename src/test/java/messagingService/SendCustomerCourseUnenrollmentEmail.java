@@ -62,7 +62,7 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-				  //.log().all()
+				  .log().all()
 				  .statusCode(200) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
