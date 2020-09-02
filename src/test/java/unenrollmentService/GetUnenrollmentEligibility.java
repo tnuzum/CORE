@@ -236,7 +236,7 @@ public class GetUnenrollmentEligibility extends base {
 					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
 					Assert.assertEquals(text, "true");
 					String text1 = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundType");
-					Assert.assertEquals(text1, "OnAccount");
+					Assert.assertEquals(text1, "OnAccount CreditCard");
 					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemDescription");
 					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemId");
 					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.RefundableAmount");

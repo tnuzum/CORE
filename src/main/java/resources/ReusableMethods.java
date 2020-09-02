@@ -73,6 +73,15 @@ public class ReusableMethods {
 		
 	}
 	
+	public static String getDayAfterTomorrowsDate() {
+		DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar today1 = Calendar.getInstance();
+		today1.add(Calendar.DAY_OF_YEAR, 2);
+		String DayAfterTomorrowsDate = dateFormat1.format(today1.getTime());
+		return DayAfterTomorrowsDate;
+		
+	}
+	
 	public static String enrollInClass(String companyId, String customerId, String classId, String tomorrowsDate) {
 		
 		
