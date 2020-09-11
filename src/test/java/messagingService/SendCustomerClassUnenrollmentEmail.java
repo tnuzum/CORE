@@ -37,9 +37,9 @@ public class SendCustomerClassUnenrollmentEmail extends base {
 		
 		String customerId = prop.getProperty("enrollmentCustomerId");
 		String classId= prop.getProperty("enrollmentClassId");
-		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+		String tomorrowsDate = ReusableMethods.getTomorrowsDate()+"T21:00:00Z";
 		
-		enrollmentId = ReusableMethods.enrollInClass(companyId, customerId, classId, tomorrowsDate); // Place customer On Standby
+		enrollmentId = ReusableMethods.enrollInClass(companyId, customerId, classId, tomorrowsDate); // enroll member
 		String output[] = ReusableMethods.deleteEnrollment(companyId, enrollmentId); //Delete Enrollment (Unenroll)
 		
 			

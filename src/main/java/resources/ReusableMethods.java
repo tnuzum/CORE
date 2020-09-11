@@ -82,11 +82,11 @@ public class ReusableMethods {
 		
 	}
 	
-	public static String enrollInClass(String companyId, String customerId, String classId, String tomorrowsDate) {
+	public static String enrollInClass(String companyId, String customerId, String classId, String dateTime) {
 		
 		
 		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/EnrollInClass","Content-Type","text/xml; charset=utf-8") .and()
-				  .body(EnrollmentServicePL.EnrollInClass(companyId, customerId,classId, tomorrowsDate)) 
+				  .body(EnrollmentServicePL.EnrollInClass(companyId, customerId,classId, dateTime)) 
 				  .when()
 				  .post("/ClassesAndCourses/EnrollmentService.svc") 
 				  .then() 

@@ -115,8 +115,8 @@ public class PromoteStandbyEnrollmentsForClass extends base{
 		String classId= prop.getProperty("standbyClassId");
 		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
 		
-		enrollmentId1 = ReusableMethods.enrollInClass(companyId, customerId1, classId, tomorrowsDate);
-		enrollmentId2 = ReusableMethods.enrollInClass(companyId, customerId2, classId, tomorrowsDate);
+		enrollmentId1 = ReusableMethods.enrollInClass(companyId, customerId1, classId, tomorrowsDate+"T21:00:00Z");
+		enrollmentId2 = ReusableMethods.enrollInClass(companyId, customerId2, classId, tomorrowsDate+"T21:00:00Z");
 		enrollmentId3 = ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate);
 			
 		

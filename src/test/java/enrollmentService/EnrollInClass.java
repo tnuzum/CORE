@@ -30,7 +30,7 @@ public class EnrollInClass extends base {
 		
 		String customerId = prop.getProperty("enrollmentCustomerId1");
 		String classId= prop.getProperty("enrollmentClassId");
-		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+		String tomorrowsDate = ReusableMethods.getTomorrowsDate()+"T21:00:00Z";
 		
 		//System.out.println(ReusableMethods.placeOnStandby(companyId, customerId, classId, tomorrowsDate));
 		
