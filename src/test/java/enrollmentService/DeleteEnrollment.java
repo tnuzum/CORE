@@ -29,7 +29,7 @@ public class DeleteEnrollment extends base {
 	public void deleteEnrollment() {
 		String customerId = prop.getProperty("standbyCustomerId");
 		String classId= prop.getProperty("standbyClassId");
-		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+		String tomorrowsDate = ReusableMethods.getTomorrowsDate()+"T21:00:00Z";
 		
 		//"2020-06-25T21:00:00Z";
 		
@@ -39,7 +39,7 @@ public class DeleteEnrollment extends base {
 				  .body(EnrollmentServicePL.DeleteEnrollment(companyId, enrollmentId)) .when()
 				  .post("/ClassesAndCourses/EnrollmentService.svc") 
 				  .then() 
-				  .log().all()
+//				  .log().all()
 				  .statusCode(200) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
@@ -64,7 +64,7 @@ public class DeleteEnrollment extends base {
 				  .body(EnrollmentServicePL.DeleteEnrollment(companyId, enrollmentId)) .when()
 				  .post("/ClassesAndCourses/EnrollmentService.svc") 
 				  .then() 
-				  .log().all()
+//				  .log().all()
 				  .statusCode(400) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);

@@ -4,7 +4,7 @@ import resources.base;
 
 public class EnrollmentServicePL extends base{
 	
-	public static String EnrollInClassStandby(String companyId, String customerId, String classId, String tomorrowsDate) {
+	public static String EnrollInClassStandby(String companyId, String customerId, String classId, String dateTime) {
 		
 		String pl ="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:sys=\"http://schemas.datacontract.org/2004/07/System\">\r\n" + 
 				"  <soapenv:Header>\r\n" + 
@@ -19,7 +19,7 @@ public class EnrollmentServicePL extends base{
 				"         <tem:classId>"+classId+"</tem:classId>\r\n" + 
 				"         <!--Optional:-->\r\n" + 
 				"         <tem:occurrence>\r\n" + 
-				"            <sys:DateTime>"+tomorrowsDate+"T21:00:00</sys:DateTime>\r\n" + 
+				"            <sys:DateTime>"+dateTime+"T21:00:00</sys:DateTime>\r\n" + 
 				"            <sys:OffsetMinutes>-240</sys:OffsetMinutes>\r\n" + 
 				"         </tem:occurrence>\r\n" + 
 				"      </tem:EnrollInClassStandby>\r\n" + 
@@ -98,7 +98,7 @@ public static String EnrollInCourseStandby(String companyId, String customerId, 
 		return pl;
 	}
 	
-	public static String EnrollInClass(String companyId, String customerId, String classId, String tomorrowsDate) {
+	public static String EnrollInClass(String companyId, String customerId, String classId, String dateTime) {
 		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:sys=\"http://schemas.datacontract.org/2004/07/System\">\r\n" + 
 				"      <soapenv:Header>\r\n" + 
 				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
@@ -111,7 +111,8 @@ public static String EnrollInCourseStandby(String companyId, String customerId, 
 				"         <tem:classId>"+classId+"</tem:classId>\r\n" + 
 				"         <!--Optional:-->\r\n" + 
 				"         <tem:occurrence>\r\n" + 
-				"            <sys:DateTime>"+tomorrowsDate+"T21:00:00Z</sys:DateTime>\r\n" + 
+				
+				" <sys:DateTime>"+dateTime+"</sys:DateTime>\r\n" + 
 				"            <sys:OffsetMinutes>-240</sys:OffsetMinutes>\r\n" + 
 				"         </tem:occurrence>\r\n" + 
 				"         <tem:paymentType>Money</tem:paymentType>\r\n" + 

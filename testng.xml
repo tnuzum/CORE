@@ -78,6 +78,7 @@
     <class name="enrollmentService.GetClass"/>
     <class name="enrollmentService.GetCourse"/>
     <class name ="TransactionProcessing.GetInvoicingInformation"/>
+    <class name = "scheduling.GetCustomerSchedule"/>
     </classes>
   </test>
 </suite>
