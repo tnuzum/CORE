@@ -145,5 +145,24 @@ static String customerid1 = "66777";
 			Assert.assertTrue(res.getTime() >= 60L);
 			Assert.assertEquals(js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message"), "EnrollmentIds: 3308611 were not found.");
 	}
+	
+	@Test (priority = 7, testName="Send Family VirtualCourseEnrollment Confirmation Email - Both Enrollment and Standby")
+	public void SendFamilyVirtualCourseEnrollmentConfirmationEmail() {
+		
+		Response res = given()
+ 			.headers("SOAPAction", "http://tempuri.org/IMessagingService/SendFamilyCourseEnrollmentConfirmationEmail","Content-Type", "text/xml; charset=utf-8")
+			.and()
+			.body(MessagingServicePL.SendFamilyVirtualCourseEnrollmentAndStandbyConfirmationEmail(companyId, customerid))
+		.when()
+			.post("/Messaging/MessagingService.svc")
+		.then()
+//			.log().all()
+			.statusCode(200)
+			.extract().response();  
+			
+			XmlPath js = ReusableMethods.rawToXML(res);
+					
+			Assert.assertTrue(res.getTime() >= 60L);
+	}
 
 }
