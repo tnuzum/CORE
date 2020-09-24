@@ -30,6 +30,33 @@ public class MessagingServicePL extends base {
 				"</soapenv:Envelope>";
 		return pl;
 	}
+	
+public static String SendFamilyVirtualClassEnrollmentAndStandbyConfirmationEmail(String companyId, String customerid)
+	
+	{
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"  <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:SendFamilyClassEnrollmentConfirmationEmail>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerId>"+customerid+"</tem:customerId>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:enrollmentIds>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <arr:int>73096</arr:int>\r\n" + 
+				"             <arr:int>73097</arr:int>\r\n" + 
+				"             <arr:int>73098</arr:int>\r\n" + 
+				"             <arr:int>73099</arr:int>\r\n" + 
+				" 			\r\n" + 
+				"         </tem:enrollmentIds>\r\n" + 
+				"      </tem:SendFamilyClassEnrollmentConfirmationEmail>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		return pl;
+	}
 
 public static String SendFamilyClassEnrollmentOnlyConfirmationEmail(String companyId, String customerid)
 	
@@ -180,6 +207,32 @@ public static String SendFamilyCourseEnrollmentAndStandbyConfirmationEmail(Strin
 		"             <arr:int>33091</arr:int>\r\n" + 
 		"             <arr:int>33092</arr:int>\r\n" + 
 		"             <arr:int>33093</arr:int>\r\n" + 
+		" 			\r\n" + 
+		"         </tem:enrollmentIds>\r\n" + 
+		"      </tem:SendFamilyCourseEnrollmentConfirmationEmail>\r\n" + 
+		"   </soapenv:Body>\r\n" + 
+		"</soapenv:Envelope>";
+return pl;
+}
+
+public static String SendFamilyVirtualCourseEnrollmentAndStandbyConfirmationEmail(String companyId, String customerid)
+{
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+		"  <soapenv:Header>\r\n" + 
+		"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+		"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+		"   </soapenv:Header>\r\n" + 
+		"   <soapenv:Body>\r\n" + 
+		"      <tem:SendFamilyCourseEnrollmentConfirmationEmail>\r\n" + 
+		"         <!--Optional:-->\r\n" + 
+		"         <tem:customerId>"+customerid+"</tem:customerId>\r\n" + 
+		"         <!--Optional:-->\r\n" + 
+		"         <tem:enrollmentIds>\r\n" + 
+		"            <!--Zero or more repetitions:-->\r\n" + 
+		"            <arr:int>73092</arr:int>\r\n" + 
+		"             <arr:int>73093</arr:int>\r\n" + 
+		"             <arr:int>73094</arr:int>\r\n" + 
+		"             <arr:int>73095</arr:int>\r\n" + 
 		" 			\r\n" + 
 		"         </tem:enrollmentIds>\r\n" + 
 		"      </tem:SendFamilyCourseEnrollmentConfirmationEmail>\r\n" + 
@@ -358,6 +411,24 @@ public static String SendCustomerClassEnrollmentConfirmationEmail_InvalidEnrlmnt
 	return pl;
 }
 
+public static String SendVirtualCustomerClassEnrollmentConfirmationEmail(String companyId, String enrollmentId)
+
+{
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+			"   <soapenv:Header>\r\n" + 
+			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+			"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+			"   </soapenv:Header>\r\n" + 
+			"   <soapenv:Body>\r\n" + 
+			"      <tem:SendCustomerClassEnrollmentConfirmationEmail>\r\n" + 
+			"         <!--Optional:-->\r\n" + 
+			"         <tem:enrollmentId>"+enrollmentId+"</tem:enrollmentId>\r\n" + 
+			"      </tem:SendCustomerClassEnrollmentConfirmationEmail>\r\n" + 
+			"   </soapenv:Body>\r\n" + 
+			"</soapenv:Envelope>";
+	return pl;
+}
+
 public static String SendCustomerCourseEnrollmentConfirmationEmail(String companyId)
 
 {
@@ -388,6 +459,24 @@ public static String SendCustomerCourseEnrollmentConfirmationEmail_InvalidEnrlmn
 			"      <tem:SendCustomerCourseEnrollmentConfirmationEmail>\r\n" + 
 			"         <!--Optional:-->\r\n" + 
 			"         <tem:enrollmentId>330958</tem:enrollmentId>\r\n" + 
+			"      </tem:SendCustomerCourseEnrollmentConfirmationEmail>\r\n" + 
+			"   </soapenv:Body>\r\n" + 
+			"</soapenv:Envelope>";
+	return pl;
+}
+
+public static String SendVirtualCustomerCourseEnrollmentConfirmationEmail(String companyId, String enrollmentId)
+
+{
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n" + 
+			"   <soapenv:Header>\r\n" + 
+			"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+			"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+			"   </soapenv:Header>\r\n" + 
+			"   <soapenv:Body>\r\n" + 
+			"      <tem:SendCustomerCourseEnrollmentConfirmationEmail>\r\n" + 
+			"         <!--Optional:-->\r\n" + 
+			"         <tem:enrollmentId>"+enrollmentId+"</tem:enrollmentId>\r\n" + 
 			"      </tem:SendCustomerCourseEnrollmentConfirmationEmail>\r\n" + 
 			"   </soapenv:Body>\r\n" + 
 			"</soapenv:Envelope>";

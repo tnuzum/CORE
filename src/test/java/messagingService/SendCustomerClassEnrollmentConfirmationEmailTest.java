@@ -67,5 +67,31 @@ static String companyId;
 			Assert.assertEquals(js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message"), "enrollmentId: 330777 is invalid.");
 	}
 	
+	@Test (priority = 3, testName="Send Customer VirtualClassEnrollment Confirmation Email")
+	public void SendVirtualCustomerClassEnrollmentConfirmationEmail() {
+		
+		String customerId = prop.getProperty("enrollmentCustomerId");
+		String classId= prop.getProperty("virtualEnrollmentClassId");
+		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
+		
+		String enrollmentId = ReusableMethods.enrollInClass(companyId, customerId, classId, tomorrowsDate); // Place customer On Standby
+		
+		Response res = given()
+ 			.headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerClassEnrollmentConfirmationEmail","Content-Type", "text/xml; charset=utf-8")
+			.and()
+			.body(MessagingServicePL.SendVirtualCustomerClassEnrollmentConfirmationEmail(companyId, enrollmentId))
+		.when()
+			.post("/Messaging/MessagingService.svc")
+		.then()
+//			.log().all()
+			.statusCode(200)
+			.extract().response();  
+			
+			XmlPath js = ReusableMethods.rawToXML(res);
+					
+			Assert.assertTrue(res.getTime() >= 60L);
+			 ReusableMethods.deleteEnrollment(companyId, enrollmentId);
+	}
+	
 	
 }

@@ -107,4 +107,34 @@ public class SendCourseStandbyPromotionEmail extends base {
 		 
 		
 	}
+	
+	@Test(priority = 4)
+	public void sendVirtualCourseStandbyPromotionEmail() {
+		
+		String customerId = prop.getProperty("standbyCustomerId");
+		String courseId= prop.getProperty("virtualStandbyCourseId");
+				
+		enrollmentId = ReusableMethods.placeOnStandbyCourse(companyId, customerId, courseId); // Place customer On Standby
+		ReusableMethods.PromoteStandbyEnrollmentsForCourse(companyId, courseId); // promote customer to Enrolled
+		System.out.println(enrollmentId);
+		
+		
+		  Response res = given() .headers("SOAPAction",
+		  "http://tempuri.org/IMessagingService/SendCourseStandbyPromotionEmail",
+		  "Content-Type","text/xml; charset=utf-8") .and()
+		  .body(MessagingServicePL.SendCourseStandbyPromotionEmail(companyId,
+		  enrollmentId)) .when() .post("/Messaging/MessagingService.svc") .then()
+//		  .log().all()
+		  .statusCode(200) 
+		  .extract().response();
+		  
+		  XmlPath js = ReusableMethods.rawToXML(res); String text =
+		  js.getString("Envelope.Body.SendCourseStandbyPromotionEmailResponse");
+		  Assert.assertNotNull(text);
+		  
+		  Assert.assertTrue(res.getTime() >= 60L);
+		  ReusableMethods.deleteEnrollment(companyId, enrollmentId);
+		 
+		
+	}
 }
