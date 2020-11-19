@@ -268,5 +268,140 @@ public class AuthorizeCustomerTest extends base{
 				
 		}
 		
+		@Test (priority = 10, testName="Get Customer Authorizations", enabled = true)
+		public void AuthorizeCustomer_FrozenMember_AddAndEditFOPAllowedInClub() {
+			
+			 String Frozen_AddEditFOPAllowedInClub = prop.getProperty("Frozen_AddEditFOPAllowedInClub");
+			
+			Response res = given()
+	 			.headers("SOAPAction", "http://tempuri.org/ICustomerAuth/AuthorizeCustomer","Content-Type", "text/xml; charset=utf-8")
+				.and()
+				.body(CustomerAuthPL.AuthorizeCustomer(companyId, Frozen_AddEditFOPAllowedInClub))
+			.when()
+				.post("/Auth/CustomerAuth.svc")
+			.then()
+//				.log().all()
+				.statusCode(200)
+				.extract().response();  
+				
+				XmlPath js = ReusableMethods.rawToXML(res);
+						
+				Assert.assertTrue(res.getTime() >= 60L);
+				String text = js.getString("Envelope.Body.AuthorizeCustomerResponse.AuthorizeCustomerResult.Permissions");
+				Assert.assertTrue(text.contains("EditPersonalInformation"));
+				Assert.assertTrue(text.contains("EditBillingInformation"));
+				Assert.assertTrue(text.contains("AllowAddCC"));
+				Assert.assertTrue(text.contains("AllowAddACH"));
+				
+		}
+		
+		@Test (priority = 11, testName="Get Customer Authorizations", enabled = true)
+		public void AuthorizeCustomer_Frozen_AddEditFOPNotAllowedInClub() {
+			
+			 String Frozen_AddEditFOPNotAllowedInClub = prop.getProperty("Frozen_AddEditFOPNotAllowedInClub");
+			
+			Response res = given()
+	 			.headers("SOAPAction", "http://tempuri.org/ICustomerAuth/AuthorizeCustomer","Content-Type", "text/xml; charset=utf-8")
+				.and()
+				.body(CustomerAuthPL.AuthorizeCustomer(companyId, Frozen_AddEditFOPNotAllowedInClub))
+			.when()
+				.post("/Auth/CustomerAuth.svc")
+			.then()
+//				.log().all()
+				.statusCode(200)
+				.extract().response();  
+				
+				XmlPath js = ReusableMethods.rawToXML(res);
+						
+				Assert.assertTrue(res.getTime() >= 60L);
+				String text = js.getString("Envelope.Body.AuthorizeCustomerResponse.AuthorizeCustomerResult.Permissions");
+				Assert.assertFalse(text.contains("EditPersonalInformation"));
+				Assert.assertFalse(text.contains("EditBillingInformation"));
+				Assert.assertFalse(text.contains("AllowAddCC"));
+				Assert.assertFalse(text.contains("AllowAddACH"));
+				
+		}
+		
+		
+		@Test (priority = 12, testName="Get Customer Authorizations", enabled = true)
+		public void AuthorizeCustomer_Member_AddEditFOPNotAllowedInClub() {
+			
+			 String Member_AddEditFOPNotAllowedInClub = prop.getProperty("Member_AddEditFOPNotAllowedInClub");
+			
+			Response res = given()
+	 			.headers("SOAPAction", "http://tempuri.org/ICustomerAuth/AuthorizeCustomer","Content-Type", "text/xml; charset=utf-8")
+				.and()
+				.body(CustomerAuthPL.AuthorizeCustomer(companyId, Member_AddEditFOPNotAllowedInClub))
+			.when()
+				.post("/Auth/CustomerAuth.svc")
+			.then()
+//				.log().all()
+				.statusCode(200)
+				.extract().response();  
+				
+				XmlPath js = ReusableMethods.rawToXML(res);
+						
+				Assert.assertTrue(res.getTime() >= 60L);
+				String text = js.getString("Envelope.Body.AuthorizeCustomerResponse.AuthorizeCustomerResult.Permissions");
+				Assert.assertFalse(text.contains("EditPersonalInformation"));
+				Assert.assertFalse(text.contains("EditBillingInformation"));
+				Assert.assertFalse(text.contains("AllowAddCC"));
+				Assert.assertFalse(text.contains("AllowAddACH"));
+				
+		}
+		
+		@Test (priority = 13, testName="Get Customer Authorizations", enabled = true)
+		public void AuthorizeCustomer_Member_OnlyEditFOPAllowedInClub() {
+			
+			 String Member_OnlyEditFOPAllowedInClub = prop.getProperty("Member_OnlyEditFOPAllowedInClub");
+			
+			Response res = given()
+	 			.headers("SOAPAction", "http://tempuri.org/ICustomerAuth/AuthorizeCustomer","Content-Type", "text/xml; charset=utf-8")
+				.and()
+				.body(CustomerAuthPL.AuthorizeCustomer(companyId, Member_OnlyEditFOPAllowedInClub))
+			.when()
+				.post("/Auth/CustomerAuth.svc")
+			.then()
+//				.log().all()
+				.statusCode(200)
+				.extract().response();  
+				
+				XmlPath js = ReusableMethods.rawToXML(res);
+						
+				Assert.assertTrue(res.getTime() >= 60L);
+				String text = js.getString("Envelope.Body.AuthorizeCustomerResponse.AuthorizeCustomerResult.Permissions");
+				Assert.assertTrue(text.contains("EditPersonalInformation"));
+				Assert.assertFalse(text.contains("EditBillingInformation"));
+				Assert.assertFalse(text.contains("AllowAddCC"));
+				Assert.assertFalse(text.contains("AllowAddACH"));
+				
+		}
+		
+		@Test (priority = 14, testName="Get Customer Authorizations", enabled = true)
+		public void AuthorizeCustomer_Frozen_OnlyEditFOPAllowedInClub() {
+			
+			 String Frozen_OnlyEditFOPAllowedInClub = prop.getProperty("Frozen_OnlyEditFOPAllowedInClub");
+			
+			Response res = given()
+	 			.headers("SOAPAction", "http://tempuri.org/ICustomerAuth/AuthorizeCustomer","Content-Type", "text/xml; charset=utf-8")
+				.and()
+				.body(CustomerAuthPL.AuthorizeCustomer(companyId, Frozen_OnlyEditFOPAllowedInClub))
+			.when()
+				.post("/Auth/CustomerAuth.svc")
+			.then()
+//				.log().all()
+				.statusCode(200)
+				.extract().response();  
+				
+				XmlPath js = ReusableMethods.rawToXML(res);
+						
+				Assert.assertTrue(res.getTime() >= 60L);
+				String text = js.getString("Envelope.Body.AuthorizeCustomerResponse.AuthorizeCustomerResult.Permissions");
+				Assert.assertTrue(text.contains("EditPersonalInformation"));
+				Assert.assertFalse(text.contains("EditBillingInformation"));
+				Assert.assertFalse(text.contains("AllowAddCC"));
+				Assert.assertFalse(text.contains("AllowAddACH"));
+				
+		}
 	
 }
