@@ -37,7 +37,7 @@ public class AuthenticateCustomer extends base {
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-			.log().all()
+//			.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -49,6 +49,7 @@ public class AuthenticateCustomer extends base {
 				Assert.assertNotNull(js.getString("Envelope.Body.AuthenticateCustomerResponse.AuthenticateCustomerResult.BarcodeId"));
 				Assert.assertNotNull(js.getString("Envelope.Body.AuthenticateCustomerResponse.AuthenticateCustomerResult.ExternalId"));
 				Assert.assertNotNull(js.getString("Envelope.Body.AuthenticateCustomerResponse.AuthenticateCustomerResult.Id"));
+				Assert.assertNotNull(js.getString("Envelope.Body.AuthenticateCustomerResponse.AuthenticateCustomerResult.LastSuccessfulLogin.DateTime"));
 		
 	}
 	
@@ -61,10 +62,11 @@ public class AuthenticateCustomer extends base {
 	 			.headers("SOAPAction", "http://tempuri.org/ICustomerAuth/AuthenticateCustomer","Content-Type", "text/xml; charset=utf-8")
 				.and()
 				.body(CustomerAuthPL.AuthenticateCustomer(companyId, userName, wrongPassword))
+	
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-			.log().all()
+//			.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -73,6 +75,9 @@ public class AuthenticateCustomer extends base {
 				Assert.assertTrue(res.getTime() >= 60L);
 				
 				Assert.assertEquals(js.getString("Envelope.Body.AuthenticateCustomerResponse.AuthenticateCustomerResult.AuthenticationResult"), "WrongCredentials");
+				Assert.assertEquals(js.getString("Envelope.Body.AuthenticateCustomerResponse.AuthenticateCustomerResult.BarcodeId"), "");
+				Assert.assertEquals(js.getString("Envelope.Body.AuthenticateCustomerResponse.AuthenticateCustomerResult.ExternalId"), "");
+				Assert.assertEquals(js.getString("Envelope.Body.AuthenticateCustomerResponse.AuthenticateCustomerResult.LastSuccessfulLogin"), "");
 				
 		
 	}
