@@ -30,7 +30,13 @@ public class GetUnenrollmentEligibility extends base {
 			@Test (priority = 1, testName="Get Unenrollment Eligibility_Eligible_Course In Future")
 			public void GetCourseUnenrollmentEligibility_Eligible_CourseInFuture() {
 				
-				String courseEnrollmentId_Eligible_CourseInFuture = prop.getProperty("courseEnrollmentId_Eligible_CourseInFuture");
+				String customerId = prop.getProperty("enrollmentCustomerId");
+				
+				String courseId = prop.getProperty("courseIdInFuture");
+				
+				String courseEnrollmentId_Eligible_CourseInFuture = ReusableMethods.enrollInCourse(companyId, customerId, courseId);
+				
+				System.out.println(courseEnrollmentId_Eligible_CourseInFuture);
 				
 				Response res = given()
 		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
@@ -48,6 +54,8 @@ public class GetUnenrollmentEligibility extends base {
 					Assert.assertTrue(res.getTime() >= 60L);
 					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
 					Assert.assertEquals(text, "true");
+					
+					ReusableMethods.deleteEnrollment(companyId, courseEnrollmentId_Eligible_CourseInFuture);
 			}
 			
 			@Test (priority = 2, testName="Get Unenrollment Eligibility_NotEligible_Within Cannot Cancel Window")
@@ -344,12 +352,12 @@ public class GetUnenrollmentEligibility extends base {
 							
 					Assert.assertTrue(res.getTime() >= 60L);
 					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
-					//Assert.assertEquals(text, "true");
+					Assert.assertEquals(text, "true");
 					String text1 = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundType");
-					//Assert.assertEquals(text1, "OnAccount");
-					//Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemDescription");
-					//Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemId");
-					//Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.RefundableAmount");
+					Assert.assertEquals(text1, "OnAccount");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemDescription");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemId");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.RefundableAmount");
 			}
 			
 			@Test (priority = 14, testName="Course Eligible for Unenerollment, Refundable to On Account and Credit Card")
@@ -364,20 +372,20 @@ public class GetUnenrollmentEligibility extends base {
 				.when()
 					.post("/ClassesAndCourses/UnenrollmentService.svc")
 				.then()
-//					.log().all()
+					.log().all()
 					.statusCode(200)
 					.extract().response();  
 					
 					XmlPath js = ReusableMethods.rawToXML(res);
 							
-//					Assert.assertTrue(res.getTime() >= 60L);
-//					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
-//					Assert.assertEquals(text, "true");
-//					String text1 = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundType");
-//					Assert.assertEquals(text1, "OnAccount CreditCard");
-//					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemDescription");
-//					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemId");
-//					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.RefundableAmount");
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
+					String text1 = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundType");
+					Assert.assertEquals(text1, "OnAccount CreditCard");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemDescription");
+			     	Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.ItemId");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.RefundableEnrollmentItem.RefundableAmount");
 			}
 			
 			@Test (priority = 15, testName="Course Eligible for Unenerollment, Refundable in Punches")
@@ -426,13 +434,13 @@ public class GetUnenrollmentEligibility extends base {
 					
 					XmlPath js = ReusableMethods.rawToXML(res);
 							
-//					Assert.assertTrue(res.getTime() >= 60L);
-//					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
-//					Assert.assertEquals(text, "true");
-//					
-//					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemDescription");
-//					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemId");
-//					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.Amount");
+					Assert.assertTrue(res.getTime() >= 60L);
+					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
+					Assert.assertEquals(text, "true");
+					
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemDescription");
+				Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.ItemId");
+					Assert.assertNotNull("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.CancellationFee.Amount");
 			}
 			
 			@Test (priority = 17, testName="Class Eligible for Unenerollment, Cancellation Fee exists for class enrolled with Service D also")
