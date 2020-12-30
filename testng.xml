@@ -25,6 +25,7 @@
     <class name="corporateInfo.GetRequiredFields"/>
     <class name="corporateInfo.Vita_GetBusinessIntelligenceConfiguration"/>
     <class name="corporateInfo.Vita_SetBusinessIntelligenceConfiguration"/>
+    <class name="corporateInfo.GetBannerMessagesForCustomer"/>
     <class name="customerAccounting.GetAccountHistory"/>
     <class name="customerAccounting.GetBillingDeclinesHistories"/>
     <class name="customerAccounting.GetCustomerAccountBalance"/>
