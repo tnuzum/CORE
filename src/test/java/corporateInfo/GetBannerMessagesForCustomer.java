@@ -20,7 +20,7 @@ String companyId;
 	public void getData() {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
-		//String projectPath = System.getProperty("user.dir");
+		
 		
 		companyId = prop.getProperty("X-CompanyId");
 
@@ -38,14 +38,14 @@ String companyId;
 	         .when()
 	            .post("/Info/CorporateInfo.svc")
 	         .then()
-            	.log().all()
+            	//.log().all()
 	            .statusCode(200)
 	            .extract().response();
 	       
 	       		XmlPath js = ReusableMethods.rawToXML(res);
 	       		
 	       		Assert.assertTrue(res.getTime() >= 60L);
-	//Assert.assertEquals(js.getString("Envelope.Body.GetBannerMessagesForCustomerResponse.GetBannerMessagesForCustomerResult."))
-	       		
+	Assert.assertNotNull(js.getString("Envelope.Body.GetBannerMessagesForCustomerResponse.GetBannerMessagesForCustomerResult.BannerMessageDto.BannerMessageId"));
+	Assert.assertNotNull(js.getString("Envelope.Body.GetBannerMessagesForCustomerResponse.GetBannerMessagesForCustomerResult.BannerMessageDto.Title"));       		
 	}
 }
