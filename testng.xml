@@ -82,6 +82,13 @@
     <class name="enrollmentService.GetCourse"/>
     <class name ="TransactionProcessing.GetInvoicingInformation"/>
     <class name = "scheduling.GetCustomerSchedule"/>
+    <class name = "scheduling.CancelAppointment"/>
+    <class name = "scheduling.CancelAppointmentByAppointmentId"/>
+    <class name = "scheduling.GetAppointmentInfo_Group_HOH"/>
+    <class name = "scheduling.GetAppointmentInfo_Group_Primary"/>
+     <class name = "scheduling.GetAppointmentInfo_SingleMember_HOH"/>
+      <class name = "scheduling.GetAppointmentInfo_SingleMember_Primary"/>
+       <class name = "scheduling.ScheduleAppointment"/>
     </classes>
   </test>
 </suite>
