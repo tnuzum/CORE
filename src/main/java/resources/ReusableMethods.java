@@ -5,6 +5,7 @@ import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import payloads.ChangeRequestsPL;
 import payloads.EnrollmentServicePL;
+import payloads.SchedulingPL;
 
 import static io.restassured.RestAssured.given;
 import java.text.SimpleDateFormat;
@@ -215,5 +216,68 @@ public static String PromoteStandbyEnrollmentsForCourse(String companyId, String
 			  XmlPath js = ReusableMethods.rawToXML(res);
 			  String enrollmentId = js.getString("Envelope.Body.PromoteStandbyEnrollmentsForCourseResponse.PromoteStandbyEnrollmentsForCourseResult.int");
 	return enrollmentId;
+}
+
+public static String scheduleSingleMbrAppointment(String companyId, String customerId, String clubId, String itemId, String bookId, String dateTime) {
+	
+	Response res = given() .headers("SOAPAction", "http://tempuri.org/IScheduling/ScheduleAppointment","Content-Type","text/xml; charset=utf-8") .and()
+			  .body(SchedulingPL.ScheduleSingleMbrAppt(companyId, customerId, clubId, itemId, bookId, dateTime)) 
+			  .when()
+			  .post("//Visits/Scheduling.svc") 
+			  .then() 
+//			  .log().all()
+			  .statusCode(200) .extract().response();
+	
+	         XmlPath js = ReusableMethods.rawToXML(res);
+	         
+	      String appointmentId = js.getString("Envelope.Body.ScheduleAppointmentResponse.ScheduleAppointmentResult.AppointmentId");
+	        return appointmentId;
+}
+
+public static String scheduleGroupAppointment(String companyId, String primaryMemberId, String groupMemberId, String clubId, String itemId, String bookId, String dateTime) {
+	
+	Response res = given() .headers("SOAPAction", "http://tempuri.org/IScheduling/ScheduleAppointment","Content-Type","text/xml; charset=utf-8") .and()
+			  .body(SchedulingPL.ScheduleGroupAppt(companyId, primaryMemberId, groupMemberId, clubId, itemId, bookId, dateTime)) 
+			  .when()
+			  .post("//Visits/Scheduling.svc") 
+			  .then() 
+//			  .log().all()
+			  .statusCode(200) .extract().response();
+	
+	         XmlPath js = ReusableMethods.rawToXML(res);
+	         
+	      String appointmentId = js.getString("Envelope.Body.ScheduleAppointmentResponse.ScheduleAppointmentResult.AppointmentId");
+	        return appointmentId;
+}
+
+public static void cancelAppointment(String companyId, String customerId, String appointmentId) {
+	Response res = given() .headers("SOAPAction", "http://tempuri.org/IScheduling/CancelAppointment","Content-Type","text/xml; charset=utf-8") .and()
+			  .body(SchedulingPL.cancelAppointment(companyId, customerId, appointmentId)) 
+			  .when()
+			  .post("//Visits/Scheduling.svc") 
+			  .then() 
+			  .log().all()
+			  .statusCode(200).extract().response();
+	
+	 XmlPath js = ReusableMethods.rawToXML(res);
+	 
+	 Assert.assertEquals(js.getString("Envelope.Body.CancelAppointmentResponse.CancelAppointmentResult.Result"), "None");
+	
+}
+
+public static void CancelAppointmentByAppointmentId(String companyId, String appointmentId) {
+	
+	Response res =  given() .headers("SOAPAction", "http://tempuri.org/IScheduling/CancelAppointmentByAppointmentId","Content-Type","text/xml; charset=utf-8") .and()
+			  .body(SchedulingPL.cancelAppointmentByAppointmentId(companyId, appointmentId)) 
+			  .when()
+			  .post("//Visits/Scheduling.svc") 
+			  .then() 
+//			  .log().all()
+			  .statusCode(200).extract().response();
+	
+	XmlPath xp = ReusableMethods.rawToXML(res);
+	
+	Assert.assertEquals(xp.getString("Envelope.Body.CancelAppointmentByAppointmentIdResponse.CancelAppointmentByAppointmentIdResult"), "C"+appointmentId);
+	
 }
 }
