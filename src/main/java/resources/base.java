@@ -12,8 +12,8 @@ public class base {
 	public static Properties prop = new Properties();
 	//static String projectPath = System.getenv("CORE_HOME");
 
-    static String projectPath = System.getProperty("user.dir");
-
+	static String projectPath = System.getProperty("user.dir");
+	   
 	public static void getPropertyData(){
 
 	prop = new Properties();
