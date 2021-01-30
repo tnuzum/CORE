@@ -89,6 +89,9 @@
      <class name = "scheduling.GetAppointmentInfo_SingleMember_HOH"/>
       <class name = "scheduling.GetAppointmentInfo_SingleMember_Primary"/>
        <class name = "scheduling.ScheduleAppointment"/>
+        <class name = "scheduling.CancelAppointmentByAppointmentId"/>
+         <class name = "scheduling.GetAppointmentEligibility"/>
+         <class name = "accountHistory.GetTransactionSummary"/>
     </classes>
   </test>
 </suite>
