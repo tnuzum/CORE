@@ -35,7 +35,7 @@ public class CancelAppointmentByAppointmentId extends base{
 		String clubId = prop.getProperty("X-Club4Id");
 		String bookId =  prop.getProperty("bookId");
 //		String dateTime = ReusableDates.getCurrentDate();
-		String dateTime = ReusableMethods.getTomorrowsDate();
+		String dateTime = ReusableMethods.getTomorrowsDate()+"T14:00:00";
 		
 		appointmentId = ReusableMethods.scheduleSingleMbrAppointment(companyId, customerId, clubId, itemId, bookId, dateTime);
 		

@@ -64,6 +64,7 @@
     <class name="messagingService.SendCourseStandbyPromotionEmail"/>
     <class name="messagingService.SendCustomerClassUnenrollmentEmail"/>
     <class name="messagingService.SendCustomerCourseUnenrollmentEmail"/>
+     <class name="messagingService.SendAppointmentCancellationConfirmations"/>
     <class name="packageService.GetPackage"/>
     <class name="packageService.GetPackageDetails"/>
     <class name="packageService.GetAvailablePackagesByClub"/>

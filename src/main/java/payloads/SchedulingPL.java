@@ -63,7 +63,7 @@ public static String ScheduleSingleMbrAppt(String companyId, String customerId, 
 			+ "         <!--Optional:-->\r\n"
 			+ "         <tem:enforcePunchesRequired>false</tem:enforcePunchesRequired>\r\n"
 			+ "         <!--Optional:-->\r\n"
-			+ "         <tem:userDisplayedPrice>90.00</tem:userDisplayedPrice>\r\n"
+			+ "         <tem:userDisplayedPrice>81.00</tem:userDisplayedPrice>\r\n"
 			+ "      </tem:ScheduleAppointment>\r\n"
 			+ "   </soapenv:Body>\r\n"
 			+ "</soapenv:Envelope>";
@@ -104,7 +104,7 @@ public static String ScheduleGroupAppt(String companyId, String primaryMemberId,
 			+ "         <!--Optional:-->\r\n"
 			+ "         <tem:enforcePunchesRequired>false</tem:enforcePunchesRequired>\r\n"
 			+ "         <!--Optional:-->\r\n"
-			+ "         <tem:userDisplayedPrice>90.00</tem:userDisplayedPrice>\r\n"
+			+ "         <tem:userDisplayedPrice>81.00</tem:userDisplayedPrice>\r\n"
 			+ "      </tem:ScheduleAppointment>\r\n"
 			+ "   </soapenv:Body>\r\n"
 			+ "</soapenv:Envelope>";
