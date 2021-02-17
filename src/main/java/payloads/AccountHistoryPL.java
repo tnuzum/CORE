@@ -31,6 +31,40 @@ public class AccountHistoryPL extends base {
 		return pl;
 	}
 	
+	public static String GetInvoiceDetails(String companyId,String invoiceID)
+	{
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+				+ "  <soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+				+ "   </soapenv:Header>\r\n"
+				+ "   <soapenv:Body>\r\n"
+				+ "      <tem:GetInvoiceDetails>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:invoiceId>"+invoiceID+"</tem:invoiceId>\r\n"
+				+ "      </tem:GetInvoiceDetails>\r\n"
+				+ "   </soapenv:Body>\r\n"
+				+ "</soapenv:Envelope>";
+				return pl;
+	}
+	public static String GetPaymentDetails(String companyId,String paymentID)
+	{
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+				+ " <soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+				+ "   </soapenv:Header>\r\n"
+				+ "   <soapenv:Body>\r\n"
+				+ "      <tem:GetPaymentDetails>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:paymentId>"+paymentID+"</tem:paymentId>\r\n"
+				+ "      </tem:GetPaymentDetails>\r\n"
+				+ "   </soapenv:Body>\r\n"
+				+ "</soapenv:Envelope>";
+				return pl;
+	}
+	
+	
 	public static String GetAccountSummary(String companyId, String customerId)
 	{
 		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
