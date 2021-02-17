@@ -15,7 +15,7 @@ import io.restassured.response.Response;
 
 import io.restassured.RestAssured;
 import io.restassured.path.xml.XmlPath;
-import payloads.AccountHistory;
+import payloads.AccountHistoryPL;
 import resources.ReusableMethods;
 import resources.base;
 
@@ -43,7 +43,7 @@ static String companyId;
 
   	.headers("SOAPAction", "http://tempuri.org/IAccountHistoryService/GetTransactionSummary","Content-Type", "text/xml; charset=utf-8")
   	.and()
-  	.body(AccountHistory.getTransactionSummary(companyId, customerId, clubId, startDateTime, endDateTime))
+  	.body(AccountHistoryPL.getTransactionSummary(companyId, customerId, clubId, startDateTime, endDateTime))
   	.when()
   	.post("/AccountHistory/AccountHistory.svc")
   	.then()
