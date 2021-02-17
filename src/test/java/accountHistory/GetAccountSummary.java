@@ -44,7 +44,7 @@ static String companyId;
   	.when()
   	.post("/AccountHistory/AccountHistory.svc")
   	.then()
-    .log().body()
+    //.log().all()
   	.statusCode(200)
   	.time(lessThan(60L),TimeUnit.SECONDS)
    	.extract().response();
@@ -58,4 +58,29 @@ static String companyId;
 	Assert.assertNotNull(js.getString("Envelope.Body.GetAccountSummaryResponse.GetAccountSummaryResult.UnpaidAmount"));
 	}
 	
+	@Test(priority = 2)
+	public void InvalidCustomerId() {
+	
+	String customerId = "1234567";
+	
+Response res =	 given()
+
+	.headers("SOAPAction", "http://tempuri.org/IAccountHistoryService/GetAccountSummary","Content-Type", "text/xml; charset=utf-8")
+	.and()
+	.body(AccountHistoryPL.GetAccountSummary(companyId, customerId))
+	.when()
+	.post("/AccountHistory/AccountHistory.svc")
+	.then()
+    //.log().all()
+	.statusCode(400)
+	.time(lessThan(60L),TimeUnit.SECONDS)
+	.extract().response();
+
+// Assert.assertTrue(res.getTime() >= 60L);
+
+XmlPath xp = ReusableMethods.rawToXML(res);
+
+Assert.assertEquals(xp.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message"), "CustomerId: 1234567 is invalid.");
+	
+}
 }

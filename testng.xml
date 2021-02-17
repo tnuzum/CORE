@@ -87,12 +87,15 @@
     <class name = "scheduling.CancelAppointmentByAppointmentId"/>
     <class name = "scheduling.GetAppointmentInfo_Group_HOH"/>
     <class name = "scheduling.GetAppointmentInfo_Group_Primary"/>
-     <class name = "scheduling.GetAppointmentInfo_SingleMember_HOH"/>
-      <class name = "scheduling.GetAppointmentInfo_SingleMember_Primary"/>
-       <class name = "scheduling.ScheduleAppointment"/>
-        <class name = "scheduling.CancelAppointmentByAppointmentId"/>
-         <class name = "scheduling.GetAppointmentEligibility"/>
-         <class name = "accountHistory.GetTransactionSummary"/>
+    <class name = "scheduling.GetAppointmentInfo_SingleMember_HOH"/>
+    <class name = "scheduling.GetAppointmentInfo_SingleMember_Primary"/>
+    <class name = "scheduling.ScheduleAppointment"/>
+    <class name = "scheduling.CancelAppointmentByAppointmentId"/>
+    <class name = "scheduling.GetAppointmentEligibility"/>
+    <class name = "accountHistory.GetTransactionSummary"/>
+    <class name = "accountHistory.GetAccountSummary"/>
+    <class name = "accountHistory.GetInvoiceDetails"/>
+    <class name = "accountHistory.GetPaymentDetails"/>
     </classes>
   </test>
 </suite>
