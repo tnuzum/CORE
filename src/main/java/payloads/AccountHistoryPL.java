@@ -65,4 +65,21 @@ public class AccountHistoryPL extends base {
 	}
 	
 	
+	public static String GetAccountSummary(String companyId, String customerId)
+	{
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+				+ " <soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+				+ "   </soapenv:Header>\r\n"
+				+ "   <soapenv:Body>\r\n"
+				+ "      <tem:GetAccountSummary>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:customerId>"+customerId+"</tem:customerId>\r\n"
+				+ "      </tem:GetAccountSummary>\r\n"
+				+ "   </soapenv:Body>\r\n"
+				+ "</soapenv:Envelope>";
+		return pl;
+	}
+
 }
