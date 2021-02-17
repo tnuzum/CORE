@@ -55,6 +55,33 @@ public class SendAppointmentCancellationConfirmations extends base{
 	}
 	
 	@Test(priority = 2)
+	public void cancelGrpAppointmentByAppointmentId() {
+		
+		String primaryMemberId = prop.getProperty("apptMemberId");
+		String groupMemberId = prop.getProperty("groupMemberId");
+		String itemId= prop.getProperty("PerMbrNoFees-Grp");
+		String clubId = prop.getProperty("X-Club4Id");
+		String bookId =  prop.getProperty("bookIdGrp");
+		String dateTime = ReusableMethods.getTomorrowsDate()+"T15:00:00";
+		
+		appointmentId = ReusableMethods.scheduleGroupAppointment(companyId, primaryMemberId, groupMemberId, clubId, itemId, bookId, dateTime);
+		
+		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
+		
+		 System.out.println("Id = "+appointmentId);
+				
+		 given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendAppointmentCancellationConfirmations","Content-Type","text/xml; charset=utf-8") .and()
+				  .body(MessagingServicePL.SendAppointmentCancellationConfirmations(companyId, appointmentId)) 
+				  .when()
+				  .post("/Messaging/MessagingService.svc") 
+				  .then() 
+				  .log().all()
+				  .statusCode(200).extract().response();
+			
+		      
+	}
+	
+	@Test(priority = 3)
 	public void appointmentIsNotCancelled() {
 		
 		String customerId = prop.getProperty("apptMemberId");
@@ -82,7 +109,7 @@ public class SendAppointmentCancellationConfirmations extends base{
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);   
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 4)
 	public void appointmentIdIsNotValid() {
 				
 		appointmentId = "1234";
