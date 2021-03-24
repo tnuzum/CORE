@@ -39,7 +39,7 @@ public class GetFamilyMembersForTest extends base {
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
-//             	.log().all()
+            	.log().all()
 	            .statusCode(200)
 	            .extract().response();
 	        
@@ -48,6 +48,7 @@ public class GetFamilyMembersForTest extends base {
 	        	Assert.assertTrue(res.getTime() >= 60L);
 	        
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[0].BarcodeId"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[0].DateOfBirth"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[0].DisplayName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[0].EmailAddress"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[0].FirstName"));
@@ -56,6 +57,7 @@ public class GetFamilyMembersForTest extends base {
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[0].LastName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[0].PreferredName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[1].BarcodeId"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[1].DateOfBirth"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[1].DisplayName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[1].EmailAddress"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFamilyMembersForResponse.GetFamilyMembersForResult.FamilyMemberResponse[1].FirstName"));

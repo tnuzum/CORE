@@ -86,9 +86,15 @@
     <class name = "scheduling.CancelAppointmentByAppointmentId"/>
     <class name = "scheduling.GetAppointmentInfo_Group_HOH"/>
     <class name = "scheduling.GetAppointmentInfo_Group_Primary"/>
-     <class name = "scheduling.GetAppointmentInfo_SingleMember_HOH"/>
-      <class name = "scheduling.GetAppointmentInfo_SingleMember_Primary"/>
-       <class name = "scheduling.ScheduleAppointment"/>
+    <class name = "scheduling.GetAppointmentInfo_SingleMember_HOH"/>
+    <class name = "scheduling.GetAppointmentInfo_SingleMember_Primary"/>
+    <class name = "scheduling.ScheduleAppointment"/>
+       <class name = "bookView.GetActiveBooksByResourceType"/>
+       <class name = "bookView.GetAvailableResourceTypesByClub"/>
+       <class name = "bookView.GetBookAvailability"/> 
+       <class name = "bookView.GetBookAvailabilityCalendar"/> 
+       <class name = "bookView.GetProductByBook"/>  
+       <class name = "bookView.GetResourceTypeAvailability"/>  
     </classes>
   </test>
 </suite>
