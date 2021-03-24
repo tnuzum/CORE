@@ -584,4 +584,22 @@ public static String SendCustomerCourseUnenrollmentEmail(String companyId, Strin
 		
 	}
 
+public static String SendAppointmentCancellationConfirmations(String companyId, String appointmentId) {
+	
+	String PL = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+			+ " <soapenv:Header>\r\n"
+			+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+			+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+			+ "   </soapenv:Header>\r\n"
+			+ "   <soapenv:Body>\r\n"
+			+ "      <tem:SendAppointmentCancellationConfirmations>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:appointmentId>"+appointmentId+"</tem:appointmentId>\r\n"
+			+ "      </tem:SendAppointmentCancellationConfirmations>\r\n"
+			+ "   </soapenv:Body>\r\n"
+			+ "</soapenv:Envelope>";
+	return PL;
+
+}
+
 }
