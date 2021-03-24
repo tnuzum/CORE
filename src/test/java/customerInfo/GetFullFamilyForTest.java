@@ -48,6 +48,7 @@ public class GetFullFamilyForTest extends base {
 	        	Assert.assertTrue(res.getTime() >= 60L);
 	        	        
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].BarcodeId"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].DateOfBirth"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].DisplayName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].EmailAddress"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].FirstName"));
@@ -56,6 +57,7 @@ public class GetFullFamilyForTest extends base {
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].LastName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[0].PreferredName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].BarcodeId"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].DateOfBirth"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].DisplayName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].EmailAddress"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].FirstName"));
@@ -64,6 +66,7 @@ public class GetFullFamilyForTest extends base {
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].LastName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[1].PreferredName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].BarcodeId"));
+				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].DateOfBirth"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].DisplayName"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].EmailAddress"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetFullFamilyForResponse.GetFullFamilyForResult.FamilyMemberResponse[2].FirstName"));
