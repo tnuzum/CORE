@@ -17,6 +17,7 @@ public class BookViewPL extends base{
 				+ "      </tem:GetAvailableResourceTypesByClub>\r\n"
 				+ "   </soapenv:Body>\r\n"
 				+ "</soapenv:Envelope>";
+		return pl;
 	}
 	
 	public static String GetResourceTypeAvailability(String companyId, String clubID, String resourceTypeId)
