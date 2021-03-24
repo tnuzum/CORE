@@ -63,7 +63,7 @@ public static String ScheduleSingleMbrAppt(String companyId, String customerId, 
 			+ "         <!--Optional:-->\r\n"
 			+ "         <tem:enforcePunchesRequired>false</tem:enforcePunchesRequired>\r\n"
 			+ "         <!--Optional:-->\r\n"
-			+ "         <tem:userDisplayedPrice>90.00</tem:userDisplayedPrice>\r\n"
+			+ "         <tem:userDisplayedPrice>81.00</tem:userDisplayedPrice>\r\n"
 			+ "      </tem:ScheduleAppointment>\r\n"
 			+ "   </soapenv:Body>\r\n"
 			+ "</soapenv:Envelope>";
@@ -104,7 +104,7 @@ public static String ScheduleGroupAppt(String companyId, String primaryMemberId,
 			+ "         <!--Optional:-->\r\n"
 			+ "         <tem:enforcePunchesRequired>false</tem:enforcePunchesRequired>\r\n"
 			+ "         <!--Optional:-->\r\n"
-			+ "         <tem:userDisplayedPrice>90.00</tem:userDisplayedPrice>\r\n"
+			+ "         <tem:userDisplayedPrice>81.00</tem:userDisplayedPrice>\r\n"
 			+ "      </tem:ScheduleAppointment>\r\n"
 			+ "   </soapenv:Body>\r\n"
 			+ "</soapenv:Envelope>";
@@ -160,6 +160,28 @@ public static String GetAppointmentInfo(String companyId, String customerId, Str
 			+ "         <!--Optional:-->\r\n"
 			+ "         <tem:appointmentId>"+appointmentId+"</tem:appointmentId>\r\n"
 			+ "      </tem:GetAppointmentInfo>\r\n"
+			+ "   </soapenv:Body>\r\n"
+			+ "</soapenv:Envelope>";
+	return pl;
+}
+
+public static String GetAppointmentEligibility(String companyId, String clubId, String customerId, String ItemId) {
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n"
+			+ "   <soapenv:Header>\r\n"
+			+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+			+ "      </soapenv:Header>\r\n"
+			+ "   <soapenv:Body>\r\n"
+			+ "      <tem:GetAppointmentEligibility>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:clubId>"+clubId+"</tem:clubId>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:itemId>"+ItemId+"</tem:itemId>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:customerIds>\r\n"
+			+ "            <!--Zero or more repetitions:-->\r\n"
+			+ "            <arr:int>"+customerId+"</arr:int>\r\n"	
+	        + "         </tem:customerIds>\r\n"
+			+ "      </tem:GetAppointmentEligibility>\r\n"
 			+ "   </soapenv:Body>\r\n"
 			+ "</soapenv:Envelope>";
 	return pl;

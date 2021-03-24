@@ -64,6 +64,7 @@
     <class name="messagingService.SendCourseStandbyPromotionEmail"/>
     <class name="messagingService.SendCustomerClassUnenrollmentEmail"/>
     <class name="messagingService.SendCustomerCourseUnenrollmentEmail"/>
+     <class name="messagingService.SendAppointmentCancellationConfirmations"/>
     <class name="packageService.GetPackage"/>
     <class name="packageService.GetPackageDetails"/>
     <class name="packageService.GetAvailablePackagesByClub"/>
@@ -89,12 +90,18 @@
     <class name = "scheduling.GetAppointmentInfo_SingleMember_HOH"/>
     <class name = "scheduling.GetAppointmentInfo_SingleMember_Primary"/>
     <class name = "scheduling.ScheduleAppointment"/>
-       <class name = "bookView.GetActiveBooksByResourceType"/>
-       <class name = "bookView.GetAvailableResourceTypesByClub"/>
-       <class name = "bookView.GetBookAvailability"/> 
-       <class name = "bookView.GetBookAvailabilityCalendar"/> 
-       <class name = "bookView.GetProductByBook"/>  
-       <class name = "bookView.GetResourceTypeAvailability"/>  
+    <class name = "bookView.GetActiveBooksByResourceType"/>
+    <class name = "bookView.GetAvailableResourceTypesByClub"/>
+    <class name = "bookView.GetBookAvailability"/> 
+    <class name = "bookView.GetBookAvailabilityCalendar"/> 
+    <class name = "bookView.GetProductByBook"/>  
+    <class name = "bookView.GetResourceTypeAvailability"/>  
+    <class name = "scheduling.CancelAppointmentByAppointmentId"/>
+    <class name = "scheduling.GetAppointmentEligibility"/>
+    <class name = "accountHistory.GetTransactionSummary"/>
+    <class name = "accountHistory.GetAccountSummary"/>
+    <class name = "accountHistory.GetInvoiceDetails"/>
+    <class name = "accountHistory.GetPaymentDetails"/>
     </classes>
   </test>
 </suite>
