@@ -39,7 +39,7 @@ public class GetFamilyMembersForTest extends base {
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
-            	.log().all()
+//            	.log().all()
 	            .statusCode(200)
 	            .extract().response();
 	        
