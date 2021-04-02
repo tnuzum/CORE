@@ -416,7 +416,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -443,7 +443,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				
@@ -470,7 +470,7 @@ public class AuthorizeCustomerTest extends base{
 			.when()
 				.post("/Auth/CustomerAuth.svc")
 			.then()
-				.log().all()
+//				.log().all()
 				.statusCode(200)
 				.extract().response();  
 				

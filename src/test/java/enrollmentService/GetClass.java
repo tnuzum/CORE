@@ -33,7 +33,7 @@ public class GetClass extends base{
 		String customerId = prop.getProperty("enrollmentCustomerId1");
 		String classId= prop.getProperty("virtualEnrollmentClassId");
 		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
-		dateTime = tomorrowsDate+"T05:00:00Z";
+		dateTime = tomorrowsDate+"T04:00:00Z";
 		
 		
 		  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/GetClass","Content-Type","text/xml; charset=utf-8") .and()
@@ -60,7 +60,7 @@ public class GetClass extends base{
 		String customerId = prop.getProperty("enrollmentCustomerId1");
 		String classId= prop.getProperty("enrollmentClassId");
 		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
-		dateTime = tomorrowsDate+"T22:00:00Z";
+		dateTime = tomorrowsDate+"T21:00:00Z";
 					
 		  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/GetClass","Content-Type","text/xml; charset=utf-8") .and()
 		  .body(EnrollmentServicePL.GetClass_Virtual(companyId, customerId, classId, dateTime)) 
@@ -85,7 +85,7 @@ public class GetClass extends base{
 		String customerId = prop.getProperty("enrollmentCustomerId1");
 		String classId= prop.getProperty("NonVirtualWithOverrideClassId");
 		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
-		dateTime = tomorrowsDate+"T18:30:00Z";
+		dateTime = tomorrowsDate+"T17:30:00Z";
 					
 		  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/GetClass","Content-Type","text/xml; charset=utf-8") .and()
 		  .body(EnrollmentServicePL.GetClass_Virtual(companyId, customerId, classId, dateTime)) 
