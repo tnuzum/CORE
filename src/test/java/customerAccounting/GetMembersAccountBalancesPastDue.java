@@ -338,8 +338,6 @@ public class GetMembersAccountBalancesPastDue extends base {
 	@Test (testName="Single Customer Status", description="PBI:150324")
 	public void singleCustomerStatus() {
 		
-		String companyId = "101";
-		
 	Response res = 
 			
 		given()
