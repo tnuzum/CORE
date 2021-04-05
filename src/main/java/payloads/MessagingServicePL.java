@@ -561,10 +561,10 @@ public static String SendCustomerCourseUnenrollmentEmail(String companyId, Strin
 			"            <!--Optional:-->\r\n" + 
 			"            <jfi:CustomerId>"+customerId+"</jfi:CustomerId>\r\n" + 
 			"            <!--Optional:-->\r\n" + 
-			"            <jfi:EndDate>\r\n" + 
+			"            <!--jfi:EndDate>\r\n" + 
 			"               <sys:DateTime>"+endTime+"</sys:DateTime>\r\n" + 
 			"               <sys:OffsetMinutes>"+endTimeOffset+"</sys:OffsetMinutes>\r\n" + 
-			"            </jfi:EndDate>\r\n" + 
+			"            </jfi:EndDate-->\r\n" + 
 			"            <!--Optional:-->\r\n" + 
 			"            <jfi:EnrollmentOccurredOn>\r\n" + 
 			"               <sys:DateTime>"+enrollmentOccurrenceTime+"</sys:DateTime>\r\n" + 
@@ -572,10 +572,10 @@ public static String SendCustomerCourseUnenrollmentEmail(String companyId, Strin
 			"            </jfi:EnrollmentOccurredOn>\r\n" + 
 			"            <jfi:ItemId>"+itemId+"</jfi:ItemId>\r\n" + 
 			"            <!--Optional:-->\r\n" + 
-			"            <jfi:StartDate>\r\n" + 
+			"            <!--jfi:StartDate>\r\n" + 
 			"               <sys:DateTime>"+startTime+"</sys:DateTime>\r\n" + 
 			"               <sys:OffsetMinutes>"+startTimeOffset+"</sys:OffsetMinutes>\r\n" + 
-			"            </jfi:StartDate>\r\n" + 
+			"            </jfi:StartDate-->\r\n" + 
 			"         </tem:enrollmentDto>\r\n" + 
 			"      </tem:SendCustomerCourseUnenrollmentEmail>\r\n" + 
 			"   </soapenv:Body>\r\n" + 
