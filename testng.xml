@@ -7,6 +7,7 @@
     <classes>
     <class name="resources._preTestAnnouncement" />
 	<class name="agreementInfo.GetCustomerRelatedAgreements"/>
+	<class name="agreementInfo.GetAgreementCategories"/>
 	<class name="changeRequests.GetPersonalInformation"/>
 	<class name="changeRequests.GetStoredPaymentAccounts"/>  
 	<class name="changeRequests.GetSubmissionReasonsForSubmission"/> 	
