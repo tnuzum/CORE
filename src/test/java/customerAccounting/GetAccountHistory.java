@@ -41,7 +41,7 @@ public class GetAccountHistory extends base {
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
-         	.log().body()
+ //        	.log().body()
          	.statusCode(200)
          	.time(lessThan(60L),TimeUnit.SECONDS)
          	.body("Envelope.Body.GetAccountHistoryResponse.GetAccountHistoryResult.ReceiptItemSummaryDto[0].ItemType", equalTo("Payment"));

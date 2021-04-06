@@ -167,7 +167,7 @@ public class GetAppointmentInfo_SingleMember_Primary extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsCancellationAllowed"), "Allowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsChangeAllowed"),	"Allowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.FeeStatus"), "ChangeFee");
-		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"), "Cancellation Fee");
+		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"), "Cancellation Fee1");
 
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
 
@@ -350,7 +350,7 @@ public class GetAppointmentInfo_SingleMember_Primary extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsCancellationAllowed"), "Allowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsChangeAllowed"),	"Allowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.FeeStatus"), "ChangeFee");
-		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"), "Cancellation Fee");
+		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"), "Cancellation Fee1");
 
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
 
@@ -426,7 +426,7 @@ public class GetAppointmentInfo_SingleMember_Primary extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsChangeAllowed"), "NotAllowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.FeeStatus"), "CancelFee ChangeFee");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"),
-				"Cancellation Fee");
+				"Cancellation Fee1");
 
 		
 
@@ -465,7 +465,7 @@ public class GetAppointmentInfo_SingleMember_Primary extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsChangeAllowed"), "NotAllowedOnline");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.FeeStatus"), "CancelFee ChangeFee");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"),
-				"Cancellation Fee");
+				"Cancellation Fee1");
 		
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
 
