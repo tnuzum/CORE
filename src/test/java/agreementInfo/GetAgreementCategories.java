@@ -16,7 +16,6 @@ public class GetAgreementCategories extends base {
 	
 	String companyId;
 	String valueAssertions;
-	XmlPath js;
 	
 	String agreementCategory1Id;
 	String agreementCategory1Description;
@@ -70,7 +69,7 @@ public class GetAgreementCategories extends base {
 			.statusCode(200)
 			.extract().response();  
 			
-			js = ReusableMethods.rawToXML(res);
+			XmlPath js = ReusableMethods.rawToXML(res);
 			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
@@ -114,7 +113,7 @@ public class GetAgreementCategories extends base {
 			.statusCode(500)
 			.extract().response();  
 		
-			js = ReusableMethods.rawToXML(res);
+			XmlPath js = ReusableMethods.rawToXML(res);
 			
 			Assert.assertTrue(js.getString("Envelope.Body.Fault.faultcode").contains("Client"));
 			Assert.assertTrue(js.getString("Envelope.Body.Fault.faultstring").contains("Exception is: KeyNotFoundException"));
