@@ -13,6 +13,13 @@ import resources.base;
 
 public class GetMembershipPlans extends base {
 	
+	/*
+	 * Testing notes:
+	 * Use String availableOnlineOnly ="1"; to get same result as shown in JOL2.0
+	 * In Response, plans with <a:IsFeaturedPlan>true</a:IsFeaturedPlan> are shown at the top of page in JOL2.0
+	 * 	and not in the View All Plan section
+	 */
+	
 	String companyId;
 	String valueAssertions;
 	
@@ -48,7 +55,7 @@ public class GetMembershipPlans extends base {
 		Response res = 
 				
 		given()
-//			.log().all()
+			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/IAgreementInfo/GetMembershipPlans",
  					"Content-Type", "text/xml; charset=utf-8")
 			.and()
@@ -56,7 +63,7 @@ public class GetMembershipPlans extends base {
 		.when()
 			.post("/Agreements/AgreementInfo.svc")
 		.then()
-//			.log().all()
+			.log().all()
 			.statusCode(200)
 			.extract().response();  
 			
@@ -90,8 +97,8 @@ public class GetMembershipPlans extends base {
 
 	}
 	
-	@Test (testName="Required Parameters", description = "PBI: 179764")
-	public void requiredParameters() {
+	@Test (testName="Required Parameters Only", description = "PBI: 179764")
+	public void requiredParametersOnly() {
 		
 		Response res = 
 				
@@ -104,7 +111,7 @@ public class GetMembershipPlans extends base {
 		.when()
 			.post("/Agreements/AgreementInfo.svc")
 		.then()
-			.log().all()
+//			.log().all()
 			.statusCode(200)
 			.extract().response();  
 			
@@ -147,7 +154,7 @@ public class GetMembershipPlans extends base {
 		.when()
 			.post("/Agreements/AgreementInfo.svc")
 		.then()
-//			.log().all()
+			.log().all()
 			.statusCode(200)
 			.extract().response();  
 			
@@ -182,6 +189,61 @@ public class GetMembershipPlans extends base {
 		
 		String planTypeDescription = prop.getProperty("membershipPlanType1");
 		String planType = "1";
+		
+		Response res = 
+				
+		given()
+//			.log().all()
+ 			.headers("SOAPAction", "http://tempuri.org/IAgreementInfo/GetMembershipPlans",
+ 					"Content-Type", "text/xml; charset=utf-8")
+			.and()
+			.body(AgreementInfoPL.getMembershipPlansAllParameters(companyId, clubId, includeAllClubs, includeIndividualPlans, agreementCategoryId, duration, durationType, availableOnlineOnly, planType))
+		.when()
+			.post("/Agreements/AgreementInfo.svc")
+		.then()
+			.log().all()
+			.statusCode(200)
+			.extract().response();  
+			
+			XmlPath js = ReusableMethods.rawToXML(res);
+			
+			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
+			
+			Assert.assertTrue(res.getTime() >= 60L);
+			
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].ItemId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].ItemDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].PlanId").equals(planId));
+			
+		if (valueAssertions.equals("true")) {
+			
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").equals(planTypeDescription));
+			}
+
+	}
+	
+	@Test (testName="Plan Type - Terms - Default Duration", description = "PBI: 179764")
+	public void planTypeTermsDefaultDuration() {
+		
+		String planTypeDescription = prop.getProperty("membershipPlanType2");
+		String planType = "2";
+		
+		String clubId = "2";
+		String availableOnlineOnly = "1";
 		
 		Response res = 
 				
@@ -229,11 +291,73 @@ public class GetMembershipPlans extends base {
 
 	}
 	
-	@Test (testName="Plan Type - Terms", description = "PBI: 179764")
-	public void planTypeTerms() {
+	@Test (testName="Plan Type - Terms 2 Weeks", description = "PBI: 179764")
+	public void planTypeTerms2Weeks() {
 		
 		String planTypeDescription = prop.getProperty("membershipPlanType2");
+
 		String planType = "2";
+		String duration = "2";
+		String durationType = "1";
+		
+		String availableOnlineOnly = "1";
+		
+		Response res = 
+				
+		given()
+//			.log().all()
+ 			.headers("SOAPAction", "http://tempuri.org/IAgreementInfo/GetMembershipPlans",
+ 					"Content-Type", "text/xml; charset=utf-8")
+			.and()
+			.body(AgreementInfoPL.getMembershipPlansAllParameters(companyId, clubId, includeAllClubs, includeIndividualPlans, agreementCategoryId, duration, durationType, availableOnlineOnly, planType))
+		.when()
+			.post("/Agreements/AgreementInfo.svc")
+		.then()
+//			.log().all()
+			.statusCode(200)
+			.extract().response();  
+			
+			XmlPath js = ReusableMethods.rawToXML(res);
+			
+			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
+			
+			Assert.assertTrue(res.getTime() >= 60L);
+			
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].ItemId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].ItemDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].PlanId").equals(planId));
+			
+		if (valueAssertions.equals("true")) {
+			
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").equals(planTypeDescription));
+			}
+
+	}
+	
+	@Test (testName="Plan Type - Terms 2 Months", description = "PBI: 179764")
+	public void planTypeTerms2Months() {
+		
+		String planTypeDescription = prop.getProperty("membershipPlanType2");
+
+		String planType = "2";
+		String duration = "2";
+		String durationType = "0";
+		
+		String availableOnlineOnly = "1";
 		
 		Response res = 
 				
@@ -405,7 +529,7 @@ public class GetMembershipPlans extends base {
 		.when()
 			.post("/Agreements/AgreementInfo.svc")
 		.then()
-//			.log().all()
+			.log().all()
 			.statusCode(200)
 			.extract().response();  
 			
@@ -498,7 +622,7 @@ public class GetMembershipPlans extends base {
 	@Test (testName="Plan Not Available in Specific Club", description = "PBI: 179764")
 	public void planNotAvailableInSpecificClub() {
 		
-		String clubId = "1";
+		String clubId = "2";
 		String membershipPlanClub1OnlyId = prop.getProperty("membershipPlanClub1OnlyId");
 		String membershipPlanClub1OnlyDescription = prop.getProperty("membershipPlanClub1OnlyDescription");
 		
@@ -528,6 +652,100 @@ public class GetMembershipPlans extends base {
 			
 			}
 	}
+	
+	@Test (testName="Family Plans Only", description = "PBI: 179764")
+	public void familyPlansOnly() {
+		
+		String includeIndividualPlans = "0";
+		
+		Response res = 
+				
+		given()
+//			.log().all()
+ 			.headers("SOAPAction", "http://tempuri.org/IAgreementInfo/GetMembershipPlans",
+ 					"Content-Type", "text/xml; charset=utf-8")
+			.and()
+			.body(AgreementInfoPL.getMembershipPlansAllParameters(companyId, clubId, includeAllClubs, includeIndividualPlans, agreementCategoryId, duration, durationType, availableOnlineOnly, planType))
+		.when()
+			.post("/Agreements/AgreementInfo.svc")
+		.then()
+//			.log().all()
+			.statusCode(200)
+			.extract().response();  
+			
+			XmlPath js = ReusableMethods.rawToXML(res);
+			
+			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
+			
+			Assert.assertTrue(res.getTime() >= 60L);
+			
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").equals("false"));
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.IsIndividualPlan").equals("true")); // Confirm none of the plans are Individual
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].ItemId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].ItemDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].PlanId").equals(planId));		
+
+	}
+	
+	@Test (testName="Individual Plans Only", description = "PBI: 179764")
+	public void individualPlansOnly() {
+		
+		String includeIndividualPlans = "1";
+		
+		Response res = 
+				
+		given()
+//			.log().all()
+ 			.headers("SOAPAction", "http://tempuri.org/IAgreementInfo/GetMembershipPlans",
+ 					"Content-Type", "text/xml; charset=utf-8")
+			.and()
+			.body(AgreementInfoPL.getMembershipPlansAllParameters(companyId, clubId, includeAllClubs, includeIndividualPlans, agreementCategoryId, duration, durationType, availableOnlineOnly, planType))
+		.when()
+			.post("/Agreements/AgreementInfo.svc")
+		.then()
+//			.log().all()
+			.statusCode(200)
+			.extract().response();  
+			
+			XmlPath js = ReusableMethods.rawToXML(res);
+			
+			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
+			
+			Assert.assertTrue(res.getTime() >= 60L);
+			
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").equals("true"));
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.IsIndividualPlan").equals("false")); // Confirm none of the plans are Family
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].ItemId").isBlank());
+			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].ItemDescription").isBlank());
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Highlights.Highlight[0].PlanId").equals(planId));		
+
+	}
 
 	@Test (testName="Club Not Found", description = "PBI: 179764")
 	public void clubNotFound() {
@@ -545,7 +763,7 @@ public class GetMembershipPlans extends base {
 		.when()
 			.post("/Agreements/AgreementInfo.svc")
 		.then()
-//			.log().all()
+			.log().all()
 			.statusCode(404)
 			.extract().response();  
 			
@@ -587,7 +805,7 @@ public class GetMembershipPlans extends base {
 		.when()
 			.post("/Agreements/AgreementInfo.svc")
 		.then()
-//			.log().all()
+			.log().all()
 			.statusCode(404)
 			.extract().response();  
 			
@@ -612,7 +830,8 @@ public class GetMembershipPlans extends base {
 			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("Highlights"));			
 
 	}
-	
+
+
 }
 
 
