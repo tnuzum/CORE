@@ -35,7 +35,7 @@ public class AgreementInfoPL extends base {
 		return pl;
 	}
 	
-	public static String getMembershipPlansAllParameters(String companyId,String clubId,String includeAllClubs,String includeIndividualPlans,String agreementCategoryId,String duration,String durationType,String availableOnlineOnly,String planType)
+	public static String getMembershipPlansAllParameters(String companyId,String clubId,String includeAllClubs,String includeIndividualPlans,String planCategoryId,String duration,String durationType,String availableOnlineOnly,String planType)
 	
 	{
 		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.Agreements\">\r\n"
@@ -54,7 +54,7 @@ public class AgreementInfoPL extends base {
 				+ "            <!--Optional:-->\r\n"
 				+ "            <jfi:IncludeIndividualPlans>"+includeIndividualPlans+"</jfi:IncludeIndividualPlans>\r\n"
 				+ "            <!--Optional:-->\r\n"
-				+ "            <jfi:AgreementCategoryId>"+agreementCategoryId+"</jfi:AgreementCategoryId>\r\n"
+				+ "            <jfi:PlanCategoryId>"+planCategoryId+"</jfi:PlanCategoryId>\r\n"
 				+ "            <!--Optional:-->\r\n"
 				+ "            <jfi:Duration>"+duration+"</jfi:Duration>\r\n"
 				+ "            <!--Optional:-->\r\n"
