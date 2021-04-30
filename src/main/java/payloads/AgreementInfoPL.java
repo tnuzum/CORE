@@ -90,4 +90,50 @@ public class AgreementInfoPL extends base {
 		return pl;
 	}
 
+	public static String getMembershipPlanDetailsAllParameters(String companyId,String clubId, String planId, String effectiveDate)
+	
+	{
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+				+ "   <soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Employee</CallerContext>\r\n"
+				+ "   </soapenv:Header>\r\n"
+				+ "   <soapenv:Body>\r\n"
+				+ "      <tem:GetMembershipPlanDetails>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:clubId>"+clubId+"</tem:clubId>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:planId>"+planId+"</tem:planId>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:effectiveDate>"+effectiveDate+"</tem:effectiveDate>\r\n"
+				+ "      </tem:GetMembershipPlanDetails>\r\n"
+				+ "   </soapenv:Body>\r\n"
+				+ "</soapenv:Envelope>";
+		return pl;
+	}
+	
+	public static String getMembershipPlanDetailsRequiredParameters(String companyId,String clubId, String planId)
+	
+	{
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+				+ "   <soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Employee</CallerContext>\r\n"
+				+ "   </soapenv:Header>\r\n"
+				+ "   <soapenv:Body>\r\n"
+				+ "      <tem:GetMembershipPlanDetails>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:clubId>"+clubId+"</tem:clubId>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:planId>"+planId+"</tem:planId>\r\n"
+				+ "      </tem:GetMembershipPlanDetails>\r\n"
+				+ "   </soapenv:Body>\r\n"
+				+ "</soapenv:Envelope>";
+		return pl;
+	}
+	
+	
+	
+	
+	
 }

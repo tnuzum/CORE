@@ -9,6 +9,7 @@
 	<class name="agreementInfo.GetCustomerRelatedAgreements"/>
 	<class name="agreementInfo.GetAgreementCategories"/>
 	<class name="agreementInfo.GetMembershipPlans"/>
+	<class name="agreementInfo.GetMembershipPlanDetails"/>
 	<class name="changeRequests.GetPersonalInformation"/>
 	<class name="changeRequests.GetStoredPaymentAccounts"/>  
 	<class name="changeRequests.GetSubmissionReasonsForSubmission"/> 	
