@@ -156,7 +156,7 @@ public static String EnrollInCourseStandby(String companyId, String customerId, 
 				"         <!--Optional:-->\r\n" + 
 				"         <tem:occurrence>\r\n" + 
 				"            <sys:DateTime>"+dateTime+"</sys:DateTime>\r\n" + 
-				"            <sys:OffsetMinutes>-300</sys:OffsetMinutes>\r\n" + 
+				"            <sys:OffsetMinutes>-240</sys:OffsetMinutes>\r\n" + 
 				"         </tem:occurrence>\r\n" + 
 				"         <!--Optional:-->\r\n" + 
 				"         <tem:customerIds>\r\n" + 

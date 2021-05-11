@@ -62,15 +62,15 @@ public class ScheduleAppointment extends base {
 		String itemId= prop.getProperty("PerMbrNoFees-Grp");
 		String clubId = prop.getProperty("X-Club4Id");
 		String bookId =  prop.getProperty("bookIdGrp");
-		String dateTime = ReusableDates.getCurrentDate()+"T17:00:00";
-//		String dateTime = ReusableMethods.getTomorrowsDate()+"T18:00:00";
+//		String dateTime = ReusableDates.getCurrentDate()+"T17:00:00";
+		String dateTime = ReusableMethods.getTomorrowsDate()+"T18:00:00";
 		
 		Response res = given() .headers("SOAPAction", "http://tempuri.org/IScheduling/ScheduleAppointment","Content-Type","text/xml; charset=utf-8") .and()
 				  .body(SchedulingPL.ScheduleGroupAppt(companyId, primaryMemberId, groupMemberId, clubId, itemId, bookId, dateTime)) 
 				  .when()
 				  .post("//Visits/Scheduling.svc") 
 				  .then() 
-//				  .log().all()
+				  .log().all()
 				  .statusCode(200) .extract().response();
 		
 		         XmlPath js = ReusableMethods.rawToXML(res);
@@ -80,7 +80,7 @@ public class ScheduleAppointment extends base {
 		        System.out.println(appointmentId);
 		        Assert.assertEquals(js.getString("Envelope.Body.ScheduleAppointmentResponse.ScheduleAppointmentResult.Result"), "Success");
 		        
-	//	        ReusableMethods.cancelAppointment(companyId, primaryMemberId, appointmentId);
+		        ReusableMethods.cancelAppointment(companyId, primaryMemberId, appointmentId);
 		
 	}
 	

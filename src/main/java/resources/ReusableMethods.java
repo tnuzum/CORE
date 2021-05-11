@@ -160,7 +160,7 @@ public static String[] deleteEnrollment(String companyId, String enrollmentId) {
 			  .body(EnrollmentServicePL.DeleteEnrollment(companyId, enrollmentId)) .when()
 			  .post("/ClassesAndCourses/EnrollmentService.svc") 
 			  .then() 
-	//		  .log().all()
+//			  .log().all()
 			  .statusCode(200) .extract().response();
 	 XmlPath js = ReusableMethods.rawToXML(res);
 	  
