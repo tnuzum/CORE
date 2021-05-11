@@ -102,9 +102,11 @@
     <class name = "scheduling.CancelAppointmentByAppointmentId"/>
     <class name = "scheduling.GetAppointmentEligibility"/>
     <class name = "accountHistory.GetTransactionSummary"/>
+    <class name = "accountHistory.GetTransactionSummary1"/>
     <class name = "accountHistory.GetAccountSummary"/>
     <class name = "accountHistory.GetInvoiceDetails"/>
     <class name = "accountHistory.GetPaymentDetails"/>
+    <class name = "waivers.GetFamilyNeedDob"/>
     </classes>
   </test>
 </suite>
