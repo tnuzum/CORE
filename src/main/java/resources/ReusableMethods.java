@@ -166,6 +166,7 @@ public static String[] deleteEnrollment(String companyId, String enrollmentId) {
 	  
 	 Assert.assertTrue(res.getTime() >= 60L); 
 	 String output[] = new String[9];
+//	 String[] output = new String[9];
 	 
 	 String customerId = js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.CustomerId");
 	 String itemId = js.getString("Envelope.Body.DeleteEnrollmentResponse.DeleteEnrollmentResult.ItemId");
