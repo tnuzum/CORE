@@ -39,7 +39,7 @@ static String companyId;
   	.when()
   	.post("/Waivers/Waivers.svc")
   	.then()
-    .log().all()
+ //   .log().all()
   	.statusCode(200)
   //	.time(lessThan(60L),TimeUnit.SECONDS)
    	.extract().response();
@@ -49,6 +49,41 @@ static String companyId;
 		Assert.assertNotNull(js.get("Envelope.Body.GetFamilyNeedsDobResponse.GetFamilyNeedsDobResult.CustomerNeedsDobDto.CustomerId"));
 		Assert.assertNotNull(js.get("Envelope.Body.GetFamilyNeedsDobResponse.GetFamilyNeedsDobResult.CustomerNeedsDobDto.DisplayName"));
 	
+
+}
+	
+	@Test(priority = 2)
+	public void hohClubNeedsWaiverAndFamilyHasNoDob() {
+	
+	String customerId = prop.getProperty("MemberIdneedsDOB1");
+			String clubId = prop.getProperty("X-Club1Id");
+	
+Response res =	 given()
+
+	.headers("SOAPAction", "http://tempuri.org/IWaivers/GetFamilyNeedsDob","Content-Type", "text/xml; charset=utf-8")
+	.and()
+	.body(WaiversPL.GetFamilyNeedDob(companyId, customerId, clubId))
+	.when()
+	.post("/Waivers/Waivers.svc")
+	.then()
+//.log().all()
+	.statusCode(200)
+//	.time(lessThan(60L),TimeUnit.SECONDS)
+	.extract().response();
+XmlPath js = ReusableMethods.rawToXML(res);
+	Assert.assertTrue(res.getTime() >= 60L);
+	
+	int count = js.getInt("Envelope.Body.GetFamilyNeedsDobResponse.GetFamilyNeedsDobResult.CustomerNeedsDobDto.size()");
+	Assert.assertEquals(count, 3);
+	
+for (int i = 0; i<count; i++)
+		
+	{
+	
+	Assert.assertNotNull(js.get("Envelope.Body.GetFamilyNeedsDobResponse.GetFamilyNeedsDobResult.CustomerNeedsDobDto["+i+"].CustomerId"));
+	Assert.assertNotNull(js.get("Envelope.Body.GetFamilyNeedsDobResponse.GetFamilyNeedsDobResult.CustomerNeedsDobDto["+i+"].DisplayName"));
+
+	}
 
 }
 }
