@@ -37,7 +37,7 @@ String companyId;
 		         .when()
 		            .post("/BookView/BookView.svc")
 		         .then()
-	            	//.log().all()
+	            	.log().all()
 	            	 .statusCode(200)
 	 	            .extract().response();
 	       		XmlPath js = ReusableMethods.rawToXML(res);
