@@ -47,7 +47,7 @@ static String companyId;
   	.when()
   	.post("/AccountHistory/AccountHistory.svc")
   	.then()
-//    .log().all()
+    .log().all()
   	.statusCode(200)
   	.time(lessThan(60L),TimeUnit.SECONDS)
    	.extract().response();
