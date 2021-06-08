@@ -61,7 +61,7 @@ public class GetAppointmentInfo_Group_HOH extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"),
 				"Cancellation Fee1");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.Amount"),
-				"11.20"); //Verifying that the Fee amount is based on primary member's membership discount
+				"14.40"); //Verifying that the Fee amount is based on primary member's membership discount
 
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
 
@@ -175,7 +175,7 @@ public class GetAppointmentInfo_Group_HOH extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsCancellationAllowed"), "Allowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsChangeAllowed"),	"NotAllowedOnline");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.FeeStatus"), "ChangeFee");
-		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"), "Cancellation Fee");
+		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"), "Cancellation Fee1");
 
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
 
@@ -256,7 +256,7 @@ public class GetAppointmentInfo_Group_HOH extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"),
 				"Cancellation Fee1");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.Amount"),
-				"11.20"); //Verifying that the Fee amount is based on primary member's membership discount
+				"14.40"); //Verifying that the Fee amount is based on primary member's membership discount
 
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
 
@@ -370,7 +370,7 @@ public class GetAppointmentInfo_Group_HOH extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsCancellationAllowed"), "Allowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsChangeAllowed"),	"Allowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.FeeStatus"), "ChangeFee");
-		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"), "Cancellation Fee");
+		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"), "Cancellation Fee1");
 
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
 
@@ -569,7 +569,7 @@ public class GetAppointmentInfo_Group_HOH extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsChangeAllowed"), "Allowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.FeeStatus"), "CancelFee ChangeFee");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"),
-				"Cancellation Fee");
+				"Cancellation Fee1");
 
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
 
@@ -608,7 +608,7 @@ public class GetAppointmentInfo_Group_HOH extends base {
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.IsChangeAllowed"), "Allowed");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.FeeStatus"), "CancelFee ChangeFee");
 		Assert.assertEquals(js.getString("Envelope.Body.GetAppointmentInfoResponse.GetAppointmentInfoResult.Fee.ItemDescription"),
-				"Cancellation Fee");
+				"Cancellation Fee1");
 
 		ReusableMethods.CancelAppointmentByAppointmentId(companyId, appointmentId);
 
@@ -713,7 +713,7 @@ public class GetAppointmentInfo_Group_HOH extends base {
 				.and().body(SchedulingPL.GetAppointmentInfo(companyId, HOHcustomerId, appointmentId)).when()
 				.post("//Visits/Scheduling.svc")
 				.then()
-				//.log().all()
+//				.log().all()
 				.statusCode(200).extract().response();
 
 		XmlPath js = ReusableMethods.rawToXML(res);

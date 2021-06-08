@@ -160,12 +160,12 @@ public class GetCustomerSchedule extends base {
 	@Test(priority = 4)
 	public void getCustomerScheduleForNonVirtualCourse() {
 		String customerId = prop.getProperty("enrollmentCustomerId");
-		String courseId= prop.getProperty("enrollmentCourseId");
+//		String courseId= prop.getProperty("enrollmentCourseId");
 		String startDateTime = "2020-12-13";
 		String endDateTime = "2020-12-14";
 		
-		enrollmentId = ReusableMethods.enrollInCourse(companyId, customerId, courseId);
-		System.out.println(enrollmentId);
+//		enrollmentId = ReusableMethods.enrollInCourse(companyId, customerId, courseId);
+//		System.out.println(enrollmentId);
 		
 		
 		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IScheduling/GetCustomerSchedule","Content-Type","text/xml; charset=utf-8") .and()
@@ -173,7 +173,7 @@ public class GetCustomerSchedule extends base {
 				  .when()
 				  .post("//Visits/Scheduling.svc") 
 				  .then() 
-				  //.log().all()
+//				  .log().all()
 				  .statusCode(200) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
@@ -182,28 +182,27 @@ public class GetCustomerSchedule extends base {
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ClassEnrollmentStatusDte"), "Enrolled");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ClubName"), "Jonas Sports-Plex");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ClubNumber"), "1");
-				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.DurationInMinutes"), "30");
+				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.DurationInMinutes"), "15");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ForCustomerId"), "822");
-				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.Id"), enrollmentId);
+				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.Id"), "95198");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.IsRecurring"), "false");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.IsVirtual"), "false");
-				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ItemBarcodeId"), "coreco");
-				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ItemDescription"), "CoreCourse");
+				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ItemBarcodeId"), "alwaysAvailCo");
+				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ItemDescription"), "AlwaysAvailableCourse");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ScheduleInstanceType"), "Course");
-				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.DaysOfWeek"), "Sunday Monday Wednesday Thursday Friday Saturday");
-				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.OriginalInstructorName"), "B");
+				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.DaysOfWeek"), "Sunday Monday Tuesday Wednesday Thursday Friday Saturday");
+				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.OriginalInstructorName"), "Max Gibbs");
 				  Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ItemStartDateTime"));
 				  Assert.assertNotNull(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ItemEndDateTime"));
 
 				  
-				  ReusableMethods.deleteEnrollment(companyId, enrollmentId);
-				  
+								  
 				  
 	}
 	
 	@Test(priority = 5)
 	public void getCustomerScheduleForVirtualCourse() {
-		String customerId = prop.getProperty("enrollmentCustomerId");
+		String customerId = prop.getProperty("standbyCustomerId3");
 		String courseId= prop.getProperty("virtualEnrollmentCourseId");
 		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
 		String DayAfterTomorrowsDate = ReusableMethods.getDayAfterTomorrowsDate();
@@ -227,7 +226,7 @@ public class GetCustomerSchedule extends base {
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ClubName"), "Jonas Sports-Plex");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ClubNumber"), "1");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.DurationInMinutes"), "15");
-				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ForCustomerId"), "822");
+				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ForCustomerId"), "874");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.Id"), enrollmentId);
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.IsRecurring"), "false");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.IsVirtual"), "true");
@@ -246,7 +245,7 @@ public class GetCustomerSchedule extends base {
 	
 	@Test(priority = 6)
 	public void getCustomerScheduleForNonVirtualCourseWithVirtualURl() {
-		String customerId = prop.getProperty("enrollmentCustomerId");
+		String customerId = prop.getProperty("standbyCustomerId3");
 		String courseId= prop.getProperty("NonVirtualWithOverrideCourseId");
 		String tomorrowsDate = ReusableMethods.getTomorrowsDate();
 		String DayAfterTomorrowsDate = ReusableMethods.getDayAfterTomorrowsDate();
@@ -270,7 +269,7 @@ public class GetCustomerSchedule extends base {
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ClubName"), "Jonas Sports-Plex");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ClubNumber"), "1");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.DurationInMinutes"), "60");
-				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ForCustomerId"), "822");
+				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.ForCustomerId"), "874");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.Id"), enrollmentId);
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.IsRecurring"), "false");
 				  Assert.assertEquals(js.getString("Envelope.Body.GetCustomerScheduleResponse.GetCustomerScheduleResult.ScheduleInstanceDto.IsVirtual"), "false");
