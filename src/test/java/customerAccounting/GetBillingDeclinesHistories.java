@@ -40,8 +40,6 @@ public class GetBillingDeclinesHistories extends base {
 	@Test (testName="History Found For All Clubs", description="PBI:150327")
 	public void historyFoundAllClubs() {
 		
-		String companyId = "101";
-		
 	Response res = 
 			
 		given()
@@ -105,11 +103,10 @@ public class GetBillingDeclinesHistories extends base {
     		Assert.assertNotNull(js.getString("Envelope.Body.GetBillingDeclinesHistoriesResponse.GetBillingDeclinesHistoriesResult.BillingDeclines.BillingDeclinesHistoryDto[0].ReturnDescription"));	
 	}
 	
-	@Test (testName="Corrections History Found", description="PBI:150327")
+	@Test (testName="Corrections History Found", description="PBI:150327", enabled = false)
 	public void correctionsHistoryFound() {
 		
-		String companyId = "101";
-		String startDate = ReusableDates.getCurrentDateMinusXYears(5);
+		String startDate = ReusableDates.getCurrentDateMinusXYears(10);
 		String returnsType = "Corrections";
 		
 	Response res = 
@@ -122,7 +119,7 @@ public class GetBillingDeclinesHistories extends base {
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
-//         	.log().body()
+         	.log().body()
          	.statusCode(200)
          	.extract().response();
 		 

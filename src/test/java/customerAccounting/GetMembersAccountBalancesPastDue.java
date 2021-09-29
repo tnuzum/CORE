@@ -26,7 +26,6 @@ public class GetMembersAccountBalancesPastDue extends base {
 		base.getPropertyData();
 		RestAssured.baseURI = prop.getProperty("baseURI");
 
-//		companyId = "101";
 		companyId = prop.getProperty("X-CompanyId");
 		clubId = prop.getProperty("club1Id");
 		
@@ -39,8 +38,6 @@ public class GetMembersAccountBalancesPastDue extends base {
 	
 	@Test (testName="Past Due 30 Days", description="PBI:150324",enabled = true)
 	public void pastDue30Days() {
-		
-		String companyId = "101";
 		
 	Response res = 
 			
@@ -78,7 +75,6 @@ public class GetMembersAccountBalancesPastDue extends base {
 	@Test (testName="Past Due 60 Days", description="PBI:150324",enabled = true)
 	public void pastDue60Days() {
 		
-			String companyId = "101";
 			String daysPastDue = "Days60";
 		
 	Response res = 
@@ -116,8 +112,7 @@ public class GetMembersAccountBalancesPastDue extends base {
 	
 	@Test (testName="Past Due 90 Days", description="PBI:150324",enabled = true)
 	public void pastDue90Days() {
-		
-		String companyId = "101";
+
 		String daysPastDue = "Days90";
 		
 	Response res = 
@@ -373,7 +368,6 @@ public class GetMembersAccountBalancesPastDue extends base {
 	@Test (testName="Multiple Customer Statuses", description="PBI:150324")
 	public void multipleCustomerStatuses() {
 		
-			String companyId = "101";
 			String customerStatus2Id = "2";
 		
 	Response res = 
