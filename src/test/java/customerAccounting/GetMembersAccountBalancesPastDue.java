@@ -8,6 +8,7 @@ import io.restassured.RestAssured;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import payloads.CustomerAccountingPL;
+import resources.ReusableDates;
 import resources.ReusableMethods;
 import resources.base;
 
@@ -30,7 +31,6 @@ public class GetMembersAccountBalancesPastDue extends base {
 		clubId = prop.getProperty("club1Id");
 		
 		asOfDate = "2019-06-01";
-//		asOfDate = ReusableDates.getCurrentDate();
 		daysPastDue = "Days30";
 		membershipTypeId = "3";
 		customerStatusId = "4";
@@ -45,7 +45,7 @@ public class GetMembersAccountBalancesPastDue extends base {
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetMembersAccountBalancesPastDue","Content-Type", "text/xml; charset=utf-8")
          	.and()
-         	.body(CustomerAccountingPL.getMembersAccountBalancesPastDueRequiredOnly(companyId,daysPastDue))
+         	.body(CustomerAccountingPL.getMembersAccountBalancesPastDueAsOfDate(companyId,asOfDate,daysPastDue))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
@@ -83,7 +83,7 @@ public class GetMembersAccountBalancesPastDue extends base {
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetMembersAccountBalancesPastDue","Content-Type", "text/xml; charset=utf-8")
          	.and()
-         	.body(CustomerAccountingPL.getMembersAccountBalancesPastDueRequiredOnly(companyId,daysPastDue))
+         	.body(CustomerAccountingPL.getMembersAccountBalancesPastDueAsOfDate(companyId,asOfDate,daysPastDue))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()
@@ -121,7 +121,7 @@ public class GetMembersAccountBalancesPastDue extends base {
 //			.log().all()
          	.headers("SOAPAction", "http://tempuri.org/ICustomerAccounting/GetMembersAccountBalancesPastDue","Content-Type", "text/xml; charset=utf-8")
          	.and()
-         	.body(CustomerAccountingPL.getMembersAccountBalancesPastDueRequiredOnly(companyId,daysPastDue))
+         	.body(CustomerAccountingPL.getMembersAccountBalancesPastDueAsOfDate(companyId,asOfDate,daysPastDue))
          .when()
          	.post("/Financial/CustomerAccounting.svc")
          .then()

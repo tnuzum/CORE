@@ -505,6 +505,46 @@ public class CustomerAccountingPL extends base {
 			return pl;
 		}
 		
+		public static String getMembersAccountBalancesPastDueAsOfDate(
+				String companyId,
+				String asOfDate,
+				String daysPastDue
+				) {
+			
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n" + 
+				"   <soapenv:Header>\r\n" + 
+				"      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n" + 
+				"      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n" + 
+				"   </soapenv:Header>\r\n" + 
+				"   <soapenv:Body>\r\n" + 
+				"      <tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:asOfDate>"+asOfDate+"</tem:asOfDate>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:daysPastDue>"+daysPastDue+"</tem:daysPastDue>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:clubIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:clubIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:membershipTypeIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:membershipTypeIdList>\r\n" + 
+				"         <!--Optional:-->\r\n" + 
+				"         <tem:customerStatusIdList>\r\n" + 
+				"            <!--Zero or more repetitions:-->\r\n" + 
+				"            <!--arr:int>?</arr:int-->\r\n" + 
+				"         </tem:customerStatusIdList>\r\n" + 
+				"      </tem:GetMembersAccountBalancesPastDue>\r\n" + 
+				"   </soapenv:Body>\r\n" + 
+				"</soapenv:Envelope>";
+		
+			return pl;
+		}
+		
 		public static String getMembersAccountBalancesPastDueSingleClub(
 				String companyId,
 				String asOfDate,
