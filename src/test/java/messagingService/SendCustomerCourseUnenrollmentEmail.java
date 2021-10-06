@@ -62,7 +62,7 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-				  .log().all()
+//				  .log().all()
 				  .statusCode(200) .extract().response();
 				  
 				  XmlPath js = ReusableMethods.rawToXML(res);
@@ -157,17 +157,13 @@ public class SendCustomerCourseUnenrollmentEmail extends base {
 		System.out.println(enrollmentId);
 		
 		 Response res = given() .headers("SOAPAction", "http://tempuri.org/IMessagingService/SendCustomerCourseUnenrollmentEmail","Content-Type","text/xml; charset=utf-8") 
+//				 .log().all()
 				 .and()
 				  .body(MessagingServicePL.SendCustomerCourseUnenrollmentEmail( companyId,  customerId1,  itemId2,  startTime,  startTimeOffset,  endTime,  endTimeOffset,  enrollmentOccurrenceTime,  enrollmentOccurrenceTimeOffset))
 				  .when()
 				  .post("/Messaging/MessagingService.svc") 
 				  .then() 
-				  //.log().all()
-				  .statusCode(400) .extract().response();
-				  
-				  XmlPath js = ReusableMethods.rawToXML(res);
-				  String text =
-						  js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message");
-				  Assert.assertEquals(text, "ItemId: "+itemId2+" is not a course enrollment.");
+//				  .log().all()
+				  .statusCode(500) .extract().response();
 	}
 }
