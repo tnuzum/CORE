@@ -187,4 +187,45 @@ public static String GetAppointmentEligibility(String companyId, String clubId, 
 	return pl;
 }
 
+public static String GetBookableItemCategories(String companyId, String customerId,String clubId)
+{
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+			+ "   <soapenv:Header>\r\n"
+			+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+			+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+			+ "   </soapenv:Header>\r\n"
+			+ "\r\n"
+			+ "   <soapenv:Body>\r\n"
+			+ "      <tem:GetBookableItemCategories>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:customerId>"+customerId+"</tem:customerId>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:clubId>"+clubId+"</tem:clubId>\r\n"
+			+ "      </tem:GetBookableItemCategories>\r\n"
+			+ "   </soapenv:Body>\r\n"
+			+ "</soapenv:Envelope>";
+	return pl;
+
+}
+
+public static String GetBookableItems(String companyId, String customerId,String clubId, String itemCategoryId)
+{
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+			+ "   <soapenv:Header>\r\n"
+			+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+			+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+			+ "   </soapenv:Header>\r\n"
+			+ "   <soapenv:Body>\r\n"
+			+ "      <tem:GetBookableItems>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:customerId>"+customerId+"</tem:customerId>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:clubId>"+clubId+"</tem:clubId>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:itemCategoryId>"+itemCategoryId+"</tem:itemCategoryId>\r\n"
+			+ "      </tem:GetBookableItems>\r\n"
+			+ "   </soapenv:Body>\r\n"
+			+ "</soapenv:Envelope>";
+	return pl;
+}
 }
