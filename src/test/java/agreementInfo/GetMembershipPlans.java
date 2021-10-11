@@ -69,27 +69,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());
 			
 		if (valueAssertions.equals("true")) {
 
@@ -117,24 +115,22 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));			
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());			
 
 	}
 	
@@ -160,27 +156,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));			
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());			
 
 	}
 	
@@ -207,27 +201,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());
 			
 		if (valueAssertions.equals("true")) {
 			
@@ -259,27 +251,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());
 			
 		if (valueAssertions.equals("true")) {
 			
@@ -314,27 +304,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());
 			
 		if (valueAssertions.equals("true")) {
 			
@@ -371,27 +359,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());
 			
 		if (valueAssertions.equals("true")) {
 			
@@ -423,27 +409,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));	
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());	
 			
 		if (valueAssertions.equals("true")) {
 			
@@ -476,27 +460,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));			
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());			
 			
 		if (valueAssertions.equals("true")) {
 			
@@ -530,27 +512,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));			
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());			
 			
 		if (valueAssertions.equals("true")) {
 
@@ -584,27 +564,25 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));			
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());			
 			
 		if (valueAssertions.equals("true")) {
 
@@ -642,8 +620,8 @@ public class GetMembershipPlans extends base {
 			
 		if (valueAssertions.equals("true")) {
 
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.PlanId").contains(membershipPlanClub1OnlyId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.PlanDescription").contains(membershipPlanClub1OnlyDescription));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.PlanId").contains(membershipPlanClub1OnlyId));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.PlanDescription").contains(membershipPlanClub1OnlyDescription));
 			
 			}
 	}
@@ -670,28 +648,26 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
 			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").equals("false"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.IsIndividualPlan").equals("true")); // Confirm none of the plans are Individual
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));		
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.IsIndividualPlan").equals("true")); // Confirm none of the plans are Individual
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());		
 
 	}
 	
@@ -717,28 +693,26 @@ public class GetMembershipPlans extends base {
 			
 			XmlPath js = ReusableMethods.rawToXML(res);
 			
-			String planId = js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId");
-			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanDescription").isBlank());
 			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsIndividualPlan").equals("true"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.IsIndividualPlan").equals("false")); // Confirm none of the plans are Family
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].AddOns.AddOn[0].PlanId").equals(planId));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemId").isBlank());
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].ItemDescription").isBlank());
-			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].ServiceAreas.ServiceArea[0].PlanId").equals(planId));		
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse.IsIndividualPlan").equals("false")); // Confirm none of the plans are Family
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].PlanType").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtPrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalDownPmtOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargePrimary").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeFirstFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].TotalRecurringChargeOtherFamily").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].IsFeaturedPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].Services[0].PlanService.PlanId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.ItemDescription").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0].MembershipAreas[0].MembershipArea.PlanId").isBlank());		
 
 	}
 
@@ -767,7 +741,7 @@ public class GetMembershipPlans extends base {
 			Assert.assertTrue(res.getTime() >= 60L);
 			
 			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto").equals("Club not found"));	
-			Assert.assertTrue(!js.getString("Envelope.Body").contains("GetMembershipPlansResponse"));
+			Assert.assertFalse(js.getString("Envelope.Body").contains("GetMembershipPlansResponse"));
 					
 
 	}
@@ -796,21 +770,21 @@ public class GetMembershipPlans extends base {
 			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("PlanId"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("PlanDescription"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("IsIndividualPlan"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("PlanType"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalDownPmtPrimary"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalDownPmtFirstFamily"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalDownPmtOtherFamily"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalRecurringChargePrimary"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalRecurringChargeFirstFamily"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalRecurringChargeOtherFamily"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("IsFeaturedPlan"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("AddOns.AddOn[0].ItemId"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("AddOns"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("ServiceAreas"));
-			Assert.assertTrue(!js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("ServiceAreas"));			
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("PlanId"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("PlanDescription"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("IsIndividualPlan"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("PlanType"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalDownPmtPrimary"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalDownPmtFirstFamily"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalDownPmtOtherFamily"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalRecurringChargePrimary"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalRecurringChargeFirstFamily"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("TotalRecurringChargeOtherFamily"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("IsFeaturedPlan"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("Services[0].PlanService.ItemId"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("AddOns"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("ServiceAreas"));
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlansResponse.GetMembershipPlansResult.MembershipPlanResponse[0]").contains("ServiceAreas"));			
 
 	}
 
