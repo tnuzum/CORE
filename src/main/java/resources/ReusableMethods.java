@@ -10,10 +10,7 @@ import payloads.SchedulingPL;
 import static io.restassured.RestAssured.given;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-
 import org.testng.Assert;
 
 public class ReusableMethods extends base{
