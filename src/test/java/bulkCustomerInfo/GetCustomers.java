@@ -5,7 +5,7 @@ import static io.restassured.RestAssured.given;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+import static org.hamcrest.Matchers.*;
 import io.restassured.RestAssured;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
@@ -45,7 +45,7 @@ public class GetCustomers extends base {
 		pageSize = 50;
 	}
 	
-	@Test (testName="Required Fields Only")
+	@Test (testName="Required Fields Only", description="User Story:181877")
 	public void requiredFieldsOnly(){
 		
 	       Response res =  given()
@@ -176,22 +176,20 @@ public class GetCustomers extends base {
 	@Test (testName="Active Customers Only Found")
 	public void activeCustomersOnlyFound(){
 		
-	       Response res =  given()
+			String activeOnly = "true";
+		
+	       given()
 //	    		.log().all()
                 .headers("SOAPAction", "http://tempuri.org/IBulkCustomerInfo/GetCustomers","Content-Type", "text/xml; charset=utf-8")
-                .and()
-                .body(BulkCustomerInfoPL.getCustomersRequiredParametersOnly(companyId, clubId))
+                .body(BulkCustomerInfoPL.getAllCustomers(companyId, clubId, activeOnly))
+                //.body(BulkCustomerInfoPL.getCustomersRequiredParametersOnly(companyId, clubId))
 	         .when()
 	            .post("/Info/BulkCustomerInfo.svc")
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-	            .extract().response();
-	       
-	       		XmlPath js = ReusableMethods.rawToXML(res);
-	       		
-	       		Assert.assertFalse(js.getString(basePath+".CustomerDto.Status").contains("Terminate"));
-	       		Assert.assertFalse(js.getString(basePath+".CustomerDto.Status").contains("Freeze"));
+	            .body(basePath+".Customers.CustomerDto.Status", not(anyOf(hasItem("Terminate"))));
+
 }
 	
 	@Test (testName="All Customers Found")
@@ -199,7 +197,7 @@ public class GetCustomers extends base {
 		
 			String activeOnly = "false";
 		
-			Response res =  given()
+			given()
 //	    		.log().all()
                 .headers("SOAPAction", "http://tempuri.org/IBulkCustomerInfo/GetCustomers","Content-Type", "text/xml; charset=utf-8")
                 .body(BulkCustomerInfoPL.getAllCustomers(companyId, clubId, activeOnly))
@@ -208,11 +206,7 @@ public class GetCustomers extends base {
 	         .then()
 //             	.log().body()
 	            .statusCode(200)
-	            .extract().response();
-	       
-	       		XmlPath js = ReusableMethods.rawToXML(res);
-	       		
-	       		Assert.assertTrue(js.getString(basePath+".Customers.CustomerDto.Status").contains("Terminate"));
+	            .body(basePath+".Customers.CustomerDto.Status", anyOf(hasItem("Terminate")));
 	       		
 }
 	
