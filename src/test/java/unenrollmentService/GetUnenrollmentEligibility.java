@@ -618,12 +618,11 @@ public class GetUnenrollmentEligibility extends base {
 				
 				Response res = given()
 		 			.headers("SOAPAction", "http://tempuri.org/IUnenrollmentService/GetUnenrollmentEligibility","Content-Type", "text/xml; charset=utf-8")
-					.and()
 					.body(UnenrollmentServicePL.GetUnenrollmentEligibility(companyId, enrollmentId))
 				.when()
 					.post("/ClassesAndCourses/UnenrollmentService.svc")
 				.then()
-					//.log().all()
+//					.log().all()
 					.statusCode(200)
 					.extract().response();  
 					
@@ -631,7 +630,7 @@ public class GetUnenrollmentEligibility extends base {
 							
 					Assert.assertTrue(res.getTime() >= 60L);
 					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
-					Assert.assertEquals(text, "true");
+					Assert.assertEquals(text, "false");
 					ReusableMethods.deleteEnrollment(companyId, enrollmentId);
 					
 					}
