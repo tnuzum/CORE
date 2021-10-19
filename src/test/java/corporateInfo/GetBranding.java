@@ -47,29 +47,29 @@ public class GetBranding extends base {
 		XmlPath js = ReusableMethods.rawToXML(res);
 		
 		Assert.assertTrue(res.getTime() >= 60L);
-		
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[0].Key"), "BRND_BannerBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[1].Key"), "BRND_BoxHeadingBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[2].Key"), "BRND_BoxHeadingFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[3].Key"), "BRND_BtnBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[4].Key"), "BRND_BtnFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[5].Key"), "BRND_FeatureCalloutBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[6].Key"), "BRND_FeatureHeadingFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[7].Key"), "BRND_HeadingColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[8].Key"), "BRND_LogoFileName");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[9].Key"), "BRND_MenuActiveBG");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[10].Key"), "BRND_MenuActiveBGFont");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[11].Key"), "BRND_MenuBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[12].Key"), "BRND_MenuFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[13].Key"), "BRND_MenuFontROColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[14].Key"), "BRND_MenuRollOverBG");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[15].Key"), "BRND_PageBGcolor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[16].Key"), "BRND_ProspectBtnBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[17].Key"), "BRND_ProspectBtnFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[18].Key"), "GBL_NotifyClubEmail");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[19].Key"), "GBL_NotifyClubOnSales");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[20].Key"), "GBL_SellAddOns");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[21].Key"), "GBL_SendContractViaEmail");	
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BannerBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BoxHeadingBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BoxHeadingFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BtnBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BtnFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_FeatureCalloutBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_FeatureHeadingFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_HeadingColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_LogoFileName"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuActiveBG"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuActiveBGFont"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuFontROColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuRollOverBG"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_PageBGcolor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_ProspectBtnBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_ProspectBtnFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("GBL_NotifyClubEmail"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("GBL_NotifyClubOnSales"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("GBL_SellAddOns"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("GBL_SendContractViaEmail"));
+			
 	}
 	
 	@Test (testName="Get JOL Branding")
@@ -93,28 +93,29 @@ public class GetBranding extends base {
 		
 		Assert.assertTrue(res.getTime() >= 60L);
 		
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[0].Key"), "BRND_BannerBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[1].Key"), "BRND_BoxHeadingBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[2].Key"), "BRND_BoxHeadingFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[3].Key"), "BRND_BtnBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[4].Key"), "BRND_BtnFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[5].Key"), "BRND_FeatureCalloutBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[6].Key"), "BRND_FeatureHeadingFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[7].Key"), "BRND_HeadingColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[8].Key"), "BRND_LogoFileName");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[9].Key"), "BRND_MenuActiveBG");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[10].Key"), "BRND_MenuActiveBGFont");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[11].Key"), "BRND_MenuBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[12].Key"), "BRND_MenuFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[13].Key"), "BRND_MenuFontROColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[14].Key"), "BRND_MenuRollOverBG");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[15].Key"), "BRND_PageBGcolor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[16].Key"), "BRND_ProspectBtnBGColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[17].Key"), "BRND_ProspectBtnFontColor");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[18].Key"), "GBL_NotifyClubEmail");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[19].Key"), "GBL_NotifyClubOnSales");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[20].Key"), "GBL_SellAddOns");
-		Assert.assertEquals(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring[21].Key"), "GBL_SendContractViaEmail");	
+		Assert.assertTrue(res.getTime() >= 60L);
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BannerBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BoxHeadingBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BoxHeadingFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BtnBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_BtnFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_FeatureCalloutBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_FeatureHeadingFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_HeadingColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_LogoFileName"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuActiveBG"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuActiveBGFont"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuFontROColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_MenuRollOverBG"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_PageBGcolor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_ProspectBtnBGColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("BRND_ProspectBtnFontColor"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("GBL_NotifyClubEmail"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("GBL_NotifyClubOnSales"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("GBL_SellAddOns"));
+		Assert.assertTrue(js.getString("Envelope.Body.GetBrandingResponse.GetBrandingResult.KeyValueOfstringstring.Key").contains("GBL_SendContractViaEmail"));	
 	}
 	
 }
