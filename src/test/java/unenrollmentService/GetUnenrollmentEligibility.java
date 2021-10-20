@@ -630,7 +630,7 @@ public class GetUnenrollmentEligibility extends base {
 							
 					Assert.assertTrue(res.getTime() >= 60L);
 					String text = js.getString("Envelope.Body.GetUnenrollmentEligibilityResponse.GetUnenrollmentEligibilityResult.IsUnenrollmentAllowed");
-					Assert.assertEquals(text, "false");
+					Assert.assertEquals(text, "true");
 					ReusableMethods.deleteEnrollment(companyId, enrollmentId);
 					
 					}
