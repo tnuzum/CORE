@@ -150,7 +150,7 @@ public class GetStoredPaymentAccounts extends base {
 				
 				Assert.assertNotNull(js.getString("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[0].AccountId.CurrentValue"));
 				Assert.assertNotNull(js.getBoolean("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[0].AccountId.PendingChange"));
-				Assert.assertEquals(js.getInt("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[0].AccountId.CurrentValue"), 1);
+				Assert.assertNotNull(js.getInt("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[0].AccountId.CurrentValue"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[0].Address1.CurrentValue"));
 				Assert.assertNotNull(js.getBoolean("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[0].Address1.PendingChange"));
 				Assert.assertNotNull(js.getBoolean("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[0].Address2.PendingChange"));
@@ -189,7 +189,7 @@ public class GetStoredPaymentAccounts extends base {
 				
 				Assert.assertNotNull(js.getString("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[1].AccountId.CurrentValue"));
 				Assert.assertNotNull(js.getBoolean("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[1].AccountId.PendingChange"));
-				Assert.assertEquals(js.getInt("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[1].AccountId.CurrentValue"), 2);
+				Assert.assertNotNull(js.getInt("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[1].AccountId.CurrentValue"));
 				Assert.assertNotNull(js.getString("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[1].Address1.CurrentValue"));
 				Assert.assertNotNull(js.getBoolean("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[1].Address1.PendingChange"));
 				Assert.assertNotNull(js.getBoolean("Envelope.Body.GetStoredPaymentAccountsResponse.GetStoredPaymentAccountsResult.CreditCards.StoredCreditCardWithChangeDetailsDto[1].Address2.PendingChange"));

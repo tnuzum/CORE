@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.not;
 import io.restassured.RestAssured;
 import payloads.CustomerAccountingPL;
@@ -61,8 +62,8 @@ public class GetStoredPaymentAccountsForCustomer extends base {
 //         	.log().body()
          	.statusCode(200)
          	.time(lessThan(60L),TimeUnit.SECONDS)
-         	.body("Envelope.Body.GetStoredPaymentAccountsForCustomerResponse.GetStoredPaymentAccountsForCustomerResult.CreditCards.StoredCreditCardResponse[0].AccountId", equalTo("1"))
-         	.body("Envelope.Body.GetStoredPaymentAccountsForCustomerResponse.GetStoredPaymentAccountsForCustomerResult.CreditCards.StoredCreditCardResponse[1].AccountId", equalTo("2"));
+         	.body("Envelope.Body.GetStoredPaymentAccountsForCustomerResponse.GetStoredPaymentAccountsForCustomerResult.CreditCards.StoredCreditCardResponse.AccountId", hasItem("1"))
+         	.body("Envelope.Body.GetStoredPaymentAccountsForCustomerResponse.GetStoredPaymentAccountsForCustomerResult.CreditCards.StoredCreditCardResponse.AccountId", hasItem("2"));
 	}
 	
 	@Test (testName="Checking Account Found")
