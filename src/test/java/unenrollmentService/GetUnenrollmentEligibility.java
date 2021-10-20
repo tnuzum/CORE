@@ -608,7 +608,7 @@ public class GetUnenrollmentEligibility extends base {
 					
 					}
 			
-			@Test (priority = 23, testName="Standby course cannot be unenrolled")
+			@Test (priority = 23, testName="Standby course can be unenrolled")
 			public void UnenrollStandbyCourse() {
 				
 				String customerId = prop.getProperty("standbyCustomerId");
