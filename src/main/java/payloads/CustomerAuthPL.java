@@ -39,6 +39,57 @@ public class CustomerAuthPL extends base {
 				+ "</soapenv:Envelope>";
 		return pl;
 	}
-
+	public static String GetCustomerRefreshToken(String companyId, String customerId)
+	{
+		String pl ="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+				+ "   <soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+				+ "   </soapenv:Header>\r\n"
+				+ "   <soapenv:Body>\r\n"
+				+ "      <tem:GetCustomerRefreshToken>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:customerId>"+customerId+"</tem:customerId>\r\n"
+				+ "      </tem:GetCustomerRefreshToken>\r\n"
+				+ "   </soapenv:Body>\r\n"
+				+ "</soapenv:Envelope>";
+		return pl;
+	}
+	
+	public static String ValidateCustomerRefreshToken(String companyId,String customerId, String refreshToken)
+	{
+		String pl ="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+				+ "   <soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+				+ "   </soapenv:Header>\r\n"
+				+ "   <soapenv:Body>\r\n"
+				+ "      <tem:ValidateCustomerRefreshToken>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:customerId>"+customerId+"</tem:customerId>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:refreshToken>"+refreshToken+"</tem:refreshToken>\r\n"
+				+ "      </tem:ValidateCustomerRefreshToken>\r\n"
+				+ "   </soapenv:Body>\r\n"
+				+ "</soapenv:Envelope>";
+		return pl;
+	}
+	
+	public static String ExpireCustomerRefreshToken(String companyId,String customerId)
+	{
+		String pl ="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+				+ "   <soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+				+ "   </soapenv:Header>\r\n"
+				+ "   <soapenv:Body>\r\n"
+				+ "      <tem:ExpireCustomerRefreshToken>\r\n"
+				+ "         <!--Optional:-->\r\n"
+				+ "         <tem:customerId>"+customerId+"</tem:customerId>\r\n"
+				+ "      </tem:ExpireCustomerRefreshToken>\r\n"
+				+ "   </soapenv:Body>\r\n"
+				+ "</soapenv:Envelope>";
+		return pl;
+	}
 
 }
