@@ -228,4 +228,22 @@ public static String GetBookableItems(String companyId, String customerId,String
 			+ "</soapenv:Envelope>";
 	return pl;
 }
+
+
+public static String GetParticipantCounts(String companyId, String productId)
+{
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+			+ "   <soapenv:Header>\r\n"
+			+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+			+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+			+ "   </soapenv:Header>\r\n"
+			+ "   <soapenv:Body>\r\n"
+			+ "      <tem:GetParticipantCounts>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:productId>"+productId+"</tem:productId>\r\n"
+			+ "      </tem:GetParticipantCounts>\r\n"
+			+ "   </soapenv:Body>\r\n"
+			+ "</soapenv:Envelope>";
+	return pl;
+}
 }

@@ -4,6 +4,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import payloads.ChangeRequestsPL;
+import payloads.CustomerAuthPL;
 import payloads.EnrollmentServicePL;
 import payloads.SchedulingPL;
 
@@ -280,5 +281,25 @@ public static void CancelAppointmentByAppointmentId(String companyId, String app
 	
 	Assert.assertEquals(xp.getString("Envelope.Body.CancelAppointmentByAppointmentIdResponse.CancelAppointmentByAppointmentIdResult"), "C"+appointmentId);
 	
+}
+
+
+
+public static String CustomerRefreshToken (String companyId, String customerId){
+	
+
+	Response res = given()
+ 			.headers("SOAPAction", "http://tempuri.org/ICustomerAuth/GetCustomerRefreshToken","Content-Type", "text/xml; charset=utf-8")
+			.and()
+			.body(CustomerAuthPL.GetCustomerRefreshToken(companyId, customerId))
+		.when()
+			.post("/Auth/CustomerAuth.svc")
+		.then()
+		.log().all()
+			.statusCode(200).extract().response();
+	 XmlPath js = ReusableMethods.rawToXML(res);
+	 String refreshToken = js.getString("Envelope.Body.GetCustomerRefreshTokenResponse.GetCustomerRefreshTokenResult");
+	 return refreshToken;
+	 
 }
 }
