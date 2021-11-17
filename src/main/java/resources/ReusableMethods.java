@@ -11,13 +11,10 @@ import payloads.SchedulingPL;
 import static io.restassured.RestAssured.given;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-
 import org.testng.Assert;
 
-public class ReusableMethods {
+public class ReusableMethods extends base{
 	
 	public static XmlPath rawToXML(Response r){
 //		** Convert Raw XML response to String **
@@ -285,6 +282,7 @@ public static void CancelAppointmentByAppointmentId(String companyId, String app
 
 
 
+
 public static String CustomerRefreshToken (String companyId, String customerId){
 	
 
@@ -302,4 +300,23 @@ public static String CustomerRefreshToken (String companyId, String customerId){
 	 return refreshToken;
 	 
 }
+
+	public static void setLastUpdateDateToday(String companyId, String clubId ) {
+		
+		String customerId = prop.getProperty("changeId");
+		String fieldName = "Address2";
+		String newValue = "Apt. B";
+		String submissionReasonDetail = "Test Submission Reason Details";
+		String submissionReason = prop.getProperty("submissionReason");
+		
+		// Change Request API is sent to set lastUpdateDate to today
+		given()
+			.headers("SOAPAction", "http://tempuri.org/IChangeRequests/UpdatePersonalInformation", "Content-Type", "text/xml; charset=utf-8")
+           // .and()
+            .body(ChangeRequestsPL.updatePersonalInformationNoFamily(companyId, customerId, fieldName, newValue, submissionReason, submissionReasonDetail))
+        .when()
+        	.post("/ChangeRequests/ChangeRequest.svc")
+    	.then();
+	}
+
 }
