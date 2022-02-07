@@ -246,4 +246,49 @@ public static String GetParticipantCounts(String companyId, String productId)
 			+ "</soapenv:Envelope>";
 	return pl;
 }
+
+
+
+public static String SearchForAppointmentCustomers(String companyId, String customerId, String SearchParameter,String clubID, String productId)
+{
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+			+ "   <soapenv:Header>\r\n"
+			+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+			+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+			+ "   </soapenv:Header>\r\n"
+			+ "   <soapenv:Body>\r\n"
+			+ "      <tem:SearchForAppointmentCustomers>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:customerBarcodeId>"+customerId+"</tem:customerBarcodeId>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:searchParameters>"+SearchParameter+"</tem:searchParameters>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:appointmentClubId>"+clubID+"</tem:appointmentClubId>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:appointmentItemId>"+productId+"</tem:appointmentItemId>\r\n"
+			+ "      </tem:SearchForAppointmentCustomers>\r\n"
+			+ "   </soapenv:Body>\r\n"
+			+ "</soapenv:Envelope>";
+	return pl;
+}
+
+
+public static String GetPrimarySelectableResourceType(String companyId, String clubID, String productId)
+{
+	String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+			+ "   <soapenv:Header>\r\n"
+			+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
+			+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
+			+ "   </soapenv:Header>\r\n"
+			+ "   <soapenv:Body>\r\n"
+			+ "      <tem:GetPrimarySelectableResourceType>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:clubId>"+clubID+"</tem:clubId>\r\n"
+			+ "         <!--Optional:-->\r\n"
+			+ "         <tem:itemId>"+productId+"</tem:itemId>\r\n"
+			+ "      </tem:GetPrimarySelectableResourceType>\r\n"
+			+ "   </soapenv:Body>\r\n"
+			+ "</soapenv:Envelope>";
+	return pl;
+}
 }
