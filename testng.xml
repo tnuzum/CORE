@@ -15,6 +15,8 @@
 	<class name="changeRequests.GetStoredPaymentAccounts"/>  
 	<class name="changeRequests.GetSubmissionReasonsForSubmission"/> 	
 	<class name="changeRequests.UpdatePersonalInformation"/> 
+	<class name="changeRequests.AddStoredBankAccount"/> 
+	<class name="changeRequests.UpdateStoredBankAccount"/> 
     <class name="corporateInfo.CompanyHasModuleGrant"/>
     <class name="corporateInfo.GetActiveClubs"/>
     <class name="corporateInfo.GetBranding"/>
