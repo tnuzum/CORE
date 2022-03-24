@@ -217,42 +217,43 @@ public static String getMembershipPlansSpecificPromoPlanFilter(String companyId,
 	public static String getMembershipPlanDetailsAllParameters(String companyId,String clubId, String planId, String effectiveDate)
 	
 	{
-		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.Agreements\">\r\n"
 				+ "   <soapenv:Header>\r\n"
-				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
-				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Employee</CallerContext>\r\n"
-				+ "   </soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n"
 				+ "   <soapenv:Body>\r\n"
 				+ "      <tem:GetMembershipPlanDetails>\r\n"
 				+ "         <!--Optional:-->\r\n"
-				+ "         <tem:clubId>"+clubId+"</tem:clubId>\r\n"
-				+ "         <!--Optional:-->\r\n"
-				+ "         <tem:planId>"+planId+"</tem:planId>\r\n"
-				+ "         <!--Optional:-->\r\n"
-				+ "         <tem:effectiveDate>"+effectiveDate+"</tem:effectiveDate>\r\n"
+				+ "         <tem:request>\r\n"
+				+ "            <jfi:ClubId>"+clubId+"</jfi:ClubId>\r\n"
+				+ "            <jfi:EffectiveDate>"+effectiveDate+"</jfi:EffectiveDate>\r\n"
+				+ "            <jfi:PlanId>"+planId+"</jfi:PlanId>\r\n"
+				+ "         </tem:request>\r\n"
 				+ "      </tem:GetMembershipPlanDetails>\r\n"
 				+ "   </soapenv:Body>\r\n"
-				+ "</soapenv:Envelope>";
+				+ "</soapenv:Envelope>\r\n"
+				+ "\r\n"
+				+ " ";
 		return pl;
 	}
 	
-	public static String getMembershipPlanDetailsRequiredParameters(String companyId,String clubId, String planId)
+	public static String getMembershipPlanDetailsEffectiveDateIsRequiredParameter(String companyId,String clubId, String planId)
 	
 	{
-		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n"
+		String pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.Agreements\">\r\n"
 				+ "   <soapenv:Header>\r\n"
-				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
-				+ "      <CallerContext xmlns=\"http://jonasfitness.com/Core/\">Employee</CallerContext>\r\n"
-				+ "   </soapenv:Header>\r\n"
+				+ "      <CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId><CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext></soapenv:Header>\r\n"
 				+ "   <soapenv:Body>\r\n"
 				+ "      <tem:GetMembershipPlanDetails>\r\n"
 				+ "         <!--Optional:-->\r\n"
-				+ "         <tem:clubId>"+clubId+"</tem:clubId>\r\n"
-				+ "         <!--Optional:-->\r\n"
-				+ "         <tem:planId>"+planId+"</tem:planId>\r\n"
+				+ "         <tem:request>\r\n"
+				+ "            <jfi:ClubId>"+clubId+"</jfi:ClubId>\r\n"
+				+ "            <jfi:PlanId>"+planId+"</jfi:PlanId>\r\n"
+				+ "         </tem:request>\r\n"
 				+ "      </tem:GetMembershipPlanDetails>\r\n"
 				+ "   </soapenv:Body>\r\n"
-				+ "</soapenv:Envelope>";
+				+ "</soapenv:Envelope>\r\n"
+				+ "\r\n"
+				+ " ";
 		return pl;
 	}
 	

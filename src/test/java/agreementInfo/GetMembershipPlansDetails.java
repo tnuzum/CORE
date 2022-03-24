@@ -20,6 +20,7 @@ public class GetMembershipPlansDetails extends base {
 	String clubId;
 	String planId;
 	String effectiveDate;
+	String billingCycle;
 	
 	@BeforeTest
 	public void getData() {
@@ -31,6 +32,7 @@ public class GetMembershipPlansDetails extends base {
 		clubId = prop.getProperty("X-Club1Id");
 		planId = prop.getProperty("membershipPlanAvailableOnlineId");
 		effectiveDate = ReusableDates.getCurrentDate();
+		billingCycle = "Monthly";
 	}
 	
 	@Test (testName="All Parameters", description = "PBI: 179764")
@@ -59,32 +61,59 @@ public class GetMembershipPlansDetails extends base {
 			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanDescription").isBlank());
 			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanType").isBlank());
 			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Inactive").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanCategoryId").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanCategory").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.BillingCategoryId").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.BillingCategoryDescription").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MembershipTypeId").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MembershipTypeName").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanCategory.Id").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanCategory.Name").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.BillingCategory.Id").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.BillingCategory.Description").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MembershipType.Id").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MembershipType.Name").isBlank());
 			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.IsIndividualPlan").isBlank());
 			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.IsRenewalPlan").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.IsApplyAgeRestriction").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MinimumAge").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MaximumAge").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MinimumMemberCount").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MaximumMemberCount").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanRestrictions").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanRestrictions.AgeRestriction.MinimumAge").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanRestrictions.AgeRestriction.MaximumAge").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanRestrictions.MinimumMemberCount").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanRestrictions.MaximumMemberCount").isBlank());
 			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.RenewalPlanType").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.SellAsGroupPlan").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.IsCorpResponsible").isBlank());
-			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.CorporationId").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.CorporationSettings.SellAsGroupPlan").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.CorporationSettings.IsCorporationResponsible").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.CorporationSettings.CorporationId").isBlank());
 			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PercentageOfTotalDuesToPay").isBlank());
 			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.HasMaximumTotalDues").isBlank());
 			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MaximumTotalDues").isBlank());
 			
+				
+						
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].OtherMemberPricing.DownPayment").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].OtherMemberPricing.DownPaymentProration").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].OtherMemberPricing.Freeze").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].OtherMemberPricing.MaxDiscountDownPayment").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].OtherMemberPricing.MaxDiscountProration").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].OtherMemberPricing.MaxDiscountRecurring").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].OtherMemberPricing.Recurring").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].OtherMemberPricing.Rollover").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].OtherMemberPricing.ValuePerDay").isBlank());
 			
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].PrimaryMemberPricing.DownPayment").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].PrimaryMemberPricing.DownPaymentProration").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].PrimaryMemberPricing.Freeze").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].PrimaryMemberPricing.MaxDiscountDownPayment").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].PrimaryMemberPricing.MaxDiscountProration").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].PrimaryMemberPricing.MaxDiscountRecurring").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].PrimaryMemberPricing.Recurring").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].PrimaryMemberPricing.Rollover").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].PrimaryMemberPricing.ValuePerDay").isBlank());
 			
-			
-			
-			
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].SecondaryMemberPricing.DownPayment").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].SecondaryMemberPricing.DownPaymentProration").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].SecondaryMemberPricing.Freeze").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].SecondaryMemberPricing.MaxDiscountDownPayment").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].SecondaryMemberPricing.MaxDiscountProration").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].SecondaryMemberPricing.MaxDiscountRecurring").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].SecondaryMemberPricing.Recurring").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].SecondaryMemberPricing.Rollover").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.Services.PlanServiceBreakdownDto[0].SecondaryMemberPricing.ValuePerDay").isBlank());
+			Assert.assertFalse(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.BillingCycle").isBlank());
 			
 			
 			
@@ -93,42 +122,51 @@ public class GetMembershipPlansDetails extends base {
 			//Assert.assertEquals(prop.getProperty("planSummary"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanSummary"));
 			Assert.assertEquals(prop.getProperty("planType"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanType"));
 			Assert.assertEquals("false", js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Inactive"));
-			Assert.assertEquals(prop.getProperty("planCategoryId"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanCategoryId"));
-			Assert.assertEquals(prop.getProperty("planCategory"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanCategory"));
-			Assert.assertEquals(prop.getProperty("billingCategoryId"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.BillingCategoryId"));
-			Assert.assertEquals(prop.getProperty("billingCategoryDescription"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.BillingCategoryDescription"));
-			Assert.assertEquals(prop.getProperty("membershipTypeId"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MembershipTypeId"));
-			Assert.assertEquals(prop.getProperty("membershipTypeName"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MembershipTypeName"));
+			Assert.assertEquals(prop.getProperty("planCategoryId"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanCategory.Id"));
+			Assert.assertEquals(prop.getProperty("planCategory"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanCategory.Name"));
+			Assert.assertEquals(prop.getProperty("billingCategoryId"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.BillingCategory.Id"));
+			Assert.assertEquals(prop.getProperty("billingCategoryDescription"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.BillingCategory.Description"));
+			Assert.assertEquals(prop.getProperty("membershipTypeId"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MembershipType.Id"));
+			Assert.assertEquals(prop.getProperty("membershipTypeName"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MembershipType.Name"));
 			Assert.assertEquals(prop.getProperty("isIndividualPlan"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.IsIndividualPlan"));
 			Assert.assertEquals(prop.getProperty("isRenewalPlan"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.IsRenewalPlan"));
-			Assert.assertEquals(prop.getProperty("isApplyAgeRestriction"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.IsApplyAgeRestriction"));
-			Assert.assertEquals(prop.getProperty("minimumAge"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MinimumAge"));
-			Assert.assertEquals(prop.getProperty("maximumAge"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MaximumAge"));
-			Assert.assertEquals(prop.getProperty("minimumMemberCount"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MinimumMemberCount"));
-			Assert.assertEquals(prop.getProperty("maximumMemberCount"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MaximumMemberCount"));
+//			Assert.assertEquals(prop.getProperty("isApplyAgeRestriction"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.IsApplyAgeRestriction"));
+			Assert.assertEquals(prop.getProperty("minimumAge"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanRestrictions.AgeRestriction.MinimumAge"));
+			Assert.assertEquals(prop.getProperty("maximumAge"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanRestrictions.AgeRestriction.MaximumAge"));
+			Assert.assertEquals(prop.getProperty("minimumMemberCount"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanRestrictions.MinimumMemberCount"));
+			Assert.assertEquals(prop.getProperty("maximumMemberCount"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PlanRestrictions.MaximumMemberCount"));
 			Assert.assertEquals(prop.getProperty("renewalPlanType"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.RenewalPlanType"));
-			Assert.assertEquals(prop.getProperty("sellAsGroupPlan"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.SellAsGroupPlan"));
-			Assert.assertEquals(prop.getProperty("isCorpResponsible"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.IsCorpResponsible"));
-			Assert.assertEquals(prop.getProperty("corporationId"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.CorporationId"));
+			Assert.assertEquals(prop.getProperty("sellAsGroupPlan"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.CorporationSettings.SellAsGroupPlan"));
+			Assert.assertEquals(prop.getProperty("isCorpResponsible"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.CorporationSettings.IsCorporationResponsible"));
+			Assert.assertEquals(prop.getProperty("corporationId"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.CorporationSettings.CorporationId"));
 			Assert.assertEquals(prop.getProperty("percentageOfTotalDuesToPay"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.PercentageOfTotalDuesToPay"));
 			Assert.assertEquals(prop.getProperty("hasMaximumTotalDues"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.HasMaximumTotalDues"));
 			Assert.assertEquals(prop.getProperty("maximumTotalDues"), js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.MaximumTotalDues"));
-			}			
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.AgreementDates.EffectiveDate").contains(effectiveDate));
+			Assert.assertTrue(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.AgreementDates.SaleDate").contains(effectiveDate));
+			Assert.assertEquals(js.getString("Envelope.Body.GetMembershipPlanDetailsResponse.GetMembershipPlanDetailsResult.Details.BillingCycle.Description"), billingCycle);
+			
+		}			
 	}
 	
-	@Test (testName="Required Parameters", description = "PBI: 179764")
+	@Test (testName="Effective Date is a Required Parameter", description = "PBI: 179764")
 	public void requiredParametersonly() {
-		given()
+	Response res =	given()
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/IAgreementInfo/GetMembershipPlanDetails",
  					"Content-Type", "text/xml; charset=utf-8")
 			.and()
-			.body(AgreementInfoPL.getMembershipPlanDetailsRequiredParameters(companyId, clubId, planId))
+			.body(AgreementInfoPL.getMembershipPlanDetailsEffectiveDateIsRequiredParameter(companyId, clubId, planId))
 		.when()
 			.post("/Agreements/AgreementInfo.svc")
 		.then()
 //			.log().all()
-			.statusCode(200);		
+			.statusCode(500)
+			.extract().response();  
+			
+			XmlPath js = ReusableMethods.rawToXML(res);	
+			
+			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto").contains("Expecting element 'EffectiveDate'.'."));
 	}
 
 }
