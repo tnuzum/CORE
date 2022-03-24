@@ -48,7 +48,7 @@ public class UpdateStoredBankAccount extends base {
 	         .when()
 	            .post("/ChangeRequests/ChangeRequest.svc")
 	         .then()
- //            	.log().all()
+//             	.log().all()
 	            .statusCode(200)
 				.time(lessThan(5L),TimeUnit.SECONDS)
 				.extract().response();

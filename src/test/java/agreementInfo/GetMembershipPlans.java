@@ -1032,7 +1032,7 @@ public class GetMembershipPlans extends base {
 			
 			Assert.assertTrue(res.getTime() >= 60L);
 			
-			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto").equals("Club not found"));	
+			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto.Details").contains("Club not found"));	
 			Assert.assertTrue(!js.getString("Envelope.Body").contains("GetMembershipPlansResponse"));
 					
 
