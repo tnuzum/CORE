@@ -150,7 +150,7 @@ public class GetMembershipPlansDetails extends base {
 	}
 	
 	@Test (testName="Effective Date is a Required Parameter", description = "PBI: 179764")
-	public void requiredParametersonly() {
+	public void verifyEffectiveDateIsRequiredParameter() {
 	Response res =	given()
 //			.log().all()
  			.headers("SOAPAction", "http://tempuri.org/IAgreementInfo/GetMembershipPlanDetails",
@@ -167,6 +167,33 @@ public class GetMembershipPlansDetails extends base {
 			XmlPath js = ReusableMethods.rawToXML(res);	
 			
 			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InternalServerErrorFaultDto").contains("Expecting element 'EffectiveDate'.'."));
+	}
+	
+	@Test (testName="Verify a messagere is turned when plan is not available at club", description = "PBI: 179764")
+	public void planNotAvailableInClub() {
+		
+		clubId = "2";
+	
+		Response res = 
+				
+		given()
+//			.log().all()
+ 			.headers("SOAPAction", "http://tempuri.org/IAgreementInfo/GetMembershipPlanDetails",
+ 					"Content-Type", "text/xml; charset=utf-8")
+			.and()
+			.body(AgreementInfoPL.getMembershipPlanDetailsAllParameters(companyId, clubId, planId, effectiveDate))
+		.when()
+			.post("/Agreements/AgreementInfo.svc")
+		.then()
+//			.log().all()
+			.statusCode(400)
+			.extract().response();  
+			
+			XmlPath js = ReusableMethods.rawToXML(res);
+			
+			Assert.assertTrue(res.getTime() >= 60L);
+			Assert.assertTrue(js.getString("Envelope.Body.Fault.detail.InvalidInputFaultDto.Message").contains("PlanId: "+planId+" is not available at club "+clubId+"."));
+
 	}
 
 }
