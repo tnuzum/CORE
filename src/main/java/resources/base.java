@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class base {
 	
-	static String environment = "FUTURE2";
+	static String environment = "DevQA";
 	
 	public static Properties prop = new Properties();
 	//static String projectPath = System.getenv("CORE_HOME");
@@ -19,9 +19,9 @@ public class base {
 	prop = new Properties();
 	FileInputStream fis = null;
 	
-	if (environment.equals("FUTURE")){
+	if (environment.equals("DevQA")){
 		try {
-			fis = new FileInputStream(projectPath + "\\src\\main\\java\\resources\\future.properties");
+			fis = new FileInputStream(projectPath + "\\src\\main\\java\\resources\\DevQA.properties");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -33,9 +33,9 @@ public class base {
 //		System.out.println("[INFO] Environment: "+prop.getProperty("environment"));
 	}
 
-	if (environment.equals("FUTURE2")){
+	if (environment.equals("StageRegression")){
 		try {
-			fis = new FileInputStream(projectPath + "\\src\\main\\java\\resources\\future2.properties");
+			fis = new FileInputStream(projectPath + "\\src\\main\\java\\resources\\StageRegression.properties");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

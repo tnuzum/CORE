@@ -4,6 +4,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import payloads.ChangeRequestsPL;
+import payloads.CheckInPL;
 import payloads.CustomerAuthPL;
 import payloads.EnrollmentServicePL;
 import payloads.SchedulingPL;
@@ -14,10 +15,10 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import org.testng.Assert;
 
-public class ReusableMethods extends base{
+	public class ReusableMethods extends base{
 	
 	public static XmlPath rawToXML(Response r){
-//		** Convert Raw XML response to String **
+		//		** Convert Raw XML response to String **
 		
 		String respon=r.asString();
 		XmlPath x=new XmlPath(respon);
@@ -25,7 +26,7 @@ public class ReusableMethods extends base{
 	}
 	
 	public static JsonPath rawToJson(Response r){ 
-//		** Convert Raw Json response to String **
+		//		** Convert Raw Json response to String **
 		
 		String respon=r.asString();
 		JsonPath x=new JsonPath(respon);
@@ -63,6 +64,7 @@ public class ReusableMethods extends base{
 					}
 
 }
+	
 	public static String getTomorrowsDate() {
 		DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar today1 = Calendar.getInstance();
@@ -115,7 +117,7 @@ public class ReusableMethods extends base{
 				return enrollmentId;
 }
 	
-public static String placeOnStandby(String companyId, String customerId, String classId, String tomorrowsDate) {
+	public static String placeOnStandby(String companyId, String customerId, String classId, String tomorrowsDate) {
 			
 				
 		Response res = given()
@@ -136,7 +138,7 @@ public static String placeOnStandby(String companyId, String customerId, String 
 				return enrollmentId;
 }
 
-public static String placeOnStandbyCourse(String companyId, String customerId, String courseId) {
+	public static String placeOnStandbyCourse(String companyId, String customerId, String courseId) {
 	
 	  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/EnrollInCourseStandby","Content-Type","text/xml; charset=utf-8") .and()
 			  .body(EnrollmentServicePL.EnrollInCourseStandby(companyId, customerId,courseId)) .when()
@@ -152,7 +154,7 @@ public static String placeOnStandbyCourse(String companyId, String customerId, S
 			  return enrollmentId;
 }
 
-public static String[] deleteEnrollment(String companyId, String enrollmentId) {
+	public static String[] deleteEnrollment(String companyId, String enrollmentId) {
 	
 	Response res =given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/DeleteEnrollment","Content-Type","text/xml; charset=utf-8") .and()
 			  .body(EnrollmentServicePL.DeleteEnrollment(companyId, enrollmentId)) .when()
@@ -188,7 +190,8 @@ public static String[] deleteEnrollment(String companyId, String enrollmentId) {
 	//return customerId, itemId, startTime, startTimeOffset, endTime, endTimeOffset, enrollmentOccurrenceTime, enrollmentOccurrenceTimeOffset;
 	
 }
-public static  String promoteStandbyEnrollmentsForClass(String companyId, String classId, String tomorrowsDate) {
+	
+	public static  String promoteStandbyEnrollmentsForClass(String companyId, String classId, String tomorrowsDate) {
 	
 	 Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/PromoteStandbyEnrollmentsForClass","Content-Type","text/xml; charset=utf-8") .and()
 			  .body(EnrollmentServicePL.PromoteStandbyEnrollmentsForClass(companyId, classId, tomorrowsDate)) 
@@ -203,7 +206,8 @@ public static  String promoteStandbyEnrollmentsForClass(String companyId, String
 						 		 
 	return enrollmentId;
 }
-public static String PromoteStandbyEnrollmentsForCourse(String companyId, String courseId) {
+	
+	public static String PromoteStandbyEnrollmentsForCourse(String companyId, String courseId) {
 	  Response res = given() .headers("SOAPAction", "http://tempuri.org/IEnrollmentService/PromoteStandbyEnrollmentsForCourse","Content-Type","text/xml; charset=utf-8") .and()
 			  .body(EnrollmentServicePL.PromoteStandbyEnrollmentsForCourse(companyId, courseId)) 
 			  .when()
@@ -217,7 +221,7 @@ public static String PromoteStandbyEnrollmentsForCourse(String companyId, String
 	return enrollmentId;
 }
 
-public static String scheduleSingleMbrAppointment(String companyId, String customerId, String clubId, String itemId, String bookId, String dateTime) {
+	public static String scheduleSingleMbrAppointment(String companyId, String customerId, String clubId, String itemId, String bookId, String dateTime) {
 	
 	Response res = given() .headers("SOAPAction", "http://tempuri.org/IScheduling/ScheduleAppointment","Content-Type","text/xml; charset=utf-8") .and()
 			  .body(SchedulingPL.ScheduleSingleMbrAppt(companyId, customerId, clubId, itemId, bookId, dateTime)) 
@@ -233,7 +237,7 @@ public static String scheduleSingleMbrAppointment(String companyId, String custo
 	        return appointmentId;
 }
 
-public static String scheduleGroupAppointment(String companyId, String primaryMemberId, String groupMemberId, String clubId, String itemId, String bookId, String dateTime) {
+	public static String scheduleGroupAppointment(String companyId, String primaryMemberId, String groupMemberId, String clubId, String itemId, String bookId, String dateTime) {
 	
 	Response res = given() .headers("SOAPAction", "http://tempuri.org/IScheduling/ScheduleAppointment","Content-Type","text/xml; charset=utf-8") .and()
 			  .body(SchedulingPL.ScheduleGroupAppt(companyId, primaryMemberId, groupMemberId, clubId, itemId, bookId, dateTime)) 
@@ -249,7 +253,7 @@ public static String scheduleGroupAppointment(String companyId, String primaryMe
 	        return appointmentId;
 }
 
-public static void cancelAppointment(String companyId, String customerId, String appointmentId) {
+	public static void cancelAppointment(String companyId, String customerId, String appointmentId) {
 	Response res = given() .headers("SOAPAction", "http://tempuri.org/IScheduling/CancelAppointment","Content-Type","text/xml; charset=utf-8") .and()
 			  .body(SchedulingPL.cancelAppointment(companyId, customerId, appointmentId)) 
 			  .when()
@@ -264,7 +268,7 @@ public static void cancelAppointment(String companyId, String customerId, String
 	
 }
 
-public static void CancelAppointmentByAppointmentId(String companyId, String appointmentId) {
+	public static void CancelAppointmentByAppointmentId(String companyId, String appointmentId) {
 	
 	Response res =  given() .headers("SOAPAction", "http://tempuri.org/IScheduling/CancelAppointmentByAppointmentId","Content-Type","text/xml; charset=utf-8") .and()
 			  .body(SchedulingPL.cancelAppointmentByAppointmentId(companyId, appointmentId)) 
@@ -280,10 +284,7 @@ public static void CancelAppointmentByAppointmentId(String companyId, String app
 	
 }
 
-
-
-
-public static String CustomerRefreshToken (String companyId, String customerId){
+	public static String CustomerRefreshToken (String companyId, String customerId){
 	
 
 	Response res = given()
@@ -319,4 +320,35 @@ public static String CustomerRefreshToken (String companyId, String customerId){
     	.then();
 	}
 
+	public static String getCustomerVisits(String companyId, String customerId, String startDateTime, String startOffset, String endDateTime, String endOffset) {
+		
+		Response res = 
+				
+		given()
+//				.log().all()
+		  	.headers("SOAPAction", "http://tempuri.org/ICheckIn/GetCustomerVisits","Content-Type", "text/xml; charset=utf-8")
+		  	.and()
+		  	.body(CheckInPL.GetCustomerVisits(companyId, customerId,startDateTime, startOffset, endDateTime, endOffset))
+		.when()
+		  	.post("/Visits/CheckIn.svc")
+		.then()
+//			  	.log().all()
+		   	.statusCode(200)
+		   	.extract().response();
+	
+			XmlPath xml = ReusableMethods.rawToXML(res);		
+			String  xmlPretty = xml.prettify(); 
+		
+		return xmlPretty;
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
