@@ -33,13 +33,14 @@ public class GetCustomerInfo extends base {
 		String customerId = prop.getProperty("availableId");
 		
 	       Response res =  given()
+	    		.log().all()
                 .headers("SOAPAction", "http://tempuri.org/ICustomerInfo/GetCustomerInfo","Content-Type", "text/xml; charset=utf-8")
                 .and()
                 .body(CustomerInfoPL.getCustomerInfo(companyId, customerId))
 	         .when()
 	            .post("/Info/CustomerInfo.svc")
 	         .then()
-//             	.log().all()
+             	.log().all()
 	            .statusCode(200)
 	            .extract().response();
 	       

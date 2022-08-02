@@ -10,6 +10,7 @@ import io.restassured.RestAssured;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import payloads.CheckInPL;
+import resources.ReusableDates;
 import resources.ReusableMethods;
 import resources.base;
 
@@ -26,37 +27,37 @@ public class GetCustomerVisits extends base{
 	@Test(priority=1, testName= "customerVisits")
 	public void customerVisits()
 	{
-		String customerId = prop.getProperty("MemberId");
-		String startDateTime = "2021-01-18"; 
+		String customerId = prop.getProperty("availableId");
+		String startDateTime = ReusableDates.getCurrentDateMinusXYears(2); 
 		String startOffset = "0";
-		String endDateTime = "2021-09-18";
-		String endOffset = "0";
-	//	String tomorrowsDate = ReusableMethods.getTomorrowsDate()+"T21:00:00Z";
-		//T21:15:05.393Z
+		String endDateTime = ReusableDates.getCurrentDatePlusXDays(1);
+		String endOffset = "0";		
 		
+		Response res =	 
 		
-		Response res =	 given()
-
-			  	.headers("SOAPAction", "http://tempuri.org/ICheckIn/GetCustomerVisits","Content-Type", "text/xml; charset=utf-8")
-			  	.and()
-			  	.body(CheckInPL.GetCustomerVisits(companyId, customerId,startDateTime, startOffset, endDateTime, endOffset))
-			  	.when()
-			  	.post("/Visits/CheckIn.svc")
-			  	.then()
-			  // .log().all()
-			   .statusCode(200)
-			  // .time(lessThan(60L),TimeUnit.SECONDS)
-			   	.extract().response();
-				XmlPath js = ReusableMethods.rawToXML(res);
-				Assert.assertTrue(res.getTime() >= 60L);
-				
-			Assert.assertNotNull(js.get("Envelope.Body.GetCustomerVisitsResponse.GetCustomerVisitsResult.CheckInDto.CheckInDate"));	
-			Assert.assertNotNull(js.get("Envelope.Body.GetCustomerVisitsResponse.GetCustomerVisitsResult.CheckInDto.CheckInDate.DateTime"));
-			Assert.assertNotNull(js.get("Envelope.Body.GetCustomerVisitsResponse.GetCustomerVisitsResult.CheckInDto.CheckInDate.OffsetMinutes"));
-			Assert.assertNotNull(js.get("Envelope.Body.GetCustomerVisitsResponse.GetCustomerVisitsResult.CheckInDto.ClubName"));	
-			Assert.assertNotNull(js.get("Envelope.Body.GetCustomerVisitsResponse.GetCustomerVisitsResult.CheckInDto.ClubNumber"));	
-			Assert.assertNotNull(js.get("Envelope.Body.GetCustomerVisitsResponse.GetCustomerVisitsResult.CheckInDto.Description"));	
+		given()
+//			.log().all()
+		  	.headers("SOAPAction", "http://tempuri.org/ICheckIn/GetCustomerVisits","Content-Type", "text/xml; charset=utf-8")
+		  	.and()
+		  	.body(CheckInPL.GetCustomerVisits(companyId, customerId,startDateTime, startOffset, endDateTime, endOffset))
+		 .when()
+		  	.post("/Visits/CheckIn.svc")
+		 .then()
+//		  	.log().all()
+		   	.statusCode(200)
+		   	.extract().response();
+	
+			XmlPath xml = ReusableMethods.rawToXML(res);
+			String  xmlPretty = xml.prettify(); 
+			System.out.println(xmlPretty);
 			
+			Assert.assertTrue(xmlPretty.contains("CheckInDate"));
+			Assert.assertTrue(xmlPretty.contains("DateTime"));
+			Assert.assertTrue(xmlPretty.contains("OffsetMinutes"));
+			Assert.assertTrue(xmlPretty.contains("ClubName"));
+			Assert.assertTrue(xmlPretty.contains("ClubNumber"));
+			Assert.assertTrue(xmlPretty.contains("Description"));
+					
 	}
 
 }
