@@ -50,11 +50,11 @@ import resources.base;
 		return pl;
 	}
 	
-	public static String processCustomerCheckInPl(String checkInValidations, String clubId, String customerId, String serviceId, String stationId) {
+	public static String processCustomerCheckInPl(String companyId, String checkInValidations, String clubId, String customerId, String serviceId, String stationId) {
 		
 		String	pl = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:jfi=\"http://schemas.datacontract.org/2004/07/JFI.Core.Services.Contracts.DataContracts.Messages.CheckIns\">\r\n"
 				+ "	<soapenv:Header>\r\n"
-				+ "		<CompanyId xmlns=\"http://jonasfitness.com/Core/\">236</CompanyId>\r\n"
+				+ "		<CompanyId xmlns=\"http://jonasfitness.com/Core/\">"+companyId+"</CompanyId>\r\n"
 				+ "		<CallerContext xmlns=\"http://jonasfitness.com/Core/\">Member</CallerContext>\r\n"
 				+ "	</soapenv:Header>\r\n"
 				+ "	<soapenv:Body>\r\n"
@@ -62,15 +62,15 @@ import resources.base;
 				+ "         <!--Optional:-->\r\n"
 				+ "         <tem:request>\r\n"
 				+ "            <!--Optional:-->\r\n"
-				+ "            <!--jfi:CheckInValidations>?</jfi:CheckInValidations-->\r\n"
+				+ "            <jfi:CheckInValidations>"+checkInValidations+"</jfi:CheckInValidations>\r\n"
 				+ "            <!--Optional:-->\r\n"
-				+ "            <jfi:ClubId>1</jfi:ClubId>\r\n"
+				+ "            <jfi:ClubId>"+clubId+"</jfi:ClubId>\r\n"
 				+ "            <!--Optional:-->\r\n"
-				+ "            <jfi:CustomerId>1145</jfi:CustomerId>\r\n"
+				+ "            <jfi:CustomerId>"+customerId+"</jfi:CustomerId>\r\n"
 				+ "            <!--Optional:-->\r\n"
-				+ "            <jfi:ServiceId>18</jfi:ServiceId>\r\n"
+				+ "            <jfi:ServiceId>"+serviceId+"</jfi:ServiceId>\r\n"
 				+ "            <!--Optional:-->\r\n"
-				+ "            <jfi:StationId>15</jfi:StationId>\r\n"
+				+ "            <jfi:StationId>"+stationId+"</jfi:StationId>\r\n"
 				+ "         </tem:request>\r\n"
 				+ "      </tem:ProcessCustomerCheckIn>\r\n"
 				+ "	</soapenv:Body>\r\n"

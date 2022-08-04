@@ -17,6 +17,9 @@
 	<class name="changeRequests.UpdatePersonalInformation"/> 
 	<class name="changeRequests.AddStoredBankAccount"/> 
 	<class name="changeRequests.UpdateStoredBankAccount"/> 
+	<class name="checkIn.GetAvailablePunchcardsForMember"/>
+	<class name="checkIn.GetCustomerVisits"/>
+	<class name="checkIn.ProcessCustomerCheckIn"/>
     <class name="corporateInfo.CompanyHasModuleGrant"/>
     <class name="corporateInfo.GetActiveClubs"/>
     <class name="corporateInfo.GetBranding"/>
